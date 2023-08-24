@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { SupabaseClient } from "@supabase/supabase-js";
+import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
 import { BaseSyntheticEvent, useContext } from "react";
 
 interface AppAnonProps {
-  setAuthUser: (user: unknown) => void;
+  setAuthUser: (user: AuthUser | null) => void;
   supabase: SupabaseClient;
 }
 
@@ -19,8 +19,7 @@ const AppAnon = ({ setAuthUser, supabase }: AppAnonProps) => {
       .then(({ data, error }) => {
         if (error) {
           setErrorMessage(error.message);
-        }
-        else{
+        } else {
           setAuthUser(data.user);
         }
       });

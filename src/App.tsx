@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { SupabaseClient } from "@supabase/supabase-js";
+import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
 import AppAnon from "./AppAnon";
 import AppAuthenticated from "./AppAuthenticated";
 
@@ -8,13 +8,13 @@ interface AppProps {
 }
 
 function App({ supabase }: AppProps) {
-  const [authUser, setAuthUser] = useState<null | unknown>(null);
+  const [authUser, setAuthUser] = useState<AuthUser | null>(null);
 
   useEffect(() => {
-    supabase.auth.getUser().then((data: any) => {
-      data.error ? setAuthUser(null) : setAuthUser(data.user);
+    supabase.auth.getUser().then(({ data, error }) => {
+      error ? setAuthUser(null) : setAuthUser(data.user);
     });
-  }, []);
+  });
 
   return (
     <div className="max-w-2xl mx-auto bg-white">

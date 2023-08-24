@@ -1,8 +1,8 @@
-import { SupabaseClient } from "@supabase/supabase-js";
+import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
 
 interface AppAuthenticatedProps {
   supabase: SupabaseClient;
-  authUser: any;
+  authUser: AuthUser | null;
   setAuthUser: (user: any) => void;
 }
 
