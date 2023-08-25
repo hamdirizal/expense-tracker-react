@@ -31,22 +31,6 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    getAuthUserStart: (state: UserState) => {
-      state.get_auth_user_loading = true;
-      state.get_auth_user_error = "";
-    },
-    getAuthUserFail: (state: UserState) => {
-      state.get_auth_user_loading = false;
-      state.get_auth_user_error = "error happened";
-    },
-    getAuthUserSuccess: (
-      state: UserState,
-      action: PayloadAction<AuthUser | null>
-    ) => {
-      state.get_auth_user_loading = false;
-      state.get_auth_user_error = "";
-      state.auth_user = action.payload;
-    },
     userLoginStart: (state: UserState) => {
       state.user_login_loading = true;
       state.user_login_error = "";
@@ -65,21 +49,50 @@ export const userSlice = createSlice({
       state.auth_user = action.payload || null;
     },
   },
+  extraReducers: (builder) => {
+    // getAuthUser
+    builder.addCase(getAuthUser.pending, (state, action) => {
+      state.get_auth_user_loading = true;
+      state.get_auth_user_error = "";
+    });
+    builder.addCase(getAuthUser.rejected, (state, action) => {
+      state.get_auth_user_loading = false;
+      state.get_auth_user_error = "action is rejected";
+    });
+    builder.addCase(getAuthUser.fulfilled, (state, action) => {
+      state.get_auth_user_loading = false;
+      state.get_auth_user_error = "";
+      state.auth_user = action.payload;
+    });
+    // userLogin
+    builder.addCase(userLogin.pending, (state, action) => {
+      state.user_login_loading = true;
+      state.user_login_error = "";
+    });
+    builder.addCase(userLogin.rejected, (state, action) => {
+      state.user_login_loading = false;
+      state.user_login_error = action.payload as string;
+    });
+    builder.addCase(userLogin.fulfilled, (state, action) => {
+      state.user_login_loading = false;
+      state.user_login_error = "";
+      state.auth_user = action.payload.user;
+    });
+  },
 });
 
 export const getAuthUser = createAsyncThunk(
   "user/getAuthUser",
-  async (supabase: SupabaseClient, { dispatch }) => {
-    dispatch(getAuthUserStart());
+  async (supabase: SupabaseClient, { rejectWithValue, fulfillWithValue }) => {
     try {
       const { data, error } = await supabase.auth.getUser();
       if (error) {
-        dispatch(getAuthUserFail());
+        return rejectWithValue("manually rejected");
       } else {
-        dispatch(getAuthUserSuccess(data.user));
+        return fulfillWithValue(data.user);
       }
     } catch (error) {
-      dispatch(getAuthUserFail());
+      return rejectWithValue("some error happening");
     }
   }
 );
@@ -92,26 +105,20 @@ export const userLogin = createAsyncThunk(
       email: string;
       password: string;
     },
-    {dispatch}
+    { rejectWithValue, fulfillWithValue }
   ) => {
-    dispatch(userLoginStart())
     try {
       const { data, error } = await payload.supabase.auth.signInWithPassword({
         email: payload.email,
         password: payload.password,
       });
       if (error) {
-        dispatch(userLoginFail())
+        return rejectWithValue("Login failed");
       } else {
-        const { data, error } = await payload.supabase.auth.getUser();
-        if (error) {
-          dispatch(userLoginFail())
-        } else {
-          dispatch(userLoginSuccess(data.user));
-        }
+        return data;
       }
     } catch (error) {
-      dispatch(userLoginFail())
+      return rejectWithValue("Login failed");
     }
   }
 );
@@ -123,13 +130,6 @@ export const userLogout = createAsyncThunk(
   }
 );
 
-export const {
-  getAuthUserStart,
-  getAuthUserSuccess,
-  getAuthUserFail,
-  userLoginStart,
-  userLoginFail,
-  userLoginSuccess,
-} = userSlice.actions;
+// export const {} = userSlice.actions;
 
 export default userSlice.reducer;
