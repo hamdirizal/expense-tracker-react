@@ -9,7 +9,7 @@ interface AppAnonProps {
   setAuthUser: (user: AuthUser | null) => void;
 }
 
-const AppAnon = ({ setAuthUser }: AppAnonProps) => {
+const AppAnon = () => {
   const dispatch = useDispatch<AppDispatch>();
   const supabase = useContext(SupabaseContext);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);

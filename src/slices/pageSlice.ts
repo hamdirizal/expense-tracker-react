@@ -14,13 +14,13 @@ export const pageSlice = createSlice({
   name: "page",
   initialState,
   reducers: {
-    switchPage: (state, action: PayloadAction<Page>) => {
+    setCurrentPage: (state, action: PayloadAction<Page>) => {
       state.current_page = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { switchPage } = pageSlice.actions;
+export const { setCurrentPage } = pageSlice.actions;
 
 export default pageSlice.reducer;

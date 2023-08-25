@@ -1,0 +1,30 @@
+import { useDispatch, useSelector } from "react-redux";
+import CreateBookPage from "../pages/CreateBookPage";
+import LoginPage from "../pages/LoginPage";
+import { AppDispatch, RootState } from "../store";
+import { Page } from "../types";
+import { setCurrentPage } from "../slices/pageSlice";
+import DashboardPage from "../pages/DashboardPage";
+
+const usePage = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { current_page } = useSelector((state: RootState) => state.page);
+  const renderPage = () => {
+    if (current_page === Page.LOGIN) {
+      return <LoginPage />;
+    } else if (current_page === Page.CREATE_BOOK) {
+      return <CreateBookPage />;
+    } else if (current_page === Page.DASHBOARD) {
+      return <DashboardPage />;
+    } else {
+      return null;
+    }
+  };
+  const switchPage = (page: Page) => {
+    dispatch(setCurrentPage(page));
+  };
+
+  return { renderPage, switchPage };
+};
+
+export default usePage;

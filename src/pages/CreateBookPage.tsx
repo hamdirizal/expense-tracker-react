@@ -1,5 +1,5 @@
 import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
-import { AjaxState, Book } from "../types";
+import { AjaxState, Book, Page } from "../types";
 import { useContext, useEffect } from "react";
 import { SupabaseContext } from "../main";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import PageTitle from "../components/PageTitle";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
+import usePage from "../hooks/usePage";
 
 interface CreateBookPageProps {
   ownedBooks: Book[];
@@ -19,6 +20,7 @@ interface CreateBookPageProps {
 const CreateBookPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const supabase = useContext(SupabaseContext);
+  const { switchPage } = usePage();
   const { auth_user } = useSelector((state: RootState) => state.user);
   const { create_book_state, owned_books, get_owned_books_state } = useSelector(
     (state: RootState) => state.book
@@ -52,6 +54,15 @@ const CreateBookPage = () => {
 
   return (
     <>
+      <div>
+        <button
+          onClick={() => {
+            switchPage(Page.DASHBOARD);
+          }}
+        >
+          goto the dashboard
+        </button>
+      </div>
       <PageTitle title="Manage books" />
       <form
         action="#hello"
