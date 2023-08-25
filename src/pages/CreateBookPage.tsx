@@ -2,29 +2,30 @@ import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
 import { Book } from "../types";
 import { BaseSyntheticEvent, useContext } from "react";
 import { SupabaseContext } from "../main";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
+import { createBook } from "../slices/bookSlice";
 
 interface CreateBookPageProps {
   ownedBooks: Book[];
   setOwnedBooks: (books: Book[]) => void;
-  authUser: AuthUser;
 }
 
 const CreateBookPage = ({ ownedBooks, setOwnedBooks }: CreateBookPageProps) => {
+  const dispatch = useDispatch<AppDispatch>();
   const supabase = useContext(SupabaseContext);
   const { auth_user } = useSelector((state: RootState) => state.user);
   const handleFormSubmit = (e: BaseSyntheticEvent) => {
     e.preventDefault();
-
-    supabase
-      .from("books")
-      .insert([{ title: e.target.elements.title.value, owner: auth_user?.id }])
-      .select()
-      .then(({ data, error }) => {
-        console.log("DATA", data);
-        console.log("ERROR", error);
-      });
+    if (auth_user) {
+      dispatch(
+        createBook({
+          supabase,
+          title: e.target.elements.title.value,
+          owner: auth_user.id,
+        })
+      );
+    }
   };
 
   return (
