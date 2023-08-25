@@ -43,7 +43,6 @@ export const userSlice = createSlice({
       state: UserState,
       action: PayloadAction<AuthUser | null>
     ) => {
-      console.log("LOGIN SUCCESS USER AUTH", action.payload);
       state.user_login_loading = false;
       state.user_login_error = "";
       state.auth_user = action.payload || null;
@@ -77,6 +76,20 @@ export const userSlice = createSlice({
       state.user_login_loading = false;
       state.user_login_error = "";
       state.auth_user = action.payload.user;
+    });
+    // userLogout
+    builder.addCase(userLogout.pending, (state, action) => {
+      state.user_logout_loading = true;
+      state.user_logout_error = "";
+    });
+    builder.addCase(userLogout.rejected, (state, action) => {
+      state.user_logout_loading = false;
+      state.user_logout_error = action.payload as string;
+    });
+    builder.addCase(userLogout.fulfilled, (state, action) => {
+      state.user_logout_loading = false;
+      state.user_logout_error = "";
+      state.auth_user = null;
     });
   },
 });
@@ -125,6 +138,27 @@ export const userLogin = createAsyncThunk(
 
 export const userLogout = createAsyncThunk(
   "user/userLogout",
+  async (
+    payload: {
+      supabase: SupabaseClient;
+    },
+    { rejectWithValue, fulfillWithValue }
+  ) => {
+    try {
+      const { error } = await payload.supabase.auth.signOut();
+      if (error) {
+        return rejectWithValue("Logout failed");
+      } else {
+        return true;
+      }
+    } catch (error) {
+      return rejectWithValue("Logout failed");
+    }
+  }
+);
+
+export const userxLogout = createAsyncThunk(
+  "user/userxLogout",
   async (supabase: SupabaseClient) => {
     return supabase.auth.signOut();
   }

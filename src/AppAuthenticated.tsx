@@ -23,7 +23,7 @@ const AppAuthenticated = ({ authUser, setAuthUser }: AppAuthenticatedProps) => {
   }, []);
 
   const onLogoutButtonClicked = () => {
-    dispatch(userLogout(supabase));
+    dispatch(userLogout({ supabase }));
   };
 
   return (
@@ -34,7 +34,6 @@ const AppAuthenticated = ({ authUser, setAuthUser }: AppAuthenticatedProps) => {
       <CreateBookPage
         ownedBooks={ownedBooks}
         setOwnedBooks={setOwnedBooks}
-        authUser={authUser}
       />
     </div>
   );
