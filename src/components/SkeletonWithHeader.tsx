@@ -1,5 +1,12 @@
+import AppHeader from "./AppHeader";
+
 const SkeletonWithHeader = ({ content }: { content: JSX.Element }) => {
-  return <div data-testid="SkeletonWithHeader">{content}</div>;
+  return (
+    <>
+      <AppHeader />
+      <div data-testid="SkeletonWithHeader">{content}</div>
+    </>
+  );
 };
 
 export default SkeletonWithHeader;
