@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState, useContext, BaseSyntheticEvent } from "react";
 import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
-import { BaseSyntheticEvent, useContext } from "react";
+import { SupabaseContext } from "./main";
 
 interface AppAnonProps {
   setAuthUser: (user: AuthUser | null) => void;
-  supabase: SupabaseClient;
 }
 
-const AppAnon = ({ setAuthUser, supabase }: AppAnonProps) => {
+const AppAnon = ({ setAuthUser }: AppAnonProps) => {
+  const supabase = useContext(SupabaseContext);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const handleSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();

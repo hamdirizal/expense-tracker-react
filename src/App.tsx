@@ -1,8 +1,7 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect } from "react";
 import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
 import AppAnon from "./AppAnon";
 import AppAuthenticated from "./AppAuthenticated";
-import { Page } from "./types";
 
 interface AppProps {
   supabase: SupabaseClient;
@@ -21,13 +20,9 @@ function App({ supabase }: AppProps) {
   return (
     <div className="max-w-2xl mx-auto bg-white px-4" data-testid="App">
       {authUser === null ? (
-        <AppAnon supabase={supabase} setAuthUser={setAuthUser} />
+        <AppAnon setAuthUser={setAuthUser} />
       ) : (
-        <AppAuthenticated
-          supabase={supabase}
-          setAuthUser={setAuthUser}
-          authUser={authUser}
-        />
+        <AppAuthenticated setAuthUser={setAuthUser} authUser={authUser} />
       )}
     </div>
   );

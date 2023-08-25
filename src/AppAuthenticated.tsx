@@ -1,22 +1,19 @@
 import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Book } from "./types";
 import CreateBookPage from "./pages/CreateBookPage";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContent, getOwnedBooks } from "./slices/bookSlice";
+import { getOwnedBooks } from "./slices/bookSlice";
 import { AppDispatch } from "./store";
+import { SupabaseContext } from "./main";
 
 interface AppAuthenticatedProps {
-  supabase: SupabaseClient;
   authUser: AuthUser | null;
   setAuthUser: (user: any) => void;
 }
 
-const AppAuthenticated = ({
-  supabase,
-  authUser,
-  setAuthUser,
-}: AppAuthenticatedProps) => {
+const AppAuthenticated = ({ authUser, setAuthUser }: AppAuthenticatedProps) => {
+  const supabase = useContext(SupabaseContext);
   const [ownedBooks, setOwnedBooks] = useState<Book[]>([]);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -37,7 +34,6 @@ const AppAuthenticated = ({
       <hr />
       <CreateBookPage
         ownedBooks={ownedBooks}
-        supabase={supabase}
         setOwnedBooks={setOwnedBooks}
         authUser={authUser}
       />

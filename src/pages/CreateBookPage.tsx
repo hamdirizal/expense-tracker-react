@@ -1,20 +1,20 @@
 import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
 import { Book } from "../types";
 import { BaseSyntheticEvent, useContext } from "react";
+import { SupabaseContext } from "../main";
 
 interface CreateBookPageProps {
   ownedBooks: Book[];
-  supabase: SupabaseClient;
   setOwnedBooks: (books: Book[]) => void;
   authUser: AuthUser;
 }
 
 const CreateBookPage = ({
   ownedBooks,
-  supabase,
   setOwnedBooks,
   authUser,
 }: CreateBookPageProps) => {
+  const supabase = useContext(SupabaseContext);
   const handleFormSubmit = (e: BaseSyntheticEvent) => {
     e.preventDefault();
 
