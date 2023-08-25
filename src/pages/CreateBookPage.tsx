@@ -1,6 +1,6 @@
 import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
 import { AjaxState, Book } from "../types";
-import { BaseSyntheticEvent, useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import { SupabaseContext } from "../main";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
@@ -18,12 +18,12 @@ const CreateBookPage = ({ ownedBooks, setOwnedBooks }: CreateBookPageProps) => {
   const supabase = useContext(SupabaseContext);
   const { auth_user } = useSelector((state: RootState) => state.user);
   const { create_book_state } = useSelector((state: RootState) => state.book);
-  const formElement = useRef<HTMLFormElement>(null);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
 
   const onFormSubmitted = (data: any) => {
@@ -40,9 +40,7 @@ const CreateBookPage = ({ ownedBooks, setOwnedBooks }: CreateBookPageProps) => {
 
   useEffect(() => {
     if (create_book_state === AjaxState.SUCCESS) {
-      if (formElement) {
-        // console.log(formElement);
-      }
+      setValue("title", "");
     }
   }, [create_book_state]);
 
@@ -52,7 +50,6 @@ const CreateBookPage = ({ ownedBooks, setOwnedBooks }: CreateBookPageProps) => {
         action="#hello"
         onSubmit={handleSubmit((data) => onFormSubmitted(data))}
         className="relative"
-        ref={formElement}
       >
         <div>You don't have any book, create a new one</div>
         <input
