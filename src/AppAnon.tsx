@@ -1,28 +1,28 @@
 import { useState, useContext, BaseSyntheticEvent } from "react";
 import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
 import { SupabaseContext } from "./main";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "./store";
+import { userLogin } from "./slices/userSlice";
 
 interface AppAnonProps {
   setAuthUser: (user: AuthUser | null) => void;
 }
 
 const AppAnon = ({ setAuthUser }: AppAnonProps) => {
+  const dispatch = useDispatch<AppDispatch>();
   const supabase = useContext(SupabaseContext);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const handleSubmit = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
-    supabase.auth
-      .signInWithPassword({
+
+    dispatch(
+      userLogin({
+        supabase,
         email: e.target.elements.email.value,
         password: e.target.elements.password.value,
       })
-      .then(({ data, error }) => {
-        if (error) {
-          setErrorMessage(error.message);
-        } else {
-          setAuthUser(data.user);
-        }
-      });
+    );
   };
 
   return (
