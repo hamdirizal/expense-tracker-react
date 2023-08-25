@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { Book } from "../types";
+import { AjaxState, Book } from "../types";
 import { AppDispatch } from "../store";
 import { SupabaseClient } from "@supabase/supabase-js";
 
@@ -7,8 +7,7 @@ export interface BookState {
   owned_books: Book[];
   get_owned_books_loading: boolean;
   get_owned_books_error: string;
-  create_book_loading: boolean;
-  create_book_success: boolean;
+  create_book_state: AjaxState;
   create_book_error: string;
 }
 
@@ -16,8 +15,7 @@ const initialState: BookState = {
   owned_books: [],
   get_owned_books_loading: false,
   get_owned_books_error: "",
-  create_book_loading: false,
-  create_book_success: false,
+  create_book_state: AjaxState.IDLE,
   create_book_error: "",
 };
 
@@ -46,16 +44,15 @@ export const bookSlice = createSlice({
     });
     // createBook
     builder.addCase(createBook.pending, (state) => {
-      state.create_book_loading = true;
+      state.create_book_state = AjaxState.LOADING;
       state.create_book_error = "";
     });
     builder.addCase(createBook.fulfilled, (state, action) => {
-      state.create_book_loading = false;
-      state.create_book_success = true;
+      state.create_book_state = AjaxState.SUCCESS;
+      state.create_book_error = "";
     });
     builder.addCase(createBook.rejected, (state, action) => {
-      state.create_book_loading = false;
-      state.create_book_success = false;
+      state.create_book_state = AjaxState.FAIL;
       state.create_book_error = action.payload as string;
     });
   },

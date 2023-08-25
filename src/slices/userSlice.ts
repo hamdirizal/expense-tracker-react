@@ -126,7 +126,7 @@ export const userLogin = createAsyncThunk(
         password: payload.password,
       });
       if (error) {
-        return rejectWithValue("Login failed");
+        return rejectWithValue(error.message);
       } else {
         return data;
       }
