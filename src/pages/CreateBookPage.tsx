@@ -1,11 +1,12 @@
 import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
-import { Book } from "../types";
-import { BaseSyntheticEvent, useContext } from "react";
+import { AjaxState, Book } from "../types";
+import { BaseSyntheticEvent, useContext, useEffect, useRef } from "react";
 import { SupabaseContext } from "../main";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { createBook } from "../slices/bookSlice";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { useForm } from "react-hook-form";
 
 interface CreateBookPageProps {
   ownedBooks: Book[];
@@ -16,33 +17,61 @@ const CreateBookPage = ({ ownedBooks, setOwnedBooks }: CreateBookPageProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const supabase = useContext(SupabaseContext);
   const { auth_user } = useSelector((state: RootState) => state.user);
-  const handleFormSubmit = (e: BaseSyntheticEvent) => {
-    e.preventDefault();
+  const { create_book_state } = useSelector((state: RootState) => state.book);
+  const formElement = useRef<HTMLFormElement>(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onFormSubmitted = (data: any) => {
     if (auth_user) {
       dispatch(
         createBook({
           supabase,
-          title: e.target.elements.title.value,
+          title: data.title,
           owner: auth_user.id,
         })
       );
     }
   };
 
+  useEffect(() => {
+    if (create_book_state === AjaxState.SUCCESS) {
+      if (formElement) {
+        // console.log(formElement);
+      }
+    }
+  }, [create_book_state]);
+
   return (
     <>
-      <div>You don't have any book, create a new one</div>
-      <form action="" onSubmit={handleFormSubmit}>
-        <input type="text" name="title" placeholder="Book title" />
+      <form
+        action="#hello"
+        onSubmit={handleSubmit((data) => onFormSubmitted(data))}
+        className="relative"
+        ref={formElement}
+      >
+        <div>You don't have any book, create a new one</div>
+        <input
+          type="text"
+          placeholder="Book title"
+          {...register("title", { required: true })}
+        />
         <br />
         <button type="submit">Create book</button>
+        {create_book_state === AjaxState.LOADING && (
+          <LoadingSpinner isOverlayed={true} />
+        )}
       </form>
+
       <ul>
         {ownedBooks.map((book: Book) => (
           <li key={book.id}>{book.title}</li>
         ))}
       </ul>
-      <LoadingSpinner />
     </>
   );
 };
