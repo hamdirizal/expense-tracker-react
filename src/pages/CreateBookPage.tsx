@@ -5,6 +5,7 @@ import { SupabaseContext } from "../main";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { createBook } from "../slices/bookSlice";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 interface CreateBookPageProps {
   ownedBooks: Book[];
@@ -41,6 +42,7 @@ const CreateBookPage = ({ ownedBooks, setOwnedBooks }: CreateBookPageProps) => {
           <li key={book.id}>{book.title}</li>
         ))}
       </ul>
+      <LoadingSpinner />
     </>
   );
 };
