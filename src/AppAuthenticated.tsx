@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { Book } from "./types";
 import CreateBookPage from "./pages/CreateBookPage";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContent } from "./slices/bookSlice";
+import { fetchContent, getOwnedBooks } from "./slices/bookSlice";
+import { AppDispatch } from "./store";
 
 interface AppAuthenticatedProps {
   supabase: SupabaseClient;
@@ -17,10 +18,10 @@ const AppAuthenticated = ({
   setAuthUser,
 }: AppAuthenticatedProps) => {
   const [ownedBooks, setOwnedBooks] = useState<Book[]>([]);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchContent());
+    dispatch(getOwnedBooks(supabase));
   }, []);
 
   const onLogoutButtonClicked = () => {
