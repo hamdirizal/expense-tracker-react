@@ -2,6 +2,8 @@ import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { Book } from "./types";
 import CreateBookPage from "./pages/CreateBookPage";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContent } from "./slices/bookSlice";
 
 interface AppAuthenticatedProps {
   supabase: SupabaseClient;
@@ -15,14 +17,10 @@ const AppAuthenticated = ({
   setAuthUser,
 }: AppAuthenticatedProps) => {
   const [ownedBooks, setOwnedBooks] = useState<Book[]>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    supabase
-      .from("books")
-      .select("*")
-      .then(({ data, error }) => {
-        if (!error) setOwnedBooks(data || []);
-      });
+    dispatch(fetchContent());
   }, []);
 
   const onLogoutButtonClicked = () => {

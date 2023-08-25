@@ -2,6 +2,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { SupabaseClient, createClient } from "@supabase/supabase-js";
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 const supabase: SupabaseClient = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -9,5 +11,7 @@ const supabase: SupabaseClient = createClient(
 );
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <App supabase={supabase} />
+  <Provider store={store}>
+    <App supabase={supabase} />
+  </Provider>
 );
