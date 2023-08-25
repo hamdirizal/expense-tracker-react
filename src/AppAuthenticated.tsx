@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOwnedBooks } from "./slices/bookSlice";
 import { AppDispatch } from "./store";
 import { SupabaseContext } from "./main";
+import { userLogout } from "./slices/userSlice";
 
 interface AppAuthenticatedProps {
   authUser: AuthUser | null;
@@ -22,9 +23,7 @@ const AppAuthenticated = ({ authUser, setAuthUser }: AppAuthenticatedProps) => {
   }, []);
 
   const onLogoutButtonClicked = () => {
-    supabase.auth.signOut().then(({ error }) => {
-      if (!error) setAuthUser(null);
-    });
+    dispatch(userLogout(supabase));
   };
 
   return (
