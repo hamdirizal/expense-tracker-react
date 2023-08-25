@@ -4,20 +4,25 @@ import { useContext, useEffect } from "react";
 import { SupabaseContext } from "../main";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
-import { createBook } from "../slices/bookSlice";
+import { createBook, getOwnedBooks } from "../slices/bookSlice";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useForm } from "react-hook-form";
+import PageTitle from "../components/PageTitle";
+import SectionTitle from "../components/SectionTitle";
+import Button from "../components/Button";
 
 interface CreateBookPageProps {
   ownedBooks: Book[];
   setOwnedBooks: (books: Book[]) => void;
 }
 
-const CreateBookPage = ({ ownedBooks, setOwnedBooks }: CreateBookPageProps) => {
+const CreateBookPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const supabase = useContext(SupabaseContext);
   const { auth_user } = useSelector((state: RootState) => state.user);
-  const { create_book_state } = useSelector((state: RootState) => state.book);
+  const { create_book_state, owned_books, get_owned_books_state } = useSelector(
+    (state: RootState) => state.book
+  );
 
   const {
     register,
@@ -41,33 +46,60 @@ const CreateBookPage = ({ ownedBooks, setOwnedBooks }: CreateBookPageProps) => {
   useEffect(() => {
     if (create_book_state === AjaxState.SUCCESS) {
       setValue("title", "");
+      dispatch(getOwnedBooks(supabase));
     }
   }, [create_book_state]);
 
   return (
     <>
+      <PageTitle title="Manage books" />
       <form
         action="#hello"
         onSubmit={handleSubmit((data) => onFormSubmitted(data))}
         className="relative"
       >
-        <div>You don't have any book, create a new one</div>
-        <input
-          type="text"
-          placeholder="Book title"
-          {...register("title", { required: true })}
-        />
-        <br />
-        <button type="submit">Create book</button>
+        <div>Create new book</div>
+        <div className="flex">
+          <input
+            className="border-2 border-gray-400 mr-3"
+            required
+            type="text"
+            placeholder="Book title"
+            {...register("title", { required: true })}
+          />
+          <div className="w-[200px]">
+            <Button
+              label="Create book"
+              variant="primary"
+              onClick={() => {}}
+              type={"submit"}
+            />
+          </div>
+        </div>
+
         {create_book_state === AjaxState.LOADING && (
           <LoadingSpinner isOverlayed={true} />
         )}
       </form>
 
+      <hr />
+
+      <div className="relative">
+        <SectionTitle title="Owned books" />
+        <ul>
+          {owned_books.map((book: Book) => (
+            <li key={book.id}>{book.title}</li>
+          ))}
+        </ul>
+        {get_owned_books_state === AjaxState.LOADING && (
+          <LoadingSpinner isOverlayed={true} />
+        )}
+      </div>
+      <SectionTitle title="Collaborated books" />
       <ul>
-        {ownedBooks.map((book: Book) => (
-          <li key={book.id}>{book.title}</li>
-        ))}
+        <li>first</li>
+        <li>Second</li>
+        <li>Third</li>
       </ul>
     </>
   );

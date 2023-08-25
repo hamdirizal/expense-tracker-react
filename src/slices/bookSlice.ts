@@ -5,7 +5,7 @@ import { SupabaseClient } from "@supabase/supabase-js";
 
 export interface BookState {
   owned_books: Book[];
-  get_owned_books_loading: boolean;
+  get_owned_books_state: AjaxState;
   get_owned_books_error: string;
   create_book_state: AjaxState;
   create_book_error: string;
@@ -13,7 +13,7 @@ export interface BookState {
 
 const initialState: BookState = {
   owned_books: [],
-  get_owned_books_loading: false,
+  get_owned_books_state: AjaxState.IDLE,
   get_owned_books_error: "",
   create_book_state: AjaxState.IDLE,
   create_book_error: "",
@@ -24,22 +24,22 @@ export const bookSlice = createSlice({
   initialState,
   reducers: {
     getOwnedBooksReset: (state: BookState) => {
-      state.get_owned_books_loading = false;
+      state.get_owned_books_state = AjaxState.IDLE;
       state.get_owned_books_error = "";
     },
   },
   extraReducers: (builder) => {
     // getOwnedBooks
     builder.addCase(getOwnedBooks.pending, (state) => {
-      state.get_owned_books_loading = true;
+      state.get_owned_books_state = AjaxState.LOADING;
       state.get_owned_books_error = "";
     });
     builder.addCase(getOwnedBooks.fulfilled, (state, action) => {
-      state.get_owned_books_loading = false;
+      state.get_owned_books_state = AjaxState.SUCCESS;
       state.owned_books = action.payload;
     });
     builder.addCase(getOwnedBooks.rejected, (state, action) => {
-      state.get_owned_books_loading = false;
+      state.get_owned_books_state = AjaxState.FAIL;
       state.get_owned_books_error = action.payload as string;
     });
     // createBook
