@@ -15,12 +15,12 @@ const queryClient = new QueryClient({
   },
 });
 
-export const supabase: SupabaseClient = createClient(
+export const supabaseClient: SupabaseClient = createClient(
   import.meta.env.VITE_SUPABASE_URL,
   import.meta.env.VITE_SUPABASE_ANON_KEY
 );
 
-export const supabaseClient: SupabaseClient = supabase;
+export const supabase: SupabaseClient = supabaseClient;
 
 export const SupabaseContext = createContext(supabase);
 

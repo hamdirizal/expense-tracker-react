@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import SkeletonWithHeader from "./components/SkeletonWithHeader";
 import ManageBooksPage from "./pages/ManageBooksPage";
 import DashboardPage from "./pages/DashboardPage";
+import AppAuthenticated from "./AppAuthenticated";
 
 interface AppProps {
   supabase: SupabaseClient;
@@ -20,9 +21,9 @@ function App({ supabase }: AppProps) {
 
   const renderPage = (currentPage: Page) => {
     if (currentPage === Page.CREATE_BOOK) {
-      return <SkeletonWithHeader content={<ManageBooksPage />} />;
+      return <AppAuthenticated content={<ManageBooksPage />} />;
     } else if (currentPage === Page.DASHBOARD) {
-      return <SkeletonWithHeader content={<DashboardPage />} />;
+      return <AppAuthenticated content={<DashboardPage />} />;
     } else if (currentPage === Page.LOGIN) {
       return <LoginPage />;
     } else {
