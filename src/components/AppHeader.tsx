@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Page } from "../types";
 import { PageContext } from "../App";
+import useLogoutUserMutation from "../services/useLogoutUserMutation";
 
 const AppHeader = () => {
   const { currentPage, setCurrentPage } = useContext(PageContext);
+  const logoutUserMutation = useLogoutUserMutation();
   return (
     <header className="App-header">
       <span className="font-bold">Daily Expense</span>
@@ -11,6 +13,7 @@ const AppHeader = () => {
       <span>Listing</span>
       <span>Search</span>
       <span>User: Hamdi</span>
+      <button onClick={() => logoutUserMutation.mutate()}>(Logout)</button>
     </header>
   );
 };

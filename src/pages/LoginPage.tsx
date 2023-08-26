@@ -6,9 +6,10 @@ import useLoginUserMutation from "../services/useLoginUserMutation";
 import PageTitle from "../components/PageTitle";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import { PageContext } from "../App";
+import VarDump from "../components/VarDump";
 
 const LoginPage = () => {
-  const authUserTan = useGetAuthUserQuery();
+  const getAuthUserState = useGetAuthUserQuery();
   const {
     register,
     handleSubmit,
@@ -27,14 +28,15 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
-    if (authUserTan.isSuccess) {
+    if (getAuthUserState.isSuccess) {
       setCurrentPage(Page.DASHBOARD);
     }
-  }, [authUserTan]);
+  }, [getAuthUserState]);
 
   return (
     <div>
       <PageTitle title="Login" />
+      <VarDump content={JSON.stringify(getAuthUserState)} />
       <div className="relative">
         <form onSubmit={handleSubmit((data) => onFormSubmitted(data))}>
           <h1>Please login</h1>

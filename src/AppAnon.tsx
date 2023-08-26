@@ -1,9 +1,5 @@
 import { useState, useContext, BaseSyntheticEvent } from "react";
 import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
-import { SupabaseContext } from "./main";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "./store";
-import { userLogin } from "./slices/userSlice";
 
 interface AppAnonProps {
   setAuthUser: (user: AuthUser | null) => void;
