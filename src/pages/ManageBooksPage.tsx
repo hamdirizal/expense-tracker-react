@@ -11,6 +11,7 @@ import PageTitle from "../components/PageTitle";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
 import usePage from "../hooks/usePage";
+import { useGetOwnedBooksQuery } from "../services/book";
 
 interface ManageBooksPageProps {
   ownedBooks: Book[];
@@ -22,6 +23,7 @@ const ManageBooksPage = () => {
   const supabase = useContext(SupabaseContext);
   const { switchPage } = usePage();
   const { auth_user } = useSelector((state: RootState) => state.user);
+  const ownedBooks = useGetOwnedBooksQuery();
   const { create_book_state, owned_books, get_owned_books_state } = useSelector(
     (state: RootState) => state.book
   );
@@ -98,7 +100,7 @@ const ManageBooksPage = () => {
       <div className="relative">
         <SectionTitle title="Owned books" />
         <ul>
-          {owned_books.map((book: Book) => (
+          {ownedBooks.data.map((book: Book) => (
             <li key={book.id}>{book.title}</li>
           ))}
         </ul>

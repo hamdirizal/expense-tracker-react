@@ -19,8 +19,6 @@ const DashboardPage = () => {
 
   return (
     <div>
-      <div className="border mb-2">{JSON.stringify(error)}</div>
-      <div className="border mb-2">{JSON.stringify(isLoading)}</div>
       <PageTitle title="Dashboard" />
       <CurrentBookPanel />
     </div>
