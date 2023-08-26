@@ -10,32 +10,32 @@ import LoginPage from "./pages/LoginPage";
 import { setCurrentPage } from "./slices/pageSlice";
 import CreateBookPage from "./pages/ManageBooksPage";
 import usePage from "./hooks/usePage";
-import { useGetAuthUserQuery } from "./services/supabase";
 import VarDump from "./components/VarDump";
+import useGetAuthUserQuery from "./services/useGetAuthUserQuery";
 
 interface AppProps {
   supabase: SupabaseClient;
 }
 
 function App({ supabase }: AppProps) {
-  const authUserState = useGetAuthUserQuery();
+  const authUserTan = useGetAuthUserQuery();
 
   const { renderPage, switchPage } = usePage();
 
-  useEffect(() => {
-    if (authUserState.isSuccess) {
-      switchPage(Page.DASHBOARD);
-    } else {
-      switchPage(Page.LOGIN);
-    }
-  }, [authUserState]);
+  // useEffect(() => {
+  //   if (authUserTan.isSuccess) {
+  //     switchPage(Page.DASHBOARD);
+  //   } else {
+  //     switchPage(Page.LOGIN);
+  //   }
+  // }, [authUserTan]);
 
   return (
     <div
       className="max-w-2xl mx-auto bg-white px-4 min-h-screen"
       data-testid="App"
     >
-      <VarDump content={JSON.stringify(authUserState)} />
+      <VarDump content={JSON.stringify(authUserTan)} />
       {renderPage()}
     </div>
   );

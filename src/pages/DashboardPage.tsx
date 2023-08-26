@@ -7,13 +7,11 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { AjaxState } from "../types";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import PageTitle from "../components/PageTitle";
-import {
-  useGetAuthUserQuery,
-  useGetOwnedBooksQuery,
-} from "../services/supabase";
+import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
+import VarDump from "../components/VarDump";
 
 const DashboardPage = () => {
-  useGetOwnedBooksQuery();
+  const getOwnedBooksState = useGetOwnedBooksQuery();
 
   return (
     <div>

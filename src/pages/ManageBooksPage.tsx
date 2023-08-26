@@ -6,12 +6,10 @@ import PageTitle from "../components/PageTitle";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
 import usePage from "../hooks/usePage";
-import {
-  useCreateBookMutation,
-  useGetAuthUserQuery,
-  useGetOwnedBooksQuery,
-} from "../services/supabase";
+import { useCreateBookMutation } from "../services/supabase";
 import VarDump from "../components/VarDump";
+import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
+import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 
 const ManageBooksPage = () => {
   const { switchPage } = usePage();
@@ -83,11 +81,12 @@ const ManageBooksPage = () => {
 
       <div className="relative">
         <SectionTitle title="Owned books" />
-        <ul>
+        <VarDump content={JSON.stringify(ownedBooksState)} />
+        {/* <ul>
           {ownedBooksState.data.map((book: Book) => (
             <li key={book.id}>{book.title}</li>
           ))}
-        </ul>
+        </ul> */}
         {ownedBooksState.isLoading && <LoadingSpinner isOverlayed={true} />}
       </div>
       <SectionTitle title="Collaborated books" />

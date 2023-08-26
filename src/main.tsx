@@ -5,18 +5,33 @@ import { SupabaseClient, createClient } from "@supabase/supabase-js";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import { createContext } from "react";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+const queryClient = new QueryClient();
 
 export const supabase: SupabaseClient = createClient(
   import.meta.env.VITE_SUPABASE_URL,
   import.meta.env.VITE_SUPABASE_ANON_KEY
 );
 
+export const supabaseClient: SupabaseClient = supabase;
+
 export const SupabaseContext = createContext(supabase);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <SupabaseContext.Provider value={supabase}>
-    <Provider store={store}>
-      <App supabase={supabase} />
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <App supabase={supabase} />
+      </Provider>
+      <ReactQueryDevtools initialIsOpen={true} />
+    </QueryClientProvider>
   </SupabaseContext.Provider>
 );

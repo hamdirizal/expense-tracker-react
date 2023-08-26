@@ -1,10 +1,10 @@
 import { Page } from "../types";
 import LoadingSpinner from "./LoadingSpinner";
 import usePage from "../hooks/usePage";
-import { useGetOwnedBooksQuery } from "../services/supabase";
+import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 
 const CurrentBookPanel = () => {
-  const ownedBooks = useGetOwnedBooksQuery();
+  const ownedBooksState = useGetOwnedBooksQuery();
   const { switchPage } = usePage();
 
   const renderNoBooks = () => {
@@ -41,8 +41,8 @@ const CurrentBookPanel = () => {
 
   return (
     <div className="border px-2 relative rounded">
-      {ownedBooks?.data?.length ? renderHasBooks() : renderNoBooks()}
-      {ownedBooks.isLoading && <LoadingSpinner isOverlayed={true} />}
+      {ownedBooksState?.data?.length ? renderHasBooks() : renderNoBooks()}
+      {ownedBooksState.isLoading && <LoadingSpinner isOverlayed={true} />}
     </div>
   );
 };
