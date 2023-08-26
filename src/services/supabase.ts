@@ -23,6 +23,19 @@ export const supabaseApi = createApi({
         return { data: data.user };
       },
     }),
+    loginUser: builder.mutation({
+      invalidatesTags: ["AuthUser"],
+      queryFn: async (args) => {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: args.email,
+          password: args.password,
+        });
+        if (error) {
+          throw { error };
+        }
+        return { data };
+      },
+    }),
     getOwnedBooks: builder.query<any, void>({
       providesTags: ["OwnedBooks"],
       queryFn: async () => {
@@ -55,4 +68,5 @@ export const {
   useGetOwnedBooksQuery,
   useCreateBookMutation,
   useGetAuthUserQuery,
+  useLoginUserMutation,
 } = supabaseApi;

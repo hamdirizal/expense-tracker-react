@@ -1,10 +1,5 @@
-import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
-import { AjaxState, Book, Page } from "../types";
-import { useContext, useEffect } from "react";
-import { SupabaseContext } from "../main";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../store";
-import { createBook, getOwnedBooks } from "../slices/bookSlice";
+import { Book, Page } from "../types";
+import { useEffect } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useForm } from "react-hook-form";
 import PageTitle from "../components/PageTitle";
@@ -13,24 +8,16 @@ import Button from "../components/Button";
 import usePage from "../hooks/usePage";
 import {
   useCreateBookMutation,
+  useGetAuthUserQuery,
   useGetOwnedBooksQuery,
 } from "../services/supabase";
-
-interface ManageBooksPageProps {
-  ownedBooks: Book[];
-  setOwnedBooks: (books: Book[]) => void;
-}
+import VarDump from "../components/VarDump";
 
 const ManageBooksPage = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const supabase = useContext(SupabaseContext);
   const { switchPage } = usePage();
-  const { auth_user } = useSelector((state: RootState) => state.user);
-  const ownedBooks = useGetOwnedBooksQuery();
-  const { create_book_state, owned_books, get_owned_books_state } = useSelector(
-    (state: RootState) => state.book
-  );
+  const ownedBooksState = useGetOwnedBooksQuery();
   const [createBook, createBookState] = useCreateBookMutation();
+  const getAuthUserState = useGetAuthUserQuery();
 
   const {
     register,
@@ -40,17 +27,17 @@ const ManageBooksPage = () => {
   } = useForm();
 
   const onFormSubmitted = (data: any) => {
-    if (auth_user) {
-      createBook({ title: data.title, owner: auth_user.id });
+    if (getAuthUserState.data) {
+      console.log("form submitted");
+      createBook({ title: data.title, owner: getAuthUserState.data.id });
     }
   };
 
   useEffect(() => {
-    if (create_book_state === AjaxState.SUCCESS) {
+    if (createBookState.isSuccess) {
       setValue("title", "");
-      dispatch(getOwnedBooks(supabase));
     }
-  }, [create_book_state]);
+  }, [createBookState]);
 
   return (
     <>
@@ -63,6 +50,8 @@ const ManageBooksPage = () => {
           goto the dashboard
         </button>
       </div>
+      <VarDump content={JSON.stringify(createBookState)} />
+      <VarDump content={JSON.stringify(getAuthUserState)} />
       <PageTitle title="Manage books" />
       <form
         action="#hello"
@@ -88,9 +77,7 @@ const ManageBooksPage = () => {
           </div>
         </div>
 
-        {create_book_state === AjaxState.LOADING && (
-          <LoadingSpinner isOverlayed={true} />
-        )}
+        {createBookState.isLoading && <LoadingSpinner isOverlayed={true} />}
       </form>
 
       <hr />
@@ -98,13 +85,11 @@ const ManageBooksPage = () => {
       <div className="relative">
         <SectionTitle title="Owned books" />
         <ul>
-          {ownedBooks.data.map((book: Book) => (
+          {ownedBooksState.data.map((book: Book) => (
             <li key={book.id}>{book.title}</li>
           ))}
         </ul>
-        {get_owned_books_state === AjaxState.LOADING && (
-          <LoadingSpinner isOverlayed={true} />
-        )}
+        {ownedBooksState.isLoading && <LoadingSpinner isOverlayed={true} />}
       </div>
       <SectionTitle title="Collaborated books" />
       <ul>

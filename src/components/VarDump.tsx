@@ -3,7 +3,7 @@ interface VarDumpProps {
 }
 
 const VarDump = ({ content }: VarDumpProps) => {
-  return <div className="border-2 border-red-600 text-sm break-words bg-red-950 text-white p-1">{content}</div>;
+  return <div className="border-2 border-red-600 text-sm break-words bg-red-950 text-white p-1 my-2">{content}</div>;
 };
 
 export default VarDump;
