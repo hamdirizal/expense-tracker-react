@@ -1,5 +1,5 @@
 import { Book, Page } from "../types";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useForm } from "react-hook-form";
 import PageTitle from "../components/PageTitle";
@@ -10,9 +10,10 @@ import VarDump from "../components/VarDump";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import useCreateBookMutation from "../services/useCreateBookMutation";
+import { PageContext } from "../App";
 
 const ManageBooksPage = () => {
-  const { switchPage } = usePage();
+  const { currentPage, setCurrentPage } = useContext(PageContext);
   const ownedBooksState = useGetOwnedBooksQuery();
   const createBookMutation = useCreateBookMutation();
   const getAuthUserState = useGetAuthUserQuery();
@@ -44,7 +45,7 @@ const ManageBooksPage = () => {
       <div>
         <button
           onClick={() => {
-            switchPage(Page.DASHBOARD);
+            setCurrentPage(Page.DASHBOARD);
           }}
         >
           goto the dashboard

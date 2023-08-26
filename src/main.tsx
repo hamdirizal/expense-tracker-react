@@ -4,7 +4,7 @@ import "./index.css";
 import { SupabaseClient, createClient } from "@supabase/supabase-js";
 import { store } from "./store";
 import { Provider } from "react-redux";
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import {
   useQuery,
   useMutation,

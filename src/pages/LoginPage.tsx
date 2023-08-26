@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import usePage from "../hooks/usePage";
-import { AppDispatch } from "../store";
 import { useForm } from "react-hook-form";
 import { Page } from "../types";
 import useLoginUserMutation from "../services/useLoginUserMutation";
 import PageTitle from "../components/PageTitle";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
+import { PageContext } from "../App";
 
 const LoginPage = () => {
   const authUserTan = useGetAuthUserQuery();
@@ -18,7 +18,7 @@ const LoginPage = () => {
   } = useForm();
 
   const loginUserMutation = useLoginUserMutation();
-  const { switchPage } = usePage();
+  const { currentPage, setCurrentPage } = useContext(PageContext);
 
   const onFormSubmitted = (data: any) => {
     loginUserMutation.mutate({
@@ -29,7 +29,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (authUserTan.isSuccess) {
-      switchPage(Page.DASHBOARD);
+      setCurrentPage(Page.DASHBOARD);
     }
   }, [authUserTan]);
 

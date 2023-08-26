@@ -1,40 +1,46 @@
-import { useState, useEffect } from "react";
-import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
-import AppAnon from "./AppAnon";
-import AppAuthenticated from "./AppAuthenticated";
-import { useDispatch, useSelector } from "react-redux";
-import { getAuthUser } from "./slices/userSlice";
-import { AppDispatch, RootState } from "./store";
+import { useState, useEffect, createContext, useMemo } from "react";
+import { SupabaseClient } from "@supabase/supabase-js";
 import { Page } from "./types";
 import LoginPage from "./pages/LoginPage";
-import { setCurrentPage } from "./slices/pageSlice";
-import CreateBookPage from "./pages/ManageBooksPage";
-import usePage from "./hooks/usePage";
-import VarDump from "./components/VarDump";
-import useGetAuthUserQuery from "./services/useGetAuthUserQuery";
+import SkeletonWithHeader from "./components/SkeletonWithHeader";
+import ManageBooksPage from "./pages/ManageBooksPage";
+import DashboardPage from "./pages/DashboardPage";
 
 interface AppProps {
   supabase: SupabaseClient;
 }
 
-function App({ supabase }: AppProps) {
-  const { renderPage, switchPage } = usePage();
+export const PageContext = createContext({
+  currentPage: Page.LOGIN,
+  setCurrentPage: (page: Page) => {},
+});
 
-  // useEffect(() => {
-  //   if (authUserTan.isSuccess) {
-  //     switchPage(Page.DASHBOARD);
-  //   } else {
-  //     switchPage(Page.LOGIN);
-  //   }
-  // }, [authUserTan]);
+function App({ supabase }: AppProps) {
+  const [currentPage, setCurrentPage] = useState(Page.LOGIN);
+
+  const renderPage = (currentPage: Page) => {
+    if (currentPage === Page.CREATE_BOOK) {
+      return <SkeletonWithHeader content={<ManageBooksPage />} />;
+    } else if (currentPage === Page.DASHBOARD) {
+      return <SkeletonWithHeader content={<DashboardPage />} />;
+    } else if (currentPage === Page.LOGIN) {
+      return <LoginPage />;
+    } else {
+      return <LoginPage />;
+    }
+  };
+
+  const value = useMemo(() => ({ currentPage, setCurrentPage }), [currentPage]);
 
   return (
-    <div
-      className="max-w-2xl mx-auto bg-white px-4 min-h-screen"
-      data-testid="App"
-    >
-      {renderPage()}
-    </div>
+    <PageContext.Provider value={value}>
+      <div
+        className="max-w-2xl mx-auto bg-white px-4 min-h-screen"
+        data-testid="App"
+      >
+        {renderPage(currentPage)}
+      </div>
+    </PageContext.Provider>
   );
 }
 

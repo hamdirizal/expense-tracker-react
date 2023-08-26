@@ -2,10 +2,12 @@ import { Page } from "../types";
 import LoadingSpinner from "./LoadingSpinner";
 import usePage from "../hooks/usePage";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
+import { useContext } from "react";
+import { PageContext } from "../App";
 
 const CurrentBookPanel = () => {
   const ownedBooksState = useGetOwnedBooksQuery();
-  const { switchPage } = usePage();
+  const { currentPage, setCurrentPage } = useContext(PageContext);
 
   const renderNoBooks = () => {
     return (
@@ -13,7 +15,7 @@ const CurrentBookPanel = () => {
         Cou don't have any book.{" "}
         <button
           onClick={() => {
-            switchPage(Page.CREATE_BOOK);
+            setCurrentPage(Page.CREATE_BOOK);
           }}
           className=" bg-green-300"
         >
@@ -29,7 +31,7 @@ const CurrentBookPanel = () => {
         Book: Catatan rumah{" "}
         <button
           onClick={() => {
-            switchPage(Page.CREATE_BOOK);
+            setCurrentPage(Page.CREATE_BOOK);
           }}
           className=" bg-green-300"
         >
