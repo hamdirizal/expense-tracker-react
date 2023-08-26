@@ -7,12 +7,15 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { AjaxState } from "../types";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import PageTitle from "../components/PageTitle";
-import { useGetOwnedBooksQuery } from "../services/supabase";
+import {
+  useCreateBookQuery,
+  useGetOwnedBooksQuery,
+} from "../services/supabase";
 
 const DashboardPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const supabase = useContext(SupabaseContext);
-  const { data, error, isLoading } = useGetOwnedBooksQuery();
+  useGetOwnedBooksQuery();
   useEffect(() => {
     // dispatch(getOwnedBooks(supabase));
   }, []);

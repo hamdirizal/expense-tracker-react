@@ -11,7 +11,10 @@ import PageTitle from "../components/PageTitle";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
 import usePage from "../hooks/usePage";
-import { useGetOwnedBooksQuery } from "../services/supabase";
+import {
+  useCreateBookMutation,
+  useGetOwnedBooksQuery,
+} from "../services/supabase";
 
 interface ManageBooksPageProps {
   ownedBooks: Book[];
@@ -27,6 +30,7 @@ const ManageBooksPage = () => {
   const { create_book_state, owned_books, get_owned_books_state } = useSelector(
     (state: RootState) => state.book
   );
+  const [createBook, createBookState] = useCreateBookMutation();
 
   const {
     register,
@@ -37,13 +41,7 @@ const ManageBooksPage = () => {
 
   const onFormSubmitted = (data: any) => {
     if (auth_user) {
-      dispatch(
-        createBook({
-          supabase,
-          title: data.title,
-          owner: auth_user.id,
-        })
-      );
+      createBook({ title: data.title, owner: auth_user.id });
     }
   };
 

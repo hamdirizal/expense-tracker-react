@@ -11,16 +11,29 @@ import { supabase } from "../main";
 export const supabaseApi = createApi({
   reducerPath: "supabaseApi",
   baseQuery: fakeBaseQuery(),
+  tagTypes: ['OwnedBooks'],
   endpoints: (builder) => ({
     getOwnedBooks: builder.query<any, void>({
+      providesTags: ["OwnedBooks"],
       queryFn: async () => {
         const { data, error } = await supabase.from("books").select("*");
+        if (error) {
+          throw { error };
+        }
         return { data };
-        // if (error) {
-        //   throw { error: "hello" };
-        // }
-
-        // return { data };
+      },
+    }),
+    createBook: builder.mutation({
+      invalidatesTags: ["OwnedBooks"],
+      queryFn: async (args) => {
+        const { data, error } = await supabase
+          .from("books")
+          .insert([{ title: args.title, owner: args.owner }])
+          .select();
+        if (error) {
+          throw { error };
+        }
+        return { data };
       },
     }),
   }),
@@ -28,4 +41,4 @@ export const supabaseApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetOwnedBooksQuery } = supabaseApi;
+export const { useGetOwnedBooksQuery, useCreateBookMutation } = supabaseApi;
