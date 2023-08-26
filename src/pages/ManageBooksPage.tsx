@@ -26,7 +26,7 @@ const ManageBooksPage = () => {
 
   const onFormSubmitted = (data: any) => {
     if (getAuthUserState.data) {
-      createBook({ title: data.title, owner: getAuthUserState.data.id });
+      createBook({ title: data.title, owner: getAuthUserState.data.user.id });
     }
   };
 
@@ -47,7 +47,6 @@ const ManageBooksPage = () => {
           goto the dashboard
         </button>
       </div>
-      <VarDump content={JSON.stringify(createBookState)} />
       <VarDump content={JSON.stringify(getAuthUserState)} />
       <PageTitle title="Manage books" />
       <form
@@ -81,7 +80,6 @@ const ManageBooksPage = () => {
 
       <div className="relative">
         <SectionTitle title="Owned books" />
-        <VarDump content={JSON.stringify(ownedBooksState)} />
         {/* <ul>
           {ownedBooksState.data.map((book: Book) => (
             <li key={book.id}>{book.title}</li>
