@@ -4,11 +4,11 @@ import { supabaseClient } from "../main";
 const useCreateBookMutation = () => {
   const queryClient = useQueryClient();
   return useMutation(["loginUser"], {
-    mutationFn: async (args: { email: string; password: string }) => {
-      const { data, error } = await supabaseClient.auth.signInWithPassword({
-        email: args.email,
-        password: args.password,
-      });
+    mutationFn: async (args: { title: string; owner: string }) => {
+      const { data, error } = await supabaseClient
+        .from("books")
+        .insert([{ title: args.title, owner: args.owner }])
+        .select();
       if (error) {
         throw new Error(error.message);
       }

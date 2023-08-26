@@ -6,15 +6,15 @@ import PageTitle from "../components/PageTitle";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
 import usePage from "../hooks/usePage";
-import { useCreateBookMutation } from "../services/supabase";
 import VarDump from "../components/VarDump";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
+import useCreateBookMutation from "../services/useCreateBookMutation";
 
 const ManageBooksPage = () => {
   const { switchPage } = usePage();
   const ownedBooksState = useGetOwnedBooksQuery();
-  const [createBook, createBookState] = useCreateBookMutation();
+  const createBookMutation = useCreateBookMutation();
   const getAuthUserState = useGetAuthUserQuery();
 
   const {
@@ -26,15 +26,18 @@ const ManageBooksPage = () => {
 
   const onFormSubmitted = (data: any) => {
     if (getAuthUserState.data) {
-      createBook({ title: data.title, owner: getAuthUserState.data.user.id });
+      createBookMutation.mutate({
+        title: data.title,
+        owner: getAuthUserState.data.user.id,
+      });
     }
   };
 
   useEffect(() => {
-    if (createBookState.isSuccess) {
+    if (createBookMutation.isSuccess) {
       setValue("title", "");
     }
-  }, [createBookState]);
+  }, [createBookMutation]);
 
   return (
     <>
@@ -73,7 +76,7 @@ const ManageBooksPage = () => {
           </div>
         </div>
 
-        {createBookState.isLoading && <LoadingSpinner isOverlayed={true} />}
+        {createBookMutation.isLoading && <LoadingSpinner isOverlayed={true} />}
       </form>
 
       <hr />
