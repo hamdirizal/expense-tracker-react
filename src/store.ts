@@ -7,9 +7,7 @@ import { supabaseApi } from "./services/supabase";
 
 export const store = configureStore({
   reducer: {
-    book: bookReducer,
     page: pageReducer,
-    user: userReducer,
     [supabaseApi.reducerPath]: supabaseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

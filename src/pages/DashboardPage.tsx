@@ -8,17 +8,12 @@ import { AjaxState } from "../types";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import PageTitle from "../components/PageTitle";
 import {
-  useCreateBookQuery,
+  useGetAuthUserQuery,
   useGetOwnedBooksQuery,
 } from "../services/supabase";
 
 const DashboardPage = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const supabase = useContext(SupabaseContext);
   useGetOwnedBooksQuery();
-  useEffect(() => {
-    // dispatch(getOwnedBooks(supabase));
-  }, []);
 
   return (
     <div>

@@ -11,7 +11,7 @@ import { supabase } from "../main";
 export const supabaseApi = createApi({
   reducerPath: "supabaseApi",
   baseQuery: fakeBaseQuery(),
-  tagTypes: ["AuthUser", "OwnedBooks"],
+  tagTypes: ["OwnedBooks", "AuthUser"],
   endpoints: (builder) => ({
     getAuthUser: builder.query<any, void>({
       providesTags: ["AuthUser"],
@@ -23,19 +23,6 @@ export const supabaseApi = createApi({
         return { data: data.user };
       },
     }),
-    loginUser: builder.mutation({
-      invalidatesTags: ["AuthUser"],
-      queryFn: async (args) => {
-        const { data, error } = await supabase.auth.signInWithPassword({
-          email: args.email,
-          password: args.password,
-        });
-        if (error) {
-          throw { error };
-        }
-        return { data };
-      },
-    }),
     getOwnedBooks: builder.query<any, void>({
       providesTags: ["OwnedBooks"],
       queryFn: async () => {
@@ -43,6 +30,21 @@ export const supabaseApi = createApi({
         if (error) {
           throw { error };
         }
+        return { data };
+      },
+    }),
+    loginUser: builder.mutation({
+      invalidatesTags: ["AuthUser"],
+      queryFn: async (args) => {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: args.email,
+          password: args.password,
+        });
+        console.log('LOGINUSER DATA', data)
+        console.log('LOGINUSER ERROR', error)
+        if (error) {
+          throw { error };
+        }        
         return { data };
       },
     }),
@@ -56,6 +58,8 @@ export const supabaseApi = createApi({
         if (error) {
           throw { error };
         }
+        console.log('CREATEBOOK DATA', data)
+        console.log('CREATEBOOK ERROR', error)
         return { data };
       },
     }),
@@ -66,7 +70,7 @@ export const supabaseApi = createApi({
 // auto-generated based on the defined endpoints
 export const {
   useGetOwnedBooksQuery,
-  useCreateBookMutation,
   useGetAuthUserQuery,
+  useCreateBookMutation,
   useLoginUserMutation,
 } = supabaseApi;

@@ -8,7 +8,19 @@ const CurrentBookPanel = () => {
   const { switchPage } = usePage();
 
   const renderNoBooks = () => {
-    return <div>Cou don't have any book. Create one here.</div>;
+    return (
+      <div>
+        Cou don't have any book.{" "}
+        <button
+          onClick={() => {
+            switchPage(Page.CREATE_BOOK);
+          }}
+          className=" bg-green-300"
+        >
+          Create one here
+        </button>
+      </div>
+    );
   };
 
   const renderHasBooks = () => {

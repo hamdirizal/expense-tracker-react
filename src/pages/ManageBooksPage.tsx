@@ -28,7 +28,6 @@ const ManageBooksPage = () => {
 
   const onFormSubmitted = (data: any) => {
     if (getAuthUserState.data) {
-      console.log("form submitted");
       createBook({ title: data.title, owner: getAuthUserState.data.id });
     }
   };

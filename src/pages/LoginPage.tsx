@@ -1,6 +1,10 @@
+import { useEffect } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
+import usePage from "../hooks/usePage";
 import { useLoginUserMutation } from "../services/supabase";
 import { AppDispatch } from "../store";
 import { useForm } from "react-hook-form";
+import { Page } from "../types";
 
 const LoginPage = () => {
   const {
@@ -11,13 +15,14 @@ const LoginPage = () => {
   } = useForm();
 
   const [loginUser, loginUserState] = useLoginUserMutation();
+  const { switchPage } = usePage();
 
   const onFormSubmitted = (data: any) => {
     loginUser({ email: data.email, password: data.password });
   };
 
   return (
-    <div>
+    <div className="relative">
       <form onSubmit={handleSubmit((data) => onFormSubmitted(data))}>
         <h1>Please login</h1>
         <div>
@@ -40,6 +45,7 @@ const LoginPage = () => {
           <button type="submit">Login</button>
         </div>
       </form>
+      {loginUserState.isLoading && <LoadingSpinner isOverlayed={true} />}
     </div>
   );
 };
