@@ -11,14 +11,14 @@ const usePage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { current_page } = useSelector((state: RootState) => state.page);
   const renderPage = () => {
-    if (current_page === Page.LOGIN) {
-      return <LoginPage />;
-    } else if (current_page === Page.CREATE_BOOK) {
+    if (current_page === Page.CREATE_BOOK) {
       return <SkeletonWithHeader content={<ManageBooksPage />} />;
     } else if (current_page === Page.DASHBOARD) {
       return <SkeletonWithHeader content={<DashboardPage />} />;
+    } else if (current_page === Page.LOGIN) {
+      return <LoginPage />;
     } else {
-      return null;
+      return <LoginPage />;
     }
   };
   const switchPage = (page: Page) => {

@@ -7,7 +7,7 @@ export interface PageState {
 }
 
 const initialState: PageState = {
-  current_page: Page.DASHBOARD,
+  current_page: Page.LOGIN,
 };
 
 export const pageSlice = createSlice({

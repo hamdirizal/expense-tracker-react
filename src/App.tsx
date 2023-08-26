@@ -18,8 +18,6 @@ interface AppProps {
 }
 
 function App({ supabase }: AppProps) {
-  const authUserTan = useGetAuthUserQuery();
-
   const { renderPage, switchPage } = usePage();
 
   // useEffect(() => {
@@ -35,7 +33,6 @@ function App({ supabase }: AppProps) {
       className="max-w-2xl mx-auto bg-white px-4 min-h-screen"
       data-testid="App"
     >
-      <VarDump content={JSON.stringify(authUserTan)} />
       {renderPage()}
     </div>
   );
