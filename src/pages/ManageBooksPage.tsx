@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import PageTitle from "../components/PageTitle";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
-import usePage from "../hooks/usePage";
 import VarDump from "../components/VarDump";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
@@ -51,7 +50,6 @@ const ManageBooksPage = () => {
           goto the dashboard
         </button>
       </div>
-      <VarDump content={JSON.stringify(getAuthUserState)} />
       <PageTitle title="Manage books" />
       <form
         action="#hello"
@@ -84,11 +82,11 @@ const ManageBooksPage = () => {
 
       <div className="relative">
         <SectionTitle title="Owned books" />
-        {/* <ul>
+        <ul>
           {ownedBooksState.data.map((book: Book) => (
             <li key={book.id}>{book.title}</li>
           ))}
-        </ul> */}
+        </ul>
         {ownedBooksState.isLoading && <LoadingSpinner isOverlayed={true} />}
       </div>
       <SectionTitle title="Collaborated books" />

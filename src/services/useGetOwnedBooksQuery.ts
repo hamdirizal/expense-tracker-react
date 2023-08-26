@@ -6,7 +6,10 @@ const useGetOwnedBooksQuery = () => {
     retry: 0,
     queryKey: ["getOwnedBooks"],
     queryFn: async () => {
-      const { data, error } = await supabaseClient.from("books").select("*");
+      const { data, error } = await supabaseClient
+        .from("books")
+        .select("*")
+        .order("id", { ascending: false });
       if (error) {
         throw new Error(error.message);
       }
