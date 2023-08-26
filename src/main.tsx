@@ -2,7 +2,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { SupabaseClient, createClient } from "@supabase/supabase-js";
-import { store } from "./store";
 import { Provider } from "react-redux";
 import { createContext, useState } from "react";
 import {
@@ -28,9 +27,7 @@ export const SupabaseContext = createContext(supabase);
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <SupabaseContext.Provider value={supabase}>
     <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <App supabase={supabase} />
-      </Provider>
+      <App supabase={supabase} />
       <ReactQueryDevtools initialIsOpen={true} />
     </QueryClientProvider>
   </SupabaseContext.Provider>
