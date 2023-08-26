@@ -1,7 +1,7 @@
 import { AuthUser, SupabaseClient } from "@supabase/supabase-js";
 import { useEffect, useState, useContext } from "react";
 import { Book } from "./types";
-import CreateBookPage from "./pages/CreateBookPage";
+import CreateBookPage from "./pages/ManageBooksPage";
 import { useDispatch, useSelector } from "react-redux";
 import { getOwnedBooks } from "./slices/bookSlice";
 import { AppDispatch } from "./store";

@@ -8,7 +8,7 @@ import { AppDispatch, RootState } from "./store";
 import { Page } from "./types";
 import LoginPage from "./pages/LoginPage";
 import { setCurrentPage } from "./slices/pageSlice";
-import CreateBookPage from "./pages/CreateBookPage";
+import CreateBookPage from "./pages/ManageBooksPage";
 import usePage from "./hooks/usePage";
 
 interface AppProps {

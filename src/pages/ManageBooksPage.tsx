@@ -12,12 +12,12 @@ import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
 import usePage from "../hooks/usePage";
 
-interface CreateBookPageProps {
+interface ManageBooksPageProps {
   ownedBooks: Book[];
   setOwnedBooks: (books: Book[]) => void;
 }
 
-const CreateBookPage = () => {
+const ManageBooksPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const supabase = useContext(SupabaseContext);
   const { switchPage } = usePage();
@@ -44,6 +44,10 @@ const CreateBookPage = () => {
       );
     }
   };
+
+  useEffect(() => {
+    dispatch(getOwnedBooks(supabase));
+  }, []);
 
   useEffect(() => {
     if (create_book_state === AjaxState.SUCCESS) {
@@ -116,4 +120,4 @@ const CreateBookPage = () => {
   );
 };
 
-export default CreateBookPage;
+export default ManageBooksPage;
