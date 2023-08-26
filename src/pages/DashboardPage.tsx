@@ -1,18 +1,7 @@
-import { useEffect, useContext } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../store";
-import { getOwnedBooks } from "../slices/bookSlice";
-import { SupabaseContext } from "../main";
-import LoadingSpinner from "../components/LoadingSpinner";
-import { AjaxState } from "../types";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import PageTitle from "../components/PageTitle";
-import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
-import VarDump from "../components/VarDump";
 
 const DashboardPage = () => {
-  const getOwnedBooksState = useGetOwnedBooksQuery();
-
   return (
     <div>
       <PageTitle title="Dashboard" />

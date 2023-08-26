@@ -12,7 +12,6 @@ import useCreateBookMutation from "../services/useCreateBookMutation";
 import { PageContext } from "../App";
 
 const ManageBooksPage = () => {
-  const { currentPage, setCurrentPage } = useContext(PageContext);
   const ownedBooksState = useGetOwnedBooksQuery();
   const createBookMutation = useCreateBookMutation();
   const getAuthUserState = useGetAuthUserQuery();
@@ -41,15 +40,6 @@ const ManageBooksPage = () => {
 
   return (
     <>
-      <div>
-        <button
-          onClick={() => {
-            setCurrentPage(Page.DASHBOARD);
-          }}
-        >
-          goto the dashboard
-        </button>
-      </div>
       <PageTitle title="Manage books" />
       <form
         action="#hello"
@@ -82,11 +72,14 @@ const ManageBooksPage = () => {
 
       <div className="relative">
         <SectionTitle title="Owned books" />
-        <ul>
-          {ownedBooksState.data.map((book: Book) => (
-            <li key={book.id}>{book.title}</li>
-          ))}
-        </ul>
+        {ownedBooksState.isSuccess && (
+          <ul>
+            {ownedBooksState.data.map((book: Book) => (
+              <li key={book.id}>{book.title}</li>
+            ))}
+          </ul>
+        )}
+
         {ownedBooksState.isLoading && <LoadingSpinner isOverlayed={true} />}
       </div>
       <SectionTitle title="Collaborated books" />

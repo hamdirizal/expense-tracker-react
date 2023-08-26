@@ -1,6 +1,5 @@
 import { Page } from "../types";
 import LoadingSpinner from "./LoadingSpinner";
-import usePage from "../hooks/usePage";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 import { useContext } from "react";
 import { PageContext } from "../App";

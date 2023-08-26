@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
-import usePage from "../hooks/usePage";
 import { useForm } from "react-hook-form";
 import { Page } from "../types";
 import useLoginUserMutation from "../services/useLoginUserMutation";

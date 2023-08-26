@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import usePage from "../hooks/usePage";
 import { Page } from "../types";
 import { PageContext } from "../App";
 
