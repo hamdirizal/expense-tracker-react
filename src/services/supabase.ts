@@ -8,8 +8,8 @@ import { SupabaseClient } from "@supabase/supabase-js";
 import { supabase } from "../main";
 
 // Define a service using a base URL and expected endpoints
-export const bookApi = createApi({
-  reducerPath: "bookApi",
+export const supabaseApi = createApi({
+  reducerPath: "supabaseApi",
   baseQuery: fakeBaseQuery(),
   endpoints: (builder) => ({
     getOwnedBooks: builder.query<any, void>({
@@ -28,4 +28,4 @@ export const bookApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetOwnedBooksQuery } = bookApi;
+export const { useGetOwnedBooksQuery } = supabaseApi;

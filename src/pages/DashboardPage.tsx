@@ -7,7 +7,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { AjaxState } from "../types";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import PageTitle from "../components/PageTitle";
-import { useGetOwnedBooksQuery } from "../services/book";
+import { useGetOwnedBooksQuery } from "../services/supabase";
 
 const DashboardPage = () => {
   const dispatch = useDispatch<AppDispatch>();

@@ -1,7 +1,7 @@
 import { Page } from "../types";
 import LoadingSpinner from "./LoadingSpinner";
 import usePage from "../hooks/usePage";
-import { useGetOwnedBooksQuery } from "../services/book";
+import { useGetOwnedBooksQuery } from "../services/supabase";
 
 const CurrentBookPanel = () => {
   const ownedBooks = useGetOwnedBooksQuery();

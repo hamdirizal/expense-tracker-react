@@ -11,7 +11,7 @@ import PageTitle from "../components/PageTitle";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/Button";
 import usePage from "../hooks/usePage";
-import { useGetOwnedBooksQuery } from "../services/book";
+import { useGetOwnedBooksQuery } from "../services/supabase";
 
 interface ManageBooksPageProps {
   ownedBooks: Book[];

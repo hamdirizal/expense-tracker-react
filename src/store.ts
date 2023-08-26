@@ -3,17 +3,17 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import bookReducer from "./slices/bookSlice";
 import pageReducer from "./slices/pageSlice";
 import userReducer from "./slices/userSlice";
-import { bookApi } from "./services/book";
+import { supabaseApi } from "./services/supabase";
 
 export const store = configureStore({
   reducer: {
     book: bookReducer,
     page: pageReducer,
     user: userReducer,
-    [bookApi.reducerPath]: bookApi.reducer,
+    [supabaseApi.reducerPath]: supabaseApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(bookApi.middleware),
+    getDefaultMiddleware().concat(supabaseApi.middleware),
 });
 setupListeners(store.dispatch);
 
