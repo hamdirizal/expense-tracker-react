@@ -7,16 +7,20 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { AjaxState } from "../types";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import PageTitle from "../components/PageTitle";
+import { useGetOwnedBooksQuery } from "../services/book";
 
 const DashboardPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const supabase = useContext(SupabaseContext);
+  const { data, error, isLoading } = useGetOwnedBooksQuery();
   useEffect(() => {
-    dispatch(getOwnedBooks(supabase));
+    // dispatch(getOwnedBooks(supabase));
   }, []);
 
   return (
     <div>
+      <div className="border mb-2">{JSON.stringify(error)}</div>
+      <div className="border mb-2">{JSON.stringify(isLoading)}</div>
       <PageTitle title="Dashboard" />
       <CurrentBookPanel />
     </div>

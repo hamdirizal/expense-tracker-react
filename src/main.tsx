@@ -6,7 +6,7 @@ import { store } from "./store";
 import { Provider } from "react-redux";
 import { createContext } from "react";
 
-const supabase: SupabaseClient = createClient(
+export const supabase: SupabaseClient = createClient(
   import.meta.env.VITE_SUPABASE_URL,
   import.meta.env.VITE_SUPABASE_ANON_KEY
 );
