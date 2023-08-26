@@ -16,7 +16,7 @@ const usePage = () => {
     } else if (current_page === Page.CREATE_BOOK) {
       return <SkeletonWithHeader content={<ManageBooksPage />} />;
     } else if (current_page === Page.DASHBOARD) {
-      return <DashboardPage />;
+      return <SkeletonWithHeader content={<DashboardPage />} />;
     } else {
       return null;
     }

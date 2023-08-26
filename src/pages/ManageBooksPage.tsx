@@ -46,10 +46,6 @@ const ManageBooksPage = () => {
   };
 
   useEffect(() => {
-    dispatch(getOwnedBooks(supabase));
-  }, []);
-
-  useEffect(() => {
     if (create_book_state === AjaxState.SUCCESS) {
       setValue("title", "");
       dispatch(getOwnedBooks(supabase));

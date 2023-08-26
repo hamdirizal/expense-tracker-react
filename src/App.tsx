@@ -28,7 +28,7 @@ function App({ supabase }: AppProps) {
     if (auth_user === null) {
       switchPage(Page.LOGIN);
     } else {
-      switchPage(Page.CREATE_BOOK);
+      switchPage(Page.DASHBOARD);
     }
   }, [auth_user]);
 
