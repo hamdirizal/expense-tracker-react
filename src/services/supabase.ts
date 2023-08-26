@@ -11,8 +11,18 @@ import { supabase } from "../main";
 export const supabaseApi = createApi({
   reducerPath: "supabaseApi",
   baseQuery: fakeBaseQuery(),
-  tagTypes: ['OwnedBooks'],
+  tagTypes: ["AuthUser", "OwnedBooks"],
   endpoints: (builder) => ({
+    getAuthUser: builder.query<any, void>({
+      providesTags: ["AuthUser"],
+      queryFn: async () => {
+        const { data, error } = await supabase.auth.getUser();
+        if (error) {
+          throw { error };
+        }
+        return { data: data.user };
+      },
+    }),
     getOwnedBooks: builder.query<any, void>({
       providesTags: ["OwnedBooks"],
       queryFn: async () => {
@@ -41,4 +51,8 @@ export const supabaseApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetOwnedBooksQuery, useCreateBookMutation } = supabaseApi;
+export const {
+  useGetOwnedBooksQuery,
+  useCreateBookMutation,
+  useGetAuthUserQuery,
+} = supabaseApi;
