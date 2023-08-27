@@ -5,6 +5,18 @@ export interface Book {
   title: string;
 }
 
+export interface Transaction{
+  id: number
+  amount: number
+  book_id: number
+  created_at: string
+  creator_id: string
+  date: string
+  description: string | null
+  is_outgoing: boolean | null
+  title: string
+}
+
 export interface UpsertUserConfigMutationPayload {
   user_id: string;
   active_book_id?: number;

@@ -59,7 +59,7 @@ const ManageBooksPage = () => {
       </Helmet>
       <PageTitle title="Manage books" />
       <form
-        action="#hello"
+        action=""
         onSubmit={handleSubmit((data) => onFormSubmitted(data))}
         className="relative"
       >
