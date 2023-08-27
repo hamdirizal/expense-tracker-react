@@ -13,6 +13,7 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
         .select("*")
         .limit(10)
         .eq('book_id', book_id)
+        .order("id", { ascending: false });
       if (error) {
         return null;
       }

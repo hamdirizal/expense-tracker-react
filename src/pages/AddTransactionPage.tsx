@@ -10,9 +10,11 @@ import useGetUserConfigQuery from "../services/useGetUserConfigQuery";
 import { supabaseClient } from "../main";
 import VarDump from "../components/VarDump";
 import SectionTitle from "../components/SectionTitle";
+import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 
 const AddTransactionPage = () => {
   const getUserConfigQuery = useGetUserConfigQuery();
+  const getOwnedBooksQuery = useGetOwnedBooksQuery
   const activeBookId = getUserConfigQuery?.data?.active_book_id || null;
   const getRecentTransactionsQuery =
     useGetRecentTransactionsQuery(activeBookId);
@@ -28,7 +30,10 @@ const AddTransactionPage = () => {
       <div>
         <SectionTitle title="Recent input" />
         {getRecentTransactionsQuery?.data?.length ? (
-          <TransactionList transactions={getRecentTransactionsQuery.data} />
+          <TransactionList
+            isLoading={getRecentTransactionsQuery.isLoading}
+            transactions={getRecentTransactionsQuery.data}
+          />
         ) : null}
       </div>
     </>
