@@ -12,7 +12,6 @@ import { AppPaths } from "../constants";
 const CurrentBookPanel = () => {
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
   const getUserConfigQuery = useGetUserConfigQuery();
-  const { currentPage, setCurrentPage } = useContext(PageContext);
 
   const renderInfo = (getOwnedBooksQuery: any) => {
     const has_books: boolean = !!getOwnedBooksQuery?.data?.length;
@@ -36,14 +35,9 @@ const CurrentBookPanel = () => {
       return (
         <div>
           Cou don't have any book.{" "}
-          <button
-            onClick={() => {
-              setCurrentPage(Page.CREATE_BOOK);
-            }}
-            className=" bg-green-300"
-          >
+          <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
             Create one here
-          </button>
+          </Link>
         </div>
       );
     }
