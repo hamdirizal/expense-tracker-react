@@ -11,6 +11,8 @@ import useCreateBookMutation from "../services/useCreateBookMutation";
 import BookCard from "../components/BookCard";
 import useGetUserConfigQuery from "../services/useGetUserConfigQuery";
 import useUpsertUserConfigMutation from "../services/useUpsertUserConfigMutation";
+import { Helmet } from "react-helmet";
+import { AppTitle } from "../constants";
 
 const ManageBooksPage = () => {
   const ownedBooksState = useGetOwnedBooksQuery();
@@ -52,6 +54,9 @@ const ManageBooksPage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Manage Books | {AppTitle}</title>
+      </Helmet>
       <PageTitle title="Manage books" />
       <form
         action="#hello"

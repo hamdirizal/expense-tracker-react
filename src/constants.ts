@@ -4,3 +4,5 @@ export const AppPaths = {
   ADD_TRANSACTION: "/dashboard/add-transaction",
   MANAGE_BOOKS: "/dashboard/manage-books",
 };
+
+export const AppTitle = "DailyExpenseTracker";

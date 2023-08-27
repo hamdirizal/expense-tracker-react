@@ -4,6 +4,8 @@ import useLoginUserMutation from "../services/useLoginUserMutation";
 import PageTitle from "../components/PageTitle";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import { Navigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { AppTitle } from "../constants";
 
 const LoginPage = () => {
   const {
@@ -26,6 +28,9 @@ const LoginPage = () => {
   const renderPageMarkup = () => {
     return (
       <div data-testid="LoginPage">
+        <Helmet>
+          <title>Login | {AppTitle}</title>
+        </Helmet>
         <PageTitle title="Login" />
         <div className="relative">
           <form onSubmit={handleSubmit((data) => onFormSubmitted(data))}>
