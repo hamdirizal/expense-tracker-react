@@ -62,7 +62,7 @@ const LoginPage = () => {
 
   if (getAuthUserQuery.isLoading) {
     return null;
-  } else if (getAuthUserQuery?.data?.user?.id) {
+  } else if (getAuthUserQuery.isSuccess && getAuthUserQuery?.data?.id) {
     return <Navigate to="/dashboard" />;
   } else {
     return renderPageMarkup();

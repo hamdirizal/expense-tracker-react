@@ -5,18 +5,19 @@ const useLoginUserMutation = () => {
   const queryClient = useQueryClient();
   return useMutation(["loginUser"], {
     mutationFn: async (args: { email: string; password: string }) => {
+      // If success return the User object, otherwise return null
       const { data, error } = await supabaseClient.auth.signInWithPassword({
         email: args.email,
         password: args.password,
       });
       if (error) {
-        throw new Error(error.message);
+        return null;
       }
       if (!data) {
-        throw new Error("User not found");
+        return null;
       }
 
-      return data;
+      return data.user;
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["getAuthUser"]);

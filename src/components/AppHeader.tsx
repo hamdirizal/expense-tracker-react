@@ -1,5 +1,6 @@
-import useLogoutUserMutation from "../services/useLogoutUserMutation";
 import { Link } from "react-router-dom";
+import { AppPaths } from "../constants";
+import useLogoutUserMutation from "../services/useLogoutUserMutation";
 
 const AppHeader = () => {
   const logoutUserMutation = useLogoutUserMutation();
@@ -10,13 +11,14 @@ const AppHeader = () => {
     >
       <span className="font-bold">Daily Expense</span>
 
-      <Link to="/dashboard">Home</Link>
+      <Link to={AppPaths.DASHBOARD}>Home</Link>
       <span>Listing</span>
-      <Link to="/dashboard/add-transaction">Add Transaction</Link>
+      <Link to={AppPaths.ADD_TRANSACTION}>Add Transaction</Link>
+
       <span>Search</span>
       <span>
-        Welcome Hamdi{" "}
-        <button onClick={() => logoutUserMutation.mutate()}>(Logout)</button>
+        Welcome user{" "}
+        <button onClick={() => logoutUserMutation.mutate()}>(logout)</button>
       </span>
     </header>
   );

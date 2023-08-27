@@ -6,16 +6,16 @@ const useGetAuthUserQuery = () => {
     retry: 0,
     queryKey: ["getAuthUser"],
     queryFn: async () => {
+      // If success return the User object, otherwise return null
       const { data, error } = await supabaseClient.auth.getUser();
-      console.log('GETAUTHUSER SUCCESS', data)
       if (error) {
-        throw new Error(error.message);
+        return null
       }
       if (!data) {
-        throw new Error("User not found");
+        return null
       }
   
-      return data;
+      return data.user;
     },
   });
 };

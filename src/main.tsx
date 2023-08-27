@@ -14,6 +14,7 @@ import AppSkeleton from "./pages/AppSkeleton.tsx";
 import DashboardSkeleton from "./pages/DashboardSkeleton.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import DashboardHomePage from "./pages/DashboardHomePage.tsx";
+import { AppPaths } from "./constants.ts";
 
 const router = createBrowserRouter([
   {
@@ -21,21 +22,21 @@ const router = createBrowserRouter([
     element: <Navigate to="dashboard" />,
   },
   {
-    path: "dashboard",
+    path: AppPaths.DASHBOARD,
     element: <DashboardSkeleton />,
     children: [
       {
-        path: "",
+        path: AppPaths.DASHBOARD,
         element: <DashboardHomePage />,
       },
       {
-        path: "add-transaction",
+        path: AppPaths.ADD_TRANSACTION,
         element: <div>Add transaction</div>,
       },
     ],
   },
   {
-    path: "login",
+    path: AppPaths.LOGIN,
     element: <LoginPage />,
   },
 ]);

@@ -11,8 +11,10 @@ const useLogoutUserMutation = () => {
       }
       return { data: true };
     },
-    onSuccess: () => {
+    onSettled: () => {
+      console.log('LOGOUT SUCCES')
       queryClient.invalidateQueries(["getAuthUser"]);
+      console.log('LOGOUT SUCCES AND INVALIDATING')
     },
   });
 };
