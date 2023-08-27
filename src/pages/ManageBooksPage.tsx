@@ -105,6 +105,9 @@ const ManageBooksPage = () => {
             ))}
           </div>
         )}
+        {upsertUserConfigMutation.isLoading && (
+          <LoadingSpinner isOverlayed={true} />
+        )}
       </div>
       <SectionTitle title="Collaborated books" />
       <ul>

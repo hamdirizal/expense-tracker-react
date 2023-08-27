@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import PageTitle from "../components/PageTitle";
 import { AppTitle } from "../constants";
+import CurrentBookPanel from "../components/CurrentBookPanel";
 
 const AddTransactionPage = () => {
   return (
@@ -8,7 +9,8 @@ const AddTransactionPage = () => {
       <Helmet>
         <title>Add Transaction | {AppTitle}</title>
       </Helmet>
-      <PageTitle title="Add transaction" />;
+      <PageTitle title="Add transaction" />
+      <CurrentBookPanel />
     </>
   );
 };
