@@ -105,8 +105,6 @@ const ManageBooksPage = () => {
             ))}
           </div>
         )}
-
-        {ownedBooksState.isLoading && <LoadingSpinner isOverlayed={true} />}
       </div>
       <SectionTitle title="Collaborated books" />
       <ul>
