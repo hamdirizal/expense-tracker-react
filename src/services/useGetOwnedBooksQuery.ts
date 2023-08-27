@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabaseClient } from "../main";
+import { Book } from "../types";
 
 const useGetOwnedBooksQuery = () => {
-  return useQuery({
+  return useQuery<Book[]>({
     retry: 0,
     queryKey: ["getOwnedBooks"],
     queryFn: async () => {

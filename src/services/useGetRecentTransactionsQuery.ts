@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabaseClient } from "../main";
+import { Transaction } from "../types";
 
 const useGetRecentTransactionsQuery = (book_id: number) => {
   return useQuery({
@@ -9,10 +10,10 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
     queryFn: async () => {
       // If success return the object, otherwise return null
       const { data, error } = await supabaseClient
-        .from("transactions")        
+        .from("transactions")
         .select("*")
         .limit(10)
-        .eq('book_id', book_id)
+        .eq("book_id", book_id)
         .order("id", { ascending: false });
       if (error) {
         return null;

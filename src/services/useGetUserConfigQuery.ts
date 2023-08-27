@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabaseClient } from "../main";
+import { UserConfig } from "../types";
 
 const useGetUserConfigQuery = () => {
-  return useQuery({
+  return useQuery<UserConfig>({
     retry: 0,
     queryKey: ["getUserConfig"],
     queryFn: async () => {
@@ -11,7 +12,6 @@ const useGetUserConfigQuery = () => {
         .from("user_configs")
         .select("*")
         .maybeSingle();
-      console.log("USERCONFIG DATA", data);
       if (error) {
         return null;
       }

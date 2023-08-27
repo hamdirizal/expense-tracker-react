@@ -21,3 +21,8 @@ export interface UpsertUserConfigMutationPayload {
   user_id: string;
   active_book_id?: number;
 }
+
+export interface UserConfig {
+  user_id: string;
+  active_book_id: number;
+}

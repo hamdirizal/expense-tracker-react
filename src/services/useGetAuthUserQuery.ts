@@ -1,20 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabaseClient } from "../main";
+import { User } from "@supabase/supabase-js";
 
 const useGetAuthUserQuery = () => {
-  return useQuery({
+  return useQuery<User | null>({
     retry: 0,
     queryKey: ["getAuthUser"],
     queryFn: async () => {
       // If success return the User object, otherwise return null
       const { data, error } = await supabaseClient.auth.getUser();
       if (error) {
-        return null
+        return null;
       }
       if (!data) {
-        return null
+        return null;
       }
-  
+
       return data.user;
     },
   });
