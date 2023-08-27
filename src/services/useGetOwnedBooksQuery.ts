@@ -11,10 +11,10 @@ const useGetOwnedBooksQuery = () => {
         .select("*")
         .order("id", { ascending: false });
       if (error) {
-        throw new Error(error.message);
+        return [];
       }
       if (!data) {
-        throw new Error("Failed to fetch books");
+        return [];
       }
 
       return data;

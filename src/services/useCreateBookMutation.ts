@@ -7,7 +7,7 @@ const useCreateBookMutation = () => {
     mutationFn: async (args: { title: string; owner: string }) => {
       const { data, error } = await supabaseClient
         .from("books")
-        .insert([{ title: args.title, owner: args.owner }])
+        .insert([{ title: args.title, owner_id: args.owner }])
         .select();
       if (error) {
         throw new Error(error.message);

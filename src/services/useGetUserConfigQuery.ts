@@ -6,16 +6,17 @@ const useGetUserConfigQuery = () => {
     retry: 0,
     queryKey: ["getUserConfig"],
     queryFn: async () => {
+      // If success return the object, otherwise return null
       const { data, error } = await supabaseClient
         .from("user_configs")
         .select("*")
         .maybeSingle();
       console.log("USERCONFIG DATA", data);
       if (error) {
-        throw new Error(error.message);
+        return null;
       }
       if (!data) {
-        throw new Error("Operation failed");
+        return null;
       }
 
       return data;

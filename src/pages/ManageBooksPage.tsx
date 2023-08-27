@@ -29,18 +29,18 @@ const ManageBooksPage = () => {
   } = useForm();
 
   const onFormSubmitted = (data: any) => {
-    if (getAuthUserState.data) {
+    if (getAuthUserState?.data?.id) {
       createBookMutation.mutate({
         title: data.title,
-        owner: getAuthUserState.data.user.id,
+        owner: getAuthUserState.data.id,
       });
     }
   };
 
   const onBookActivated = (book_id: number) => {
-    if (getAuthUserState.data) {
+    if (getAuthUserState?.data?.id) {
       upsertUserConfigMutation.mutate({
-        user_id: getAuthUserState.data.user.id,
+        user_id: getAuthUserState.data.id,
         active_book_id: book_id,
       });
     }
