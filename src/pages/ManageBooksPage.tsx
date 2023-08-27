@@ -10,11 +10,16 @@ import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import useCreateBookMutation from "../services/useCreateBookMutation";
 import { PageContext } from "../App";
+import BookCard from "../components/BookCard";
+import useGetUserConfigQuery from "../services/useGetUserConfigQuery";
+import useUpsertUserConfigMutation from "../services/useUpsertUserConfigMutation";
 
 const ManageBooksPage = () => {
   const ownedBooksState = useGetOwnedBooksQuery();
   const createBookMutation = useCreateBookMutation();
   const getAuthUserState = useGetAuthUserQuery();
+  const getUserConfigQuery = useGetUserConfigQuery();
+  const upsertUserConfigMutation = useUpsertUserConfigMutation();
 
   const {
     register,
@@ -28,6 +33,15 @@ const ManageBooksPage = () => {
       createBookMutation.mutate({
         title: data.title,
         owner: getAuthUserState.data.user.id,
+      });
+    }
+  };
+
+  const onBookActivated = (book_id: number) => {
+    if (getAuthUserState.data) {
+      upsertUserConfigMutation.mutate({
+        user_id: getAuthUserState.data.user.id,
+        active_book_id: book_id,
       });
     }
   };
@@ -73,11 +87,20 @@ const ManageBooksPage = () => {
       <div className="relative">
         <SectionTitle title="Owned books" />
         {ownedBooksState.isSuccess && (
-          <ul>
+          <div>
             {ownedBooksState.data.map((book: Book) => (
-              <li key={book.id}>{book.title}</li>
+              <BookCard
+                onActivate={onBookActivated}
+                isActive={
+                  getUserConfigQuery &&
+                  getUserConfigQuery.data &&
+                  getUserConfigQuery.data.active_book_id === book.id
+                }
+                book={book}
+                key={book.id}
+              />
             ))}
-          </ul>
+          </div>
         )}
 
         {ownedBooksState.isLoading && <LoadingSpinner isOverlayed={true} />}

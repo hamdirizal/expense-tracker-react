@@ -14,6 +14,11 @@ export enum AjaxState {
 export interface Book {
   created_at: string;
   id: number;
-  owner: string;
+  owner_id: string;
   title: string;
+}
+
+export interface UpsertUserConfigMutationPayload {
+  user_id: string;
+  active_book_id?: number;
 }
