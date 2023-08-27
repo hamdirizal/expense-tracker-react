@@ -4,17 +4,23 @@ import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 const DashboardSkeleton = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
 
-  if (getAuthUserQuery.isLoading) {
-    return null;
-  } else {
+  const renderPageMarkup = () => {
     return (
       <div
         data-testid="DashboardSkeleton"
         className="border-2 border-blue-500 bg-white p-2"
       >
-        {getAuthUserQuery.isError ? <Navigate to="/login" /> : <Outlet />}
+        <Outlet />
       </div>
     );
+  };
+
+  if (getAuthUserQuery.isLoading) {
+    return null;
+  } else if (getAuthUserQuery.isError) {
+    return <Navigate to="/login" />;
+  } else {
+    return renderPageMarkup();
   }
 };
 
