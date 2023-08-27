@@ -8,16 +8,12 @@ import DashboardPage from "./pages/DashboardPage";
 import AddTransactionPage from "./pages/AddTransactionPage";
 import MemberAreaWrapper from "./components/MemberAreaWrapper";
 
-interface AppProps {
-  supabase: SupabaseClient;
-}
-
 export const PageContext = createContext({
   currentPage: Page.LOGIN,
   setCurrentPage: (page: Page) => {},
 });
 
-function App({ supabase }: AppProps) {
+function App() {
   const [currentPage, setCurrentPage] = useState(Page.LOGIN);
 
   const renderPage = (currentPage: Page) => {

@@ -1,15 +1,10 @@
 import { useContext, useEffect } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useForm } from "react-hook-form";
-import { Page } from "../types";
 import useLoginUserMutation from "../services/useLoginUserMutation";
 import PageTitle from "../components/PageTitle";
-import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
-import { PageContext } from "../App";
-import VarDump from "../components/VarDump";
 
 const LoginPage = () => {
-  const getAuthUserState = useGetAuthUserQuery();
   const {
     register,
     handleSubmit,
@@ -18,7 +13,7 @@ const LoginPage = () => {
   } = useForm();
 
   const loginUserMutation = useLoginUserMutation();
-  const { currentPage, setCurrentPage } = useContext(PageContext);
+  // const { currentPage, setCurrentPage } = useContext(PageContext);
 
   const onFormSubmitted = (data: any) => {
     loginUserMutation.mutate({
@@ -27,11 +22,11 @@ const LoginPage = () => {
     });
   };
 
-  useEffect(() => {
-    if (getAuthUserState.isSuccess) {
-      setCurrentPage(Page.DASHBOARD);
-    }
-  }, [getAuthUserState]);
+  // useEffect(() => {
+  //   if (getAuthUserState.isSuccess) {
+  //     setCurrentPage(Page.DASHBOARD);
+  //   }
+  // }, [getAuthUserState]);
 
   return (
     <div>
