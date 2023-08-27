@@ -6,6 +6,7 @@ import SkeletonWithHeader from "./components/SkeletonWithHeader";
 import ManageBooksPage from "./pages/ManageBooksPage";
 import DashboardPage from "./pages/DashboardPage";
 import AppAuthenticated from "./AppAuthenticated";
+import AddTransactionPage from "./pages/AddTransactionPage";
 
 interface AppProps {
   supabase: SupabaseClient;
@@ -20,10 +21,12 @@ function App({ supabase }: AppProps) {
   const [currentPage, setCurrentPage] = useState(Page.LOGIN);
 
   const renderPage = (currentPage: Page) => {
-    if (currentPage === Page.CREATE_BOOK) {
+    if (currentPage === Page.MANAGE_BOOKS) {
       return <AppAuthenticated content={<ManageBooksPage />} />;
     } else if (currentPage === Page.DASHBOARD) {
       return <AppAuthenticated content={<DashboardPage />} />;
+    } else if (currentPage === Page.ADD_TRANSACTION) {
+      return <AppAuthenticated content={<AddTransactionPage />} />;
     } else if (currentPage === Page.LOGIN) {
       return <LoginPage />;
     } else {

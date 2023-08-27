@@ -1,7 +1,9 @@
 export enum Page {
   DASHBOARD = "Dashboard",
-  CREATE_BOOK = "Books",
+  MANAGE_BOOKS = "Manage Books",
   LOGIN = "Login",
+  ADD_TRANSACTION = "Add Transaction",
+  EDIT_TRANSACTION = "Edit Transaction",
 }
 
 export enum AjaxState {

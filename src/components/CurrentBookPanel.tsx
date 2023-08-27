@@ -55,11 +55,6 @@ const CurrentBookPanel = () => {
   return (
     <div className="border px-2 relative rounded">
       {renderInfo(getOwnedBooksQuery)}
-
-      <VarDump
-        content={JSON.stringify(getUserConfigQuery)}
-        label="getUserConfigQuery"
-      />
     </div>
   );
 };

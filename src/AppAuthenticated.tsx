@@ -24,10 +24,6 @@ const AppAuthenticated = ({ content }: AppAuthenticatedProps) => {
   }, [getAuthUserState]);
   return (
     <>
-      <VarDump
-        label="USERCONFIG"
-        content={JSON.stringify(getUserConfigState)}
-      />
       <AppHeader />
       {content}
     </>

@@ -36,7 +36,6 @@ const LoginPage = () => {
   return (
     <div>
       <PageTitle title="Login" />
-      <VarDump content={JSON.stringify(getAuthUserState)} />
       <div className="relative">
         <form onSubmit={handleSubmit((data) => onFormSubmitted(data))}>
           <h1>Please login</h1>

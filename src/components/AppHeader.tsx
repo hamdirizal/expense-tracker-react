@@ -7,13 +7,17 @@ const AppHeader = () => {
   const { currentPage, setCurrentPage } = useContext(PageContext);
   const logoutUserMutation = useLogoutUserMutation();
   return (
-    <header className="App-header">
+    <header className="App-header flex justify-between">
       <span className="font-bold">Daily Expense</span>
+
       <button onClick={() => setCurrentPage(Page.DASHBOARD)}>Home</button>
       <span>Listing</span>
+      <button onClick={() => setCurrentPage(Page.ADD_TRANSACTION)}>Add Transaction</button>
       <span>Search</span>
-      <span>User: Hamdi</span>
-      <button onClick={() => logoutUserMutation.mutate()}>(Logout)</button>
+      <span>
+        Welcome Hamdi{" "}
+        <button onClick={() => logoutUserMutation.mutate()}>(Logout)</button>
+      </span>
     </header>
   );
 };
