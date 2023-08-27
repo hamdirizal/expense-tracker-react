@@ -1,4 +1,3 @@
-import { useContext, useEffect } from "react";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import PageTitle from "../components/PageTitle";
 

@@ -1,5 +1,4 @@
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.css";
 import { SupabaseClient, createClient } from "@supabase/supabase-js";
 import { createContext } from "react";
@@ -10,7 +9,6 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import AppSkeleton from "./pages/AppSkeleton.tsx";
 import DashboardSkeleton from "./pages/DashboardSkeleton.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import DashboardHomePage from "./pages/DashboardHomePage.tsx";

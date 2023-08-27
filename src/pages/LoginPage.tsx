@@ -1,4 +1,3 @@
-import { useContext, useEffect } from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { useForm } from "react-hook-form";
 import useLoginUserMutation from "../services/useLoginUserMutation";
@@ -16,7 +15,6 @@ const LoginPage = () => {
 
   const getAuthUserQuery = useGetAuthUserQuery();
   const loginUserMutation = useLoginUserMutation();
-  // const { currentPage, setCurrentPage } = useContext(PageContext);
 
   const onFormSubmitted = (data: any) => {
     loginUserMutation.mutate({
