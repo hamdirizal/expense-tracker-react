@@ -1,9 +1,5 @@
-import { Book, Page } from "../types";
-import LoadingSpinner from "./LoadingSpinner";
+import { Book } from "../types";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
-import { useContext } from "react";
-import { PageContext } from "../App";
-import VarDump from "./VarDump";
 import useGetUserConfigQuery from "../services/useGetUserConfigQuery";
 import { findBookByIdOrUseFirstOne } from "../helpers/bookHelper";
 import { Link } from "react-router-dom";
@@ -34,7 +30,7 @@ const CurrentBookPanel = () => {
     } else {
       return (
         <div>
-          Cou don't have any book.{" "}
+          You don't have any book.{" "}
           <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
             Create one here
           </Link>
