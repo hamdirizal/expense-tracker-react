@@ -2,9 +2,6 @@ import { useContext, useEffect } from "react";
 import AppHeader from "./AppHeader";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import { Page } from "../types";
-import useGetUserConfigQuery from "../services/useGetUserConfigQuery";
-import VarDump from "./VarDump";
-import useCreateUserConfigMutation from "../services/useCreateUserConfigMutation";
 import { PageContext } from "../App";
 
 interface MemberAreaWrapperProps {
@@ -13,13 +10,12 @@ interface MemberAreaWrapperProps {
 
 const MemberAreaWrapper = ({ content }: MemberAreaWrapperProps) => {
   const getAuthUserState = useGetAuthUserQuery();
-  const getUserConfigState = useGetUserConfigQuery();
-  const createUserConfigMutation = useCreateUserConfigMutation();
-  const { currentPage, setCurrentPage } = useContext(PageContext);
+  const { setCurrentPage } = useContext(PageContext);
 
   useEffect(() => {
     if (!getAuthUserState.isSuccess) {
-      setCurrentPage(Page.LOGIN);
+      console.log('moving to login')
+      // setCurrentPage(Page.LOGIN);
     }
   }, [getAuthUserState]);
   return (
