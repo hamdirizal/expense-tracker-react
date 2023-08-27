@@ -3,12 +3,11 @@ import { supabaseClient } from "../main";
 import { Transaction } from "../types";
 
 const useGetRecentTransactionsQuery = (book_id: number) => {
-  return useQuery({
+  return useQuery<Transaction[]>({
     retry: 0,
     enabled: !!book_id,
     queryKey: ["getRecentTransactions", book_id],
     queryFn: async () => {
-      // If success return the object, otherwise return null
       const { data, error } = await supabaseClient
         .from("transactions")
         .select("*")
@@ -16,10 +15,10 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
         .eq("book_id", book_id)
         .order("id", { ascending: false });
       if (error) {
-        return null;
+        return [];
       }
       if (!data) {
-        return null;
+        return [];
       }
 
       return data;

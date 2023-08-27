@@ -15,7 +15,7 @@ import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 const AddTransactionPage = () => {
   const getUserConfigQuery = useGetUserConfigQuery();
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
-  const activeBookId = getUserConfigQuery?.data?.active_book_id || null;
+  const activeBookId = getUserConfigQuery.data?.active_book_id || 0;
   const getRecentTransactionsQuery =
     useGetRecentTransactionsQuery(activeBookId);
 
@@ -26,8 +26,6 @@ const AddTransactionPage = () => {
       </Helmet>
       <CurrentBookPanel />
       <PageTitle title="Add transaction" />
-      <hr />
-      <VarDump content={JSON.stringify(getOwnedBooksQuery.data)} />
       <hr />
       <div>
         <SectionTitle title="Recent input" />

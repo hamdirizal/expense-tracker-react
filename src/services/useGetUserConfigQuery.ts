@@ -3,11 +3,10 @@ import { supabaseClient } from "../main";
 import { UserConfig } from "../types";
 
 const useGetUserConfigQuery = () => {
-  return useQuery<UserConfig>({
+  return useQuery<UserConfig | null>({
     retry: 0,
     queryKey: ["getUserConfig"],
     queryFn: async () => {
-      // If success return the object, otherwise return null
       const { data, error } = await supabaseClient
         .from("user_configs")
         .select("*")
