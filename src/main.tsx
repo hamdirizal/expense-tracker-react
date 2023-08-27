@@ -15,6 +15,7 @@ import DashboardSkeleton from "./pages/DashboardSkeleton.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import DashboardHomePage from "./pages/DashboardHomePage.tsx";
 import { AppPaths } from "./constants.ts";
+import ManageBooksPage from "./pages/ManageBooksPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: AppPaths.ADD_TRANSACTION,
         element: <div>Add transaction</div>,
+      },
+      {
+        path: AppPaths.MANAGE_BOOKS,
+        element: <ManageBooksPage />,
       },
     ],
   },

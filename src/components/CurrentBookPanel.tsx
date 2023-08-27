@@ -6,6 +6,8 @@ import { PageContext } from "../App";
 import VarDump from "./VarDump";
 import useGetUserConfigQuery from "../services/useGetUserConfigQuery";
 import { findBookByIdOrUseFirstOne } from "../helpers/bookHelper";
+import { Link } from "react-router-dom";
+import { AppPaths } from "../constants";
 
 const CurrentBookPanel = () => {
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
@@ -25,14 +27,9 @@ const CurrentBookPanel = () => {
       return (
         <div>
           Book: <span className="font-bold">{active_book.title}</span>{" "}
-          <button
-            onClick={() => {
-              setCurrentPage(Page.CREATE_BOOK);
-            }}
-            className=" bg-green-300"
-          >
+          <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
             (manage books)
-          </button>
+          </Link>
         </div>
       );
     } else {

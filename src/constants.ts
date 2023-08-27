@@ -1,5 +1,6 @@
 export const AppPaths = {
+  LOGIN: "/login",
   DASHBOARD: "/dashboard",
   ADD_TRANSACTION: "/dashboard/add-transaction",
-  LOGIN: "/login",
+  MANAGE_BOOKS: "/dashboard/manage-books",
 };
