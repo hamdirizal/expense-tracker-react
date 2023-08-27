@@ -13,6 +13,7 @@ import {
 import AppSkeleton from "./pages/AppSkeleton.tsx";
 import DashboardSkeleton from "./pages/DashboardSkeleton.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
+import DashboardHomePage from "./pages/DashboardHomePage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <DashboardSkeleton />,
     children: [
+      {
+        path: "",
+        element: <DashboardHomePage />,
+      },
       {
         path: "add-transaction",
         element: <div>Add transaction</div>,
