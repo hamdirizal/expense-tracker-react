@@ -1,5 +1,6 @@
 import { Transaction } from "../types";
 import LoadingSpinner from "./LoadingSpinner";
+import TransactionCard from "./TransactionCard";
 
 interface TransactionListProps {
   transactions: Transaction[];
@@ -10,9 +11,7 @@ const TransactionList = ({ transactions, isLoading }: TransactionListProps) => {
     <div data-testid="TransactionList" className="relative">
       <div>
         {transactions.map((transaction) => (
-          <div key={transaction.id}>
-            {transaction.title} - {transaction.amount}
-          </div>
+          <TransactionCard transaction={transaction} key={transaction.id} />
         ))}
       </div>
       {isLoading && <LoadingSpinner />}
