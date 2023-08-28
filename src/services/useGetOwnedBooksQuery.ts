@@ -3,7 +3,7 @@ import { supabaseClient } from "../main";
 import { Book } from "../types";
 
 const useGetOwnedBooksQuery = () => {
-  return useQuery<Book[]>({
+  return useQuery<Book[], Error>({
     retry: 0,
     queryKey: ["getOwnedBooks"],
     queryFn: async () => {

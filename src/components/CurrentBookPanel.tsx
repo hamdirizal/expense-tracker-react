@@ -10,33 +10,35 @@ const CurrentBookPanel = () => {
   const getUserConfigQuery = useGetUserConfigQuery();
 
   const renderInfo = (getOwnedBooksQuery: any) => {
-    const has_books: boolean = !!getOwnedBooksQuery?.data?.length;
-    const active_book_id: number =
-      getUserConfigQuery?.data?.active_book_id || 0;
-    if (has_books) {
-      // Find active book based on the active_book_id, if not found, use the first book
-      const active_book: Book = findBookByIdOrUseFirstOne(
-        getOwnedBooksQuery.data,
-        active_book_id
-      );
-      return (
-        <div>
-          Book: <span className="font-bold">{active_book.title}</span>{" "}
-          <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
-            (manage books)
-          </Link>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          You don't have any book.{" "}
-          <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
-            Create one here
-          </Link>
-        </div>
-      );
-    }
+    return null;
+    // if (hasBooks && !activeBookId) {
+    //   return (
+    //     <div>
+    //       No book selected.{" "}
+    //       <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
+    //         Choose one here
+    //       </Link>
+    //     </div>
+    //   );
+    // } else if (hasBooks && activeBookId) {
+    //   return (
+    //     <div>
+    //       Book: <span className="font-bold">{active_book.title}</span>{" "}
+    //       <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
+    //         (manage books)
+    //       </Link>
+    //     </div>
+    //   );
+    // } else {
+    //   return (
+    //     <div>
+    //       You don't have any book.{" "}
+    //       <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
+    //         Create one here
+    //       </Link>
+    //     </div>
+    //   );
+    // }
   };
 
   return (

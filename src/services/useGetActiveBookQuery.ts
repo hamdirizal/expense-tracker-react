@@ -2,14 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { supabaseClient } from "../main";
 import { UserConfig } from "../types";
 
-const useGetUserConfigQuery = () => {
-  return useQuery<UserConfig | unknown>({
+const useGetActiveBookQuery = () => {
+  return useQuery<UserConfig | null>({
     retry: 0,
     queryKey: ["getUserConfig"],
     queryFn: async () => {
       const { data, error } = await supabaseClient
         .from("user_configs")
-        .select("*, active_book:books( * )")
+        .select("*, book ( * )")
         .maybeSingle();
       if (error) {
         return null;
@@ -23,4 +23,4 @@ const useGetUserConfigQuery = () => {
   });
 };
 
-export default useGetUserConfigQuery;
+export default useGetActiveBookQuery;
