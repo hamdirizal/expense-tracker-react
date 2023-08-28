@@ -11,9 +11,9 @@ import { supabaseClient } from "../main";
 import VarDump from "../components/VarDump";
 import SectionTitle from "../components/SectionTitle";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
+import AddEditTransactionForm from "../components/AddEditTransactionForm";
 
 const AddTransactionPage = () => {
-  // get active book id first
   const getUserConfigQuery = useGetUserConfigQuery();
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
   const activeBookId = getUserConfigQuery.data?.active_book_id || 0;
@@ -21,15 +21,11 @@ const AddTransactionPage = () => {
   const getRecentTransactionsQuery =
     useGetRecentTransactionsQuery(activeBookId);
 
-  return (
-    <>
-      <Helmet>
-        <title>Add Transaction | {AppTitle}</title>
-      </Helmet>
-      <CurrentBookPanel />
-      <PageTitle title="Add transaction" />
-      <hr />
+  const renderContent = () => {
+    return (
       <div>
+        <AddEditTransactionForm />
+        <hr />
         <SectionTitle title="Recent input" />
         {getRecentTransactionsQuery?.data?.length ? (
           <TransactionList
@@ -38,6 +34,17 @@ const AddTransactionPage = () => {
           />
         ) : null}
       </div>
+    );
+  };
+
+  return (
+    <>
+      <Helmet>
+        <title>Add Transaction | {AppTitle}</title>
+      </Helmet>
+      <CurrentBookPanel />
+      <PageTitle title="Add transaction" />
+      {getUserConfigQuery.data?.active_book ? renderContent() : null}
     </>
   );
 };

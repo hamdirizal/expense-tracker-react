@@ -11,7 +11,7 @@ const DashboardSkeleton = () => {
     return (
       <div
         data-testid="DashboardSkeleton"
-        className="border-2 border-blue-500 bg-white p-2"
+        className="border-2 border-blue-500 bg-white p-2 min-h-screen"
       >
         <Helmet>
           <title>Dashboard | {AppTitle}</title>
