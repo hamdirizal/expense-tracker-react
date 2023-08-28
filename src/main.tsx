@@ -13,7 +13,6 @@ import DashboardSkeleton from "./pages/DashboardSkeleton.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import DashboardHomePage from "./pages/DashboardHomePage.tsx";
 import { AppPaths } from "./constants.ts";
-import ManageBooksPage from "./pages/ManageBooksPage.tsx";
 import AddTransactionPage from "./pages/AddTransactionPage.tsx";
 
 const router = createBrowserRouter([
