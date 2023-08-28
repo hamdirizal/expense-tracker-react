@@ -13,9 +13,11 @@ import SectionTitle from "../components/SectionTitle";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 
 const AddTransactionPage = () => {
+  // get active book id first
   const getUserConfigQuery = useGetUserConfigQuery();
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
   const activeBookId = getUserConfigQuery.data?.active_book_id || 0;
+  console.log("activeBookId", activeBookId);
   const getRecentTransactionsQuery =
     useGetRecentTransactionsQuery(activeBookId);
 
