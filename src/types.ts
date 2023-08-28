@@ -7,6 +7,7 @@ export interface Book {
 
 export interface Transaction {
   id: number;
+  title: string;
   amount: number;
   book_id: number;
   created_at: string;
@@ -14,7 +15,16 @@ export interface Transaction {
   date: string;
   description: string | null;
   is_outgoing: boolean | null;
+}
+
+export interface CreateTransactionMutationPayload {
   title: string;
+  amount: number;
+  book_id: number;
+  creator_id: string;
+  date: string;
+  description?: string;
+  is_outgoing: boolean;
 }
 
 export interface UpsertUserConfigMutationPayload {

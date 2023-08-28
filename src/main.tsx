@@ -55,12 +55,10 @@ export const supabaseClient: SupabaseClient = createClient(
   import.meta.env.VITE_SUPABASE_ANON_KEY
 );
 
-export const supabase: SupabaseClient = supabaseClient;
-
-export const SupabaseContext = createContext(supabase);
+export const SupabaseContext = createContext(supabaseClient);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <SupabaseContext.Provider value={supabase}>
+  <SupabaseContext.Provider value={supabaseClient}>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
       <ReactQueryDevtools initialIsOpen={true} />
