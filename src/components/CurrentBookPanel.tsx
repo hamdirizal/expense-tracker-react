@@ -4,46 +4,32 @@ import useGetUserConfigQuery from "../services/useGetUserConfigQuery";
 import { findBookByIdOrUseFirstOne } from "../helpers/bookHelper";
 import { Link } from "react-router-dom";
 import { AppPaths } from "../constants";
+import VarDump from "./VarDump";
+import SvgBookIcon from "../svg-components/SvgBookIcon";
 
 const CurrentBookPanel = () => {
-  const getOwnedBooksQuery = useGetOwnedBooksQuery();
+  // const getOwnedBooksQuery = useGetOwnedBooksQuery();
   const getUserConfigQuery = useGetUserConfigQuery();
 
-  const renderInfo = (getOwnedBooksQuery: any) => {
-    return null;
-    // if (hasBooks && !activeBookId) {
-    //   return (
-    //     <div>
-    //       No book selected.{" "}
-    //       <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
-    //         Choose one here
-    //       </Link>
-    //     </div>
-    //   );
-    // } else if (hasBooks && activeBookId) {
-    //   return (
-    //     <div>
-    //       Book: <span className="font-bold">{active_book.title}</span>{" "}
-    //       <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
-    //         (manage books)
-    //       </Link>
-    //     </div>
-    //   );
-    // } else {
-    //   return (
-    //     <div>
-    //       You don't have any book.{" "}
-    //       <Link className="bg-green-300" to={AppPaths.MANAGE_BOOKS}>
-    //         Create one here
-    //       </Link>
-    //     </div>
-    //   );
-    // }
+  const renderInfo = () => {
+    if (getUserConfigQuery.data?.active_book) {
+      return <span>Book: {getUserConfigQuery.data.active_book.title} </span>;
+    } else {
+      return <span>No book selected. Click here to create/select a book</span>;
+    }
   };
 
   return (
-    <div className="border px-2 relative rounded">
-      {renderInfo(getOwnedBooksQuery)}
+    <div className="flex">
+      <Link
+        className="flex border relative rounded bg-slate-200 px-2 py-1 active:scale-95"
+        to={AppPaths.MANAGE_BOOKS}
+      >
+        <span className="block w-6 h-6 mr-2">
+          <SvgBookIcon />
+        </span>
+        {renderInfo()}
+      </Link>
     </div>
   );
 };

@@ -11,11 +11,12 @@ const AppHeader = () => {
     >
       <span className="font-bold">Daily Expense</span>
 
-      <Link to={AppPaths.DASHBOARD}>Home</Link>
+      <Link to={AppPaths.DASHBOARD}>Dashboard</Link>
       <span>Listing</span>
       <Link to={AppPaths.ADD_TRANSACTION}>Add Transaction</Link>
 
       <span>Search</span>
+      <span>Books</span>
       <span>
         Welcome user{" "}
         <button onClick={() => logoutUserMutation.mutate()}>(logout)</button>

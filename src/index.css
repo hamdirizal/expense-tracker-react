@@ -5,3 +5,8 @@
 body {
   background-color: #5d6269;
 }
+
+svg {
+  max-width: 100%;
+  max-height: 100%;
+}

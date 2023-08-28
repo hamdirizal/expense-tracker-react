@@ -3,14 +3,15 @@ import { supabaseClient } from "../main";
 import { UserConfig } from "../types";
 
 const useGetUserConfigQuery = () => {
-  return useQuery<UserConfig | unknown>({
+  return useQuery<UserConfig | null, Error>({
     retry: 0,
     queryKey: ["getUserConfig"],
     queryFn: async () => {
       const { data, error } = await supabaseClient
         .from("user_configs")
         .select("*, active_book:books( * )")
-        .maybeSingle();
+        .limit(1)
+        .single();
       if (error) {
         return null;
       }
