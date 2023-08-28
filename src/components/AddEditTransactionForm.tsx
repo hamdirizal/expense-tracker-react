@@ -11,9 +11,6 @@ const AddEditTransactionForm = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
   const getUserConfigQuery = useGetUserConfigQuery();
   const createTransactionMutation = useCreateTransactionMutation();
-
-  console.log("CURRENTBOOK ID", getUserConfigQuery.data?.active_book_id);
-
   const {
     register,
     handleSubmit,
@@ -35,7 +32,6 @@ const AddEditTransactionForm = () => {
       book_id: getUserConfigQuery.data?.active_book_id,
       creator_id: getAuthUserQuery.data?.id,
     };
-    console.log("PAYLOAD", payload);
     createTransactionMutation.mutate(payload);
   };
 

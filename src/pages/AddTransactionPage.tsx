@@ -17,7 +17,6 @@ const AddTransactionPage = () => {
   const getUserConfigQuery = useGetUserConfigQuery();
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
   const activeBookId = getUserConfigQuery.data?.active_book_id || 0;
-  console.log("activeBookId", activeBookId);
   const getRecentTransactionsQuery =
     useGetRecentTransactionsQuery(activeBookId);
 
