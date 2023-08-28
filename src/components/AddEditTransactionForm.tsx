@@ -49,11 +49,11 @@ const AddEditTransactionForm = () => {
           <br />
           <div>
             <label>
-              <input name="is_outgoing" type="radio" value="true" />
+              <input type="radio" value="false" {...register("is_outgoing", { required: true })} />
               Incoming
             </label>
             <label>
-              <input name="is_outgoing" type="radio" value="false" />
+            <input defaultChecked type="radio" value="true" {...register("is_outgoing", { required: true })} />
               Outgoing
             </label>
           </div>
@@ -68,7 +68,15 @@ const AddEditTransactionForm = () => {
             className="border-2 border-gray-400 mr-3"
             type="number"
             placeholder="Book ID"
-            {...register("book_id")}
+            required
+            {...register("book_id", { required: true })}
+          />
+          <br />
+          <input
+            className="border-2 border-gray-400 mr-3"
+            type="text"
+            placeholder="Creator ID"
+            {...register("creator_id", { required: true })}
           />
           <br />
           <div className="w-[200px]">

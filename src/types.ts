@@ -18,13 +18,13 @@ export interface Transaction {
 }
 
 export interface CreateTransactionMutationPayload {
-  title: string;
   amount: number;
   book_id: number;
   creator_id: string;
   date: string;
   description?: string;
   is_outgoing: boolean;
+  title: string;
 }
 
 export interface UpsertUserConfigMutationPayload {
