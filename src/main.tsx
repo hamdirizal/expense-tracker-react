@@ -33,10 +33,6 @@ const router = createBrowserRouter([
         path: AppPaths.ADD_TRANSACTION,
         element: <AddTransactionPage />,
       },
-      {
-        path: AppPaths.MANAGE_BOOKS,
-        element: <ManageBooksPage />,
-      },
     ],
   },
   {

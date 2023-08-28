@@ -9,12 +9,13 @@ import SvgBookIcon from "../svg-components/SvgBookIcon";
 import { Dialog } from "@headlessui/react";
 import { useState } from "react";
 import Modal from "./Modal";
+import ModalSelectBook from "./ModalSelectBook";
 
 const CurrentBookPanel = () => {
   // const getOwnedBooksQuery = useGetOwnedBooksQuery();
   const getUserConfigQuery = useGetUserConfigQuery();
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpened, setIsModalOpened] = useState(false);
 
   const renderInfo = () => {
     if (getUserConfigQuery.data?.active_book) {
@@ -27,21 +28,19 @@ const CurrentBookPanel = () => {
   return (
     <>
       <div className="flex">
-        <Link
+        <button
+          onClick={() => setIsModalOpened(true)}
           className="flex border relative rounded bg-slate-200 px-2 py-1 active:scale-95"
-          to={AppPaths.MANAGE_BOOKS}
         >
           <span className="block w-6 h-6 mr-2">
             <SvgBookIcon />
           </span>
           {renderInfo()}
-        </Link>
-        <button onClick={() => setIsOpen(true)}>Open modal</button>
+        </button>
       </div>
-      <Modal
-        isOpen={isOpen}
-        closeFn={() => setIsOpen(false)}
-        content={<h1>Hello world modal</h1>}
+      <ModalSelectBook
+        isOpen={isModalOpened}
+        closeFn={() => setIsModalOpened(false)}
       />
     </>
   );

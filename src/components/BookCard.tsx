@@ -10,22 +10,28 @@ const BookCard = ({ book, isActive, onActivate }: BookCardProps) => {
   return (
     <div
       className={`p-2 mb-2 ${
-        isActive ? "border-2 border-green-500 bg-green-200" : "border border-gray-400"
+        isActive
+          ? "border-2 border-green-500 bg-green-200"
+          : "border border-gray-400"
       }`}
     >
       <div>{book.title}</div>
       <div>Owner: {book.owner_id}</div>
+      <button type="button" className="bg-gray-300 active:translate-y-[2px]">
+        Manage
+      </button>
       <div>
         {isActive ? (
           <span>Active book</span>
         ) : (
           <button
+            type="button"
             onClick={() => {
               onActivate(book.id);
             }}
             className="bg-gray-300 active:translate-y-[2px]"
           >
-            Set as active
+            Select
           </button>
         )}
       </div>
