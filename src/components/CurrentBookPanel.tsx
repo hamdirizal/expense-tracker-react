@@ -8,6 +8,7 @@ import VarDump from "./VarDump";
 import SvgBookIcon from "../svg-components/SvgBookIcon";
 import { Dialog } from "@headlessui/react";
 import { useState } from "react";
+import Modal from "./Modal";
 
 const CurrentBookPanel = () => {
   // const getOwnedBooksQuery = useGetOwnedBooksQuery();
@@ -37,27 +38,11 @@ const CurrentBookPanel = () => {
         </Link>
         <button onClick={() => setIsOpen(true)}>Open modal</button>
       </div>
-      <Dialog
-        className="border-2 border-red-500 fixed inset-0 items-start justify-center flex"
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-      >
-        <div className="fixed inset-0 bg-black/70 z-10 flex " aria-hidden="true" />
-        <Dialog.Panel className="w-[90vw] border-2 border-green-500 bg-white z-20 relative">
-          <Dialog.Title>Deactivate account</Dialog.Title>
-          <Dialog.Description>
-            This will permanently deactivate your account
-          </Dialog.Description>
-
-          <p>
-            Are you sure you want to deactivate your account? All of your data
-            will be permanently removed. This action cannot be undone.
-          </p>
-
-          <button onClick={() => setIsOpen(false)}>Deactivate</button>
-          <button onClick={() => setIsOpen(false)}>Cancel</button>
-        </Dialog.Panel>
-      </Dialog>
+      <Modal
+        isOpen={isOpen}
+        closeFn={() => setIsOpen(false)}
+        content={<h1>Hello world modal</h1>}
+      />
     </>
   );
 };
