@@ -14,7 +14,7 @@ export interface Transaction {
   creator_id: string;
   date: string;
   description: string | null;
-  is_outgoing: boolean | null;
+  is_outgoing: "yes" | "no";
 }
 
 export interface CreateTransactionMutationPayload {
@@ -23,7 +23,7 @@ export interface CreateTransactionMutationPayload {
   creator_id: string;
   date: string;
   description?: string;
-  is_outgoing: boolean;
+  is_outgoing: "yes" | "no";
   title: string;
 }
 

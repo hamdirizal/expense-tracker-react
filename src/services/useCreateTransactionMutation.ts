@@ -20,7 +20,7 @@ const useCreateTransactionMutation = () => {
       return data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["getTransactions"]);
+      queryClient.invalidateQueries(["getRecentTransactions"]);
     },
   });
 };
