@@ -6,7 +6,7 @@ interface LoadingSpinnerProps {
 
 const LoadingSpinner = ({ isOverlayed = false }: LoadingSpinnerProps) => {
   return (
-    <div className={`lds-ring-wrapper ${isOverlayed && 'is-overlayed'}`}>
+    <div className="lds-ring-wrapper">
       <div className="lds-ring">
         <div></div>
         <div></div>

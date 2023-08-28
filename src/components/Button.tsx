@@ -7,12 +7,14 @@ interface ButtonProps {
 
 const Button = ({ label, onClick, type, variant }: ButtonProps) => {
   const buttonClasses = {
-    primary: "rounded bg-green-300 h-full text-center px-4 active:translate-y-[3px]",
-    secondary: "rounded bg-green-300",
+    primary: "bg-green-button text-black-text",
+    secondary: "bg-green-300",
   };
   return (
     <button
-      className={buttonClasses[variant] as string}
+      className={`w-full rounded h-full text-center px-4 py-2 active:translate-y-[3px] font-bold text-sm ${
+        buttonClasses[variant] as string
+      }`}
       type={type}
       onClick={onClick}
     >
