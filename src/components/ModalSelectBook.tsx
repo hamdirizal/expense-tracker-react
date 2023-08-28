@@ -47,6 +47,7 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
         active_book_id: book_id,
       });
     }
+    closeFn();
   };
 
   useEffect(() => {
