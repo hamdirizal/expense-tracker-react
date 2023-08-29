@@ -3,6 +3,8 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
+      black: "#000000",
+
       "grey-bg-1": "#31333c",
       "grey-bg-2": "#383a44",
 
@@ -12,7 +14,7 @@ export default {
       "white-text": "#f5f5f5",
       "grey-text": "#9e9fad",
       "black-text": "#2a1c2e",
-      "red-text": "#fb5178",
+      "red-text": "#fb5178",      
 
       "green-button": "#51e4c0",
     },
@@ -23,6 +25,14 @@ export default {
       lg: "1.125rem",
       xl: "1.7rem",
     },
+    extend: {
+      scale: {
+        96: '.96',
+        97: '.97',
+        98: '.98',
+        99: '.99',
+      },
+    }
   },
   plugins: [],
 };

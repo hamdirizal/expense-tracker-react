@@ -12,7 +12,7 @@ const Button = ({ label, onClick, type, variant }: ButtonProps) => {
   };
   return (
     <button
-      className={`w-full rounded h-full text-center px-4 py-2 active:translate-y-[3px] font-bold text-sm ${
+      className={`w-full rounded h-full text-center px-4 py-2 active:scale-98 font-bold text-sm ${
         buttonClasses[variant] as string
       }`}
       type={type}
