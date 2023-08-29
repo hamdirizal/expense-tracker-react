@@ -60,7 +60,7 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
   const renderContent = () => {
     return (
       <>
-        <div className="mb-2">
+        <div className="mb-3">
           <Heading2 title="Select or create a book" />
         </div>
 

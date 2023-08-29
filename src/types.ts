@@ -36,4 +36,5 @@ export interface UserConfig {
   user_id: string;
   active_book_id: number;
   active_book?: Book | null;
+  nickname: string | null;
 }

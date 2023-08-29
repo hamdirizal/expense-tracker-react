@@ -10,6 +10,7 @@ import { Dialog } from "@headlessui/react";
 import { useState } from "react";
 import Modal from "./Modal";
 import ModalSelectBook from "./ModalSelectBook";
+import Button from "./Button";
 
 const CurrentBookPanel = () => {
   // const getOwnedBooksQuery = useGetOwnedBooksQuery();
@@ -28,15 +29,18 @@ const CurrentBookPanel = () => {
   return (
     <>
       <div className="flex">
-        <button
+        <Button
+          isFullWidth={false}
+          type="button"
+          size="small"
+          variant="secondary"
+          label={
+            getUserConfigQuery.data?.active_book
+              ? `Book: ${getUserConfigQuery.data.active_book.title}`
+              : "No book selected. Click here to create/select a book"
+          }
           onClick={() => setIsModalOpened(true)}
-          className="flex border relative rounded bg-slate-200 px-2 py-1 active:scale-95"
-        >
-          <span className="block w-6 h-6 mr-2">
-            <SvgBookIcon />
-          </span>
-          {renderInfo()}
-        </button>
+        />
       </div>
       <ModalSelectBook
         isOpen={isModalOpened}

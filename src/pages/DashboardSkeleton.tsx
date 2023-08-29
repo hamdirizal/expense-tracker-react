@@ -11,13 +11,15 @@ const DashboardSkeleton = () => {
     return (
       <div
         data-testid="DashboardSkeleton"
-        className="border-2 border-blue-500 bg-white p-2 min-h-screen"
+        className="min-h-screen px-6"
       >
-        <Helmet>
-          <title>Dashboard | {AppTitle}</title>
-        </Helmet>
-        <AppHeader />
-        <Outlet />
+        <div className="max-w-[720px] mx-auto">
+          <Helmet>
+            <title>Dashboard | {AppTitle}</title>
+          </Helmet>
+          <AppHeader />
+          <Outlet />
+        </div>
       </div>
     );
   };
