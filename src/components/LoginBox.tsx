@@ -60,6 +60,8 @@ const LoginBox = () => {
               <LoadingSpinner isOverlayed={false} />
             ) : (
               <Button
+                size="regular"
+                isFullWidth={true}
                 onClick={() => {}}
                 variant="primary"
                 type="submit"
