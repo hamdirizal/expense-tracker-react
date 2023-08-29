@@ -11,6 +11,7 @@ import Modal from "./Modal";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import Button from "./Button";
+import Heading2 from "./Heading2";
 
 interface ModalSelectBookProps {
   isOpen: boolean;
@@ -59,24 +60,27 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
   const renderContent = () => {
     return (
       <>
-        <Heading3 title="Select or create a book" />
+        <div className="mb-2">
+          <Heading2 title="Select or create a book" />
+        </div>
 
         <form
           action=""
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}
-          className="relative"
+          className="relative border border-grey-input-border bg-grey-bg-2 rounded px-4 pt-3 pb-5"
         >
-          <div>Create new book</div>
+          <div className="mb-1">Create new book</div>
           <div className="flex">
             <input
-              className="border-2 border-gray-400 mr-3"
+              className="bg-grey-input-bg border text-white-text border-grey-input-border rounded w-full px-4 py-2 mr-3"
               required
               type="text"
               placeholder="Book title"
               {...register("title", { required: true })}
             />
-            <div className="w-[200px]">
+            <div className="w-[240px]">
               <Button
+                size="regular"
                 label="Create book"
                 variant="primary"
                 onClick={() => {}}
@@ -90,8 +94,10 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
           )}
         </form>
 
-        <div className="relative">
-          <Heading3 title="Owned books" />
+        <div className="relative mt-4">
+          <div className="mb-2">
+            <Heading3 title="Owned books" />
+          </div>
           {ownedBooksState.isSuccess && (
             <div>
               {ownedBooksState.data.map((book: Book) => (

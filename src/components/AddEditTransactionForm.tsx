@@ -109,6 +109,8 @@ const AddEditTransactionForm = () => {
             <br />
             <div className="w-[200px]">
               <Button
+                isFullWidth={false}
+                size="regular"
                 label="Create transaction"
                 variant="primary"
                 onClick={() => {}}

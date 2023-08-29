@@ -1,4 +1,5 @@
 import { Book } from "../types";
+import Button from "./Button";
 
 interface BookCardProps {
   book: Book;
@@ -9,30 +10,38 @@ interface BookCardProps {
 const BookCard = ({ book, isActive, onActivate }: BookCardProps) => {
   return (
     <div
-      className={`p-2 mb-2 ${
+      className={`px-4 py-3 mb-3 border rounded ${
         isActive
-          ? "border-2 border-green-500 bg-green-200"
-          : "border border-gray-400"
+          ? "border-color-border-active bg-color-bg-active"
+          : "border-grey-input-border bg-grey-bg-2"
       }`}
     >
-      <div>{book.title}</div>
-      <div>Owner: {book.owner_id}</div>
-      <button type="button" className="bg-gray-300 active:translate-y-[2px]">
-        Manage
-      </button>
       <div>
-        {isActive ? (
-          <span>Active book</span>
-        ) : (
-          <button
+        <span className="font-bold text-white-text mr-2">{book.title}</span>
+        {isActive ? <span>(selected)</span> : null}
+      </div>
+      <div className="text-minus-1">Owner: John Doe</div>
+      <div className="flex justify-start mt-2">
+        <Button
+          isFullWidth={false}
+          size="small"
+          type="button"
+          variant="secondary"
+          onClick={() => {}}
+          label="Manage"
+        />
+        <div className="w-2"></div>
+        {isActive ? null : (
+          <Button
+            isFullWidth={false}
+            size="small"
             type="button"
+            variant="secondary"
             onClick={() => {
               onActivate(book.id);
             }}
-            className="bg-gray-300 active:translate-y-[2px]"
-          >
-            Select
-          </button>
+            label="Select"
+          />
         )}
       </div>
     </div>

@@ -3,18 +3,32 @@ interface ButtonProps {
   onClick: () => void;
   type: "button" | "submit" | "reset";
   variant: "primary" | "secondary";
+  size: "small" | "regular" | "big";
+  isFullWidth: boolean;
 }
 
-const Button = ({ label, onClick, type, variant }: ButtonProps) => {
-  const buttonClasses = {
+const Button = ({
+  label,
+  onClick,
+  type,
+  variant,
+  size,
+  isFullWidth,
+}: ButtonProps) => {
+  const variantClasses = {
     primary: "bg-green-button text-black-text",
-    secondary: "bg-green-300",
+    secondary: "bg-color-btn-secondary text-black-text",
+  };
+  const sizeClasses = {
+    small: "px-2 h-6 text-minus-1",
+    regular: "px-4 h-11 text-base",
+    big: "",
   };
   return (
     <button
-      className={`w-full rounded h-full text-center px-4 py-2 active:scale-98 font-bold text-sm ${
-        buttonClasses[variant] as string
-      }`}
+      className={`rounded text-center active:scale-98 font-bold text-sm leading-none ${
+        variantClasses[variant] as string
+      } ${sizeClasses[size] as string} ${isFullWidth ? "w-full" : ""} `}
       type={type}
       onClick={onClick}
     >

@@ -12,27 +12,34 @@ export default {
       "grey-input-border": "#666b79",
 
       "white-text": "#f5f5f5",
-      "grey-text": "#9e9fad",
+      "grey-text": "#bdbec9",
       "black-text": "#2a1c2e",
-      "red-text": "#fb5178",      
+      "red-text": "#fb5178",
 
       "green-button": "#51e4c0",
+
+      "color-border-active": "#51e4c0",
+      "color-bg-active": "#32534b",
+
+      "color-btn-secondary": "#999d9f",
     },
     fontSize: {
-      tiny: "0.63rem",
-      sm: "0.9rem",
+      "minus-3": "0.63rem",
+      "minus-2": "0.75rem",
+      "minus-1": "0.85rem",
       base: "1rem", // 17px
-      lg: "1.125rem",
-      xl: "1.7rem",
+      "plus-1": "1.15rem",
+      "plus-2": "1.4rem",
+      "plus-3": "1.9rem",
     },
     extend: {
       scale: {
-        96: '.96',
-        97: '.97',
-        98: '.98',
-        99: '.99',
+        96: ".96",
+        97: ".97",
+        98: ".98",
+        99: ".99",
       },
-    }
+    },
   },
   plugins: [],
 };
