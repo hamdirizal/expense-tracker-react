@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import Button from "./Button";
 import Heading2 from "./Heading2";
 import useSetActiveBookMutation from "../services/useSetActiveBookMutation";
+import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
 
 interface ModalSelectBookProps {
   isOpen: boolean;
@@ -19,7 +20,8 @@ interface ModalSelectBookProps {
 }
 
 const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
-  const ownedBooksState = useGetOwnedBooksQuery();
+  const getOwnedBooksQuery = useGetOwnedBooksQuery();
+  const getCollaboratedBooksQuery = useGetCollaboratedBooksQuery();
   const createBookMutation = useCreateBookMutation();
   const getAuthUserQuery = useGetAuthUserQuery();
   const setActiveBookMutation = useSetActiveBookMutation();
@@ -97,9 +99,9 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
           <div className="mb-2">
             <Heading3 title="Owned books" />
           </div>
-          {ownedBooksState.isSuccess && (
+          {getOwnedBooksQuery.isSuccess && (
             <div>
-              {ownedBooksState.data.map((book: Book) => (
+              {getOwnedBooksQuery.data.map((book: Book) => (
                 <BookCard
                   onActivate={onBookActivated}
                   isActive={getAuthUserQuery?.data?.active_book_id === book.id}
@@ -114,13 +116,25 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
           )}
         </div>
 
-        <div>
-          <Heading3 title="Collaborated books" />
-          <ul>
-            <li>first</li>
-            <li>Second</li>
-            <li>Third</li>
-          </ul>
+        <div className="relative mt-4">
+          <div className="mb-2">
+            <Heading3 title="Collaborated books" />
+          </div>
+          {getCollaboratedBooksQuery.isSuccess && (
+            <div>
+              {getCollaboratedBooksQuery.data.map((book: Book) => (
+                <BookCard
+                  onActivate={onBookActivated}
+                  isActive={getAuthUserQuery?.data?.active_book_id === book.id}
+                  book={book}
+                  key={book.id}
+                />
+              ))}
+            </div>
+          )}
+          {setActiveBookMutation.isLoading && (
+            <LoadingSpinner isOverlayed={true} />
+          )}
         </div>
       </>
     );
