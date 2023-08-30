@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import Button from "./Button";
 import Heading2 from "./Heading2";
+import useSetActiveBookMutation from "../services/useSetActiveBookMutation";
 
 interface ModalSelectBookProps {
   isOpen: boolean;
@@ -21,7 +22,7 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
   const ownedBooksState = useGetOwnedBooksQuery();
   const createBookMutation = useCreateBookMutation();
   const getAuthUserQuery = useGetAuthUserQuery();
-  const upsertUserConfigMutation = useUpsertUserConfigMutation();
+  const setActiveBookMutation = useSetActiveBookMutation();
 
   const {
     register,
@@ -41,9 +42,8 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
 
   const onBookActivated = (book_id: number) => {
     if (getAuthUserQuery?.data?.id) {
-      upsertUserConfigMutation.mutate({
-        user_id: getAuthUserQuery.data.id,
-        active_book_id: book_id,
+      setActiveBookMutation.mutate({
+        book_id: book_id,
       });
     }
     closeFn();
@@ -102,16 +102,14 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
               {ownedBooksState.data.map((book: Book) => (
                 <BookCard
                   onActivate={onBookActivated}
-                  isActive={
-                    getAuthUserQuery?.data?.active_book_id === book.id
-                  }
+                  isActive={getAuthUserQuery?.data?.active_book_id === book.id}
                   book={book}
                   key={book.id}
                 />
               ))}
             </div>
           )}
-          {upsertUserConfigMutation.isLoading && (
+          {setActiveBookMutation.isLoading && (
             <LoadingSpinner isOverlayed={true} />
           )}
         </div>
