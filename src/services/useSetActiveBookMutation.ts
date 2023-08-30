@@ -30,7 +30,7 @@ const useSetActiveBookMutation = () => {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["getAuthUser"]);
+      queryClient.invalidateQueries(["getAuthUser","getRecentTransactions"]);
     },
   });
 };

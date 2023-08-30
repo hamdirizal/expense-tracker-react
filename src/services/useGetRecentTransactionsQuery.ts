@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabaseClient } from "../main";
 import { Transaction } from "../types";
+import { getStoredAccessToken } from "../helpers/authHelper";
 
 const useGetRecentTransactionsQuery = (book_id: number) => {
   return useQuery<Transaction[]>({
@@ -8,20 +8,23 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
     enabled: !!book_id,
     queryKey: ["getRecentTransactions", book_id],
     queryFn: async () => {
-      const { data, error } = await supabaseClient
-        .from("transactions")
-        .select("*")
-        .limit(10)
-        .eq("book_id", book_id)
-        .order("id", { ascending: false });
-      if (error) {
-        return [];
+      console.log('BOOKID', book_id)
+      try {
+        const res = await fetch(
+          "http://localhost:8001/api/get-transactions.php?book_id=" + book_id,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + getStoredAccessToken(),
+            }
+          }
+        );
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        return null;
       }
-      if (!data) {
-        return [];
-      }
-
-      return data;
     },
   });
 };
