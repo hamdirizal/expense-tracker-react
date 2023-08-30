@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { AppPaths } from "../constants";
 import useLogoutUserMutation from "../services/useLogoutUserMutation";
-import useGetUserConfigQuery from "../services/useGetUserConfigQuery";
+import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 
 const AppHeader = () => {
   const logoutUserMutation = useLogoutUserMutation();
-  const getUserConfigQuery = useGetUserConfigQuery();
+  const getAuthUserQuery = useGetAuthUserQuery();
   return (
     <header
       data-testid="AppHeader"
@@ -19,7 +19,7 @@ const AppHeader = () => {
 
       <span>Search</span>
       <span>
-        Welcome, {getUserConfigQuery.data?.nickname || "No name"}
+        Welcome, {getAuthUserQuery.data?.nickname || "No name"}
         <button onClick={() => logoutUserMutation.mutate()}>(logout)</button>
       </span>
     </header>
