@@ -38,3 +38,7 @@ export interface UserConfig {
   active_book?: Book | null;
   nickname: string | null;
 }
+
+export interface LoginResponse {
+  access_token: string;
+}

@@ -26,7 +26,7 @@ const DashboardSkeleton = () => {
 
   if (getAuthUserQuery.isLoading) {
     return null;
-  } else if (getAuthUserQuery.isSuccess && !getAuthUserQuery?.data?.id) {
+  } else if (!getAuthUserQuery?.data?.id) {
     return <Navigate to={AppPaths.LOGIN} />;
   } else {
     return renderPageMarkup();

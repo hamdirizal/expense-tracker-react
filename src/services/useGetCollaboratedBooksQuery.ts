@@ -2,14 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { supabaseClient } from "../main";
 import { Book } from "../types";
 
-const useGetOwnedBooksQuery = () => {
+const useGetCollaboratedBooksQuery = () => {
   return useQuery<Book[], Error>({
     retry: 0,
-    queryKey: ["getOwnedBooks"],
+    queryKey: ["getCollaboratedBooks"],
     queryFn: async () => {
       const { data, error } = await supabaseClient
         .from("books")
-        .select("*, books_collaborators( * )")
+        .select("*")
         .order("id", { ascending: false });
       if (error) {
         return [];
@@ -23,4 +23,4 @@ const useGetOwnedBooksQuery = () => {
   });
 };
 
-export default useGetOwnedBooksQuery;
+export default useGetCollaboratedBooksQuery;

@@ -1,15 +1,13 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabaseClient } from "../main";
+import { purgeStoredAccessToken } from "../helpers/authHelper";
 
 const useLogoutUserMutation = () => {
   const queryClient = useQueryClient();
   return useMutation(["logoutUser"], {
     mutationFn: async () => {
-      const { error } = await supabaseClient.auth.signOut();
-      if (error) {
-        throw new Error(error.message);
-      }
-      return { data: true };
+      purgeStoredAccessToken();
+      return null;
     },
     onSettled: () => {
       queryClient.invalidateQueries(["getAuthUser"]);
