@@ -23,14 +23,13 @@ const useSetActiveBookMutation = () => {
             }),
           }
         );
-
-        return await response.json();
+        return true;
       } catch (error) {
         return null;
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["getAuthUser","getRecentTransactions"]);
+      queryClient.invalidateQueries(["getAuthUser"]);
     },
   });
 };
