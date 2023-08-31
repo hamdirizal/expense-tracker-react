@@ -60,7 +60,7 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
   const renderCollaboratedBooksSection = () => {
     return (
       <div className="relative mt-6">
-        <div className="mb-2">
+        <div className="mb-1">
           <Heading3 title="Collaborated books" />
         </div>
         {getCollaboratedBooksQuery.isSuccess &&
