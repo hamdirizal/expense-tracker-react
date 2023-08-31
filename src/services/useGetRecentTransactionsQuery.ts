@@ -7,22 +7,21 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
     retry: 0,
     queryKey: ["getRecentTransactions", book_id],
     queryFn: async () => {
-      try {
-        const res = await fetch(
-          "http://localhost:8001/api/get-transactions.php?book_id=" + book_id,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + getStoredAccessToken(),
-            }
-          }
-        );
-        const data = await res.json();
-        return data;
-      } catch (error) {
-        return null;
+      const response = await fetch(
+        "http://localhost:8001/api/get-transactions.php?book_id=" + book_id,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + getStoredAccessToken(),
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error((await response.json()).msg);
       }
+      return await response.json();
     },
   });
 };

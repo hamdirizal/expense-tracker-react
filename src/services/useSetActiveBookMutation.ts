@@ -37,7 +37,7 @@ const useSetActiveBookMutation = () => {
     },
     onSuccess: () => {
       // queryClient.invalidateQueries(["getAuthUser"]);
-      // queryClient.invalidateQueries(["getRecentTransactions"],undefined,{exact:true});
+      // queryClient.invalidateQueries(["getRecentTransactions"]);
       queryClient.invalidateQueries({
         queryKey: ["getRecentTransactions"],
       });

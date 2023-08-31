@@ -3,7 +3,7 @@ import { getStoredAccessToken } from "../helpers/authHelper";
 import { User } from "../types";
 
 const useGetAuthUserQuery = () => {
-  return useQuery<User, null>({
+  return useQuery<unknown, Error, User>({
     retry: 0,
     queryKey: ["getAuthUser"],
     queryFn: async () => {

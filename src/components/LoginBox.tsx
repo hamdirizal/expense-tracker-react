@@ -34,7 +34,7 @@ const LoginBox = () => {
         >
           <div className="mb-4">
             <input
-              className="bg-grey-input-bg border text-white-text border-grey-input-border rounded w-full px-4 py-2"
+              className="myapp-input-text"
               type="text"
               placeholder="Email"
               {...register("email", { required: false })}
@@ -42,7 +42,7 @@ const LoginBox = () => {
           </div>
           <div className="mb-4">
             <input
-              className="bg-grey-input-bg border text-white-text border-grey-input-border rounded w-full px-4 py-2"
+              className="myapp-input-text"
               type="text"
               placeholder="Password"
               {...register("password", { required: false })}
