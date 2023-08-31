@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import Heading1 from "./Heading1";
 import useLoginUserMutation from "../services/useLoginUserMutation";
 import LoadingSpinner from "./LoadingSpinner";
 import Button from "./Button";
