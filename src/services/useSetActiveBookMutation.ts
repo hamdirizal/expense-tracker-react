@@ -33,11 +33,17 @@ const useSetActiveBookMutation = () => {
       if (!response.ok) {
         throw new Error((await response.json()).msg);
       }
-      const successData = await response.json();
-      return successData;
+      return await response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["getAuthUser"]);
+      // queryClient.invalidateQueries(["getAuthUser"]);
+      // queryClient.invalidateQueries(["getRecentTransactions"],undefined,{exact:true});
+      queryClient.invalidateQueries({
+        queryKey: ["getRecentTransactions"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["getAuthUser"],
+      });
     },
   });
 };

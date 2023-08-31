@@ -5,7 +5,6 @@ import { getStoredAccessToken } from "../helpers/authHelper";
 const useGetRecentTransactionsQuery = (book_id: number) => {
   return useQuery<Transaction[]>({
     retry: 0,
-    enabled: !!book_id,
     queryKey: ["getRecentTransactions", book_id],
     queryFn: async () => {
       try {
