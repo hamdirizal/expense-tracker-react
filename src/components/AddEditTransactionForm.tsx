@@ -121,15 +121,14 @@ const AddEditTransactionForm = () => {
         <br />
         <br />
         <form action="" className="border border-red-500">
+          
+          <Heading3 title="Delete transaction?" />          
+          <p>This action cannot be undone. Type "Delete" to confirm.</p>
           <div className="flex">
             <label>
-              <input type="Checkbox" className="mr-2" />
-              <span>Delete transaction</span>
+              <input className="myapp-input-text" type="text" />
+              <button type="button">Confirm</button>
             </label>
-          </div>
-          <p>This action cannot be undone.</p>
-          <div>
-            <button>Confirm deletion</button>
           </div>
         </form>
       </>
