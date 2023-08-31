@@ -16,7 +16,8 @@ const useGetAuthUserQuery = () => {
           },
         });
         const data = await res.json();
-        return data;
+
+        return data?.id ? data : null;
       } catch (error) {
         return null;
       }

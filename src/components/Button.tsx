@@ -26,7 +26,7 @@ const Button = ({
   };
   return (
     <button
-      className={`rounded text-center active:scale-98 font-bold text-sm leading-none ${
+      className={`button-shadow rounded text-center active:scale-98 font-bold text-sm leading-none ${
         variantClasses[variant] as string
       } ${sizeClasses[size] as string} ${isFullWidth ? "w-full" : ""} `}
       type={type}

@@ -40,8 +40,15 @@ const AddTransactionPage = () => {
         <title>Add Transaction | {AppTitle}</title>
       </Helmet>
       <CurrentBookPanel />
-      <PageTitle title="Add transaction" />
-      {getAuthUserQuery.data?.active_book ? renderContent() : null}
+      <div className="mt-6">
+        <PageTitle title="Add transaction" />
+      </div>
+
+      {getAuthUserQuery.data?.active_book ? (
+        renderContent()
+      ) : (
+        <div>You don't have any active book.</div>
+      )}
     </>
   );
 };
