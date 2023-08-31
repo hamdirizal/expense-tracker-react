@@ -39,10 +39,6 @@ export interface UserConfig {
   nickname: string | null;
 }
 
-export interface LoginResponse {
-  access_token: string;
-}
-
 export interface User {
   active_book: Book | null;
   active_book_id: number | null;
@@ -50,4 +46,18 @@ export interface User {
   email: string;
   id: string;
   nickname: string | null;
+}
+
+//@deprecated
+export interface LoginResponse {
+  access_token: string;
+}
+
+export interface ApiLoginResponse {
+  access_token: string;
+}
+
+export interface ApiLoginPayload {
+  email: string;
+  password: string;
 }

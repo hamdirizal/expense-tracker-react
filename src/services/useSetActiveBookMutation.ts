@@ -8,7 +8,6 @@ const useSetActiveBookMutation = () => {
   return useMutation(["setActiveBook"], {
     retry: 0,
     mutationFn: async (args: any) => {
-      console.log('ARGS', args)
       try {
         const response = await fetch(
           "http://localhost:8001/api/set-active-book.php",

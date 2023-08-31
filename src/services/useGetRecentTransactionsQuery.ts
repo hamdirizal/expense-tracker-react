@@ -8,7 +8,6 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
     enabled: !!book_id,
     queryKey: ["getRecentTransactions", book_id],
     queryFn: async () => {
-      console.log('BOOKID', book_id)
       try {
         const res = await fetch(
           "http://localhost:8001/api/get-transactions.php?book_id=" + book_id,

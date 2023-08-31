@@ -3,6 +3,7 @@ import useLoginUserMutation from "../services/useLoginUserMutation";
 import LoadingSpinner from "./LoadingSpinner";
 import Button from "./Button";
 import ErrorDiv from "./ErrorDiv";
+import VarDump from "./VarDump";
 
 const LoginBox = () => {
   const loginUserMutation = useLoginUserMutation();
@@ -36,8 +37,7 @@ const LoginBox = () => {
               className="bg-grey-input-bg border text-white-text border-grey-input-border rounded w-full px-4 py-2"
               type="text"
               placeholder="Email"
-              required
-              {...register("email", { required: true })}
+              {...register("email", { required: false })}
             />
           </div>
           <div className="mb-4">
@@ -45,16 +45,13 @@ const LoginBox = () => {
               className="bg-grey-input-bg border text-white-text border-grey-input-border rounded w-full px-4 py-2"
               type="text"
               placeholder="Password"
-              required
-              {...register("password", { required: true })}
+              {...register("password", { required: false })}
             />
           </div>
-          {!loginUserMutation.data && loginUserMutation.isSuccess ? (
-            <div className="mb-2">
-              <ErrorDiv error="Login failed" />
-            </div>
+          {loginUserMutation.isError ? (
+            <ErrorDiv error={loginUserMutation.error.message} />
           ) : null}
-          <div className="h-10 relative flex justify-center items-center">
+          <div className="h-10 relative flex justify-center items-center mt-4">
             {loginUserMutation.isLoading ? (
               <LoadingSpinner isOverlayed={false} />
             ) : (
