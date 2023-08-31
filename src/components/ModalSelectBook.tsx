@@ -36,8 +36,7 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
   const onFormSubmitted = (data: any) => {
     if (getAuthUserQuery?.data?.id) {
       createBookMutation.mutate({
-        title: data.title,
-        owner: getAuthUserQuery.data.id,
+        book_title: data.title,
       });
     }
   };

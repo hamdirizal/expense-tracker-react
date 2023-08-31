@@ -58,7 +58,7 @@ const AddEditTransactionForm = () => {
           <div>Create new book</div>
           <div className="">
             <input
-              className="border-2 border-gray-400 mr-3"
+              className="myapp-input-text myapp-outline"
               required
               type="date"
               placeholder="Date"
@@ -66,7 +66,7 @@ const AddEditTransactionForm = () => {
             />
             <br />
             <input
-              className="border-2 border-gray-400 mr-3"
+              className="myapp-input-text myapp-outline"
               required
               type="text"
               placeholder="Transaction title"
@@ -74,7 +74,7 @@ const AddEditTransactionForm = () => {
             />
             <br />
             <input
-              className="border-2 border-gray-400 mr-3"
+              className="myapp-input-text"
               required
               type="number"
               placeholder="Amount"
@@ -82,8 +82,9 @@ const AddEditTransactionForm = () => {
             />
             <br />
             <div>
-              <label>
+              <label className="mr-6">
                 <input
+                  className="myapp-radio mr-3"
                   type="radio"
                   value="no"
                   {...register("is_outgoing", { required: true })}
@@ -92,6 +93,7 @@ const AddEditTransactionForm = () => {
               </label>
               <label>
                 <input
+                  className="myapp-radio mr-3"
                   type="radio"
                   value="yes"
                   {...register("is_outgoing", { required: true })}
@@ -99,12 +101,15 @@ const AddEditTransactionForm = () => {
                 Outgoing
               </label>
             </div>
-            <input
-              className="border-2 border-gray-400 mr-3"
-              type="text"
-              placeholder="Description"
-              {...register("description")}
-            />
+            <textarea placeholder="Description"
+              {...register("description")} className="myapp-textarea"></textarea>
+            <br />
+            <br />
+            <div>
+              <input type="checkbox" className="myapp-checkbox mr-3"/>
+              <span className="text-red-text">Delete this transaction</span>
+            </div>
+            <br />
             <br />
             <div className="w-[200px]">
               <Button

@@ -71,3 +71,11 @@ export interface ApiLoginPayload {
 export interface ApiSetActiveBookPayload {
   book_id: number;
 }
+
+export interface ApiCreateBookPayload {
+  book_title: string;
+}
+
+export interface ApiCreateBookResponse {
+  foo: string;
+}

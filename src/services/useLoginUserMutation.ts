@@ -5,12 +5,7 @@ import { setAccessToken } from "../helpers/authHelper";
 
 const useLoginUserMutation = () => {
   const queryClient = useQueryClient();
-  return useMutation<
-    ApiLoginResponse,
-    Error,
-    ApiLoginPayload,
-    unknown
-  >(["loginUser"], {
+  return useMutation<ApiLoginResponse, Error, ApiLoginPayload>(["loginUser"], {
     mutationFn: async (args) => {
       const response = await fetch("http://localhost:8001/api/login.php", {
         method: "POST",
@@ -26,7 +21,7 @@ const useLoginUserMutation = () => {
         throw new Error((await response.json()).msg);
       }
       const successData = await response.json();
-      if(successData.access_token) {
+      if (successData.access_token) {
         setAccessToken(successData.access_token);
       }
       return successData;
