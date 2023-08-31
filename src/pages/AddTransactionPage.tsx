@@ -24,7 +24,7 @@ const AddTransactionPage = () => {
         <AddEditTransactionForm />
         <hr />
         <SectionTitle title="Recent input" />
-        {getRecentTransactionsQuery?.data?.length ? (
+        {getRecentTransactionsQuery.data?.length ? (
           <TransactionList
             isLoading={getRecentTransactionsQuery.isLoading}
             transactions={getRecentTransactionsQuery.data}
