@@ -12,6 +12,7 @@ import Button from "./Button";
 import Heading2 from "./Heading2";
 import useSetActiveBookMutation from "../services/useSetActiveBookMutation";
 import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
+import ErrorDiv from "./ErrorDiv";
 
 interface ModalSelectBookProps {
   isOpen: boolean;
@@ -62,8 +63,11 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
         <div className="mb-1">
           <Heading3 title="Collaborated books" />
         </div>
+        {getCollaboratedBooksQuery.isError && (
+          <ErrorDiv error={getCollaboratedBooksQuery.error.message} />
+        )}
         {getCollaboratedBooksQuery.isSuccess &&
-        getCollaboratedBooksQuery.data?.length ? (
+        getCollaboratedBooksQuery.data.length ? (
           <div>
             {getCollaboratedBooksQuery.data.map((book: Book) => (
               <BookCard
@@ -74,9 +78,12 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
               />
             ))}
           </div>
-        ) : (
+        ) : null}
+        {getCollaboratedBooksQuery.isSuccess &&
+        getCollaboratedBooksQuery.data.length === 0 ? (
           <div>You are not collaborating on any books.</div>
-        )}
+        ) : null}
+
         {setActiveBookMutation.isLoading && (
           <LoadingSpinner isOverlayed={true} />
         )}
@@ -126,6 +133,9 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
           <div className="mb-2">
             <Heading3 title="Owned books" />
           </div>
+          {getOwnedBooksQuery.isError && (
+            <ErrorDiv error={getOwnedBooksQuery.error.message} />
+          )}
           {getOwnedBooksQuery.isSuccess && (
             <div>
               {getOwnedBooksQuery.data.map((book: Book) => (
