@@ -1,7 +1,6 @@
 import useCreateBookMutation from "../services/useCreateBookMutation";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
-import useUpsertUserConfigMutation from "../services/useUpsertUserConfigMutation";
 import { Book } from "../types";
 import BookCard from "./BookCard";
 import Heading3 from "./Heading3";
