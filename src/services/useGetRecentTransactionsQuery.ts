@@ -21,6 +21,7 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
       if (!response.ok) {
         throw new Error((await response.json()).msg);
       }
+
       return await response.json();
     },
   });

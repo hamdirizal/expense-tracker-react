@@ -7,20 +7,21 @@ const useGetAuthUserQuery = () => {
     retry: 0,
     queryKey: ["getAuthUser"],
     queryFn: async () => {
-      try {
-        const res = await fetch("http://localhost:8001/api/get-my-info.php", {
+      const response = await fetch(
+        "http://localhost:8001/api/get-my-info.php",
+        {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + getStoredAccessToken(),
           },
-        });
-        const data = await res.json();
-
-        return data?.id ? data : null;
-      } catch (error) {
-        return null;
+        }
+      );
+      if (!response.ok) {
+        throw new Error((await response.json()).msg);
       }
+
+      return await response.json();
     },
   });
 };
