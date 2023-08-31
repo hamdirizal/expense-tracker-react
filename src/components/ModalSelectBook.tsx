@@ -57,6 +57,34 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
     }
   }, [createBookMutation]);
 
+  const renderCollaboratedBooksSection = () => {
+    return (
+      <div className="relative mt-6">
+        <div className="mb-2">
+          <Heading3 title="Collaborated books" />
+        </div>
+        {getCollaboratedBooksQuery.isSuccess &&
+        getCollaboratedBooksQuery.data?.length ? (
+          <div>
+            {getCollaboratedBooksQuery.data.map((book: Book) => (
+              <BookCard
+                onActivate={onBookActivated}
+                isActive={getAuthUserQuery?.data?.active_book_id === book.id}
+                book={book}
+                key={book.id}
+              />
+            ))}
+          </div>
+        ) : (
+          <div>You are not collaborating on any books.</div>
+        )}
+        {setActiveBookMutation.isLoading && (
+          <LoadingSpinner isOverlayed={true} />
+        )}
+      </div>
+    );
+  };
+
   const renderContent = () => {
     return (
       <>
@@ -116,26 +144,7 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
           )}
         </div>
 
-        <div className="relative mt-4">
-          <div className="mb-2">
-            <Heading3 title="Collaborated books" />
-          </div>
-          {getCollaboratedBooksQuery.isSuccess && (
-            <div>
-              {getCollaboratedBooksQuery.data.map((book: Book) => (
-                <BookCard
-                  onActivate={onBookActivated}
-                  isActive={getAuthUserQuery?.data?.active_book_id === book.id}
-                  book={book}
-                  key={book.id}
-                />
-              ))}
-            </div>
-          )}
-          {setActiveBookMutation.isLoading && (
-            <LoadingSpinner isOverlayed={true} />
-          )}
-        </div>
+        {renderCollaboratedBooksSection()}
       </>
     );
   };
