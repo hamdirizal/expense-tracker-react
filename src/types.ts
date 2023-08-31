@@ -42,3 +42,12 @@ export interface UserConfig {
 export interface LoginResponse {
   access_token: string;
 }
+
+export interface User {
+  active_book: Book | null;
+  active_book_id: number | null;
+  created_at: string;
+  email: string;
+  id: string;
+  nickname: string | null;
+}

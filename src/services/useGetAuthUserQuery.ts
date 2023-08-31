@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabaseClient } from "../main";
-import { User } from "@supabase/supabase-js";
 import { getStoredAccessToken } from "../helpers/authHelper";
+import { User } from "../types";
 
-const useGetAuthUserQuery = () => {  
-  return useQuery<User | null>({
+const useGetAuthUserQuery = () => {
+  return useQuery<User, null>({
     retry: 0,
     queryKey: ["getAuthUser"],
     queryFn: async () => {
@@ -13,7 +12,7 @@ const useGetAuthUserQuery = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + getStoredAccessToken(),
+            Authorization: "Bearer " + getStoredAccessToken(),
           },
         });
         const data = await res.json();

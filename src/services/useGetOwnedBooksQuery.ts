@@ -4,7 +4,7 @@ import { Book } from "../types";
 import { getStoredAccessToken } from "../helpers/authHelper";
 
 const useGetOwnedBooksQuery = () => {
-  return useQuery<Book[], Error>({
+  return useQuery<Book[], null>({
     retry: 0,
     queryKey: ["getOwnedBooks"],
     queryFn: async () => {
