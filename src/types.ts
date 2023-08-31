@@ -57,7 +57,17 @@ export interface ApiLoginResponse {
   access_token: string;
 }
 
+
+
+export interface ApiGenericSuccessResponse {
+  msg: string;
+}
+
 export interface ApiLoginPayload {
   email: string;
   password: string;
+}
+
+export interface ApiSetActiveBookPayload {
+  book_id: number;
 }
