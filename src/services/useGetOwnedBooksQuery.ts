@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { supabaseClient } from "../main";
 import { Book } from "../types";
 import { getStoredAccessToken } from "../helpers/authHelper";
 
