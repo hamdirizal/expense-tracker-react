@@ -12,7 +12,7 @@ const Modal = ({ isOpen, closeFn, content }: ModalProps) => {
     <Dialog
       className="border-2 border-red-500 fixed inset-0 items-start justify-center items-center flex"
       open={isOpen}
-      onClose={() => closeFn()}
+      onClose={() => {}}
     >
       <div
         className=" backdrop-blur-[3px] fixed inset-0 bg-black/70 z-10 flex "
