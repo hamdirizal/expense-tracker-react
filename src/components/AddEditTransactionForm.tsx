@@ -142,7 +142,7 @@ const AddEditTransactionForm = ({
             {renderFormContent()}
           </form>
         ) : (
-          <div></div>
+          <div>{renderFormContent()}</div>
         )}
       </div>
     );
