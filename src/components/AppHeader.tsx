@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppPaths } from "../constants";
-import useLogoutUserMutation from "../services/useLogoutUserMutation";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
+import { logout } from "../helpers/authHelper";
 
 const AppHeader = () => {
-  const logoutUserMutation = useLogoutUserMutation();
+  const navigate = useNavigate();
   const getAuthUserQuery = useGetAuthUserQuery();
   return (
     <header
@@ -20,7 +20,9 @@ const AppHeader = () => {
       <span>Search</span>
       <span>
         Welcome, {getAuthUserQuery.data?.nickname || "No name"}
-        <button onClick={() => logoutUserMutation.mutate()}>(logout)</button>
+        <button onClick={() => {
+          logout();
+        }}>(logout)</button>
       </span>
     </header>
   );

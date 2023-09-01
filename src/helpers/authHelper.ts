@@ -9,3 +9,8 @@ export const purgeStoredAccessToken = () => {
 export const setAccessToken = (token: string) => {
   localStorage.setItem("access_token", token);
 };
+
+export const logout = () => {
+  purgeStoredAccessToken();
+  window.location.reload();
+};
