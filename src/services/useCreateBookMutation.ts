@@ -1,6 +1,5 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { supabaseClient } from "../main";
-import { ApiCreateBookPayload, ApiCreateBookResponse, ApiGenericSuccessResponse } from "../types";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { ApiCreateBookPayload, ApiGenericSuccessResponse } from "../types";
 import { getStoredAccessToken } from "../helpers/authHelper";
 
 const useCreateBookMutation = () => {

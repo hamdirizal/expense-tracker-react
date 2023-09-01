@@ -14,8 +14,8 @@ const AppHeader = () => {
       <span className="font-bold">Daily Expense</span>
 
       <Link to={AppPaths.DASHBOARD}>Dashboard</Link>
-      <span>Listing</span>
       <Link to={AppPaths.ADD_TRANSACTION}>Add Transaction</Link>
+      <span>Listing</span>
 
       <span>Search</span>
       <span>

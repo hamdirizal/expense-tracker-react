@@ -7,7 +7,11 @@ import useGetUserConfigQuery from "../services/useGetUserConfigQuery";
 import useCreateTransactionMutation from "../services/useCreateTransactionMutation";
 import { CreateTransactionMutationPayload } from "../types";
 
-const AddEditTransactionForm = () => {
+interface AddEditTransactionFormProps {
+  isEditing: boolean;
+}
+
+const AddEditTransactionForm = ({ isEditing }: AddEditTransactionFormProps) => {
   const getAuthUserQuery = useGetAuthUserQuery();
   const createTransactionMutation = useCreateTransactionMutation();
   const {
@@ -56,7 +60,6 @@ const AddEditTransactionForm = () => {
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}
           className="relative"
         >
-          <div>Create new book</div>
           <div className="">
             <input
               className="myapp-input-text myapp-outline"

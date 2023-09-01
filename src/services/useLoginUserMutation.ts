@@ -1,5 +1,4 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { supabaseClient } from "../main";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ApiLoginPayload, ApiLoginResponse } from "../types";
 import { setAccessToken } from "../helpers/authHelper";
 

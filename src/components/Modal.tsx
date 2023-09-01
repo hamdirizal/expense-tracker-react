@@ -19,7 +19,7 @@ const Modal = ({ isOpen, closeFn, content }: ModalProps) => {
           <button
             onClick={closeFn}
             type="button"
-            className="absolute right-4 top-4 w-7 h-7 z-50 active:scale-75 rounded-full app-outline"
+            className="absolute right-4 top-4 w-10 h-10 p-2 z-50 active:scale-75 rounded-full app-outline"
           >
             <SvgCloseIcon color="#999999" />
           </button>

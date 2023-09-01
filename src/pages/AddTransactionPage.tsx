@@ -21,7 +21,7 @@ const AddTransactionPage = () => {
   const renderContent = () => {
     return (
       <div>
-        <AddEditTransactionForm />
+        <AddEditTransactionForm isEditing={false} />
         <hr />
         <SectionTitle title="Recent input" />
         {getRecentTransactionsQuery.data?.length ? (
