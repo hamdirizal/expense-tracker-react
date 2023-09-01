@@ -12,9 +12,10 @@ export interface Transaction {
   book_id: number;
   created_at: string;
   creator_id: string;
-  date: string;
+  tx_date: string;
   description: string | null;
   is_outgoing: "yes" | "no";
+  is_editable?: "yes" | "no";
 }
 
 export interface CreateTransactionMutationPayload {
@@ -85,3 +86,5 @@ export interface ApiCreateTransactionPayload {
   is_outgoing: "yes" | "no";
   description?: string;
 }
+
+export interface ApiGetTransactionPayload extends Transaction {}

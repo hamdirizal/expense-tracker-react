@@ -3,15 +3,16 @@ import { useEffect } from "react";
 import Button from "./Button";
 import Heading3 from "./Heading3";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
-import useGetUserConfigQuery from "../services/useGetUserConfigQuery";
 import useCreateTransactionMutation from "../services/useCreateTransactionMutation";
-import { CreateTransactionMutationPayload } from "../types";
+import { CreateTransactionMutationPayload, Transaction } from "../types";
 
 interface AddEditTransactionFormProps {
-  isEditing: boolean;
+  transaction: Transaction | null;
 }
 
-const AddEditTransactionForm = ({ isEditing }: AddEditTransactionFormProps) => {
+const AddEditTransactionForm = ({
+  transaction,
+}: AddEditTransactionFormProps) => {
   const getAuthUserQuery = useGetAuthUserQuery();
   const createTransactionMutation = useCreateTransactionMutation();
   const {
@@ -23,9 +24,9 @@ const AddEditTransactionForm = ({ isEditing }: AddEditTransactionFormProps) => {
     defaultValues: {
       is_outgoing: "yes",
       date: "2021-10-10",
-      title: "",
+      title: transaction ? transaction.title : "",
       description: "",
-      amount: "",
+      amount: transaction ? transaction.amount : "",
     },
   });
 
@@ -52,85 +53,98 @@ const AddEditTransactionForm = ({ isEditing }: AddEditTransactionFormProps) => {
 
   useEffect(onDataCreated, [createTransactionMutation]);
 
+  const renderFormContent = () => {
+    return (
+      <div className="">
+        <div className="mb-4">
+          <input
+            className="myapp-input-text myapp-outline"
+            required
+            type="date"
+            disabled={true}
+            placeholder="Date"
+            {...register("date", { required: true })}
+          />
+        </div>
+        <div className="mb-4">
+          <input
+            className="myapp-input-text myapp-outline"
+            required
+            type="text"
+            placeholder="Transaction title"
+            {...register("title", { required: true })}
+          />
+        </div>
+        <input
+          className="myapp-input-text"
+          required
+          type="number"
+          placeholder="Amount"
+          {...register("amount", { required: true })}
+        />
+        <br />
+        <div>
+          <label className="mr-6">
+            <input
+              className="myapp-radio mr-3"
+              type="radio"
+              value="no"
+              {...register("is_outgoing", { required: true })}
+            />
+            Incoming
+          </label>
+          <label>
+            <input
+              className="myapp-radio mr-3"
+              type="radio"
+              value="yes"
+              {...register("is_outgoing", { required: true })}
+            />
+            Outgoing
+          </label>
+        </div>
+        <textarea
+          placeholder="Description"
+          {...register("description")}
+          className="myapp-textarea"
+        ></textarea>
+        <br />
+        <br />
+        <div>
+          <input type="checkbox" className="myapp-checkbox mr-3" />
+          Delete this transaction
+        </div>
+        <br />
+        <br />
+        <div className="w-[200px]">
+          <Button
+            isFullWidth={false}
+            size="regular"
+            label={transaction ? "Update transaction" : "Create transaction"}
+            variant="primary"
+            onClick={() => {}}
+            type="submit"
+          />
+        </div>
+      </div>
+    );
+  };
+
   const renderFinalMarkup = () => {
     return (
-      <>
-        <form
-          action=""
-          onSubmit={handleSubmit((data) => onFormSubmitted(data))}
-          className="relative"
-        >
-          <div className="">
-            <input
-              className="myapp-input-text myapp-outline"
-              required
-              type="date"
-              placeholder="Date"
-              {...register("date", { required: true })}
-            />
-            <br />
-            <input
-              className="myapp-input-text myapp-outline"
-              required
-              type="text"
-              placeholder="Transaction title"
-              {...register("title", { required: true })}
-            />
-            <br />
-            <input
-              className="myapp-input-text"
-              required
-              type="number"
-              placeholder="Amount"
-              {...register("amount", { required: true })}
-            />
-            <br />
-            <div>
-              <label className="mr-6">
-                <input
-                  className="myapp-radio mr-3"
-                  type="radio"
-                  value="no"
-                  {...register("is_outgoing", { required: true })}
-                />
-                Incoming
-              </label>
-              <label>
-                <input
-                  className="myapp-radio mr-3"
-                  type="radio"
-                  value="yes"
-                  {...register("is_outgoing", { required: true })}
-                />
-                Outgoing
-              </label>
-            </div>
-            <textarea
-              placeholder="Description"
-              {...register("description")}
-              className="myapp-textarea"
-            ></textarea>
-            <br />
-            <br />
-            <div>
-              <input type="checkbox" className="myapp-checkbox mr-3" />
-              Delete this transaction
-            </div>
-            <br />
-            <br />
-            <div className="w-[200px]">
-              <Button
-                isFullWidth={false}
-                size="regular"
-                label="Create transaction"
-                variant="primary"
-                onClick={() => {}}
-                type="submit"
-              />
-            </div>
-          </div>
-        </form>
-      </>
+      <div className="relative border border-grey-input-border bg-grey-bg-2 rounded px-4 pt-4 pb-5">
+        {transaction?.is_editable === "yes" ? (
+          <form
+            action=""
+            onSubmit={handleSubmit((data) => onFormSubmitted(data))}
+            className="relative"
+          >
+            {renderFormContent()}
+          </form>
+        ) : (
+          <div></div>
+        )}
+      </div>
     );
   };
 

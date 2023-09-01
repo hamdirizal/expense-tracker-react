@@ -39,6 +39,10 @@ input:-webkit-autofill{
   outline-color: white;
   outline-offset: -1px;
 }
+.myapp-input-text:disabled, .myapp-textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 .myapp-checkbox, .myapp-radio{
   transform: scale(1.5);
   outline-width: 1px;

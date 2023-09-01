@@ -15,6 +15,7 @@ export default {
       "grey-text": "#bdbec9",
       "black-text": "#2a1c2e",
       "red-text": "#fb5178",
+      "orange-text": "#efbd47",
 
       "green-button": "#51e4c0",
 

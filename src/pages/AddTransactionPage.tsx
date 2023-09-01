@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import PageTitle from "../components/PageTitle";
 import { AppTitle } from "../constants";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import TransactionList from "../components/TransactionList";
@@ -9,6 +7,7 @@ import SectionTitle from "../components/SectionTitle";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 import AddEditTransactionForm from "../components/AddEditTransactionForm";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
+import Heading1 from "../components/Heading1";
 
 const AddTransactionPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
@@ -21,8 +20,7 @@ const AddTransactionPage = () => {
   const renderContent = () => {
     return (
       <div>
-        <AddEditTransactionForm isEditing={false} />
-        <hr />
+        <AddEditTransactionForm transaction={null} />
         <SectionTitle title="Recent input" />
         {getRecentTransactionsQuery.data?.length ? (
           <TransactionList
@@ -41,7 +39,7 @@ const AddTransactionPage = () => {
       </Helmet>
       <CurrentBookPanel />
       <div className="mt-6">
-        <PageTitle title="Add transaction" />
+        <Heading1 title="Add transaction" />
       </div>
 
       {getAuthUserQuery.data?.active_book ? (
