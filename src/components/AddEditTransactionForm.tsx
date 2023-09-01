@@ -26,12 +26,13 @@ const AddEditTransactionForm = () => {
   });
 
   const onFormSubmitted = (data: any) => {
-    const payload: CreateTransactionMutationPayload = {
-      ...data,
-      book_id: getAuthUserQuery.data?.active_book_id,
-      creator_id: getAuthUserQuery.data?.id,
-    };
-    createTransactionMutation.mutate(payload);
+    createTransactionMutation.mutate({
+      tx_date: data.date,
+      is_outgoing: data.is_outgoing,
+      title: data.title,
+      description: data.description,
+      amount: data.amount,
+    });
   };
 
   const onDataCreated = () => {
@@ -101,13 +102,16 @@ const AddEditTransactionForm = () => {
                 Outgoing
               </label>
             </div>
-            <textarea placeholder="Description"
-              {...register("description")} className="myapp-textarea"></textarea>
+            <textarea
+              placeholder="Description"
+              {...register("description")}
+              className="myapp-textarea"
+            ></textarea>
             <br />
             <br />
             <div>
-              <input type="checkbox" className="myapp-checkbox mr-3"/>
-              <span className="text-red-text">Delete this transaction</span>
+              <input type="checkbox" className="myapp-checkbox mr-3" />
+              Delete this transaction
             </div>
             <br />
             <br />
@@ -121,19 +125,6 @@ const AddEditTransactionForm = () => {
                 type="submit"
               />
             </div>
-          </div>
-        </form>
-        <br />
-        <br />
-        <form action="" className="border border-red-500">
-          
-          <Heading3 title="Delete transaction?" />          
-          <p>This action cannot be undone. Type "Delete" to confirm.</p>
-          <div className="flex">
-            <label>
-              <input className="myapp-input-text" type="text" />
-              <button type="button">Confirm</button>
-            </label>
           </div>
         </form>
       </>

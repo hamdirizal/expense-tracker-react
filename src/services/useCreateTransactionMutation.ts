@@ -1,23 +1,35 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { supabaseClient } from "../main";
-import { CreateTransactionMutationPayload } from "../types";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  ApiCreateTransactionPayload,
+  ApiGenericSuccessResponse,
+} from "../types";
+import { getStoredAccessToken } from "../helpers/authHelper";
 
 const useCreateTransactionMutation = () => {
   const queryClient = useQueryClient();
-  return useMutation(["createTransaction"], {
-    mutationFn: async (args: CreateTransactionMutationPayload) => {
-      const { data, error } = await supabaseClient
-        .from("transactions")
-        .insert([{ ...args }])
-        .select();
-      if (error) {
-        throw new Error(error.message);
-      }
-      if (!data) {
-        throw new Error("Cannot create transaction");
+  return useMutation<
+    ApiGenericSuccessResponse,
+    Error,
+    ApiCreateTransactionPayload
+  >(["createTransaction"], {
+    mutationFn: async (args) => {
+      const response = await fetch(
+        "http://localhost:8001/api/create-transaction.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + getStoredAccessToken(),
+          },
+          body: JSON.stringify(args),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error((await response.json()).msg);
       }
 
-      return data;
+      return await response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["getRecentTransactions"]);

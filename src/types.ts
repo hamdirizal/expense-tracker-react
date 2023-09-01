@@ -57,8 +57,6 @@ export interface ApiLoginResponse {
   access_token: string;
 }
 
-
-
 export interface ApiGenericSuccessResponse {
   msg: string;
 }
@@ -78,4 +76,12 @@ export interface ApiCreateBookPayload {
 
 export interface ApiCreateBookResponse {
   foo: string;
+}
+
+export interface ApiCreateTransactionPayload {
+  tx_date: string;
+  title: string;
+  amount: number;
+  is_outgoing: "yes" | "no";
+  description?: string;
 }
