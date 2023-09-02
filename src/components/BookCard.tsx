@@ -18,19 +18,10 @@ const BookCard = ({ book, isActive, onActivate }: BookCardProps) => {
     >
       <div>
         <span className="font-bold text-white-text mr-2">{book.title}</span>
-        {isActive ? <span>(selected)</span> : null}
+        
       </div>
       <div className="flex justify-start mt-2">
-        <Button
-          isFullWidth={false}
-          size="small"
-          type="button"
-          variant="secondary"
-          onClick={() => {}}
-          label="Manage"
-        />
-        <div className="w-2"></div>
-        {isActive ? null : (
+        {isActive ? <div>Selected</div> : (
           <Button
             isFullWidth={false}
             size="small"

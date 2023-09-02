@@ -13,6 +13,8 @@ import Heading2 from "./Heading2";
 import useSetActiveBookMutation from "../services/useSetActiveBookMutation";
 import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
 import ErrorDiv from "./ErrorDiv";
+import { useNavigate } from "react-router-dom";
+import { AppPaths } from "../constants";
 
 interface ModalSelectBookProps {
   isOpen: boolean;
@@ -25,6 +27,7 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
   const createBookMutation = useCreateBookMutation();
   const getAuthUserQuery = useGetAuthUserQuery();
   const setActiveBookMutation = useSetActiveBookMutation();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -42,11 +45,7 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
   };
 
   const onBookActivated = (book_id: number) => {
-    if (getAuthUserQuery?.data?.id) {
-      setActiveBookMutation.mutate({
-        book_id: book_id,
-      });
-    }
+    navigate(AppPaths.BOOK_DASHBOARD.replace(":book_id", book_id.toString()));
     closeFn();
   };
 
