@@ -33,7 +33,7 @@ const AddEditTransactionForm = ({
   const onFormSubmitted = (data: any) => {
     createTransactionMutation.mutate({
       tx_date: data.date,
-      is_outgoing: data.is_outgoing,
+      is_outgoing: data.is_outgoing === "yes",
       title: data.title,
       description: data.description,
       amount: data.amount,
@@ -130,20 +130,36 @@ const AddEditTransactionForm = ({
     );
   };
 
+  const renderForm = () => {
+    if (transaction && transaction.is_editable) {
+      return (
+        <form
+          action=""
+          onSubmit={handleSubmit((data) => onFormSubmitted(data))}
+          className="relative"
+        >
+          {renderFormContent()}
+        </form>
+      );
+    } else if (transaction) {
+      return <div>{renderFormContent()}</div>;
+    } else {
+      return (
+        <form
+          action=""
+          onSubmit={handleSubmit((data) => onFormSubmitted(data))}
+          className="relative"
+        >
+          {renderFormContent()}
+        </form>
+      );
+    }
+  };
+
   const renderFinalMarkup = () => {
     return (
       <div className="relative border border-grey-input-border bg-grey-bg-2 rounded px-4 pt-4 pb-5">
-        {transaction?.is_editable === "yes" ? (
-          <form
-            action=""
-            onSubmit={handleSubmit((data) => onFormSubmitted(data))}
-            className="relative"
-          >
-            {renderFormContent()}
-          </form>
-        ) : (
-          <div>{renderFormContent()}</div>
-        )}
+        {renderForm()}
       </div>
     );
   };

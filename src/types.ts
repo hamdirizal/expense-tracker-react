@@ -14,8 +14,8 @@ export interface Transaction {
   creator_id: string;
   tx_date: string;
   description: string | null;
-  is_outgoing: "yes" | "no";
-  is_editable?: "yes" | "no";
+  is_outgoing: boolean;
+  is_editable?: boolean;
 }
 
 export interface CreateTransactionMutationPayload {
@@ -24,7 +24,7 @@ export interface CreateTransactionMutationPayload {
   creator_id: string;
   date: string;
   description?: string;
-  is_outgoing: "yes" | "no";
+  is_outgoing: boolean;
   title: string;
 }
 
@@ -83,7 +83,7 @@ export interface ApiCreateTransactionPayload {
   tx_date: string;
   title: string;
   amount: number;
-  is_outgoing: "yes" | "no";
+  is_outgoing: boolean;
   description?: string;
 }
 

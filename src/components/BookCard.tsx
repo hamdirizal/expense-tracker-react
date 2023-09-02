@@ -20,7 +20,6 @@ const BookCard = ({ book, isActive, onActivate }: BookCardProps) => {
         <span className="font-bold text-white-text mr-2">{book.title}</span>
         {isActive ? <span>(selected)</span> : null}
       </div>
-      <div className="text-minus-1">Owner: John Doe</div>
       <div className="flex justify-start mt-2">
         <Button
           isFullWidth={false}
