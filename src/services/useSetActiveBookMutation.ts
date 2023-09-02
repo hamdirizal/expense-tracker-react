@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ApiGenericSuccessResponse, ApiSetActiveBookPayload } from "../types";
-import { getStoredAccessToken } from "../helpers/authHelper";
+import { getStoredAccessToken } from "../helpers/storageHelper";
 
 const useSetActiveBookMutation = () => {
   const queryClient = useQueryClient();

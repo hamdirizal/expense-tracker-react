@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getStoredAccessToken } from "../helpers/authHelper";
+import { getStoredAccessToken } from "../helpers/storageHelper";
 import { User } from "../types";
 
 const useGetAuthUserQuery = () => {

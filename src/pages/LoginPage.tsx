@@ -1,7 +1,7 @@
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import { Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { AppTitle } from "../constants";
+import { AppPaths, AppTitle } from "../constants";
 import LoginBox from "../components/LoginBox";
 import Heading1 from "../components/Heading1";
 
@@ -30,7 +30,7 @@ const LoginPage = () => {
   if (getAuthUserQuery.isLoading) {
     return null;
   } else if (getAuthUserQuery.isSuccess && getAuthUserQuery?.data?.id) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to={AppPaths.BOOK_WELCOME} />;
   } else {
     return renderFinalMarkup();
   }

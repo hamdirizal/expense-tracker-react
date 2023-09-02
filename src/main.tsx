@@ -15,11 +15,23 @@ import DashboardHomePage from "./pages/DashboardHomePage.tsx";
 import { AppPaths } from "./constants.ts";
 import AddTransactionPage from "./pages/AddTransactionPage.tsx";
 import EditTransactionPage from "./pages/EditTransactionPage.tsx";
+import BookWelcomPage from "./pages/BookWelcomePage.tsx";
+import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="dashboard" />,
+    element: <Navigate to={AppPaths.BOOK_WELCOME} />,
+  },
+  {
+    path: AppPaths.BOOK_WELCOME,
+    element: <MemberAreaSkeleton />,
+    children: [
+      {
+        path: AppPaths.BOOK_WELCOME,
+        element: <BookWelcomPage />,
+      },
+    ],
   },
   {
     path: AppPaths.DASHBOARD,

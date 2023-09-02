@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Transaction } from "../types";
-import { getStoredAccessToken } from "../helpers/authHelper";
+import { getStoredAccessToken } from "../helpers/storageHelper";
 
 const useGetRecentTransactionsQuery = (book_id: number) => {
   return useQuery<unknown, Error, Transaction[]>({

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { AppPaths } from "../constants";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
-import { logout } from "../helpers/authHelper";
+import { logout } from "../helpers/storageHelper";
 
 const AppHeader = () => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Book } from "../types";
-import { getStoredAccessToken } from "../helpers/authHelper";
+import { getStoredAccessToken } from "../helpers/storageHelper";
 
 const useGetOwnedBooksQuery = () => {
   return useQuery<unknown, Error, Book[]>({
