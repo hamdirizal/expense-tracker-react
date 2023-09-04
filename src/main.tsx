@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./index.scss";
 import { SupabaseClient, createClient } from "@supabase/supabase-js";
 import { createContext } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

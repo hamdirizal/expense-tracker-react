@@ -23,26 +23,25 @@ const LoginBox = () => {
   };
 
   return (
-    <div
-      data-testid="LoginBox"
-      className="w-[90vw] max-w-[380px] bg-grey-bg-2 rounded-lg"
-    >
+    <div data-testid="LoginBox" className="LoginBox">
+      <h1 className="LoginBox__title">eTrackr</h1>
+      <div className="LoginBox__subtitle">Track your expenses</div>
       <div className="relative">
         <form
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}
           className="p-6"
         >
-          <div className="mb-4">
+          <div className="FormRow">
             <input
-              className="myapp-input-text"
+              className="InputText"
               type="text"
               placeholder="Email"
               {...register("email", { required: false })}
             />
           </div>
-          <div className="mb-4">
+          <div className="FormRow">
             <input
-              className="myapp-input-text"
+              className="InputText"
               type="text"
               placeholder="Password"
               {...register("password", { required: false })}
@@ -51,18 +50,15 @@ const LoginBox = () => {
           {loginUserMutation.isError ? (
             <ErrorDiv error={loginUserMutation.error.message} />
           ) : null}
-          <div className="h-10 relative flex justify-center items-center mt-4">
+          <div className="FormRow">
             {loginUserMutation.isLoading ? (
-              <LoadingSpinner isOverlayed={false} />
+              <div className="LoginBox__spinner">
+                <LoadingSpinner isOverlayed={false} />
+              </div>
             ) : (
-              <Button
-                size="regular"
-                isFullWidth={true}
-                onClick={() => {}}
-                variant="primary"
-                type="submit"
-                label="Login"
-              />
+              <button className="Button" type="submit">
+                Login
+              </button>
             )}
           </div>
         </form>

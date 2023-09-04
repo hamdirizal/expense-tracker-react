@@ -3,7 +3,7 @@ interface ErrorDivProps {
 }
 
 const ErrorDiv = ({ error }: ErrorDivProps) => {
-  return <div className="text-red-text text-sm">{error}</div>;
+  return <div className="ErrorDiv">{error}</div>;
 };
 
 export default ErrorDiv;

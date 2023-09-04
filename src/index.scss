@@ -1,0 +1,177 @@
+$font-1: Helvetica, Arial, sans-serif;
+
+$color-text: #333;
+$color-text-error: #ff005c;
+$color-bg-white: #ffffff;
+$color-bg-gray: #f6f5f4;
+$color-primary: #00cb99;
+$color-primary-hilight: #51e4c0;
+$color-bg-textinput: #f6f5f4;
+$color-border-textinput: #ccc;
+
+$fontsize-minus-3: 12px;
+$fontsize-minus-2: 13px;
+$fontsize-minus-1: 14px;
+$fontsize-base: 17px;
+$fontsize-plus-1: 18px;
+$fontsize-plus-2: 19px;
+$fontsize-plus-3: 20px;
+
+$rounded-panel: 10px;
+$rounded-input: 6px;
+
+$page-side-padding: 30px;
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: $fontsize-base;
+}
+
+html {
+  font-family: $font-1;
+  font-size: $fontsize-base;
+} 
+
+body {
+  color: $color-text;
+  font-family: $font-1;
+  font-size: $fontsize-base;
+}
+
+button {
+  appearance: none;
+  border: 0 none;
+  background: transparent;
+  cursor: pointer;
+}
+
+svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.heading-1 {
+  font-size: $fontsize-plus-3;
+  margin-bottom: 1em;
+}
+  
+.Modal {}
+
+.Modal__backdrop {
+  position: fixed; 
+  display: flex;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+}
+.Modal__scrollable {
+  position: fixed;  
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  overflow: auto;
+  padding-top: 60px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 21;
+}
+.Modal__dialog {
+  width: 90vw;  
+  max-width: 540px;
+  background: $color-bg-white;
+  z-index: 22;
+  position: relative;
+  border-radius: 10px;
+  padding: 40px;
+}
+.Modal__close {
+  // absolute right-4 top-4 w-10 h-10 p-2 z-50 active:scale-75 rounded-full app-outline
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  z-index: 50;
+  border-radius: 100%;
+}
+.Modal__close:active {
+  transform: scale(75%);
+}
+
+@media screen and (max-width:640px){
+  .Modal__dialog {
+    width: 85vw;
+    padding: 30px;
+  }
+}
+
+.FormRow {
+  margin-bottom: 0.7rem;
+}
+
+.LoginPage {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 60px;
+}
+
+.LoginBox {
+  width: 90vw;
+  max-width: 380px;
+  padding: 1rem;
+}
+.LoginBox__title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: $color-primary
+}
+.LoginBox__subtitle {
+  margin-bottom: 0.8rem;
+}
+.LoginBox__spinner {
+  justify-content: center;
+  display: flex;
+}
+
+.Button {
+  border-radius: $rounded-input;
+  padding: 0.5rem 1rem;
+  background-color: $color-primary;
+  border: 1px solid $color-primary;
+  color: $color-bg-white;
+  width: 100%;
+  text-align: center;
+  font-size: $fontsize-plus-1;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  line-height: 1;
+}
+
+.InputText {
+  border-radius: $rounded-input;
+  padding: 0.5rem 1rem;
+  background-color: $color-bg-textinput;
+  border: 1px solid #ccc;
+  color: $color-text;
+  width: 100%;
+  line-height: 1;
+}
+
+.ErrorDiv {
+  font-style: ita;
+  color: $color-text-error;
+  margin-bottom: 0.7rem;
+  margin-top: 0.7rem;
+}

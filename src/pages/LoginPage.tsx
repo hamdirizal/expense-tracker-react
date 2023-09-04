@@ -11,18 +11,12 @@ const LoginPage = () => {
     return (
       <div
         data-testid="LoginPage"
-        className="min-h-screen flex justify-center items-start pt-14"
+        className="LoginPage"
       >
         <Helmet>
           <title>Login | {AppTitle}</title>
         </Helmet>
-        <div>
-          <div className="mb-1">
-            <Heading1 title="My App" />
-          </div>
-          <div className="mb-6">Track your expenses</div>
           <LoginBox />
-        </div>
       </div>
     );
   };
