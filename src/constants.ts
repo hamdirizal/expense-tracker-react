@@ -13,7 +13,7 @@ Url scheme:
   Show all transactions for this book. Paginated results. 
 /book/:book_id/transaction/:transaction_id
   Show details of this transaction. Allow editing this transaction.
-/book/:book_id/create-transaction
+/book/:book_id/add-transaction
 /book/:book_id/search-transactions
   Search transactions for this book. Paginated results.
 
@@ -25,9 +25,10 @@ export const AppPaths = {
   LOGIN: "/login",
   BOOK_WELCOME: "/book",
   BOOK_DASHBOARD: "/book/:book_id",
+  BOOK_MANAGE: "/book/:book_id/manage",
+  ADD_TRANSACTION: "/book/:book_id/add-transaction",
   // OLD PATHS
   DASHBOARD: "/dashboard",
-  ADD_TRANSACTION: "/dashboard/add-transaction",
   EDIT_TRANSACTION: "/dashboard/edit-transaction/:transaction_id",
   MANAGE_BOOK: "/dashboard/manage-book/:book_id",
 };

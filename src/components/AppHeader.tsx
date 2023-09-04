@@ -13,16 +13,15 @@ const AppHeader = () => {
     >
       <span className="font-bold">Daily Expense</span>
 
-      <Link to={AppPaths.DASHBOARD}>Dashboard</Link>
-      <Link to={AppPaths.ADD_TRANSACTION}>Add Transaction</Link>
-      <span>Listing</span>
-
-      <span>Search</span>
       <span>
         Welcome, {getAuthUserQuery.data?.nickname || "No name"}
-        <button onClick={() => {
-          logout();
-        }}>(logout)</button>
+        <button
+          onClick={() => {
+            logout();
+          }}
+        >
+          (logout)
+        </button>
       </span>
     </header>
   );

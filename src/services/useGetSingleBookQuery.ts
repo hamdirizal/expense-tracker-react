@@ -1,14 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { Transaction } from "../types";
 import { getStoredAccessToken } from "../helpers/storageHelper";
+import { Book } from "../types";
 
-const useGetRecentTransactionsQuery = (book_id: number) => {
-  return useQuery<number, Error, Transaction[]>({
+const useGetSingleBookQuery = (book_id: number) => {
+  return useQuery<number, Error, Book>({
     retry: 0,
-    queryKey: ["getRecentTransactions", book_id],
+    queryKey: ["getSingleBook", book_id],
+    enabled: !!book_id,
     queryFn: async () => {
       const response = await fetch(
-        "http://localhost:8001/api/get-recently-added-transactions.php?book_id=" + book_id,
+        "http://localhost:8001/api/get-book.php?book_id=" + book_id,
         {
           method: "GET",
           headers: {
@@ -17,7 +18,6 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
           },
         }
       );
-
       if (!response.ok) {
         throw new Error((await response.json()).msg);
       }
@@ -27,4 +27,4 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
   });
 };
 
-export default useGetRecentTransactionsQuery;
+export default useGetSingleBookQuery;

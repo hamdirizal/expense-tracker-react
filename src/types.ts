@@ -80,6 +80,7 @@ export interface ApiCreateBookResponse {
 }
 
 export interface ApiCreateTransactionPayload {
+  book_id: number;
   tx_date: string;
   title: string;
   amount: number;
