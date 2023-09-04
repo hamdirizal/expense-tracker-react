@@ -7,22 +7,22 @@ const AppHeader = () => {
   const navigate = useNavigate();
   const getAuthUserQuery = useGetAuthUserQuery();
   return (
-    <header
-      data-testid="AppHeader"
-      className="flex justify-between mb-2 border-b-2"
-    >
-      <span className="font-bold">Daily Expense</span>
+    <header className="AppHeader" data-testid="AppHeader">
+      <div className="AppHeader__centering">
+        <span className="AppHeader__logo">Daily Expense</span>
 
-      <span>
-        Welcome, {getAuthUserQuery.data?.nickname || "No name"}
-        <button
-          onClick={() => {
-            logout();
-          }}
-        >
-          (logout)
-        </button>
-      </span>
+        <span>
+          Welcome, {getAuthUserQuery.data?.nickname || "No name"}{" "}
+          <button
+            className="ButtonLink"
+            onClick={() => {
+              logout();
+            }}
+          >
+            (logout)
+          </button>
+        </span>
+      </div>
     </header>
   );
 };

@@ -56,7 +56,7 @@ const LoginBox = () => {
                 <LoadingSpinner isOverlayed={false} />
               </div>
             ) : (
-              <button className="Button" type="submit">
+              <button className="ButtonPrimary" type="submit">
                 Login
               </button>
             )}

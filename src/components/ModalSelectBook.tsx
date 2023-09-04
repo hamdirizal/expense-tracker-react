@@ -55,11 +55,39 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
     }
   }, [createBookMutation]);
 
+  const renderOwnedBooksSection = () => {
+    return (
+      <div className="ModalSelectBook__section">
+        <div className="mb-2">
+          <h3 className="ModalSelectBook__subtitle">Owned books</h3>
+        </div>
+        {getOwnedBooksQuery.isError && (
+          <ErrorDiv error={getOwnedBooksQuery.error.message} />
+        )}
+        {getOwnedBooksQuery.isSuccess && (
+          <div>
+            {getOwnedBooksQuery.data.map((book: Book) => (
+              <BookCard
+                onActivate={onBookActivated}
+                isActive={getAuthUserQuery?.data?.active_book_id === book.id}
+                book={book}
+                key={book.id}
+              />
+            ))}
+          </div>
+        )}
+        {setActiveBookMutation.isLoading && (
+          <LoadingSpinner isOverlayed={true} />
+        )}
+      </div>
+    );
+  };
+
   const renderCollaboratedBooksSection = () => {
     return (
-      <div className="relative mt-6">
+      <div className="ModalSelectBook__section">
         <div className="mb-1">
-          <Heading3 title="Collaborated books" />
+          <h3 className="ModalSelectBook__subtitle">Collaborated books</h3>
         </div>
         {getCollaboratedBooksQuery.isError && (
           <ErrorDiv error={getCollaboratedBooksQuery.error.message} />
@@ -91,34 +119,26 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
 
   const renderContent = () => {
     return (
-      <>
-        <div className="mb-3">
-          <Heading2 title="Select or create a book" />
-        </div>
+      <div className="ModalSelectBook">
+        <h2 className="ModalSelectBook__title">Select or create book</h2>
 
         <form
           action=""
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}
           className="relative border border-grey-input-border bg-grey-bg-2 rounded px-4 pt-3 pb-5"
         >
-          <div className="mb-1">Create new book</div>
-          <div className="flex">
+          <div className="ModalSelectBook__newBookForm">
             <input
-              className="bg-grey-input-bg border text-white-text border-grey-input-border rounded w-full px-4 py-2 mr-3"
+              className="InputText"
               required
               type="text"
               placeholder="Book title"
               {...register("title", { required: true })}
             />
-            <div className="w-[240px]">
-              <Button
-                isFullWidth={true}
-                size="regular"
-                label="Create book"
-                variant="primary"
-                onClick={() => {}}
-                type={"submit"}
-              />
+            <div className="ModalSelectBook__submitButton">
+              <button type="submit" className="ButtonPrimary">
+                Create book
+              </button>
             </div>
           </div>
 
@@ -127,32 +147,10 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
           )}
         </form>
 
-        <div className="relative mt-4">
-          <div className="mb-2">
-            <Heading3 title="Owned books" />
-          </div>
-          {getOwnedBooksQuery.isError && (
-            <ErrorDiv error={getOwnedBooksQuery.error.message} />
-          )}
-          {getOwnedBooksQuery.isSuccess && (
-            <div>
-              {getOwnedBooksQuery.data.map((book: Book) => (
-                <BookCard
-                  onActivate={onBookActivated}
-                  isActive={getAuthUserQuery?.data?.active_book_id === book.id}
-                  book={book}
-                  key={book.id}
-                />
-              ))}
-            </div>
-          )}
-          {setActiveBookMutation.isLoading && (
-            <LoadingSpinner isOverlayed={true} />
-          )}
-        </div>
+        {renderOwnedBooksSection()}
 
         {renderCollaboratedBooksSection()}
-      </>
+      </div>
     );
   };
 

@@ -6,6 +6,7 @@ import useGetRecentTransactionsQuery from "../services/useGetRecentTransactionsQ
 import ModalSelectBook from "../components/ModalSelectBook";
 import { AppPaths } from "../constants";
 import Heading3 from "../components/Heading3";
+import CurrentBookLine from "../components/CurrentBookLine";
 
 const BookDashboardPage = () => {
   const { book_id } = useParams();
@@ -21,6 +22,12 @@ const BookDashboardPage = () => {
   const renderPageContent = () => {
     return (
       <>
+        <div>
+          <CurrentBookLine
+            title={getSingleBookQuery.data?.title || ""}
+            onSwitch={() => setIsModalOpen(true)}
+          />
+        </div>
         <div>
           {getSingleBookQuery.data ? (
             <div className="text-white-text">

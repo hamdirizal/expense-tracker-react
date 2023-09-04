@@ -23,14 +23,16 @@ const BookWelcomPage = () => {
   } else {
     return (
       <div>
-        <h1>No book selected. Please select or create a new one</h1>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="border border-white px-6 py-3"
-          type="button"
-        >
-          Select / Create Book
-        </button>
+        <h1>
+          No book selected. Please{" "}
+          <button
+            className="ButtonLink"
+            type="button"
+            onClick={() => setIsModalOpen(true)}
+          >
+            <strong>select or create a new one</strong>
+          </button>
+        </h1>
         <ModalSelectBook
           isOpen={isModalOpen}
           closeFn={() => setIsModalOpen(false)}

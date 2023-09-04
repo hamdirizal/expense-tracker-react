@@ -9,29 +9,23 @@ interface BookCardProps {
 
 const BookCard = ({ book, isActive, onActivate }: BookCardProps) => {
   return (
-    <div
-      className={`px-4 py-3 mb-3 border rounded ${
-        isActive
-          ? "border-color-border-active bg-color-bg-active"
-          : "border-grey-input-border bg-grey-bg-2"
-      }`}
-    >
+    <div className="BookCard">
       <div>
-        <span className="font-bold text-white-text mr-2">{book.title}</span>
-        
+        <div className="BookCard__title">{book.title}</div>
+        <div className="BookCard__owner">Owner: Aldhia</div>
       </div>
       <div className="flex justify-start mt-2">
-        {isActive ? <div>Selected</div> : (
-          <Button
-            isFullWidth={false}
-            size="small"
-            type="button"
-            variant="secondary"
+        {isActive ? (
+          <div>Selected</div>
+        ) : (
+          <button
             onClick={() => {
               onActivate(book.id);
             }}
-            label="Select"
-          />
+            className="ButtonSecondary"
+          >
+            Select
+          </button>
         )}
       </div>
     </div>
