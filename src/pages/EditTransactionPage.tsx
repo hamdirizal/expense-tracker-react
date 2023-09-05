@@ -7,6 +7,7 @@ import Heading1 from "../components/Heading1";
 import useGetSingleTransactionQuery from "../services/useGetSingleTransactionQuery";
 import { useParams, useSearchParams } from "react-router-dom";
 import ErrorDiv from "../components/ErrorDiv";
+import EditTransactionForm from "../components/EditTransactionForm";
 
 const EditTransactionPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
@@ -27,7 +28,7 @@ const EditTransactionPage = () => {
         )}
 
         <div>
-          <AddEditTransactionForm
+          <EditTransactionForm
             transaction={getSingleTransactionQuery?.data || null}
           />
         </div>

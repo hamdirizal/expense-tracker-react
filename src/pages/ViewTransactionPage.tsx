@@ -7,6 +7,7 @@ import Heading1 from "../components/Heading1";
 import useGetSingleTransactionQuery from "../services/useGetSingleTransactionQuery";
 import { useParams, useSearchParams } from "react-router-dom";
 import ErrorDiv from "../components/ErrorDiv";
+import EditTransactionForm from "../components/EditTransactionForm";
 
 const ViewTransactionPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
@@ -18,20 +19,18 @@ const ViewTransactionPage = () => {
 
   const renderContent = () => {
     return (
-      <>
-        <div className="mt-6">
-          <Heading1 title="Edit transaction" />
-        </div>
+      <div>
+        <h1 className="PageTitle">View transaction</h1>
         {getSingleTransactionQuery.data?.is_editable === "yes" ? null : (
           <div>You're not allowed to edit this item.</div>
         )}
 
         <div>
-          <AddEditTransactionForm
+          <EditTransactionForm
             transaction={getSingleTransactionQuery?.data || null}
           />
         </div>
-      </>
+      </div>
     );
   };
 

@@ -7,10 +7,11 @@ import useCreateTransactionMutation from "../services/useCreateTransactionMutati
 import { CreateTransactionMutationPayload, Transaction } from "../types";
 
 interface EditTransactionFormProps {
-  book_id: number;
+  bookId: number;
+  cancelFn: () => void;
 }
 
-const EditTransactionForm = ({ book_id }: EditTransactionFormProps) => {
+const EditTransactionForm = ({ bookId, cancelFn }: EditTransactionFormProps) => {
   const getAuthUserQuery = useGetAuthUserQuery();
   const createTransactionMutation = useCreateTransactionMutation();
   const {
@@ -30,6 +31,7 @@ const EditTransactionForm = ({ book_id }: EditTransactionFormProps) => {
 
   const onFormSubmitted = (data: any) => {
     createTransactionMutation.mutate({
+      book_id: bookId,
       tx_date: data.date,
       is_outgoing: data.is_outgoing === "yes",
       title: data.title,
@@ -50,92 +52,86 @@ const EditTransactionForm = ({ book_id }: EditTransactionFormProps) => {
   };
 
   useEffect(onDataCreated, [createTransactionMutation]);
-
-  const renderFormContent = () => {
-    return (
-      <div className="">
-        <div className="mb-4">
-          <input
-            className="myapp-input-text myapp-outline"
-            required
-            type="date"
-            disabled={true}
-            placeholder="Date"
-            {...register("date", { required: true })}
-          />
-        </div>
-        <div className="mb-4">
-          <input
-            className="myapp-input-text myapp-outline"
-            required
-            type="text"
-            placeholder="Transaction title"
-            {...register("title", { required: true })}
-          />
-        </div>
-        <input
-          className="myapp-input-text"
-          required
-          type="number"
-          placeholder="Amount"
-          {...register("amount", { required: true })}
-        />
-        <br />
-        <div>
-          <label className="mr-6">
-            <input
-              className="myapp-radio mr-3"
-              type="radio"
-              value="no"
-              {...register("is_outgoing", { required: true })}
-            />
-            Incoming
-          </label>
-          <label>
-            <input
-              className="myapp-radio mr-3"
-              type="radio"
-              value="yes"
-              {...register("is_outgoing", { required: true })}
-            />
-            Outgoing
-          </label>
-        </div>
-        <textarea
-          placeholder="Description"
-          {...register("description")}
-          className="myapp-textarea"
-        ></textarea>
-        <br />
-        <br />
-        <div>
-          <input type="checkbox" className="myapp-checkbox mr-3" />
-          Delete this transaction
-        </div>
-        <br />
-        <br />
-        <div className="w-[200px]">
-          <Button
-            isFullWidth={false}
-            size="regular"
-            label="Create transaction"
-            variant="primary"
-            onClick={() => {}}
-            type="submit"
-          />
-        </div>
-      </div>
-    );
-  };
   const renderFinalMarkup = () => {
     return (
-      <div className="relative border border-grey-input-border bg-grey-bg-2 rounded px-4 pt-4 pb-5">
+      <div className="AddTransactionForm">
         <form
           action=""
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}
           className="relative"
         >
-          {renderFormContent()}
+          <div className="FormRow">
+            <input
+              className="InputText"
+              required
+              type="date"
+              placeholder="Date"
+              {...register("date", { required: true })}
+            />
+          </div>
+          <div className="FormRow">
+            <input
+              className="InputText"
+              required
+              type="text"
+              placeholder="Transaction title"
+              {...register("title", { required: true })}
+            />
+          </div>
+          <div className="FormRow">
+            <input
+              className="InputText"
+              required
+              type="number"
+              placeholder="Amount"
+              {...register("amount", { required: true })}
+            />
+          </div>
+          <div className="FormRow">
+            <label className="mr-6">
+              <input
+                className="myapp-radio mr-3"
+                type="radio"
+                value="no"
+                {...register("is_outgoing", { required: true })}
+              />
+              Incoming
+            </label>
+            <label>
+              <input
+                className="myapp-radio mr-3"
+                type="radio"
+                value="yes"
+                {...register("is_outgoing", { required: true })}
+              />
+              Outgoing
+            </label>
+          </div>
+          <div className="FormRow">
+            <textarea
+              placeholder="Description"
+              {...register("description")}
+              className="InputText"
+            ></textarea>
+          </div>
+          <div className="FormRow AddTransactionForm__actionGroup">
+            <button
+              type="button"
+              onClick={cancelFn}
+              className="ButtonSecondary"
+            >
+              Cancel
+            </button>
+            <button type="submit" className="ButtonPrimary">
+              Update
+            </button>
+          </div>
+          <div className="">
+            <br />
+            <div></div>
+
+            <div className=""></div>
+          </div>
         </form>
       </div>
     );

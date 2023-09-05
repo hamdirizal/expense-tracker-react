@@ -23,7 +23,7 @@ $fontsize-plus-2: 1.4rem;
 $fontsize-plus-3: 1.7rem;
 
 $rounded-panel: 10px;
-$rounded-input: 6px;
+$rounded-input: 4px;
 
 $page-side-padding: 20px;
 $page-max-width: 600px;
@@ -224,7 +224,7 @@ svg {
   font-weight: 500;
   font-family: $font-1;
   font-size: $fontsize-base;
-  box-shadow: inset 1px 1px 3px 1px rgba(0,0,0,0.1);
+  box-shadow: inset 1px 1px 2px 1px rgba(0,0,0,0.1);
 }
 
 .ErrorDiv {
