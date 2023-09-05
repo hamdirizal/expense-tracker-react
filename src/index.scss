@@ -5,22 +5,24 @@ $color-text-error: #ff005c;
 $color-bg-white: #ffffff;
 $color-bg-gray: #f6f5f4;
 $color-primary: #097cc3;
+$color-primary-shade: #056dad;
 $color-secondary: #c6cdd1;
 $color-bg-textinput: #f6f5f4;
 $color-border-textinput: #ccc;
+$color-border-panel: #e7e7e7;
 
 $fontsize-minus-3: 12px;
-$fontsize-minus-2: 13px;
+$fontsize-minus-2: 0.8rem;
 $fontsize-minus-1: 0.9rem;
 $fontsize-base: 17px;
-$fontsize-plus-1: 18px;
-$fontsize-plus-2: 1.3rem;
-$fontsize-plus-3: 1.8rem;
+$fontsize-plus-1: 1.25rem;
+$fontsize-plus-2: 1.4rem;
+$fontsize-plus-3: 1.7rem;
 
 $rounded-panel: 10px;
 $rounded-input: 6px;
 
-$page-side-padding: 10px;
+$page-side-padding: 16px;
 $page-max-width: 600px;
 
 $screen-sm: 480px;
@@ -83,7 +85,7 @@ svg {
   overflow: auto;
   padding-top: 60px;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   z-index: 21;
 }
 .Modal__dialog {
@@ -148,7 +150,7 @@ svg {
   border-radius: $rounded-input;
   padding: 0.5rem 1rem;
   background-color: $color-primary;
-  border: 1px solid $color-primary;
+  border: 1px solid $color-primary-shade;
   color: $color-bg-white;
   width: 100%;
   text-align: center;
@@ -195,6 +197,11 @@ svg {
   margin-top: 0.7rem;
 }
 
+.MemberAreaSkeleton {
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
 .AppHeader {
   margin-bottom: 10px;
   background: $color-bg-gray;
@@ -225,7 +232,7 @@ svg {
   margin-bottom: 0.5rem;
 }
 .ModalSelectBook__newBookForm {
-  border: 1px solid $color-border-textinput; 
+  border: 1px solid $color-border-panel; 
   padding: 0.8rem;
   border-radius: $rounded-panel;
   margin-top: 1rem;
@@ -239,7 +246,7 @@ svg {
 }
 
 .BookCard {
-  border: 1px solid $color-border-textinput; 
+  border: 1px solid $color-border-panel; 
   padding: 0.7rem;
   border-radius: $rounded-panel;
   margin-bottom: 0.8rem;
@@ -251,7 +258,7 @@ svg {
   font-weight: bold;
 }
 .BookCard__owner {
-  font-size: $fontsize-minus-1;
+  font-size: $fontsize-minus-2;
 }
 
 .CurrentBookLine {
@@ -260,4 +267,45 @@ svg {
 .CurrentBookLine__title {
   font-weight: bold;
   margin-right: 0.5rem;
+}
+
+.TransactionSummary {  
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.TransactionSummary__col {
+  display: flex;
+}
+.TransactionSummary__colTitle {
+  font-size: $fontsize-minus-1;
+  margin-bottom: 0.2rem;
+}
+.TransactionSummary__title {  
+  margin-bottom: 0.5rem;
+  font-size: $fontsize-plus-1;
+  text-decoration: underline;
+}
+.TransactionSummary__income {
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
+}
+.TransactionSummary__outgoing {
+
+}
+
+.BookActions {}
+.BookActions__title {
+  margin-bottom: 0.5rem;
+  font-size: $fontsize-plus-1;
+  text-decoration: underline;
+}
+.BookActions__item {margin-bottom: 0.4rem;}
+.BookActions__item a {color: $color-primary;}
+
+.RecentTransactions {}
+
+.RecentTransactions__title {
+  margin-bottom: 0.5rem;
+  font-size: $fontsize-plus-1;
+  text-decoration: underline;
 }

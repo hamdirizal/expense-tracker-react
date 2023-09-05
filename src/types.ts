@@ -40,6 +40,15 @@ export interface UserConfig {
   nickname: string | null;
 }
 
+export interface TxSummary {
+  today_income: number;
+  today_outgoing: number;
+  this_month_income: number;
+  this_month_outgoing: number;
+  this_year_income: number;
+  this_year_outgoing: number;
+}
+
 export interface User {
   active_book: Book | null;
   active_book_id: number | null;

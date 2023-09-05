@@ -7,6 +7,9 @@ import ModalSelectBook from "../components/ModalSelectBook";
 import { AppPaths } from "../constants";
 import Heading3 from "../components/Heading3";
 import CurrentBookLine from "../components/CurrentBookLine";
+import useGetTransactionSummaryQuery from "../services/useGetTransactionSummaryQuery";
+import TransactionSummary from "../components/TransactionSummary";
+import { Transaction } from "../types";
 
 const BookDashboardPage = () => {
   const { book_id } = useParams();
@@ -19,6 +22,10 @@ const BookDashboardPage = () => {
     parseInt(book_id || "0")
   );
 
+  const getTransactionSummaryQuery = useGetTransactionSummaryQuery(
+    parseInt(book_id || "0")
+  );
+
   const renderPageContent = () => {
     return (
       <>
@@ -28,70 +35,57 @@ const BookDashboardPage = () => {
             onSwitch={() => setIsModalOpen(true)}
           />
         </div>
-        <div>
-          {getSingleBookQuery.data ? (
-            <div className="text-white-text">
-              <span className="font-bold">{getSingleBookQuery.data.title}</span>{" "}
-              <button
-                className="border my-2"
-                onClick={() => setIsModalOpen(true)}
-              >
-                (switch book)
-              </button>
+
+        <div className="BookActions">
+          <h3 className="BookActions__title">Actions: </h3>
+          {book_id ? (
+            <div className="BookActions__item">
+              <Link to={AppPaths.ADD_TRANSACTION.replace(/:book_id/g, book_id)}>
+                Add transaction
+              </Link>
             </div>
           ) : null}
+          <div className="BookActions__item">Listing</div>
+          <div className="BookActions__item">Search</div>
+          {book_id ? (
+            <div className="BookActions__item">
+              <Link
+                to={AppPaths.BOOK_MANAGE.replace(
+                  /:book_id/g,
+                  book_id.toString()
+                )}
+              >
+                Manage
+              </Link>
+            </div>
+          ) : null}
+        </div>
 
-          <button className="border my-2" onClick={() => setIsModalOpen(true)}>
-            (click here to switch)
-          </button>
-        </div>
-        <hr />
-        <div className="rounded border my-4 p-6">
-          <div className="grid grid-cols-3 text-center">
-            <div>
-              <div>Today</div>
-              <div>2000000</div>
-              <div>2000000</div>
-            </div>
-            <div>
-              <div>This month</div>
-              <div>2000000</div>
-              <div>2000000</div>
-            </div>
-            <div>
-              <div>This year</div>
-              <div>2000000</div>
-              <div>2000000</div>
-            </div>
+        <TransactionSummary summary={getTransactionSummaryQuery.data || null} />
+
+        <div className="RecentTransactions">
+          <h3 className="RecentTransactions__title">Recently added</h3>
+          <div>
+            {getRecentTransactionsQuery.data?.map((tx: Transaction) => {
+              return (
+                <div key={tx.id}>
+                  <div>{tx.title}</div>
+                  <div>{tx.amount}</div>
+                  <div>{tx.is_outgoing}</div>
+                  <div>{tx.description}</div>
+                  <Link
+                    to={AppPaths.EDIT_TRANSACTION.replace(
+                      /:transaction_id/g,
+                      tx.id.toString()
+                    )}
+                  >
+                    View
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
-        <hr />
-        <div>{JSON.stringify(getSingleBookQuery.data)}</div>
-        <hr />
-        {book_id ? (
-          <Link to={AppPaths.ADD_TRANSACTION.replace(/:book_id/g, book_id)}>
-            Add transactionx
-          </Link>
-        ) : null}
-        <hr />
-        <div>Listing</div>
-        <hr />
-        <div>SEarch</div>
-        {book_id ? (
-          <div className="my-2">
-            <Link
-              className="border"
-              to={AppPaths.BOOK_MANAGE.replace(/:book_id/g, book_id.toString())}
-            >
-              Manage book
-            </Link>
-          </div>
-        ) : null}
-        <hr />
-        <hr />
-        <div>Recently added transactions:</div>
-        <div>{JSON.stringify(getRecentTransactionsQuery.data)}</div>
-        <hr />
       </>
     );
   };

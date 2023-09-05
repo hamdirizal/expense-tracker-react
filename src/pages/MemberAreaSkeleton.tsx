@@ -9,8 +9,8 @@ const MemberAreaSkeleton = () => {
 
   const renderPageMarkup = () => {
     return (
-      <div data-testid="MemberAreaSkeleton" className="min-h-screen px-6">
-        <div className="max-w-[720px] mx-auto">
+      <div className="MemberAreaSkeleton">
+        <div>
           <Helmet>
             <title>Dashboard | {AppTitle}</title>
           </Helmet>
