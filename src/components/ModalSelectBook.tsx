@@ -137,7 +137,7 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
             />
             <div className="ModalSelectBook__submitButton">
               <button type="submit" className="ButtonPrimary">
-                Create book
+                Create new book
               </button>
             </div>
           </div>

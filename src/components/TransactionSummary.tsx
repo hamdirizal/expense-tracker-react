@@ -14,6 +14,7 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
         <div className="TransactionSummary__income">
           +{summary.today_income}
         </div>
+        <div className="TransactionSummary__separator">/</div>
         <div className="TransactionSummary__outgoing">
           -{summary.today_outgoing}
         </div>
@@ -23,6 +24,7 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
         <div className="TransactionSummary__income">
           +{summary.this_month_income}
         </div>
+        <div className="TransactionSummary__separator">/</div>
         <div className="TransactionSummary__outgoing">
           -{summary.this_month_outgoing}
         </div>
@@ -32,6 +34,7 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
         <div className="TransactionSummary__income">
           +{summary.this_year_income}
         </div>
+        <div className="TransactionSummary__separator">/</div>
         <div className="TransactionSummary__outgoing">
           -{summary.this_year_outgoing}
         </div>

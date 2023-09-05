@@ -38,7 +38,7 @@ const AddTransactionPage = () => {
                 className="border my-2"
                 onClick={() => setIsModalOpen(true)}
               >
-                (switch book)
+                switch book
               </button>
             </div>
           ) : null}

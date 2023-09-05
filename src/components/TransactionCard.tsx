@@ -9,15 +9,27 @@ interface TransactionCardProps {
 const TransactionCard = ({ transaction }: TransactionCardProps) => {
   const navigate = useNavigate();
   return (
-    <div className="p-2 mb-2 border border-gray-400">
-      <div>{transaction.title}</div>
-      <div>{transaction.amount}</div>
-      <div>{transaction.is_outgoing}</div>
-      <div>{transaction.description}</div>
-      <Link to={AppPaths.EDIT_TRANSACTION.replace(
-              /:transaction_id/g,
-              transaction.id.toString()
-            )} >View</Link>
+    <div className="TransactionCard">
+      <div className="TransactionCard__titleBox">
+        <span className="TransactionCard__title">{transaction.title}</span>
+        <Link
+          className="TransactionCard__action"
+          to={AppPaths.EDIT_TRANSACTION.replace(
+            /:transaction_id/g,
+            transaction.id.toString()
+          )}
+        >
+          [view]
+        </Link>
+      </div>
+      <div className="TransactionCard__meta">
+        Date:{" "}
+        <span className="TransactionCard__date">{transaction.tx_date}</span>
+        Amount:{" "}
+        <span className="TransactionCard__amount">{transaction.amount}</span>
+      </div>
+
+      <div className="TransactionCard__description">{transaction.description}</div>
     </div>
   );
 };

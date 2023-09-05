@@ -1,6 +1,9 @@
 $font-1: "Inter", Helvetica, Arial, sans-serif;
 
+$color-plus: #1ad971;
+$color-minus: #ff005c;
 $color-text: #333;
+$color-text-gray: #859093;
 $color-text-error: #ff005c;
 $color-bg-white: #ffffff;
 $color-bg-gray: #f6f5f4;
@@ -15,7 +18,7 @@ $fontsize-minus-3: 12px;
 $fontsize-minus-2: 0.8rem;
 $fontsize-minus-1: 0.9rem;
 $fontsize-base: 17px;
-$fontsize-plus-1: 1.25rem;
+$fontsize-plus-1: 1.2rem;
 $fontsize-plus-2: 1.4rem;
 $fontsize-plus-3: 1.7rem;
 
@@ -29,6 +32,13 @@ $screen-sm: 480px;
 $screen-md: 640px;
 $screen-lg: 800px;
 $screen-xl: 1024px;
+
+@mixin section-title {
+  margin-bottom: 0.5rem;
+  font-size: $fontsize-plus-1;
+  text-decoration: underline;
+  color: black;
+}
 
 @mixin inset-0 {
   top: 0; 
@@ -53,6 +63,7 @@ body {
   color: $color-text;
   font-family: $font-1;
   font-size: $fontsize-base;
+  font-weight: 500;
 }
 
 button {
@@ -83,7 +94,8 @@ svg {
   justify-content: center;
   align-items: start;
   overflow: auto;
-  padding-top: 60px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   width: 100vw;
   min-height: 100vh;
   z-index: 21;
@@ -209,6 +221,7 @@ svg {
 .AppHeader__centering {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 15px $page-side-padding;
   max-width: $page-max-width;
   margin: 0 auto;
@@ -228,8 +241,7 @@ svg {
   line-height: 1.1;
 }
 .ModalSelectBook__subtitle {
-  font-size: $fontsize-plus-2;
-  margin-bottom: 0.5rem;
+  @include section-title;
 }
 .ModalSelectBook__newBookForm {
   border: 1px solid $color-border-panel; 
@@ -242,23 +254,26 @@ svg {
   margin-top: 0.7rem;
 }
 .ModalSelectBook__section {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .BookCard {
-  border: 1px solid $color-border-panel; 
-  padding: 0.7rem;
-  border-radius: $rounded-panel;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
+  margin-top: 1.2rem;
   display: flex;
   justify-content: space-between;
 }
+.BookCard__head {
+  display: flex;
+}
 .BookCard__title {
   font-size: $fontsize-base;
-  font-weight: bold;
+  font-weight: 600;
+  margin-right: 0.5rem;
 }
 .BookCard__owner {
   font-size: $fontsize-minus-2;
+  color: $color-text-gray;
 }
 
 .CurrentBookLine {
@@ -280,32 +295,132 @@ svg {
   font-size: $fontsize-minus-1;
   margin-bottom: 0.2rem;
 }
+
 .TransactionSummary__title {  
-  margin-bottom: 0.5rem;
-  font-size: $fontsize-plus-1;
-  text-decoration: underline;
+  @include section-title;
+}
+.TransactionSummary__separator {
+  color: $color-text-gray;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 .TransactionSummary__income {
   margin-bottom: 0.5rem;
-  margin-right: 1rem;
+  color: $color-plus;
+  font-weight: 500;
 }
 .TransactionSummary__outgoing {
-
+  color: $color-minus;
+  font-weight: 500;
 }
 
-.BookActions {}
+.BookActions {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .BookActions__title {
-  margin-bottom: 0.5rem;
-  font-size: $fontsize-plus-1;
-  text-decoration: underline;
+  @include section-title;
 }
-.BookActions__item {margin-bottom: 0.4rem;}
+.BookActions__item {
+  margin-bottom: 0.6rem;
+}
 .BookActions__item a {color: $color-primary;}
 
 .RecentTransactions {}
 
 .RecentTransactions__title {
-  margin-bottom: 0.5rem;
-  font-size: $fontsize-plus-1;
+  @include section-title;
+}
+
+.UserButtonx {
+  display: flex;
+  align-items: center;
+}
+.UserButtonx__icon {
+  width: 16px;
+  height: 16px;
+}
+.UserButton {
+  position: relative;
+}
+.UserButton__dropdown {
+  position: absolute;
+  right: 0;
+  top: 1.5rem;
+  background: white;
+  border: 1px solid $color-border-panel;
+  border-radius: $rounded-input;
+  padding: 1rem 1rem;
+  width: 130px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+.UserButton__dropdownItem {
+  margin-bottom: 0.7rem;
+  cursor: pointer;
+  display: block;
+  color: $color-primary;
   text-decoration: underline;
+  width: 100%;
+  font-weight: 500;
+  font-size: $fontsize-base;
+}
+.UserButton__dropdownItem:last-child {
+  margin-bottom: 0;
+}
+.UserButton__button {
+  display: flex;
+  align-items: center;
+}
+.UserButton__name {
+  margin-left: 0.2rem;
+  font-weight: bold;
+  color: $color-primary;
+  text-decoration: underline;
+}
+.UserButton__icon {
+  margin-left: 0.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.TransactionCard {
+  margin-bottom: 1.2rem;
+  margin-top: 1.2rem;
+}
+.TransactionCard__titleBox {
+  margin-bottom: 0.2rem;
+}
+.TransactionCard__meta {
+  margin-bottom: 0.2rem;
+  font-size: $fontsize-minus-1;
+  font-weight: 500;
+}
+.TransactionCard__description {
+  margin-bottom: 0.2rem;
+  font-size: $fontsize-minus-1;
+  font-weight: 500;
+  color: $color-text-gray;
+}
+.TransactionCard__date {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: $fontsize-minus-1;
+}
+.TransactionCard__amount {  
+  font-size: $fontsize-minus-1;
+}
+.TransactionCard__title {
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.TransactionCard__action {
+  font-weight: 400;
+  display: inline-block;
+  color: $color-primary;
+}
+
+.TransactionCard__amount {
+  font-weight: 500;
 }

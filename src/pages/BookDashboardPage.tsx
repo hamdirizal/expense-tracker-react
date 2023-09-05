@@ -10,6 +10,7 @@ import CurrentBookLine from "../components/CurrentBookLine";
 import useGetTransactionSummaryQuery from "../services/useGetTransactionSummaryQuery";
 import TransactionSummary from "../components/TransactionSummary";
 import { Transaction } from "../types";
+import TransactionCard from "../components/TransactionCard";
 
 const BookDashboardPage = () => {
   const { book_id } = useParams();
@@ -67,22 +68,7 @@ const BookDashboardPage = () => {
           <h3 className="RecentTransactions__title">Recently added</h3>
           <div>
             {getRecentTransactionsQuery.data?.map((tx: Transaction) => {
-              return (
-                <div key={tx.id}>
-                  <div>{tx.title}</div>
-                  <div>{tx.amount}</div>
-                  <div>{tx.is_outgoing}</div>
-                  <div>{tx.description}</div>
-                  <Link
-                    to={AppPaths.EDIT_TRANSACTION.replace(
-                      /:transaction_id/g,
-                      tx.id.toString()
-                    )}
-                  >
-                    View
-                  </Link>
-                </div>
-              );
+              return <TransactionCard transaction={tx} key={tx.id} />;
             })}
           </div>
         </div>
