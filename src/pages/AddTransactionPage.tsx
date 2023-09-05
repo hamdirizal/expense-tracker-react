@@ -13,6 +13,7 @@ import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 import ErrorDiv from "../components/ErrorDiv";
 import ModalSelectBook from "../components/ModalSelectBook";
 import AddTransactionForm from "../components/AddTransactionForm";
+import CurrentBookLine from "../components/CurrentBookLine";
 
 const AddTransactionPage = () => {
   const navigate = useNavigate();
@@ -30,20 +31,12 @@ const AddTransactionPage = () => {
   const renderPageContent = () => {
     return (
       <>
-        <div>
-          {getSingleBookQuery.data ? (
-            <div className="text-white-text">
-              <span className="font-bold">{getSingleBookQuery.data.title}</span>{" "}
-              <button
-                className="border my-2"
-                onClick={() => setIsModalOpen(true)}
-              >
-                switch book
-              </button>
-            </div>
-          ) : null}
-        </div>
-        <Heading1 title="Add transaction" />
+        <CurrentBookLine
+          title={getSingleBookQuery.data?.title || ""}
+          onSwitch={() => setIsModalOpen(true)}
+        />
+        
+        <h1 className="PageTitle">Add transaction</h1>
 
         <AddTransactionForm
           cancelFn={() =>

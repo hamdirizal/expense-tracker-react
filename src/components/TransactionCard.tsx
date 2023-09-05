@@ -20,7 +20,7 @@ const TransactionCard = ({ transaction }: TransactionCardProps) => {
             transaction.id.toString()
           )}
         >
-          [view]
+          view
         </Link>
       </div>
       <div className="TransactionCard__meta">

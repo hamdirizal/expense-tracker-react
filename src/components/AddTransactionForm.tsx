@@ -54,31 +54,31 @@ const AddTransactionForm = ({ bookId, cancelFn }: AddTransactionFormProps) => {
   useEffect(onDataCreated, [createTransactionMutation]);
   const renderFinalMarkup = () => {
     return (
-      <div className="relative border border-grey-input-border bg-grey-bg-2 rounded px-6 pt-6 pb-7">
+      <div className="AddTransactionForm">
         <form
           action=""
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}
           className="relative"
         >
+          <div className="FormRow">
+            <input
+              className="InputText"
+              required
+              type="date"
+              placeholder="Date"
+              {...register("date", { required: true })}
+            />
+          </div>
+          <div className="FormRow">
+            <input
+              className="InputText"
+              required
+              type="text"
+              placeholder="Transaction title"
+              {...register("title", { required: true })}
+            />
+          </div>
           <div className="">
-            <div className="mb-4">
-              <input
-                className="myapp-input-text myapp-outline"
-                required
-                type="date"
-                placeholder="Date"
-                {...register("date", { required: true })}
-              />
-            </div>
-            <div className="mb-4">
-              <input
-                className="myapp-input-text myapp-outline"
-                required
-                type="text"
-                placeholder="Transaction title"
-                {...register("title", { required: true })}
-              />
-            </div>
             <input
               className="myapp-input-text"
               required
