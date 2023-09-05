@@ -14,6 +14,8 @@ import ErrorDiv from "../components/ErrorDiv";
 import ModalSelectBook from "../components/ModalSelectBook";
 import AddTransactionForm from "../components/AddTransactionForm";
 import CurrentBookLine from "../components/CurrentBookLine";
+import { Transaction } from "../types";
+import TransactionCard from "../components/TransactionCard";
 
 const AddTransactionPage = () => {
   const navigate = useNavigate();
@@ -35,7 +37,7 @@ const AddTransactionPage = () => {
           title={getSingleBookQuery.data?.title || ""}
           onSwitch={() => setIsModalOpen(true)}
         />
-        
+
         <h1 className="PageTitle">Add transaction</h1>
 
         <AddTransactionForm
@@ -44,14 +46,15 @@ const AddTransactionPage = () => {
           }
           bookId={parseInt(book_id || "0")}
         />
-        <div>Recently added transactions:</div>
-        {getRecentTransactionsQuery?.data?.length ? (
-          <TransactionList
-            transactions={getRecentTransactionsQuery.data}
-            isLoading={getRecentTransactionsQuery.isLoading}
-          />
-        ) : null}
-        <hr />
+
+        <div className="RecentTransactions">
+          <h3 className="RecentTransactions__title">Recently added</h3>
+          <div>
+            {getRecentTransactionsQuery.data?.map((tx: Transaction) => {
+              return <TransactionCard transaction={tx} key={tx.id} />;
+            })}
+          </div>
+        </div>
       </>
     );
   };
