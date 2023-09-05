@@ -290,11 +290,24 @@ svg {
 }
 
 .CurrentBookLine {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
-.CurrentBookLine__title {
+.CurrentBookLine__button {
   font-weight: bold;
   margin-right: 0.5rem;
+  font-size: $fontsize-minus-1;
+  background: $color-bg-textinput;
+  border-radius: $rounded-input;
+  border: 1px solid $color-border-textinput;
+  padding: 0.25rem 0.7rem;
+  display: flex;
+  align-items: center;
+}
+.CurrentBookLine__icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-left: 0.3rem;
 }
 
 .TransactionSummary {  

@@ -1,3 +1,5 @@
+import SvgTriangleDownIcon from "../svg-components/SvgTriangleDownIcon";
+
 interface CurrentBookLineProps {
   title: string;
   onSwitch: () => void;
@@ -6,8 +8,16 @@ interface CurrentBookLineProps {
 const CurrentBookLine = ({ title, onSwitch }: CurrentBookLineProps) => {
   return (
     <div className="CurrentBookLine">
-      <span className="CurrentBookLine__title">{title}</span>
-      <button type="button" onClick={onSwitch} className="ButtonLink">switch book</button>
+      <button
+        type="button"
+        onClick={onSwitch}
+        className="CurrentBookLine__button"
+      >
+        {title}
+        <span className="CurrentBookLine__icon">
+          <SvgTriangleDownIcon color="#333" />
+        </span>
+      </button>
     </div>
   );
 };
