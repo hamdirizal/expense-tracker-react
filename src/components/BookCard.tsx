@@ -22,7 +22,7 @@ const BookCard = ({ book, isActive, onActivate }: BookCardProps) => {
               }}
               className="ButtonLink"
             >
-              select
+              [select]
             </button>
           )}
         </div>

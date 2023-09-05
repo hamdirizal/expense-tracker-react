@@ -1,3 +1,4 @@
+import { formatAsCurrency } from "../helpers/globalHelper";
 import { TxSummary } from "../types";
 
 interface TransactionSummaryProps {
@@ -12,31 +13,31 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
       <h3 className="TransactionSummary__colTitle">Today</h3>
       <div className="TransactionSummary__col">
         <div className="TransactionSummary__income">
-          +{summary.today_income}
+          +{formatAsCurrency(summary.today_income)}
         </div>
         <div className="TransactionSummary__separator">/</div>
         <div className="TransactionSummary__outgoing">
-          -{summary.today_outgoing}
+          -{formatAsCurrency(summary.today_outgoing)}
         </div>
       </div>
       <h3 className="TransactionSummary__colTitle">This month</h3>
       <div className="TransactionSummary__col">
         <div className="TransactionSummary__income">
-          +{summary.this_month_income}
+          +{formatAsCurrency(summary.this_month_income)}
         </div>
         <div className="TransactionSummary__separator">/</div>
         <div className="TransactionSummary__outgoing">
-          -{summary.this_month_outgoing}
+          -{formatAsCurrency(summary.this_month_outgoing)}
         </div>
       </div>
       <h3 className="TransactionSummary__colTitle">This year</h3>
       <div className="TransactionSummary__col">
         <div className="TransactionSummary__income">
-          +{summary.this_year_income}
+          +{formatAsCurrency(summary.this_year_income)}
         </div>
         <div className="TransactionSummary__separator">/</div>
         <div className="TransactionSummary__outgoing">
-          -{summary.this_year_outgoing}
+          -{formatAsCurrency(summary.this_year_outgoing)}
         </div>
       </div>
     </div>

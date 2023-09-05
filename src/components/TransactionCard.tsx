@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Transaction } from "../types";
 import { AppPaths } from "../constants";
+import { formatAsCurrency } from "../helpers/globalHelper";
 
 interface TransactionCardProps {
   transaction: Transaction;
@@ -26,7 +27,7 @@ const TransactionCard = ({ transaction }: TransactionCardProps) => {
         Date:{" "}
         <span className="TransactionCard__date">{transaction.tx_date}</span>
         Amount:{" "}
-        <span className="TransactionCard__amount">{transaction.amount}</span>
+        <span className="TransactionCard__amount">{formatAsCurrency(transaction.amount)}</span>
       </div>
 
       <div className="TransactionCard__description">{transaction.description}</div>
