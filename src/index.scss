@@ -9,7 +9,7 @@ $color-bg-white: #ffffff;
 $color-bg-gray: #f6f5f4;
 $color-primary: #097cc3;
 $color-primary-shade: #056dad;
-$color-secondary: #c6cdd1;
+$color-secondary: #e2e7e9;
 $color-bg-textinput: #f6f5f4;
 $color-border-textinput: #ccc;
 $color-border-panel: #e7e7e7;
@@ -465,4 +465,14 @@ svg {
 
 .TransactionCard__amount {
   font-weight: 500;
+}
+
+.AddTransactionForm__actionGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+.AddTransactionForm__actionGroup > * {
+  width: 48%;
 }

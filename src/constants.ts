@@ -27,6 +27,7 @@ export const AppPaths = {
   BOOK_DASHBOARD: "/book/:book_id",
   BOOK_MANAGE: "/book/:book_id/manage",
   ADD_TRANSACTION: "/book/:book_id/add-transaction",
+  VIEW_TRANSACTION: "/book/:book_id/transaction/:transaction_id",
   // OLD PATHS
   DASHBOARD: "/dashboard",
   EDIT_TRANSACTION: "/dashboard/edit-transaction/:transaction_id",

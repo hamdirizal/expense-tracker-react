@@ -19,6 +19,7 @@ import BookWelcomPage from "./pages/BookWelcomePage.tsx";
 import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
 import BookDashboardPage from "./pages/BookDashboardPage.tsx";
 import BookManagePage from "./pages/BookManagePage.tsx";
+import ViewTransactionPage from "./pages/ViewTransactionPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: AppPaths.ADD_TRANSACTION,
         element: <AddTransactionPage />,
+      },
+      {
+        path: AppPaths.VIEW_TRANSACTION,
+        element: <ViewTransactionPage />,
       },
     ],
   },

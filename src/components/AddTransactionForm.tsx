@@ -78,59 +78,59 @@ const AddTransactionForm = ({ bookId, cancelFn }: AddTransactionFormProps) => {
               {...register("title", { required: true })}
             />
           </div>
-          <div className="">
+          <div className="FormRow">
             <input
-              className="myapp-input-text"
+              className="InputText"
               required
               type="number"
               placeholder="Amount"
               {...register("amount", { required: true })}
             />
-            <br />
-            <div>
-              <label className="mr-6">
-                <input
-                  className="myapp-radio mr-3"
-                  type="radio"
-                  value="no"
-                  {...register("is_outgoing", { required: true })}
-                />
-                Incoming
-              </label>
-              <label>
-                <input
-                  className="myapp-radio mr-3"
-                  type="radio"
-                  value="yes"
-                  {...register("is_outgoing", { required: true })}
-                />
-                Outgoing
-              </label>
-            </div>
+          </div>
+          <div className="FormRow">
+            <label className="mr-6">
+              <input
+                className="myapp-radio mr-3"
+                type="radio"
+                value="no"
+                {...register("is_outgoing", { required: true })}
+              />
+              Incoming
+            </label>
+            <label>
+              <input
+                className="myapp-radio mr-3"
+                type="radio"
+                value="yes"
+                {...register("is_outgoing", { required: true })}
+              />
+              Outgoing
+            </label>
+          </div>
+          <div className="FormRow">
             <textarea
               placeholder="Description"
               {...register("description")}
-              className="myapp-textarea"
+              className="InputText"
             ></textarea>
-            <div className="">
-              <Button
-                isFullWidth={false}
-                size="regular"
-                label="Cancel"
-                variant="primary"
-                onClick={cancelFn}
-                type="button"
-              />
+          </div>
+          <div className="FormRow AddTransactionForm__actionGroup">
+            <button
+              type="button"
+              onClick={cancelFn}
+              className="ButtonSecondary"
+            >
+              Cancel
+            </button>
+            <button type="submit" className="ButtonPrimary">
+              Submit
+            </button>
+          </div>
+          <div className="">
+            <br />
+            <div></div>
 
-              <Button
-                isFullWidth={false}
-                size="regular"
-                label="Create transaction"
-                variant="primary"
-                onClick={() => {}}
-                type="submit"
-              />
-            </div>
+            <div className=""></div>
           </div>
         </form>
       </div>

@@ -17,10 +17,10 @@ const TransactionCard = ({ transaction }: TransactionCardProps) => {
         <span className="TransactionCard__title">{transaction.title}</span>
         <Link
           className="TransactionCard__action"
-          to={AppPaths.EDIT_TRANSACTION.replace(
+          to={AppPaths.VIEW_TRANSACTION.replace(
             /:transaction_id/g,
             transaction.id.toString()
-          )}
+          ).replace(/:book_id/g, transaction.book_id.toString())}
         >
           view
         </Link>
