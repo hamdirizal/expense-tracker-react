@@ -1,4 +1,6 @@
 import { formatAsCurrency } from "../helpers/globalHelper";
+import SvgMinusIcon from "../svg-components/SvgMinusIcon";
+import SvgPlusIcon from "../svg-components/SvgPlusIcon";
 import { TxSummary } from "../types";
 
 interface TransactionSummaryProps {
@@ -10,34 +12,52 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
   return (
     <div className="TransactionSummary">
       <h3 className="TransactionSummary__title">Summary</h3>
-      <h3 className="TransactionSummary__colTitle">Today</h3>
+      <h4 className="TransactionSummary__colTitle">Today</h4>
       <div className="TransactionSummary__col">
         <div className="TransactionSummary__income">
-          +{formatAsCurrency(summary.today_income)}
+          <span className="TransactionSummary__icon">
+            <SvgPlusIcon color="#1ad971" />
+          </span>
+          {formatAsCurrency(summary.today_income)}
         </div>
-        <div className="TransactionSummary__separator">/</div>
+
         <div className="TransactionSummary__outgoing">
-          -{formatAsCurrency(summary.today_outgoing)}
+          <span className="TransactionSummary__icon">
+            <SvgMinusIcon color="#ff005c" />
+          </span>
+          {formatAsCurrency(summary.today_outgoing)}
         </div>
       </div>
-      <h3 className="TransactionSummary__colTitle">This month</h3>
+      <h4 className="TransactionSummary__colTitle">This month</h4>
       <div className="TransactionSummary__col">
         <div className="TransactionSummary__income">
-          +{formatAsCurrency(summary.this_month_income)}
+          <span className="TransactionSummary__icon">
+            <SvgPlusIcon color="#1ad971" />
+          </span>
+          {formatAsCurrency(summary.this_month_income)}
         </div>
-        <div className="TransactionSummary__separator">/</div>
+
         <div className="TransactionSummary__outgoing">
-          -{formatAsCurrency(summary.this_month_outgoing)}
+          <span className="TransactionSummary__icon">
+            <SvgMinusIcon color="#ff005c" />
+          </span>
+          {formatAsCurrency(summary.this_month_outgoing)}
         </div>
       </div>
-      <h3 className="TransactionSummary__colTitle">This year</h3>
+      <h4 className="TransactionSummary__colTitle">This year</h4>
       <div className="TransactionSummary__col">
         <div className="TransactionSummary__income">
-          +{formatAsCurrency(summary.this_year_income)}
+          <span className="TransactionSummary__icon">
+            <SvgPlusIcon color="#1ad971" />
+          </span>
+          {formatAsCurrency(summary.this_year_income)}
         </div>
-        <div className="TransactionSummary__separator">/</div>
+
         <div className="TransactionSummary__outgoing">
-          -{formatAsCurrency(summary.this_year_outgoing)}
+          <span className="TransactionSummary__icon">
+            <SvgMinusIcon color="#ff005c" />
+          </span>
+          {formatAsCurrency(summary.this_year_outgoing)}
         </div>
       </div>
     </div>

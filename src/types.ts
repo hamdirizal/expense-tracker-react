@@ -58,6 +58,10 @@ export interface User {
   nickname: string | null;
 }
 
+export interface SvgIconProps {
+  color: string;
+}
+
 //@deprecated
 export interface LoginResponse {
   access_token: string;

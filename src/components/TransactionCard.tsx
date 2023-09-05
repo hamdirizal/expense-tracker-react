@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Transaction } from "../types";
 import { AppPaths } from "../constants";
 import { formatAsCurrency } from "../helpers/globalHelper";
+import SvgCalendarIcon from "../svg-components/SvgCalendarIcon";
+import SvgPlusIcon from "../svg-components/SvgPlusIcon";
 
 interface TransactionCardProps {
   transaction: Transaction;
@@ -24,13 +26,21 @@ const TransactionCard = ({ transaction }: TransactionCardProps) => {
         </Link>
       </div>
       <div className="TransactionCard__meta">
-        Date:{" "}
+        <span className="TransactionCard__icon">
+          <SvgCalendarIcon color="#333" />
+        </span>{" "}
         <span className="TransactionCard__date">{transaction.tx_date}</span>
-        Amount:{" "}
-        <span className="TransactionCard__amount">{formatAsCurrency(transaction.amount)}</span>
+        <span className="TransactionCard__icon">
+          <SvgPlusIcon color="#333" />
+        </span>{" "}
+        <span className="TransactionCard__amount">
+          {formatAsCurrency(transaction.amount)}
+        </span>
       </div>
 
-      <div className="TransactionCard__description">{transaction.description}</div>
+      <div className="TransactionCard__description">
+        {transaction.description}
+      </div>
     </div>
   );
 };
