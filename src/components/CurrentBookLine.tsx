@@ -1,3 +1,4 @@
+import SvgSwitchIcon from "../svg-components/SvgSwitchIcon";
 import SvgTriangleDownIcon from "../svg-components/SvgTriangleDownIcon";
 
 interface CurrentBookLineProps {
@@ -15,7 +16,7 @@ const CurrentBookLine = ({ title, onSwitch }: CurrentBookLineProps) => {
       >
         {title}
         <span className="CurrentBookLine__icon">
-          <SvgTriangleDownIcon color="#333" />
+          <SvgSwitchIcon color="#000" />
         </span>
       </button>
     </div>
