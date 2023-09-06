@@ -8,6 +8,7 @@ import useGetSingleTransactionQuery from "../services/useGetSingleTransactionQue
 import { useParams, useSearchParams } from "react-router-dom";
 import ErrorDiv from "../components/ErrorDiv";
 import EditTransactionForm from "../components/EditTransactionForm";
+import ViewTransactionForm from "../components/ViewTransactionForm";
 
 const ViewTransactionPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
@@ -26,7 +27,7 @@ const ViewTransactionPage = () => {
         )}
 
         <div>
-          <EditTransactionForm
+          <ViewTransactionForm
             transaction={getSingleTransactionQuery?.data || null}
           />
         </div>
@@ -37,7 +38,7 @@ const ViewTransactionPage = () => {
   return (
     <>
       <Helmet>
-        <title>Edit Transaction | {AppTitle}</title>
+        <title>View Transaction | {AppTitle}</title>
       </Helmet>
 
       {getSingleTransactionQuery.isSuccess ? renderContent() : null}

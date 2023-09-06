@@ -61,6 +61,18 @@ const EditTransactionForm = ({ bookId, cancelFn }: EditTransactionFormProps) => 
           className="relative"
         >
           <div className="FormRow">
+            You are not allowed to edit this transaction.
+          </div>
+          <div className="FormRow">
+            Transaction older than 14 days cannot be edited.
+          </div>
+          <div className="FormRow">
+            Transaction ID: 2
+          </div>
+          <div className="FormRow">
+            Created by: Eline
+          </div>
+          <div className="FormRow">
             <input
               className="InputText"
               required

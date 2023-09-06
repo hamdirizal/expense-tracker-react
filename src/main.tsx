@@ -62,10 +62,6 @@ const router = createBrowserRouter([
         path: AppPaths.DASHBOARD,
         element: <DashboardHomePage />,
       },
-      {
-        path: AppPaths.EDIT_TRANSACTION,
-        element: <EditTransactionPage />,
-      },
     ],
   },
   {

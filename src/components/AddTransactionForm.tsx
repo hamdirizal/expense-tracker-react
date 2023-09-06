@@ -60,56 +60,48 @@ const AddTransactionForm = ({ bookId, cancelFn }: AddTransactionFormProps) => {
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}
           className="relative"
         >
-          <div className="FormRow">
-            <input
-              className="InputText"
-              required
-              type="date"
-              placeholder="Date"
-              {...register("date", { required: true })}
-            />
+          <div className="FormRowTwoColumnWrapper">
+            <div className="FormRow">
+              <label className="FieldLabel">Date</label>
+              <input
+                className="InputText"
+                required
+                type="date"
+                {...register("date", { required: true })}
+              />
+            </div>
+
+            <div className="FormRow">
+              <label className="FieldLabel">Type</label>
+              <select className="InputSelect">
+                <option value="">Incoming</option>
+                <option value="">Outgoing</option>
+              </select>
+            </div>
           </div>
+
           <div className="FormRow">
+            <label className="FieldLabel">Title</label>
             <input
               className="InputText"
               required
               type="text"
-              placeholder="Transaction title"
               {...register("title", { required: true })}
             />
           </div>
           <div className="FormRow">
+            <label className="FieldLabel">Amount</label>
             <input
               className="InputText"
               required
               type="number"
-              placeholder="Amount"
               {...register("amount", { required: true })}
             />
           </div>
+
           <div className="FormRow">
-            <label className="mr-6">
-              <input
-                className="myapp-radio mr-3"
-                type="radio"
-                value="no"
-                {...register("is_outgoing", { required: true })}
-              />
-              Incoming
-            </label>
-            <label>
-              <input
-                className="myapp-radio mr-3"
-                type="radio"
-                value="yes"
-                {...register("is_outgoing", { required: true })}
-              />
-              Outgoing
-            </label>
-          </div>
-          <div className="FormRow">
+            <label className="FieldLabel">Description</label>
             <textarea
-              placeholder="Description"
               {...register("description")}
               className="InputText"
             ></textarea>
@@ -125,12 +117,6 @@ const AddTransactionForm = ({ bookId, cancelFn }: AddTransactionFormProps) => {
             <button type="submit" className="ButtonPrimary">
               Submit
             </button>
-          </div>
-          <div className="">
-            <br />
-            <div></div>
-
-            <div className=""></div>
           </div>
         </form>
       </div>

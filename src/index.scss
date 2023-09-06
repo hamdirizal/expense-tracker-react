@@ -11,7 +11,7 @@ $color-primary: #097cc3;
 $color-primary-shade: #056dad;
 $color-secondary: #e2e7e9;
 $color-bg-textinput: #f6f5f4;
-$color-border-textinput: #ccc;
+$color-border-textinput: #ababab;
 $color-border-panel: #e7e7e7;
 
 $fontsize-minus-3: 12px;
@@ -39,8 +39,8 @@ $screen-xl: 1024px;
 }
 
 @mixin gradient-secondary {
-  background: rgb(211,219,222);
-  background: linear-gradient(0deg, rgba(211,219,222,1) 1%, rgba(226,231,233,1) 100%);
+  background: rgb(222,221,220);
+  background: linear-gradient(0deg, rgba(222,221,220,1) 1%, rgba(246,245,244,1) 100%);
 }
 
 @mixin page-title {  
@@ -149,8 +149,22 @@ svg {
   }
 }
 
+.FormRowTwoColumnWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.FormRowTwoColumnWrapper > * {
+  width: 48%;
+}
 .FormRow {
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+.FieldLabel {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: $fontsize-minus-1;
+  font-weight: 600;
+  color: $color-text-gray;
 }
 
 .LoginPage {
@@ -213,18 +227,31 @@ svg {
   text-decoration: underline;
 }
 
-.InputText {
+@mixin input-base {
   border-radius: $rounded-input;
-  padding: 0.5rem 1rem;
-  background-color: $color-bg-textinput;
-  border: 1px solid #ccc;
-  color: $color-text;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid $color-border-textinput;
   width: 100%;
   line-height: 1;
   font-weight: 500;
   font-family: $font-1;
   font-size: $fontsize-base;
+}
+
+.InputText {
+  @include input-base;
+  background-color: $color-bg-textinput;
+  color: $color-text;
   box-shadow: inset 1px 1px 2px 1px rgba(0,0,0,0.1);
+}
+.InputText[disabled] {
+  box-shadow: none;
+  cursor: not-allowed;
+  border-color: #e7e7e7;
+}
+.InputSelect {
+  @include gradient-secondary;
+  @include input-base;
 }
 
 .ErrorDiv {
@@ -310,7 +337,7 @@ svg {
   font-size: $fontsize-minus-1;
   border-radius: $rounded-input;
   border: 1px solid $color-border-textinput;
-  padding: 0.25rem 0.7rem;
+  padding: 0.15rem 0.7rem;
   display: flex;
   align-items: center;
 }
@@ -333,7 +360,7 @@ svg {
   font-size: $fontsize-base;
   margin-bottom: 0.3rem;
   margin-right: 1rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .TransactionSummary__title {  
   @include section-title;
@@ -371,7 +398,9 @@ svg {
 }
 .BookActions__item a {color: $color-primary;}
 
-.RecentTransactions {}
+.RecentTransactions {
+  margin-top: 2rem;
+}
 
 .RecentTransactions__title {
   @include section-title;
@@ -478,6 +507,12 @@ svg {
   font-weight: 500;
 }
 
+.AddTransactionForm {
+  border-radius: $rounded-panel;
+  border: 1px solid $color-border-panel;
+  padding: 1rem;
+  background: #fbfbfb;
+}
 .AddTransactionForm__actionGroup {
   display: flex;
   justify-content: space-between;
