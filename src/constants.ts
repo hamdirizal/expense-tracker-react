@@ -34,6 +34,6 @@ export const AppPaths = {
   MANAGE_BOOK: "/dashboard/manage-book/:book_id",
 };
 
-export const AppTitle = "DailyExpenseTracker";
+export const AppTitle = "Monee";
 
 
