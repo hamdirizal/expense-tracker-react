@@ -7,11 +7,14 @@ import useCreateTransactionMutation from "../services/useCreateTransactionMutati
 import { CreateTransactionMutationPayload, Transaction } from "../types";
 
 interface EditTransactionFormProps {
-  bookId: number;
+  transaction: Transaction;
   cancelFn: () => void;
 }
 
-const EditTransactionForm = ({ bookId, cancelFn }: EditTransactionFormProps) => {
+const EditTransactionForm = ({
+  transaction,
+  cancelFn,
+}: EditTransactionFormProps) => {
   const getAuthUserQuery = useGetAuthUserQuery();
   const createTransactionMutation = useCreateTransactionMutation();
   const {
@@ -19,19 +22,11 @@ const EditTransactionForm = ({ bookId, cancelFn }: EditTransactionFormProps) => 
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm({
-    defaultValues: {
-      is_outgoing: "yes",
-      date: new Date().toISOString().split("T")[0],
-      title: "",
-      description: "",
-      amount: "",
-    },
-  });
+  } = useForm();
 
   const onFormSubmitted = (data: any) => {
     createTransactionMutation.mutate({
-      book_id: bookId,
+      book_id: 0,
       tx_date: data.date,
       is_outgoing: data.is_outgoing === "yes",
       title: data.title,
@@ -60,71 +55,62 @@ const EditTransactionForm = ({ bookId, cancelFn }: EditTransactionFormProps) => 
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}
           className="relative"
         >
-          <div className="FormRow">
-            You are not allowed to edit this transaction.
+          <div className="FormRowTwoColumnWrapper">
+            <div className="FormRow">
+              <label className="FieldLabel">Date</label>
+              <input
+                className="InputText"
+                value={transaction.tx_date}
+                required
+                type="date"
+                {...register("date", { required: true })}
+              />
+            </div>
+            <div className="FormRow">
+              <label className="FieldLabel">Type</label>
+              <select className="InputSelect">
+                <option value="">Incoming</option>
+                <option value="">Outgoing</option>
+              </select>
+            </div>
           </div>
+
           <div className="FormRow">
-            Transaction older than 14 days cannot be edited.
-          </div>
-          <div className="FormRow">
-            Transaction ID: 2
-          </div>
-          <div className="FormRow">
-            Created by: Eline
-          </div>
-          <div className="FormRow">
+            <label className="FieldLabel">Title</label>
             <input
               className="InputText"
-              required
-              type="date"
-              placeholder="Date"
-              {...register("date", { required: true })}
-            />
-          </div>
-          <div className="FormRow">
-            <input
-              className="InputText"
+              value={transaction.title}
               required
               type="text"
-              placeholder="Transaction title"
               {...register("title", { required: true })}
             />
           </div>
           <div className="FormRow">
+            <label className="FieldLabel">Amount</label>
             <input
               className="InputText"
               required
               type="number"
-              placeholder="Amount"
+              value={transaction.amount}
               {...register("amount", { required: true })}
             />
           </div>
           <div className="FormRow">
-            <label className="mr-6">
-              <input
-                className="myapp-radio mr-3"
-                type="radio"
-                value="no"
-                {...register("is_outgoing", { required: true })}
-              />
-              Incoming
-            </label>
-            <label>
-              <input
-                className="myapp-radio mr-3"
-                type="radio"
-                value="yes"
-                {...register("is_outgoing", { required: true })}
-              />
-              Outgoing
-            </label>
-          </div>
-          <div className="FormRow">
+            <label className="FieldLabel">Description</label>
             <textarea
-              placeholder="Description"
+              value={transaction.description || ""}
               {...register("description")}
               className="InputText"
             ></textarea>
+          </div>
+          <div className="FormRow">
+            <label className="FieldLabel">Added by</label>
+            <input
+              className="InputText"
+              value={transaction.creator_id}
+              type="text"
+              disabled
+            />
           </div>
           <div className="FormRow AddTransactionForm__actionGroup">
             <button
@@ -137,12 +123,6 @@ const EditTransactionForm = ({ bookId, cancelFn }: EditTransactionFormProps) => 
             <button type="submit" className="ButtonPrimary">
               Update
             </button>
-          </div>
-          <div className="">
-            <br />
-            <div></div>
-
-            <div className=""></div>
           </div>
         </form>
       </div>

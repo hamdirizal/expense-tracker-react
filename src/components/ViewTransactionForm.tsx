@@ -20,9 +20,6 @@ const ViewTransactionForm = ({
   const renderFinalMarkup = () => {
     return (
       <>
-        <div className="FormRow">
-          You are not allowed to edit this transaction.
-        </div>
         <div className="AddTransactionForm">
           <div className="FormRowTwoColumnWrapper">
             <div className="FormRow">
@@ -45,7 +42,7 @@ const ViewTransactionForm = ({
             </div>
           </div>
           <div className="FormRow">
-            <label className="FieldLabel">Created by</label>
+            <label className="FieldLabel">Title</label>
             <input
               value={transaction.title}
               className="InputText"
