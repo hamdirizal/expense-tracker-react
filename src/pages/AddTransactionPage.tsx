@@ -46,7 +46,7 @@ const AddTransactionPage = () => {
           {getSingleBookQuery.data?.title || ""}
         </h2>
 
-        <h1 className="PageTitle">Add transaction</h1>
+        <h3 className="Heading3">{Texts.ADD_TRANSACTION}</h3>
 
         <AddTransactionForm
           cancelFn={() =>
