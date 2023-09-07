@@ -18,34 +18,34 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
         <li>
           <strong>{Texts.TODAY}</strong>
           <span>
-            <PlusMinusSign isPlus={true} />
-            {formatAsCurrency(summary.today_income)}
-          </span>
-          <span>
             <PlusMinusSign isPlus={false} />
             {formatAsCurrency(summary.today_outgoing)}
+          </span>
+          <span>
+            <PlusMinusSign isPlus={true} />
+            {formatAsCurrency(summary.today_income)}
           </span>
         </li>
         <li>
           <strong>{Texts.THIS_MONTH}</strong>
           <span>
-            <PlusMinusSign isPlus={true} />
-            {formatAsCurrency(summary.this_month_income)}
-          </span>
-          <span>
             <PlusMinusSign isPlus={false} />
             {formatAsCurrency(summary.this_month_outgoing)}
+          </span>
+          <span>
+            <PlusMinusSign isPlus={true} />
+            {formatAsCurrency(summary.this_month_income)}
           </span>
         </li>
         <li>
           <strong>{Texts.THIS_YEAR}</strong>
           <span>
-            <PlusMinusSign isPlus={true} />
-            {formatAsCurrency(summary.this_year_income)}
-          </span>
-          <span>
             <PlusMinusSign isPlus={false} />
             {formatAsCurrency(summary.this_year_outgoing)}
+          </span>
+          <span>
+            <PlusMinusSign isPlus={true} />
+            {formatAsCurrency(summary.this_year_income)}
           </span>
         </li>
       </ul>

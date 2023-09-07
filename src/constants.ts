@@ -65,4 +65,5 @@ export const Texts = {
   PASSWORD: "Password",
   MY_BOOKS: "My books",
   COLLABORATED_BOOKS: "Collaborated books",
+  INVITATIONS: "Invitations",
 };
