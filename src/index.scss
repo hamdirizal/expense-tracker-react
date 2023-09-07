@@ -418,10 +418,7 @@ svg {
   display: inline-block;
 }
 .TransactionSummary span:nth-child(2) {
-  margin-right: 0.6rem;
-}
-.TransactionSummary b {
-  font-size: 0.9rem;
+  margin-right: 1rem;
 }
 
 // Component
@@ -628,3 +625,17 @@ svg {
 }
 
 // Component
+@mixin plus-minus-sign {
+  display: inline-block;
+  margin-right: 0.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.PlusMinusSign {
+  @include plus-minus-sign;
+  color: #0fe50f;
+}
+.PlusMinusSign--isMinus {
+  @include plus-minus-sign;
+  color: #ff005c;
+}

@@ -3,6 +3,7 @@ import { formatAsCurrency } from "../helpers/globalHelper";
 import SvgMinusIcon from "../svg-components/SvgMinusIcon";
 import SvgPlusIcon from "../svg-components/SvgPlusIcon";
 import { TxSummary } from "../types";
+import PlusMinusSign from "./PlusMinusSign";
 
 interface TransactionSummaryProps {
   summary: TxSummary | null;
@@ -15,35 +16,35 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
       <h3 className="Heading3">Summary</h3>
       <ul>
         <li>
-          <strong>Today</strong>
+          <strong>{Texts.TODAY}</strong>
           <span>
-            <b>🟢</b>
+            <PlusMinusSign isPlus={true} />
             {formatAsCurrency(summary.today_income)}
           </span>
           <span>
-            <b>🔴</b>
+            <PlusMinusSign isPlus={false} />
             {formatAsCurrency(summary.today_outgoing)}
           </span>
         </li>
         <li>
-          <strong>Today</strong>
+          <strong>{Texts.THIS_MONTH}</strong>
           <span>
-            <b>🟢</b>
+            <PlusMinusSign isPlus={true} />
             {formatAsCurrency(summary.this_month_income)}
           </span>
           <span>
-            <b>🔴</b>
+            <PlusMinusSign isPlus={false} />
             {formatAsCurrency(summary.this_month_outgoing)}
           </span>
         </li>
         <li>
           <strong>{Texts.THIS_YEAR}</strong>
           <span>
-            <b>🟢</b>
+            <PlusMinusSign isPlus={true} />
             {formatAsCurrency(summary.this_year_income)}
           </span>
           <span>
-            <b>🔴</b>
+            <PlusMinusSign isPlus={false} />
             {formatAsCurrency(summary.this_year_outgoing)}
           </span>
         </li>
