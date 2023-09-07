@@ -15,6 +15,7 @@ import SgvArrowLeftIcon from "../svg-components/SgvArrowLeftIcon";
 import SvgAddIcon from "../svg-components/SvgAddIcon";
 import LinkWithEmoji from "../components/LinkWithEmoji";
 import { getBookEmoji } from "../helpers/globalHelper";
+import TransactionList from "../components/TransactionList";
 
 const BookDashboardPage = () => {
   const { book_id } = useParams();
@@ -81,13 +82,12 @@ const BookDashboardPage = () => {
 
         <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>
 
-        <div className="RecentTransactions">
-          <div>
-            {getRecentTransactionsQuery.data?.map((tx: Transaction) => {
-              return <TransactionCard transaction={tx} key={tx.id} />;
-            })}
-          </div>
-        </div>
+        {getRecentTransactionsQuery.data ? (
+          <TransactionList
+            isLoading={getRecentTransactionsQuery.isLoading}
+            transactions={getRecentTransactionsQuery.data}
+          />
+        ) : null}
       </>
     );
   };

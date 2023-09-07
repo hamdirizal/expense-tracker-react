@@ -443,6 +443,35 @@ svg {
 }
 
 // Component
+.TransactionList {}
+.TransactionList__table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.TransactionList__table td {
+  border: 1px solid $color-border-table;
+  padding: 0.3rem 0.5rem;
+  vertical-align: top;
+}
+.TransactionList__table td:last-child {
+  text-align: right;
+}
+.TransactionList__table tr:nth-child(even) td {
+  background: #fafafa;
+}
+.TransactionList__itemTitle {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+.TransactionList__itemTitle a, .TransactionList__itemTitle a:visited {
+  color: $color-link;
+}
+.TransactionList__itemDate, .TransactionList__itemDesc {
+  font-weight: 500;
+  font-size: $fontsize-minus-1;
+}
+
+// Component
 
 .RecentTransactions {}
 

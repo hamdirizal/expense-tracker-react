@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import { Transaction } from "../types";
 import LoadingSpinner from "./LoadingSpinner";
 import TransactionCard from "./TransactionCard";
+import { formatAsCurrency } from "../helpers/globalHelper";
 
 interface TransactionListProps {
   transactions: Transaction[];
@@ -8,13 +10,27 @@ interface TransactionListProps {
 }
 const TransactionList = ({ transactions, isLoading }: TransactionListProps) => {
   return (
-    <div data-testid="TransactionList" className="relative">
-      <div>
-        {transactions.map((transaction) => (
-          <TransactionCard transaction={transaction} key={transaction.id} />
-        ))}
-      </div>
-      {isLoading && <LoadingSpinner />}
+    <div className="TransactionList">
+      <table className="TransactionList__table">
+        <tbody>
+          {transactions.map((tx: Transaction) => (
+            <tr key={tx.id}>
+              <td>
+                <div className="TransactionList__itemTitle">
+                  <Link to="/">{tx.title}</Link>
+                </div>
+                <div className="TransactionList__itemDate">{tx.tx_date}</div>
+                {tx.description ? (
+                  <div className="TransactionList__itemDesc">
+                    {tx.description}
+                  </div>
+                ) : null}
+              </td>
+              <td>{formatAsCurrency(tx.amount)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
