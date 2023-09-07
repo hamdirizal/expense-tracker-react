@@ -73,7 +73,6 @@ const BookDashboardPage = () => {
         </table>
 
         <TransactionSummary summary={getTransactionSummaryQuery.data || null} />
-
         <div className="RecentTransactions">
           <h3 className="RecentTransactions__title">Recently added</h3>
           <div>

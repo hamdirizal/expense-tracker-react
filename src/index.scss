@@ -395,46 +395,33 @@ svg {
   margin-left: 0.3rem;
 }
 
+// Component
 .TransactionSummary {  
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
-.TransactionSummary__table {
+.TransactionSummary ul {
+  list-style: none;
 }
-.TransactionSummary__table td {
-  text-align: left;
-  padding-right: 1rem;
+.TransactionSummary li {
+  margin-bottom: 0.7rem;
 }
-.TransactionSummary__col {
-  display: flex;
-  margin-bottom: 0.5rem;
-}
-.TransactionSummary__colTitle {
-  font-size: $fontsize-base;
-  margin-bottom: 0.3rem;
-  margin-right: 1rem;
+.TransactionSummary strong {
   font-weight: 600;
-  margin-top: 0.5rem;
-}
-.TransactionSummary__title {  
-  @include section-title;
-}
-.TransactionSummary__icon {
+  font-size: 1rem;
   display: block;
-  width: 20px;
-  height: 20px;
-  margin-right: 0.2rem;
+  margin-bottom: 0.2rem;
 }
-.TransactionSummary__income {
-  margin-right: 1rem;
-  // color: $color-plus;
-  font-weight: 500;
-  display: flex;
+.TransactionSummary span {
+  font-weight: 400;
+  font-size: 1rem;
+  display: inline-block;
 }
-.TransactionSummary__outgoing {
-  // color: $color-minus;
-  font-weight: 500;
-  display: flex;
+.TransactionSummary span:nth-child(2) {
+  margin-right: 0.6rem;
+}
+.TransactionSummary b {
+  font-size: 0.9rem;
 }
 
 // Component
@@ -446,7 +433,7 @@ svg {
   border: 1px solid $color-border-table;
   width: 50%;
   text-align: center;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem;
 }
 .BookActions .LinkWithEmoji {
   display: block;
