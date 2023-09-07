@@ -4,6 +4,7 @@ import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import { logout } from "../helpers/storageHelper";
 import SvgUserIcon from "../svg-components/SvgUserIcon";
 import UserButton from "./UserButton";
+import logo from "../assets/monee-logo.png";
 
 const AppHeader = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const AppHeader = () => {
   return (
     <header className="AppHeader" data-testid="AppHeader">
       <div className="AppHeader__centering">
-        <span className="AppHeader__logo">Daily Expense</span>
+        <Link to={AppPaths.BOOK_WELCOME} className="AppHeader__logo"><img src={logo} alt="Monee" /></Link>
         <div>
           <UserButton user={getAuthUserQuery?.data || null} />
         </div>

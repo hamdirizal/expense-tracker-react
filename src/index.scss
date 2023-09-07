@@ -7,11 +7,14 @@ $color-text-gray: #859093;
 $color-text-error: #ff005c;
 $color-bg-white: #ffffff;
 $color-bg-gray: #f6f5f4;
+$color-brand-1: #76a34f;
+$color-brand-2: #ffa91a;
+$color-link: #0040ff;
 $color-primary: #097cc3;
 $color-primary-shade: #056dad;
 $color-secondary: #e2e7e9;
 $color-bg-textinput: #f6f5f4;
-$color-border-textinput: #ababab;
+$color-border-textinput: #76765c;
 $color-border-panel: #e7e7e7;
 
 $fontsize-minus-3: 12px;
@@ -23,7 +26,7 @@ $fontsize-plus-2: 1.4rem;
 $fontsize-plus-3: 1.7rem;
 
 $rounded-panel: 10px;
-$rounded-input: 4px;
+$rounded-input: 3px;
 
 $page-side-padding: 20px;
 $page-max-width: 600px;
@@ -32,6 +35,11 @@ $screen-sm: 480px;
 $screen-md: 640px;
 $screen-lg: 800px;
 $screen-xl: 1024px;
+
+@mixin gradient-btn-regular {
+  background: rgb(210,210,210);
+  background: linear-gradient(0deg, rgba(210,210,210,1) 0%, rgba(240,240,240,1) 100%);
+}
 
 @mixin gradient-primary {
   background: rgb(0,99,172);
@@ -84,6 +92,7 @@ body {
 }
 
 button {
+  line-height: 1;
   appearance: none;
   border: 0 none;
   background: transparent;
@@ -180,10 +189,12 @@ svg {
   max-width: 380px;
   padding: 1rem;
 }
-.LoginBox__title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: $color-primary
+.LoginBox__logo {
+  width: 140px;
+  margin-bottom: 0.4rem;
+}
+.LoginBox__logo img {
+  max-width: 100%;
 }
 .LoginBox__subtitle {
   margin-bottom: 0.8rem;
@@ -191,6 +202,15 @@ svg {
 .LoginBox__spinner {
   justify-content: center;
   display: flex;
+}
+
+.ButtonRegular {
+  @include gradient-btn-regular;
+  border: 1px solid $color-border-textinput;
+  border-radius: $rounded-input;
+  padding: 0.2rem 0.4rem;
+  font-weight: 400;
+  font-family: $font-1;
 }
 
 .ButtonPrimary {
@@ -229,7 +249,7 @@ svg {
 
 @mixin input-base {
   border-radius: $rounded-input;
-  padding: 0.4rem 0.5rem;
+  padding: 0.3rem 0.5rem;
   border: 1px solid $color-border-textinput;
   width: 100%;
   line-height: 1;
@@ -240,7 +260,7 @@ svg {
 
 .InputText {
   @include input-base;
-  background-color: $color-bg-textinput;
+  background-color: white;
   color: $color-text;
   box-shadow: inset 1px 1px 2px 1px rgba(0,0,0,0.1);
 }
@@ -253,6 +273,18 @@ svg {
   @include gradient-secondary;
   @include input-base;
 }
+
+.Heading3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+  margin-top: 0.6rem;
+}
+.Heading4 {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
 
 .ErrorDiv {
   font-style: ita;
@@ -267,24 +299,32 @@ svg {
 }
 
 .AppHeader {
+  background: #102039;
   margin-bottom: 10px;
-  background: $color-bg-gray;
+  z-index: 10;
+  position: sticky;
+  top: 0;
 }
 .AppHeader__centering {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px $page-side-padding;
+  padding: 6px $page-side-padding;
   max-width: $page-max-width;
   margin: 0 auto;
 }
 .AppHeader__logo {
-  font-weight: bold;
+  width: 101px;
+  display: block;
+}
+.AppHeader__logo img {
+  width: 100%;
+  height: auto;
 }
 .ContentArea {
-  padding: 10px $page-side-padding;
+  padding: 0 $page-side-padding;
   max-width: $page-max-width;
-  margin: 0 auto;
+  margin: 1.5rem auto 0;
 }
 
 .ModalSelectBook__title {
@@ -410,53 +450,20 @@ svg {
   @include section-title;
 }
 
-.UserButtonx {
+// UserBtn Component
+.UserBtn {
   display: flex;
-  align-items: center;
+  color: white;
+  font-family: $font-1;
+  font-weight: 400;
 }
-.UserButtonx__icon {
-  width: 16px;
-  height: 16px;
-}
-.UserButton {
-  position: relative;
-}
-.UserButton__dropdown {
-  position: absolute;
-  right: 0;
-  top: 1.5rem;
-  background: white;
-  border: 1px solid $color-border-panel;
-  border-radius: $rounded-input;
-  padding: 1rem 1rem;
-  width: 130px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-.UserButton__dropdownItem {
-  margin-bottom: 0.7rem;
-  cursor: pointer;
-  display: block;
-  color: $color-primary;
-  text-decoration: underline;
-  width: 100%;
-  font-weight: 500;
-  font-size: $fontsize-base;
-}
-.UserButton__dropdownItem:last-child {
-  margin-bottom: 0;
-}
-.UserButton__button {
-  display: flex;
-  align-items: center;
-}
-.UserButton__name {
+.UserBtn__name {
   margin-left: 0.2rem;
-  font-weight: bold;
-  color: $color-primary;
+  font-weight: 600;
+  color: white;
   text-decoration: underline;
 }
-.UserButton__icon {
+.UserBtn__icon {
   margin-left: 0.5rem;
   width: 1.2rem;
   height: 1.2rem;
@@ -529,4 +536,44 @@ svg {
 
 .ViewTransactionPage__message {
   margin-bottom: 1rem;
+}
+
+.HSpaceHalf {
+  height: 0.5rem;
+}
+.HSpace1 {
+  height: 1rem;
+}
+
+.BookList {}
+.BookList__item {
+  margin-bottom: 0.7rem;
+  margin-top: 0.7rem;
+}
+.BookList__itemTitle {
+  font-family: $font-1;
+  font-weight: 500;
+  color: $color-link;
+  text-decoration: underline;
+}
+.BookList__itemOwner {
+  font-size: $fontsize-minus-1;
+  color: $color-text-gray;
+}
+
+// CreateBookForm Component
+.CreateBookForm {
+  position: relative;
+}
+.CreateBookForm__form {
+  display: flex;
+  height: 32px;
+}
+.CreateBookForm__input {
+  margin-right: 0.5rem;
+  display: block;
+  max-width: 300px;
+}
+.CreateBookForm__button {
+  min-width: 130px;
 }

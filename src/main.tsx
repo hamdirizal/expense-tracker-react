@@ -20,11 +20,22 @@ import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
 import BookDashboardPage from "./pages/BookDashboardPage.tsx";
 import BookManagePage from "./pages/BookManagePage.tsx";
 import ViewTransactionPage from "./pages/ViewTransactionPage.tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Navigate to={AppPaths.BOOK_WELCOME} />,
+  },  
+  {
+    path: AppPaths.PROFILE,
+    element: <MemberAreaSkeleton />,
+    children: [
+      {
+        path: AppPaths.PROFILE,
+        element: <ProfilePage />,
+      }
+    ]
   },
   {
     path: AppPaths.BOOK_WELCOME,

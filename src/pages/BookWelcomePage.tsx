@@ -4,8 +4,14 @@ import { getStoredDefaultBookId } from "../helpers/storageHelper";
 import { AppPaths } from "../constants";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import ModalSelectBook from "../components/ModalSelectBook";
+import CreateBookForm from "../components/CreateBookForm";
+import BookList from "../components/BookList";
+import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
+import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
 
 const BookWelcomPage = () => {
+  const getOwnedBooksQuery = useGetOwnedBooksQuery();
+  const getCollaboratedBooksQuery = useGetCollaboratedBooksQuery();
   const storedDefaultBookId = getStoredDefaultBookId();
   const navigate = useNavigate();
   const [defaultBookId, setDefaultBookId] = useState<number>(0);
@@ -23,20 +29,23 @@ const BookWelcomPage = () => {
   } else {
     return (
       <div>
-        <h1>
-          No book selected. Please{" "}
-          <button
-            className="ButtonLink"
-            type="button"
-            onClick={() => setIsModalOpen(true)}
-          >
-            <strong>select or create a new one</strong>
-          </button>
-        </h1>
-        <ModalSelectBook
-          isOpen={isModalOpen}
-          closeFn={() => setIsModalOpen(false)}
-        />
+        <div className="Heading3">My Books</div>
+        {getOwnedBooksQuery.data ? (
+          <BookList books={getOwnedBooksQuery.data} />
+        ) : (
+          <div>You don't have any book</div>
+        )}
+
+        <CreateBookForm />
+
+        <div className="HSpace1"></div>
+
+        <div className="Heading3">Collaborated Books</div>
+        {getCollaboratedBooksQuery.data ? (
+          <BookList books={getCollaboratedBooksQuery.data} />
+        ) : (
+          <div>You don't have any book</div>
+        )}
       </div>
     );
   }

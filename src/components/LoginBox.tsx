@@ -4,6 +4,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import Button from "./Button";
 import ErrorDiv from "./ErrorDiv";
 import VarDump from "./VarDump";
+import logo from "../assets/monee-logo.png";
 
 const LoginBox = () => {
   const loginUserMutation = useLoginUserMutation();
@@ -24,7 +25,9 @@ const LoginBox = () => {
 
   return (
     <div data-testid="LoginBox" className="LoginBox">
-      <h1 className="LoginBox__title">eTrackr</h1>
+      <h1 className="LoginBox__logo">
+        <img src={logo} alt="Monee" />
+      </h1>
       <div className="LoginBox__subtitle">Track your expenses</div>
       <div className="relative">
         <form
@@ -56,7 +59,7 @@ const LoginBox = () => {
                 <LoadingSpinner isOverlayed={false} />
               </div>
             ) : (
-              <button className="ButtonPrimary" type="submit">
+              <button className="ButtonRegular" type="submit">
                 Login
               </button>
             )}

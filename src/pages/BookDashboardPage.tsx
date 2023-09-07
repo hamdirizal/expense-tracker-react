@@ -27,7 +27,7 @@ const BookDashboardPage = () => {
     parseInt(book_id || "0")
   );
 
-  const renderPageContent = () => {
+  const renderFinalMarkup = () => {
     return (
       <>
         <div>
@@ -78,7 +78,7 @@ const BookDashboardPage = () => {
 
   return (
     <div data-testid="BookDashboardpage">
-      {getSingleBookQuery.data ? renderPageContent() : null}
+      {getSingleBookQuery.data ? renderFinalMarkup() : null}
       {getSingleBookQuery.isError && (
         <ErrorDiv error={getSingleBookQuery.error.message} />
       )}
