@@ -53,16 +53,18 @@ const AddTransactionPage = () => {
           }
           bookId={parseInt(book_id || "0")}
         />
-        <div className="HSpace3"></div>
+        <div className="HSpace2"></div>
 
-        <div className="RecentTransactions">
-          <h3 className="RecentTransactions__title">Recently added</h3>
-          <div>
-            {getRecentTransactionsQuery.data?.map((tx: Transaction) => {
-              return <TransactionCard transaction={tx} key={tx.id} />;
-            })}
-          </div>
-        </div>
+        {getRecentTransactionsQuery.data ? (
+          <>
+            <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>
+
+            <TransactionList
+              isLoading={getRecentTransactionsQuery.isLoading}
+              transactions={getRecentTransactionsQuery.data}
+            />
+          </>
+        ) : null}
       </>
     );
   };
