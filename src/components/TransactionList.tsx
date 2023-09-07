@@ -3,6 +3,7 @@ import { Transaction } from "../types";
 import LoadingSpinner from "./LoadingSpinner";
 import TransactionCard from "./TransactionCard";
 import { formatAsCurrency } from "../helpers/globalHelper";
+import PlusMinusSign from "./PlusMinusSign";
 
 interface TransactionListProps {
   transactions: Transaction[];
@@ -26,7 +27,10 @@ const TransactionList = ({ transactions, isLoading }: TransactionListProps) => {
                   </div>
                 ) : null}
               </td>
-              <td>{formatAsCurrency(tx.amount)}</td>
+              <td>
+                <PlusMinusSign isPlus={tx.is_outgoing} />
+                {formatAsCurrency(tx.amount)}
+              </td>
             </tr>
           ))}
         </tbody>

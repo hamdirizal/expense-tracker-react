@@ -406,18 +406,16 @@ svg {
   font-size: 1rem;
   display: block;
   margin-bottom: 0.2rem;
+  margin-top: 0.5rem;
 }
 .TransactionSummary span {
   font-weight: 500;
   font-size: 1rem;
   display: inline-block;
-  background: #ffaeae;
-  padding: 0 0.4rem;
+  background: #efefef;
+  padding: 0.1rem 0.4rem;
   width: 50%;
   color: black;
-}
-.TransactionSummary span:last-child {
-  background: #90ffb3;
 }
 
 // Component
