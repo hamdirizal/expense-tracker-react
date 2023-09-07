@@ -2,7 +2,7 @@ $font-1: "Inter", Helvetica, Arial, sans-serif;
 
 $color-plus: #1ad971;
 $color-minus: #ff005c;
-$color-text: #333;
+$color-text: black;
 $color-text-gray: #859093;
 $color-text-error: #ff005c;
 $color-bg-white: #ffffff;
@@ -301,7 +301,6 @@ svg {
 
 .MemberAreaSkeleton {
   min-height: 100vh;
-  padding-bottom: 100px;
 }
 
 .AppHeader {
@@ -395,15 +394,12 @@ svg {
 }
 
 // Component
-.TransactionSummary {  
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
+.TransactionSummary {}
 .TransactionSummary ul {
   list-style: none;
 }
 .TransactionSummary li {
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.2rem;
 }
 .TransactionSummary strong {
   font-weight: 600;
@@ -412,12 +408,16 @@ svg {
   margin-bottom: 0.2rem;
 }
 .TransactionSummary span {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1rem;
   display: inline-block;
+  background: #ffaeae;
+  padding: 0 0.4rem;
+  width: 50%;
+  color: black;
 }
-.TransactionSummary span:nth-child(2) {
-  margin-right: 1rem;
+.TransactionSummary span:last-child {
+  background: #90ffb3;
 }
 
 // Component
@@ -444,9 +444,7 @@ svg {
 
 // Component
 
-.RecentTransactions {
-  margin-top: 2rem;
-}
+.RecentTransactions {}
 
 .RecentTransactions__title {
   @include section-title;
@@ -473,7 +471,6 @@ svg {
 
 .TransactionCard {
   margin-bottom: 1.2rem;
-  margin-top: 1.2rem;
 }
 .TransactionCard__titleBox {
   margin-bottom: 0.2rem;
@@ -637,9 +634,16 @@ svg {
 }
 .PlusMinusSign {
   @include plus-minus-sign;
-  color: #0fe50f;
+  color: #01a701;
 }
 .PlusMinusSign--isMinus {
   @include plus-minus-sign;
   color: #ff005c;
+}
+
+// Component
+.CopyrightNotes {
+  margin-top: 150px;
+  margin-bottom: 20px;
+  font-size: $fontsize-minus-2;
 }

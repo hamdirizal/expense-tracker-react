@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import { Navigate, Outlet } from "react-router-dom";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import AppHeader from "../components/AppHeader";
-import { AppPaths, AppTitle } from "../constants";
+import { AppPaths, AppTitle, Texts } from "../constants";
 
 const MemberAreaSkeleton = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
@@ -17,6 +17,7 @@ const MemberAreaSkeleton = () => {
           <AppHeader />
           <div className="ContentArea">
             <Outlet />
+            <div className="CopyrightNotes">{Texts.COPYRIGHT_NOTES}</div>
           </div>
         </div>
       </div>

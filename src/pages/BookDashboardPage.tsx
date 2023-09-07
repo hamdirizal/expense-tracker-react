@@ -72,9 +72,16 @@ const BookDashboardPage = () => {
           </tbody>
         </table>
 
+        <div className="HSpace2"></div>
+
+        <h3 className="Heading3">{Texts.SUMMARY}</h3>
+
         <TransactionSummary summary={getTransactionSummaryQuery.data || null} />
+        <div className="HSpace2"></div>
+
+        <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>
+
         <div className="RecentTransactions">
-          <h3 className="RecentTransactions__title">Recently added</h3>
           <div>
             {getRecentTransactionsQuery.data?.map((tx: Transaction) => {
               return <TransactionCard transaction={tx} key={tx.id} />;

@@ -13,7 +13,6 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
   if (!summary) return null;
   return (
     <div className="TransactionSummary">
-      <h3 className="Heading3">Summary</h3>
       <ul>
         <li>
           <strong>{Texts.TODAY}</strong>
