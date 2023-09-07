@@ -14,6 +14,7 @@ import TransactionCard from "../components/TransactionCard";
 import SgvArrowLeftIcon from "../svg-components/SgvArrowLeftIcon";
 import SvgAddIcon from "../svg-components/SvgAddIcon";
 import LinkWithEmoji from "../components/LinkWithEmoji";
+import { getBookEmoji } from "../helpers/globalHelper";
 
 const BookDashboardPage = () => {
   const { book_id } = useParams();
@@ -39,7 +40,10 @@ const BookDashboardPage = () => {
           emoji="◀️"
         />
         <div className="HSpace2"></div>
-        <h3 className="Heading3">{Texts.ACTIONS}</h3>
+        <h2 className="Heading2">
+          {getBookEmoji(getSingleBookQuery.data?.title || "")}{" "}
+          {getSingleBookQuery.data?.title || ""}
+        </h2>
         <ul className="BookActions">
           {book_id ? (
             <li>

@@ -274,11 +274,17 @@ svg {
   @include input-base;
 }
 
+.Heading2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
 .Heading3 {
   font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 0.6rem;
-  margin-top: 0.6rem;
+  margin-bottom: 0.6em;
+  margin-top: 0.6em;
 }
 .Heading4 {
   font-weight: bold;
@@ -538,14 +544,14 @@ svg {
 }
 
 .HSpaceHalf {
-  height: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 .HSpace1 {
-  height: 1rem;
+  margin-bottom: 1rem;
 }
 
 .HSpace2 {
-  height: 2rem;
+  margin-bottom: 2rem;
 }
 
 .BookList {}

@@ -29,7 +29,7 @@ const BookWelcomPage = () => {
   } else {
     return (
       <div>
-        <div className="Heading3">📚 {Texts.MY_BOOKS}</div>
+        <div className="Heading3">{Texts.MY_BOOKS}</div>
         {getOwnedBooksQuery.data ? (
           <BookList books={getOwnedBooksQuery.data} />
         ) : (
@@ -40,7 +40,7 @@ const BookWelcomPage = () => {
 
         <div className="HSpace1"></div>
 
-        <div className="Heading3">📚 {Texts.COLLABORATED_BOOKS}</div>
+        <div className="Heading3">{Texts.COLLABORATED_BOOKS}</div>
         {getCollaboratedBooksQuery.data ? (
           <BookList books={getCollaboratedBooksQuery.data} />
         ) : (

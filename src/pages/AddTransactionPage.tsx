@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { AppPaths, AppTitle } from "../constants";
+import { AppPaths, AppTitle, Texts } from "../constants";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import TransactionList from "../components/TransactionList";
 import useGetRecentTransactionsQuery from "../services/useGetRecentTransactionsQuery";
@@ -16,6 +16,8 @@ import AddTransactionForm from "../components/AddTransactionForm";
 import CurrentBookLine from "../components/CurrentBookLine";
 import { Transaction } from "../types";
 import TransactionCard from "../components/TransactionCard";
+import LinkWithEmoji from "../components/LinkWithEmoji";
+import { getBookEmoji } from "../helpers/globalHelper";
 
 const AddTransactionPage = () => {
   const navigate = useNavigate();
@@ -33,10 +35,16 @@ const AddTransactionPage = () => {
   const renderPageContent = () => {
     return (
       <>
-        <CurrentBookLine
-          title={getSingleBookQuery.data?.title || ""}
-          onSwitch={() => setIsModalOpen(true)}
+        <LinkWithEmoji
+          to={AppPaths.BOOK_DASHBOARD.replace(/:book_id/, book_id || "")}
+          label={Texts.BACK_TO_THE_BOOK_PAGE}
+          emoji="◀️"
         />
+        <div className="HSpace2"></div>
+        <h2 className="Heading2">
+          {getBookEmoji(getSingleBookQuery.data?.title || "")}{" "}
+          {getSingleBookQuery.data?.title || ""}
+        </h2>
 
         <h1 className="PageTitle">Add transaction</h1>
 
