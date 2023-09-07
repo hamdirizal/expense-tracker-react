@@ -37,7 +37,7 @@ const BookDashboardPage = () => {
         <LinkWithEmoji
           to={AppPaths.BOOK_WELCOME}
           label={Texts.BACK_TO_BOOK_SELECTION}
-          emoji="◀️"
+          emoji=""
         />
         <div className="HSpace2"></div>
         <h2 className="Heading2">

@@ -38,7 +38,7 @@ const AddTransactionPage = () => {
         <LinkWithEmoji
           to={AppPaths.BOOK_DASHBOARD.replace(/:book_id/, book_id || "")}
           label={Texts.BACK_TO_THE_BOOK_PAGE}
-          emoji="◀️"
+          emoji=""
         />
         <div className="HSpace2"></div>
         <h2 className="Heading2">

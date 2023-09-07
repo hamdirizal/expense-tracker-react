@@ -40,8 +40,8 @@ export const AppTitle = "Monee";
 export const Texts = {
   APP_TITLE: "Monee",
   APP_TAGLINE: "Manage your money",
-  BACK_TO_BOOK_SELECTION: "Back to book the selection",
-  BACK_TO_THE_BOOK_PAGE: "Back to the book page",
+  BACK_TO_BOOK_SELECTION: "Back to the book selection",
+  BACK_TO_THE_BOOK_PAGE: "Back to the book dashboard",
   ADD_TRANSACTION: "Add transaction",
   LISTING: "Listing",
   SEARCH: "Search",
