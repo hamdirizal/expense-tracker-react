@@ -16,6 +16,7 @@ $color-secondary: #e2e7e9;
 $color-bg-textinput: #f6f5f4;
 $color-border-textinput: #76765c;
 $color-border-panel: #e7e7e7;
+$color-border-table: rgb(211, 211, 211);
 
 $fontsize-minus-3: 12px;
 $fontsize-minus-2: 0.8rem;
@@ -438,14 +439,26 @@ svg {
 
 // Component
 .BookActions {
-  list-style: none;
+  border-collapse: collapse;
+  width: 100%
 }
-.BookActions > li {
-  margin-bottom: 0.5rem;
+.BookActions td {
+  border: 1px solid $color-border-table;
+  width: 50%;
+  text-align: center;
+  padding: 0.5rem;
 }
-.BookActions > li:last-child {
-  margin-bottom: 0;
+.BookActions .LinkWithEmoji {
+  display: block;
 }
+.BookActions .LinkWithEmoji > span:first-child {
+  display: block;
+  font-size: 1.5rem;
+  margin-right: 0;
+  margin-bottom: 0.2rem;
+}
+
+// Component
 
 .RecentTransactions {
   margin-top: 2rem;

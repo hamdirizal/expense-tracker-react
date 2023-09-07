@@ -44,26 +44,33 @@ const BookDashboardPage = () => {
           {getBookEmoji(getSingleBookQuery.data?.title || "")}{" "}
           {getSingleBookQuery.data?.title || ""}
         </h2>
-        <ul className="BookActions">
-          {book_id ? (
-            <li>
-              <LinkWithEmoji
-                to={AppPaths.ADD_TRANSACTION.replace(/:book_id/g, book_id)}
-                label={Texts.ADD_TRANSACTION}
-                emoji="➕"
-              />
-            </li>
-          ) : null}
-          <li>
-            <LinkWithEmoji to={""} label={Texts.LISTING} emoji="📝" />
-          </li>
-          <li>
-            <LinkWithEmoji to={""} label={Texts.SEARCH} emoji="🔍" />
-          </li>
-          <li>
-            <LinkWithEmoji to={""} label={Texts.MANAGE} emoji="⚙️" />
-          </li>
-        </ul>
+
+        <table className="BookActions">
+          <tbody>
+            <tr>
+              <td>
+                {book_id ? (
+                  <LinkWithEmoji
+                    to={AppPaths.ADD_TRANSACTION.replace(/:book_id/g, book_id)}
+                    label={Texts.ADD_TRANSACTION}
+                    emoji="➕"
+                  />
+                ) : null}
+              </td>
+              <td>
+                <LinkWithEmoji to={""} label={Texts.LISTING} emoji="📝" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <LinkWithEmoji to={""} label={Texts.SEARCH} emoji="🔍" />
+              </td>
+              <td>
+                <LinkWithEmoji to={""} label={Texts.MANAGE} emoji="⚙️" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         <TransactionSummary summary={getTransactionSummaryQuery.data || null} />
 
