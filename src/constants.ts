@@ -37,4 +37,31 @@ export const AppPaths = {
 
 export const AppTitle = "Monee";
 
-
+export const Texts = {
+  APP_TITLE: "Monee",
+  APP_TAGLINE: "Manage your money",
+  BACK_TO_BOOK_SELECTION: "Back to book the selection",
+  ADD_TRANSACTION: "Add transaction",
+  LISTING: "Listing",
+  SEARCH: "Search",
+  MANAGE: "Manage",
+  ACTIONS: "Actions",
+  SUMMARY: "Summary",
+  RECENTLY_ADDED: "Recently added",
+  HI_NAME: "Hi, {{name}}",
+  TODAY: "Today",
+  THIS_MONTH: "This month",
+  THIS_WEEK: "This week",
+  THIS_YEAR: "This year",
+  MY_ACCOUNT: "My account",
+  LOGGED_IN_AS: "Logged in as {{email}}",
+  LOGOUT: "Logout",
+  EDIT_BASIC_INFO: "Edit basic info",
+  CHANGE_PASSWORD: "Change password",
+  DELETE_ACCOUNT: "Delete account",
+  LOGIN: "Login",
+  EMAIL: "Email",
+  PASSWORD: "Password",
+  MY_BOOKS: "My books",
+  COLLABORATED_BOOKS: "Collaborated books",
+};

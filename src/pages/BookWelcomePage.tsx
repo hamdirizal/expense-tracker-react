@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { getStoredDefaultBookId } from "../helpers/storageHelper";
-import { AppPaths } from "../constants";
+import { AppPaths, Texts } from "../constants";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import ModalSelectBook from "../components/ModalSelectBook";
 import CreateBookForm from "../components/CreateBookForm";
@@ -29,7 +29,7 @@ const BookWelcomPage = () => {
   } else {
     return (
       <div>
-        <div className="Heading3">My Books</div>
+        <div className="Heading3">📚 {Texts.MY_BOOKS}</div>
         {getOwnedBooksQuery.data ? (
           <BookList books={getOwnedBooksQuery.data} />
         ) : (
@@ -40,7 +40,7 @@ const BookWelcomPage = () => {
 
         <div className="HSpace1"></div>
 
-        <div className="Heading3">Collaborated Books</div>
+        <div className="Heading3">📚 {Texts.COLLABORATED_BOOKS}</div>
         {getCollaboratedBooksQuery.data ? (
           <BookList books={getCollaboratedBooksQuery.data} />
         ) : (

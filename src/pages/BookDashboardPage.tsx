@@ -4,13 +4,16 @@ import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 import ErrorDiv from "../components/ErrorDiv";
 import useGetRecentTransactionsQuery from "../services/useGetRecentTransactionsQuery";
 import ModalSelectBook from "../components/ModalSelectBook";
-import { AppPaths } from "../constants";
+import { AppPaths, Texts } from "../constants";
 import Heading3 from "../components/Heading3";
 import CurrentBookLine from "../components/CurrentBookLine";
 import useGetTransactionSummaryQuery from "../services/useGetTransactionSummaryQuery";
 import TransactionSummary from "../components/TransactionSummary";
 import { Transaction } from "../types";
 import TransactionCard from "../components/TransactionCard";
+import SgvArrowLeftIcon from "../svg-components/SgvArrowLeftIcon";
+import SvgAddIcon from "../svg-components/SvgAddIcon";
+import LinkWithEmoji from "../components/LinkWithEmoji";
 
 const BookDashboardPage = () => {
   const { book_id } = useParams();
@@ -30,37 +33,33 @@ const BookDashboardPage = () => {
   const renderFinalMarkup = () => {
     return (
       <>
-        <div>
-          <CurrentBookLine
-            title={getSingleBookQuery.data?.title || ""}
-            onSwitch={() => setIsModalOpen(true)}
-          />
-        </div>
-
-        <div className="BookActions">
-          <h3 className="BookActions__title">Actions: </h3>
+        <LinkWithEmoji
+          to={AppPaths.BOOK_WELCOME}
+          label={Texts.BACK_TO_BOOK_SELECTION}
+          emoji="◀️"
+        />
+        <div className="HSpace2"></div>
+        <h3 className="Heading3">{Texts.ACTIONS}</h3>
+        <ul className="BookActions">
           {book_id ? (
-            <div className="BookActions__item">
-              <Link to={AppPaths.ADD_TRANSACTION.replace(/:book_id/g, book_id)}>
-                Add transaction
-              </Link>
-            </div>
+            <li>
+              <LinkWithEmoji
+                to={AppPaths.ADD_TRANSACTION.replace(/:book_id/g, book_id)}
+                label={Texts.ADD_TRANSACTION}
+                emoji="➕"
+              />
+            </li>
           ) : null}
-          <div className="BookActions__item">Listing</div>
-          <div className="BookActions__item">Search</div>
-          {book_id ? (
-            <div className="BookActions__item">
-              <Link
-                to={AppPaths.BOOK_MANAGE.replace(
-                  /:book_id/g,
-                  book_id.toString()
-                )}
-              >
-                Manage
-              </Link>
-            </div>
-          ) : null}
-        </div>
+          <li>
+            <LinkWithEmoji to={""} label={Texts.LISTING} emoji="📝" />
+          </li>
+          <li>
+            <LinkWithEmoji to={""} label={Texts.SEARCH} emoji="🔍" />
+          </li>
+          <li>
+            <LinkWithEmoji to={""} label={Texts.MANAGE} emoji="⚙️" />
+          </li>
+        </ul>
 
         <TransactionSummary summary={getTransactionSummaryQuery.data || null} />
 

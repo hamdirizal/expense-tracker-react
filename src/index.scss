@@ -430,17 +430,16 @@ svg {
   display: flex;
 }
 
+// Component
 .BookActions {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  list-style: none;
 }
-.BookActions__title {
-  @include section-title;
+.BookActions > li {
+  margin-bottom: 0.5rem;
 }
-.BookActions__item {
-  margin-bottom: 0.6rem;
+.BookActions > li:last-child {
+  margin-bottom: 0;
 }
-.BookActions__item a {color: $color-primary;}
 
 .RecentTransactions {
   margin-top: 2rem;
@@ -545,6 +544,10 @@ svg {
   height: 1rem;
 }
 
+.HSpace2 {
+  height: 2rem;
+}
+
 .BookList {}
 .BookList__item {
   margin-bottom: 0.7rem;
@@ -577,3 +580,45 @@ svg {
 .CreateBookForm__button {
   min-width: 130px;
 }
+
+// Back component
+.Back {
+  font-weight: 500;
+  font-size: $fontsize-base;
+  color: $color-link;
+}
+.Back__icon {
+  display: inline-block;
+  width: 1rem;
+  height: 0.7rem;
+}
+
+// Component
+.LinkWithIcon {
+  color: $color-link;
+}
+.LinkWithIcon__icon {
+  display: inline-block;
+  width: 1rem;
+  height: 0.8rem;
+  margin-right: 0.4rem;
+}
+
+// Component
+.LinkWithEmoji {
+  color: $color-text;
+  text-decoration: none;
+  font-size: $fontsize-base;
+}
+.LinkWithEmoji > span {
+  display: inline-block;
+}
+.LinkWithEmoji > span:first-child {
+  margin-right: 0.3rem;
+}
+.LinkWithEmoji > span:last-child {
+  text-decoration: underline;
+  color: $color-link;
+}
+
+// Component
