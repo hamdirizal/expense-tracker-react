@@ -66,4 +66,8 @@ export const Texts = {
   MY_BOOKS: "My books",
   COLLABORATED_BOOKS: "Collaborated books",
   INVITATIONS: "Invitations",
+  SUBMIT: "Submit",
+  CANCEL: "Cancel",
+  INCOMING: "Incoming",
+  OUTGOING: "Outgoing",
 };

@@ -45,15 +45,15 @@ const AddTransactionPage = () => {
           {getBookEmoji(getSingleBookQuery.data?.title || "")}{" "}
           {getSingleBookQuery.data?.title || ""}
         </h2>
-
+        <div className="HSpace3"></div>
         <h3 className="Heading3">{Texts.ADD_TRANSACTION}</h3>
-
         <AddTransactionForm
           cancelFn={() =>
             navigate(AppPaths.BOOK_DASHBOARD.replace(/:book_id/, book_id || ""))
           }
           bookId={parseInt(book_id || "0")}
         />
+        <div className="HSpace3"></div>
 
         <div className="RecentTransactions">
           <h3 className="RecentTransactions__title">Recently added</h3>

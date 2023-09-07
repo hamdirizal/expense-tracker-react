@@ -5,6 +5,7 @@ import Heading3 from "./Heading3";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import useCreateTransactionMutation from "../services/useCreateTransactionMutation";
 import { CreateTransactionMutationPayload, Transaction } from "../types";
+import { Texts } from "../constants";
 
 interface AddTransactionFormProps {
   bookId: number;
@@ -70,7 +71,6 @@ const AddTransactionForm = ({ bookId, cancelFn }: AddTransactionFormProps) => {
                 {...register("date", { required: true })}
               />
             </div>
-
             <div className="FormRow">
               <label className="FieldLabel">Type</label>
               <select className="InputSelect">
@@ -112,10 +112,10 @@ const AddTransactionForm = ({ bookId, cancelFn }: AddTransactionFormProps) => {
               onClick={cancelFn}
               className="ButtonSecondary"
             >
-              Cancel
+              {Texts.CANCEL}
             </button>
             <button type="submit" className="ButtonPrimary">
-              Submit
+              {Texts.SUBMIT}
             </button>
           </div>
         </form>
