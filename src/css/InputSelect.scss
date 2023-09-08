@@ -1,0 +1,8 @@
+.InputSelect {
+  @include gradient-secondary;
+  @include input-base;
+}
+
+.InputSelect--short {
+  max-width: 10rem;
+}

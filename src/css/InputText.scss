@@ -1,0 +1,14 @@
+.InputText {
+  @include input-base;
+  background-color: white;
+  color: $color-text;
+  box-shadow: inset 1px 1px 2px 1px rgba(0,0,0,0.1);
+}
+.InputText[disabled] {
+  box-shadow: none;
+  cursor: not-allowed;
+  border-color: #e7e7e7;
+}
+.InputText--short {
+  max-width: 10rem;
+}

@@ -88,10 +88,13 @@ $screen-xl: 1024px;
 @import "./ButtonRegular.scss";
 @import "./UserBtn.scss";
 @import "./RegularList.scss";
+@import "./FieldLabel.scss";
 @import "./TxTable.scss";
 @import "./TxSummaryTable.scss";
 @import "./AmountPositive.scss";
 @import "./AmountNegative.scss";
+@import "./InputText.scss";
+@import "./InputSelect.scss";
 
 .PageTitle {
   @include page-title;
@@ -106,12 +109,6 @@ $screen-xl: 1024px;
 }
 .FormRow {
   margin-bottom: 0.5rem;
-}
-.FieldLabel {
-  display: block;
-  margin-bottom: 0.2rem;
-  font-size: $fontsize-minus-1;
-  font-weight: 600;
 }
 
 .LoginPage {
@@ -176,24 +173,6 @@ $screen-xl: 1024px;
   font-size: 1em;
   color: $color-primary;
   text-decoration: underline;
-}
-
-
-
-.InputText {
-  @include input-base;
-  background-color: white;
-  color: $color-text;
-  box-shadow: inset 1px 1px 2px 1px rgba(0,0,0,0.1);
-}
-.InputText[disabled] {
-  box-shadow: none;
-  cursor: not-allowed;
-  border-color: #e7e7e7;
-}
-.InputSelect {
-  @include gradient-secondary;
-  @include input-base;
 }
 
 .Heading2 {

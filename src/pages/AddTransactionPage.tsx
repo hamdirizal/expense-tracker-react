@@ -54,8 +54,7 @@ const AddTransactionPage = () => {
           }
           bookId={parseInt(book_id || "0")}
         />
-        <div className="HSpace2"></div>
-
+        <div className="HSpace3"></div>
         <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>
         {getRecentTransactionsQuery.data?.length ? (
           <TransactionList

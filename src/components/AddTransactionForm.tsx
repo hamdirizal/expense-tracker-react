@@ -55,29 +55,27 @@ const AddTransactionForm = ({ bookId, cancelFn }: AddTransactionFormProps) => {
   useEffect(onDataCreated, [createTransactionMutation]);
   const renderFinalMarkup = () => {
     return (
-      <div className="AddTransactionForm">
+      <div className="AddTransactionFormx">
         <form
           action=""
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}
           className="relative"
         >
-          <div className="FormRowTwoColumnWrapper">
-            <div className="FormRow">
-              <label className="FieldLabel">Date</label>
-              <input
-                className="InputText"
-                required
-                type="date"
-                {...register("date", { required: true })}
-              />
-            </div>
-            <div className="FormRow">
-              <label className="FieldLabel">Type</label>
-              <select className="InputSelect">
-                <option value="">Incoming</option>
-                <option value="">Outgoing</option>
-              </select>
-            </div>
+          <div className="FormRow">
+            <label className="FieldLabel">Type</label>
+            <select className="InputSelect InputSelect--short">
+              <option value="">{Texts.INCOMING}</option>
+              <option value="">{Texts.OUTGOING}</option>
+            </select>
+          </div>
+          <div className="FormRow">
+            <label className="FieldLabel">Date</label>
+            <input
+              className="InputText InputText--short"
+              required
+              type="date"
+              {...register("date", { required: true })}
+            />
           </div>
 
           <div className="FormRow">
@@ -106,15 +104,8 @@ const AddTransactionForm = ({ bookId, cancelFn }: AddTransactionFormProps) => {
               className="InputText"
             ></textarea>
           </div>
-          <div className="FormRow AddTransactionForm__actionGroup">
-            <button
-              type="button"
-              onClick={cancelFn}
-              className="ButtonSecondary"
-            >
-              {Texts.CANCEL}
-            </button>
-            <button type="submit" className="ButtonPrimary">
+          <div className="FormRow">
+            <button type="submit" className="ButtonRegular">
               {Texts.SUBMIT}
             </button>
           </div>
