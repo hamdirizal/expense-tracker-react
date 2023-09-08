@@ -93,6 +93,8 @@ body {
 }
 
 button {
+  font-weight: 500;
+  font-family: $font-1;
   line-height: 1;
   appearance: none;
   border: 0 none;
@@ -564,6 +566,16 @@ svg {
   margin-bottom: 1rem;
 }
 
+.CharSpace1 {
+  display: inline-block;
+  width: 1em;
+}
+
+.CharSpace2 {
+  display: inline-block;
+  width: 2em;
+}
+
 .HSpaceHalf {
   margin-bottom: 0.5rem;
 }
@@ -610,7 +622,7 @@ svg {
   max-width: 300px;
 }
 .CreateBookForm__button {
-  min-width: 130px;
+  min-width: 100px;
 }
 
 // Back component
@@ -718,4 +730,44 @@ $breadcrumbs-indent: 0.8rem;
 .Breadcrumbs li span{
   font-size: $fontsize-base;
   font-weight: 600;;
+}
+
+// Component
+.RegularList {text-align: left;}
+.RegularList__ul {
+  margin-left: 1.1rem;
+}
+.RegularList__li {
+  margin-bottom: 0.6rem;
+}
+
+// Component
+.BookItemList__itemTitle {
+  text-align: left;
+  font-size: $fontsize-base;
+  font-weight: 500;
+  text-decoration: underline;
+  color: $color-link;
+  display: inline-block;
+  margin-right: 0.5rem;
+  line-height: 1.2;
+}
+.BookItemList__itemTitle {
+
+}
+
+// Component
+.TxTable {}
+.TxTable td {
+  vertical-align: top;
+  padding-bottom: 0.5rem;
+}
+.TxTable td:nth-child(1) {
+  padding-right: 0.5rem;
+}
+.TxTable td:nth-child(2) {
+  padding-right: 0.5rem;
+}
+.TxTable td:nth-child(3) {
+  text-align: right;
 }

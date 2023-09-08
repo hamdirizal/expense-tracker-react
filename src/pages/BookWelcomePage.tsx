@@ -8,6 +8,7 @@ import CreateBookForm from "../components/CreateBookForm";
 import BookList from "../components/BookList";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
+import BookItemList from "../components/BookItemList";
 
 const BookWelcomPage = () => {
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
@@ -39,12 +40,10 @@ const BookWelcomPage = () => {
 
         <div className="Heading3">{Texts.MY_BOOKS}</div>
         {getOwnedBooksQuery.data ? (
-          <BookList books={getOwnedBooksQuery.data} />
+          <BookItemList books={getOwnedBooksQuery.data} />
         ) : (
           <div>You don't have any book</div>
         )}
-
-        
 
         <div className="HSpace2"></div>
         <div className="Heading3">{Texts.COLLABORATED_BOOKS}</div>
