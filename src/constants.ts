@@ -72,4 +72,5 @@ export const Texts = {
   OUTGOING: "Outgoing",
   COPYRIGHT_NOTES: "© 2014 Monee. All rights reserved.",
   DASHBOARD: "Dashboard",
+  CREATE_NEW_BOOK: "Create new book",
 };

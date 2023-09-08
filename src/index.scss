@@ -314,7 +314,7 @@ svg {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px $page-side-padding;
+  padding: 0.5rem $page-side-padding;
   max-width: $page-max-width;
   margin: 0 auto;
 }
@@ -598,6 +598,7 @@ svg {
 // CreateBookForm Component
 .CreateBookForm {
   position: relative;
+  margin-bottom: 2rem;
 }
 .CreateBookForm__form {
   display: flex;

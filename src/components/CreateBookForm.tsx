@@ -6,7 +6,7 @@ import useSetActiveBookMutation from "../services/useSetActiveBookMutation";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
 import { useForm } from "react-hook-form";
-import { AppPaths } from "../constants";
+import { AppPaths, Texts } from "../constants";
 import LoadingSpinner from "./LoadingSpinner";
 
 const CreateBookForm = () => {
@@ -53,7 +53,7 @@ const CreateBookForm = () => {
           {...register("title", { required: true })}
         />
         <button type="submit" className="ButtonRegular CreateBookForm__button">
-          Create book
+          {Texts.SUBMIT}
         </button>
       </form>
     );
@@ -61,6 +61,7 @@ const CreateBookForm = () => {
 
   return (
     <div className="CreateBookForm">
+      <div className="Heading3">{Texts.CREATE_NEW_BOOK}</div>
       {createBookMutation.isLoading ? (
         <LoadingSpinner isOverlayed={true} />
       ) : (

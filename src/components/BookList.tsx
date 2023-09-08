@@ -4,9 +4,10 @@ import { AppPaths } from "../constants";
 
 interface BookListProps {
   books: Book[];
+  showOwner?: boolean;
 }
 
-const BookList = ({ books }: BookListProps) => {
+const BookList = ({ books, showOwner = false }: BookListProps) => {
   const navigate = useNavigate();
   return (
     <div className="BookList">
@@ -27,9 +28,11 @@ const BookList = ({ books }: BookListProps) => {
             >
               {book.title}
             </button>
-            <div className="BookList__itemOwner">
-              Owner: {book.owner_id.substring(0, 6)}
-            </div>
+            {showOwner ? (
+              <div className="BookList__itemOwner">
+                Owner: {book.owner_id.substring(0, 6)}
+              </div>
+            ) : null}
           </div>
         );
       })}

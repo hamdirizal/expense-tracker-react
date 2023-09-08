@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { getStoredDefaultBookId, logout } from "../helpers/storageHelper";
-import { AppPaths } from "../constants";
+import { AppPaths, Texts } from "../constants";
 import CurrentBookPanel from "../components/CurrentBookPanel";
 import ModalSelectBook from "../components/ModalSelectBook";
 import CreateBookForm from "../components/CreateBookForm";
@@ -17,15 +17,15 @@ const ProfilePage = () => {
   const renderIfLoggedIn = () => {
     return (
       <div>
-        <Link className="Back" to={AppPaths.BOOK_WELCOME}>
-          <span className="Back__icon">
-            <SgvArrowLeftIcon color="#0040ff" />
-          </span>
-          Back to the book selection
-        </Link>
-        <div className="HSpace2"></div>
+        <ul className="Breadcrumbs">
+          <li>
+            ⚓ <Link to={AppPaths.BOOK_WELCOME}>{Texts.DASHBOARD}</Link>
+          </li>
+          <li>
+            <span>{Texts.MY_ACCOUNT}</span>
+          </li>
+        </ul>
 
-        <div className="Heading3">My Account</div>
         <div>
           Logged-in as: <u>{getAuthUserQuery?.data?.email}</u>
         </div>
