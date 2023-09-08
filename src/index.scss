@@ -249,7 +249,7 @@ svg {
 
 @mixin input-base {
   border-radius: $rounded-input;
-  padding: 0.3rem 0.5rem;
+  padding: 0.3rem 0.2rem;
   border: 1px solid $color-border-textinput;
   width: 100%;
   line-height: 1;
@@ -683,9 +683,9 @@ $breadcrumbs-indent: 0.8rem;
 }
 .Breadcrumbs li {
   display: block;
-  font-size: $fontsize-minus-1;
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
+  font-size: $fontsize-base;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
 }
 .Breadcrumbs li:nth-child(2) {
   margin-left: 1 * $breadcrumbs-indent;
@@ -702,7 +702,6 @@ $breadcrumbs-indent: 0.8rem;
 .Breadcrumbs li:not(:first-child)::before {
   content: '';
   margin-right: 0.4rem;
-  font-size: $fontsize-minus-1;
   border-left: 1px solid #888;
   border-bottom: 1px solid #888;
   display: inline-block;
@@ -712,10 +711,10 @@ $breadcrumbs-indent: 0.8rem;
 }
 .Breadcrumbs li a{
   color: $color-link;
-  font-size: $fontsize-minus-1;
+  font-size: $fontsize-base;
   font-weight: 500;
 }
 .Breadcrumbs li span{
-  font-size: $fontsize-minus-1;
+  font-size: $fontsize-base;
   font-weight: 600;;
 }
