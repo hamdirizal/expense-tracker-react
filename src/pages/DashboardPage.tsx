@@ -39,21 +39,22 @@ const DashboardPage = () => {
         <CreateBookForm />
 
         <div className="Heading3">📚 {Texts.MY_BOOKS}</div>
-        {getOwnedBooksQuery.data ? (
+        {getOwnedBooksQuery.data?.length ? (
           <BookItemList books={getOwnedBooksQuery.data} />
         ) : (
-          <div>You don't have any book</div>
+          <div>{Texts.NO_OWNED_BOOKS}</div>
         )}
 
         <div className="HSpace2"></div>
         <div className="Heading3">🤝 {Texts.COLLABORATED_BOOKS}</div>
-        {getCollaboratedBooksQuery.data ? (
+        {getCollaboratedBooksQuery.data?.length ? (
           <BookList books={getCollaboratedBooksQuery.data} />
         ) : (
-          <div>You don't have any book</div>
+          <div>{Texts.NO_COLLABORATED_BOOKS}</div>
         )}
         <div className="HSpace2"></div>
         <div className="Heading3">✉️ {Texts.INVITATIONS}</div>
+        <div>{Texts.NO_INVITATIONS}</div>
       </div>
     );
   }

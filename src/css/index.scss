@@ -95,6 +95,7 @@ $screen-xl: 1024px;
 @import "./AmountNegative.scss";
 @import "./InputText.scss";
 @import "./InputSelect.scss";
+@import "./WhitePanel.scss";
 
 .PageTitle {
   @include page-title;
@@ -427,21 +428,7 @@ $screen-xl: 1024px;
   font-weight: 500;
 }
 
-.AddTransactionForm {
-  background: #efefef;
-  padding: 0.8rem;
-  border-radius: 3px;
-}
-.AddTransactionForm__actionGroup {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 1rem;
-}
-.AddTransactionForm__actionGroup > * {
-  width: auto;
-  margin-right: 1rem;
-}
+
 
 .ViewTransactionPage__message {
   margin-bottom: 1rem;

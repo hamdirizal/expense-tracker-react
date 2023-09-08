@@ -55,7 +55,7 @@ const AddTransactionForm = ({ bookId, cancelFn }: AddTransactionFormProps) => {
   useEffect(onDataCreated, [createTransactionMutation]);
   const renderFinalMarkup = () => {
     return (
-      <div className="AddTransactionFormx">
+      <div>
         <form
           action=""
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}

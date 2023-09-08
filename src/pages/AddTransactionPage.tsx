@@ -48,12 +48,16 @@ const AddTransactionPage = () => {
             <span>{Texts.ADD_TRANSACTION}</span>
           </li>
         </ul>
-        <AddTransactionForm
-          cancelFn={() =>
-            navigate(AppPaths.BOOK_SINGLE.replace(/:book_id/, book_id || ""))
-          }
-          bookId={parseInt(book_id || "0")}
-        />
+        <div className="WhitePanel">
+          <div>{Texts.NOT_ALLOWED_TO_EDIT_TRANSACTION}</div>
+          <div className="HSpace1"></div>
+          <AddTransactionForm
+            cancelFn={() =>
+              navigate(AppPaths.BOOK_SINGLE.replace(/:book_id/, book_id || ""))
+            }
+            bookId={parseInt(book_id || "0")}
+          />
+        </div>
         <div className="HSpace3"></div>
         <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>
         {getRecentTransactionsQuery.data?.length ? (
@@ -61,7 +65,9 @@ const AddTransactionPage = () => {
             isLoading={getRecentTransactionsQuery.isLoading}
             transactions={getRecentTransactionsQuery.data}
           />
-        ) : <div>{Texts.NO_TRANSACTIONS}</div>}
+        ) : (
+          <div>{Texts.NO_TRANSACTIONS}</div>
+        )}
       </>
     );
   };

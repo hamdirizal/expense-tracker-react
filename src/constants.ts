@@ -48,7 +48,6 @@ export const Texts = {
   ACTIONS: "Actions",
   SUMMARY: "Summary",
   RECENTLY_ADDED: "Recently added",
-  NO_TRANSACTIONS: "No transactions",
   HI_NAME: "Hi, {{name}}",
   TODAY: "Today",
   THIS_MONTH: "This month",
@@ -73,4 +72,9 @@ export const Texts = {
   COPYRIGHT_NOTES: "© 2014 Monee. All rights reserved.",
   DASHBOARD: "Dashboard",
   CREATE_NEW_BOOK: "Create new book",
+  NO_TRANSACTIONS: "No transactions",
+  NO_OWNED_BOOKS: "No books. Please create one.",
+  NO_COLLABORATED_BOOKS: "No collaborated books",
+  NO_INVITATIONS: "No invitations",
+  NOT_ALLOWED_TO_EDIT_TRANSACTION: "You are not allowed to edit this transaction",
 };
