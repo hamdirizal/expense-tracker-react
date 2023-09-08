@@ -78,10 +78,6 @@ const AddTransactionPage = () => {
       {getSingleBookQuery.isError && (
         <ErrorDiv error={getSingleBookQuery.error.message} />
       )}
-      <ModalSelectBook
-        isOpen={isModalOpen}
-        closeFn={() => setIsModalOpen(false)}
-      />
     </div>
   );
 };

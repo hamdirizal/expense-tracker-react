@@ -41,10 +41,6 @@ const CurrentBookPanel = () => {
           onClick={() => setIsModalOpened(true)}
         />
       </div>
-      <ModalSelectBook
-        isOpen={isModalOpened}
-        closeFn={() => setIsModalOpened(false)}
-      />
     </>
   );
 };
