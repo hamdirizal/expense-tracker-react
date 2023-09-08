@@ -56,37 +56,14 @@ const BookDashboardPage = () => {
         </div>
         <div className="HSpace2"></div>
         <div className="Heading3">{Texts.SUMMARY}</div>
-        <div className="RegularList">
-          <ul className="RegularList__ul">
-            <li className="RegularList__li">
-              Today:<span className="CharSpace1"></span>
-              <PlusMinusSign isPlus={false} />
-              20.000<span className="CharSpace1"></span>
-              <PlusMinusSign isPlus={true} />
-              50.000
-            </li>
-            <li className="RegularList__li">
-              This month:<span className="CharSpace1"></span>
-              <PlusMinusSign isPlus={false} />
-              20.000<span className="CharSpace1"></span>
-              <PlusMinusSign isPlus={true} />
-              50.000
-            </li>
-            <li className="RegularList__li">
-              This year:<span className="CharSpace1"></span>
-              <PlusMinusSign isPlus={false} />
-              20.000<span className="CharSpace1"></span>
-              <PlusMinusSign isPlus={true} />
-              50.000
-            </li>
-          </ul>
-        </div>
+        <TransactionSummary summary={getTransactionSummaryQuery.data || null} />
+        
         <div className="HSpace2"></div>
         <div className="Heading3">{Texts.RECENTLY_ADDED}</div>
         <table className="TxTable">
           <tbody>
             <tr>
-              <td>•</td>
+              <td></td>
               <td>
                 <div>
                   <Link to="sf">Bayar transport ke surabaya</Link>
@@ -102,7 +79,7 @@ const BookDashboardPage = () => {
               </td>
             </tr>
             <tr>
-              <td>•</td>
+              <td></td>
               <td>
                 <div>Makan siang</div>
                 <div>2023-08-21</div>
@@ -112,7 +89,7 @@ const BookDashboardPage = () => {
               </td>
             </tr>
             <tr>
-              <td>•</td>
+              <td></td>
               <td>
                 <div>Bayaran</div>
                 <div>2023-08-21</div>
@@ -122,7 +99,7 @@ const BookDashboardPage = () => {
               </td>
             </tr>
             <tr>
-              <td>•</td>
+              <td></td>
               <td>
                 <div>Bayar Listrik</div>
                 <div>2023-08-21</div>
@@ -188,7 +165,7 @@ const BookDashboardPage = () => {
 
         <h3 className="Heading3">{Texts.SUMMARY}</h3>
 
-        <TransactionSummary summary={getTransactionSummaryQuery.data || null} />
+        
         <div className="HSpace2"></div>
 
         <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>

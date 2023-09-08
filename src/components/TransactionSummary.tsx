@@ -12,43 +12,52 @@ interface TransactionSummaryProps {
 const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
   if (!summary) return null;
   return (
-    <div className="TransactionSummary">
-      <ul>
-        <li>
-          <strong>{Texts.TODAY}</strong>
-          <span>
-            <PlusMinusSign isPlus={false} />
-            {formatAsCurrency(summary.today_outgoing)}
-          </span>
-          <span>
-            <PlusMinusSign isPlus={true} />
-            {formatAsCurrency(summary.today_income)}
-          </span>
-        </li>
-        <li>
-          <strong>{Texts.THIS_MONTH}</strong>
-          <span>
-            <PlusMinusSign isPlus={false} />
-            {formatAsCurrency(summary.this_month_outgoing)}
-          </span>
-          <span>
-            <PlusMinusSign isPlus={true} />
-            {formatAsCurrency(summary.this_month_income)}
-          </span>
-        </li>
-        <li>
-          <strong>{Texts.THIS_YEAR}</strong>
-          <span>
-            <PlusMinusSign isPlus={false} />
-            {formatAsCurrency(summary.this_year_outgoing)}
-          </span>
-          <span>
-            <PlusMinusSign isPlus={true} />
-            {formatAsCurrency(summary.this_year_income)}
-          </span>
-        </li>
-      </ul>
-    </div>
+    <table className="TxSummaryTable">
+      <tbody>
+        <tr>
+          <td></td>
+          <td>{Texts.TODAY}</td>
+          <td>
+            <span className="AmountNegative">
+              {formatAsCurrency(summary.today_outgoing)}
+            </span>
+          </td>
+          <td>
+            <span className="AmountPositive">
+              {formatAsCurrency(summary.today_income)}
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>{Texts.THIS_MONTH}</td>
+          <td>
+            <span className="AmountNegative">
+              {formatAsCurrency(summary.this_month_outgoing)}
+            </span>
+          </td>
+          <td>
+            <span className="AmountPositive">
+              {formatAsCurrency(summary.this_month_income)}
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>{Texts.THIS_YEAR}</td>
+          <td>
+            <span className="AmountNegative">
+              {formatAsCurrency(summary.this_year_outgoing)}
+            </span>
+          </td>
+          <td>
+            <span className="AmountPositive">
+              {formatAsCurrency(summary.this_year_income)}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 

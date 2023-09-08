@@ -1,0 +1,18 @@
+
+.TxSummaryTable td {
+  vertical-align: top;
+  padding-bottom: 0.5rem;
+}
+.TxSummaryTable td:first-child::before {
+  content: "•";
+}
+.TxSummaryTable td:nth-child(1),
+.TxSummaryTable td:nth-child(2),
+.TxSummaryTable td:nth-child(3) {
+  padding-right: 0.5rem;
+}
+
+.TxSummaryTable td:nth-child(3), 
+.TxSummaryTable td:nth-child(4) {
+  text-align: right;
+}

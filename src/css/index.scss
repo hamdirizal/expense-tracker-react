@@ -89,6 +89,7 @@ $screen-xl: 1024px;
 @import "./UserBtn.scss";
 @import "./RegularList.scss";
 @import "./TxTable.scss";
+@import "./TxSummaryTable.scss";
 @import "./AmountPositive.scss";
 @import "./AmountNegative.scss";
 
@@ -315,7 +316,7 @@ $screen-xl: 1024px;
 }
 
 // Component
-.TransactionSummary {}
+.TransactionSummary {border: 1px solid red;}
 .TransactionSummary ul {
   list-style: none;
 }
