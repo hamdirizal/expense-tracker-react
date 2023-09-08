@@ -680,19 +680,42 @@ svg {
   list-style: none;
 }
 .Breadcrumbs li {
-  display: inline-block;
-  margin-right: 0.6rem;
+  display: block;
   font-size: $fontsize-minus-1;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+.Breadcrumbs li:nth-child(2) {
+  margin-left: 0.6rem;
+  // display: block;
+  // font-size: $fontsize-minus-1;
+}
+.Breadcrumbs li:nth-child(3) {
+  margin-left: 1.2rem;
+}
+.Breadcrumbs li:nth-child(4) {
+  margin-left: 1.8rem;
+}
+.Breadcrumbs li:nth-child(5) {
+  margin-left: 2.4rem;
 }
 .Breadcrumbs li:not(:first-child)::before {
-  content: '/';
-  margin-right: 0.6rem;
+  content: '';
+  margin-right: 0.4rem;
   font-size: $fontsize-minus-1;
+  border-left: 1px solid #888;
+  border-bottom: 1px solid #888;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.8rem;
+  transform: translateY(-2px);
 }
 .Breadcrumbs li a{
   color: $color-link;
   font-size: $fontsize-minus-1;
+  font-weight: 500;
 }
 .Breadcrumbs li span{
   font-size: $fontsize-minus-1;
+  font-weight: 600;;
 }

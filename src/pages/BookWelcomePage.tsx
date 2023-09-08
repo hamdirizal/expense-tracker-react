@@ -37,6 +37,12 @@ const BookWelcomPage = () => {
             <Link to="">Alice personal book</Link>
           </li>
           <li>
+            <Link to="">Somelink</Link>
+          </li>
+          <li>
+            <Link to="">Somelink</Link>
+          </li>
+          <li>
             <span>Add transaction</span>
           </li>
         </ul>
