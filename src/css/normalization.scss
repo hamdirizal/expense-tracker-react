@@ -1,0 +1,33 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: $fontsize-base;
+}
+
+html {
+  font-family: $font-1;
+  font-size: $fontsize-base;
+} 
+
+body {
+  color: $color-text;
+  font-family: $font-1;
+  font-size: $fontsize-base;
+  font-weight: 500;
+}
+
+button {
+  font-weight: 500;
+  font-family: $font-1;
+  line-height: 1;
+  appearance: none;
+  border: 0 none;
+  background: transparent;
+  cursor: pointer;
+}
+
+svg {
+  max-width: 100%;
+  max-height: 100%;
+}

@@ -10,11 +10,11 @@ interface UserButtonProps {
 const UserButton = ({ user }: UserButtonProps) => {
   return (
     <Link to={AppPaths.PROFILE} className="UserBtn">
-      <div className="UserBtn__hi">Hi,</div>
-      <div className="UserBtn__name">{user?.nickname || "User"}</div>
-      <div className="UserBtn__icon">
+      <span className="UserBtn__hi">Hi,</span>
+      <span className="UserBtn__name">{user?.nickname || "User"}</span>
+      <span className="UserBtn__icon">
         <SvgUserIcon color="white" />
-      </div>
+      </span>
     </Link>
   );
 };

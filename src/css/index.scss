@@ -73,92 +73,25 @@ $screen-xl: 1024px;
   bottom: 0;
 }
 
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: $fontsize-base;
-}
-
-html {
-  font-family: $font-1;
-  font-size: $fontsize-base;
-} 
-
-body {
-  color: $color-text;
-  font-family: $font-1;
-  font-size: $fontsize-base;
-  font-weight: 500;
-}
-
-button {
-  font-weight: 500;
-  font-family: $font-1;
+@mixin input-base {
+  border-radius: $rounded-input;
+  padding: 0.3rem 0.2rem;
+  border: 1px solid $color-border-textinput;
+  width: 100%;
   line-height: 1;
-  appearance: none;
-  border: 0 none;
-  background: transparent;
-  cursor: pointer;
+  font-weight: 500;
+  font-family: $font-1;
+  font-size: $fontsize-base;
 }
 
-svg {
-  max-width: 100%;
-  max-height: 100%;
-}
+@import "./normalization.scss";
+@import "./ButtonRegular.scss";
+@import "./UserBtn.scss";
+@import "./RegularList.scss";
+@import "./TxTable.scss";
 
 .PageTitle {
   @include page-title;
-}
-  
-.Modal {}
-
-.Modal__backdrop {
-  @include inset-0;
-  position: fixed; 
-  display: flex;
-  z-index: 10;
-  background-color: rgba(0,0,0,0.7);
-}
-.Modal__scrollable {
-  @include inset-0;
-  position: fixed;  
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  overflow: auto;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  width: 100vw;
-  min-height: 100vh;
-  z-index: 21;
-}
-.Modal__dialog {
-  width: 90vw;  
-  max-width: 540px;
-  background: $color-bg-white;
-  z-index: 22;
-  position: relative;
-  border-radius: 10px;
-  padding: 2rem;
-}
-.Modal__close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  height: 40px;
-  z-index: 50;
-  border-radius: 100%;
-}
-.Modal__close:active {
-  padding: 4px;
-}
-@media screen and (max-width: $screen-sm){
-  .Modal__dialog {
-    width: 85vw;
-    padding: 1rem;
-  }
 }
 
 .FormRowTwoColumnWrapper {
@@ -206,14 +139,7 @@ svg {
   display: flex;
 }
 
-.ButtonRegular {
-  @include gradient-btn-regular;
-  border: 1px solid $color-border-textinput;
-  border-radius: $rounded-input;
-  padding: 0.2rem 0.4rem;
-  font-weight: 400;
-  font-family: $font-1;
-}
+
 
 .ButtonPrimary {
   @include gradient-primary;
@@ -249,16 +175,7 @@ svg {
   text-decoration: underline;
 }
 
-@mixin input-base {
-  border-radius: $rounded-input;
-  padding: 0.3rem 0.2rem;
-  border: 1px solid $color-border-textinput;
-  width: 100%;
-  line-height: 1;
-  font-weight: 500;
-  font-family: $font-1;
-  font-size: $fontsize-base;
-}
+
 
 .InputText {
   @include input-base;
@@ -447,6 +364,7 @@ svg {
 .TransactionList__table {
   border-collapse: collapse;
   width: 100%;
+  border: 1px solid red;
 }
 .TransactionList__table td {
   border: 1px solid $color-border-table;
@@ -478,8 +396,6 @@ svg {
 .RecentTransactions__title {
   @include section-title;
 }
-
-@import "./UserBtn.scss";
 
 .TransactionCard {
   margin-bottom: 1.2rem;
@@ -716,15 +632,6 @@ $breadcrumbs-indent: 0.8rem;
 }
 
 // Component
-.RegularList {text-align: left;}
-.RegularList__ul {
-  margin-left: 1.1rem;
-}
-.RegularList__li {
-  margin-bottom: 0.6rem;
-}
-
-// Component
 .BookItemList__itemTitle {
   text-align: left;
   font-size: $fontsize-base;
@@ -740,17 +647,3 @@ $breadcrumbs-indent: 0.8rem;
 }
 
 // Component
-.TxTable {}
-.TxTable td {
-  vertical-align: top;
-  padding-bottom: 0.5rem;
-}
-.TxTable td:nth-child(1) {
-  padding-right: 0.5rem;
-}
-.TxTable td:nth-child(2) {
-  padding-right: 0.5rem;
-}
-.TxTable td:nth-child(3) {
-  text-align: right;
-}
