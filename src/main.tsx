@@ -6,15 +6,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
   createBrowserRouter,
-  Navigate,
   RouterProvider,
 } from "react-router-dom";
-import DashboardSkeleton from "./pages/DashboardSkeleton.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
-import DashboardHomePage from "./pages/DashboardHomePage.tsx";
 import { AppPaths } from "./constants.ts";
 import AddTransactionPage from "./pages/AddTransactionPage.tsx";
-import EditTransactionPage from "./pages/EditTransactionPage.tsx";
 import BookWelcomPage from "./pages/BookWelcomePage.tsx";
 import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
 import BookDashboardPage from "./pages/BookDashboardPage.tsx";
