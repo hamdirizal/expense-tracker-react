@@ -36,20 +36,13 @@ const BookDashboardPage = () => {
     return (
       <>
         <ul className="Breadcrumbs">
-          <li><Link to="">Dashboard</Link></li>
-          <li><Link to="">Alice personal book</Link></li>
-          <li><Link to="">Add transaction</Link></li>
+          <li>
+            ⚓ <Link to={AppPaths.BOOK_WELCOME}>{Texts.DASHBOARD}</Link>
+          </li>
+          <li>
+            <span>{getSingleBookQuery.data?.title || ""}</span>
+          </li>
         </ul>
-        <LinkWithEmoji
-          to={AppPaths.BOOK_WELCOME}
-          label={Texts.BACK_TO_BOOK_SELECTION}
-          emoji=""
-        />
-        <div className="HSpace2"></div>
-        <h2 className="Heading2">
-          {getBookEmoji(getSingleBookQuery.data?.title || "")}{" "}
-          {getSingleBookQuery.data?.title || ""}
-        </h2>
 
         <table className="BookActions">
           <tbody>

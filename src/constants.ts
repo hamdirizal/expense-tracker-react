@@ -71,4 +71,5 @@ export const Texts = {
   INCOMING: "Incoming",
   OUTGOING: "Outgoing",
   COPYRIGHT_NOTES: "© 2014 Monee. All rights reserved.",
+  DASHBOARD: "Dashboard",
 };

@@ -31,19 +31,7 @@ const BookWelcomPage = () => {
       <div>
         <ul className="Breadcrumbs">
           <li>
-            <Link to="">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="">Alice personal book</Link>
-          </li>
-          <li>
-            <Link to="">Somelink</Link>
-          </li>
-          <li>
-            <Link to="">Somelink</Link>
-          </li>
-          <li>
-            <span>Add transaction</span>
+            ⚓ <span>{Texts.DASHBOARD}</span>
           </li>
         </ul>
         <div className="HSpace2"></div>

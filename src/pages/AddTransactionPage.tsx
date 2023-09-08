@@ -35,18 +35,21 @@ const AddTransactionPage = () => {
   const renderPageContent = () => {
     return (
       <>
-        <LinkWithEmoji
-          to={AppPaths.BOOK_DASHBOARD.replace(/:book_id/, book_id || "")}
-          label={Texts.BACK_TO_THE_BOOK_PAGE}
-          emoji=""
-        />
-        <div className="HSpace2"></div>
-        <h2 className="Heading2">
-          {getBookEmoji(getSingleBookQuery.data?.title || "")}{" "}
-          {getSingleBookQuery.data?.title || ""}
-        </h2>
-        <div className="HSpace3"></div>
-        <h3 className="Heading3">{Texts.ADD_TRANSACTION}</h3>
+        <ul className="Breadcrumbs">
+          <li>
+            ⚓ <Link to={AppPaths.BOOK_WELCOME}>{Texts.DASHBOARD}</Link>
+          </li>
+          <li>
+            <Link
+              to={AppPaths.BOOK_DASHBOARD.replace(/:book_id/, book_id || "")}
+            >
+              {getSingleBookQuery.data?.title || ""}
+            </Link>
+          </li>
+          <li>
+            <span>{Texts.ADD_TRANSACTION}</span>
+          </li>
+        </ul>
         <AddTransactionForm
           cancelFn={() =>
             navigate(AppPaths.BOOK_DASHBOARD.replace(/:book_id/, book_id || ""))
