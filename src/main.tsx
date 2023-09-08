@@ -11,9 +11,9 @@ import {
 import LoginPage from "./pages/LoginPage.tsx";
 import { AppPaths } from "./constants.ts";
 import AddTransactionPage from "./pages/AddTransactionPage.tsx";
-import BookWelcomPage from "./pages/BookWelcomePage.tsx";
+import DashboardPage from "./pages/DashboardPage.tsx";
 import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
-import BookDashboardPage from "./pages/BookDashboardPage.tsx";
+import BookSinglePage from "./pages/BookSinglePage.tsx";
 import BookManagePage from "./pages/BookManagePage.tsx";
 import ViewTransactionPage from "./pages/ViewTransactionPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
@@ -29,11 +29,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <BookWelcomPage />,
+        element: <DashboardPage />,
       },
       {
         path: AppPaths.DASHBOARD,
-        element: <BookWelcomPage />,
+        element: <DashboardPage />,
       },
       {
         path: AppPaths.PROFILE,
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: AppPaths.BOOK_SINGLE,
-        element: <BookDashboardPage />,
+        element: <BookSinglePage />,
       },
       {
         path: AppPaths.BOOK_MANAGE,

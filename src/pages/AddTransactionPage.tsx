@@ -73,7 +73,7 @@ const AddTransactionPage = () => {
   };
 
   return (
-    <div data-testid="BookDashboardpage">
+    <div>
       {getSingleBookQuery.data ? renderPageContent() : null}
       {getSingleBookQuery.isError && (
         <ErrorDiv error={getSingleBookQuery.error.message} />

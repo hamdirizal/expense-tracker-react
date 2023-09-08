@@ -10,7 +10,7 @@ import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
 import BookItemList from "../components/BookItemList";
 
-const BookWelcomPage = () => {
+const DashboardPage = () => {
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
   const getCollaboratedBooksQuery = useGetCollaboratedBooksQuery();
   const storedDefaultBookId = getStoredDefaultBookId();
@@ -59,4 +59,4 @@ const BookWelcomPage = () => {
   }
 };
 
-export default BookWelcomPage;
+export default DashboardPage;

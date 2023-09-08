@@ -18,7 +18,7 @@ import { getBookEmoji } from "../helpers/globalHelper";
 import TransactionList from "../components/TransactionList";
 import PlusMinusSign from "../components/PlusMinusSign";
 
-const BookDashboardPage = () => {
+const BookSinglePage = () => {
   const { book_id } = useParams();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -88,7 +88,7 @@ const BookDashboardPage = () => {
   };
 
   return (
-    <div data-testid="BookDashboardpage">
+    <div data-testid="BookSinglePage">
       {getSingleBookQuery.data ? renderFinalMarkup() : null}
       {getSingleBookQuery.isError && (
         <ErrorDiv error={getSingleBookQuery.error.message} />
@@ -101,4 +101,4 @@ const BookDashboardPage = () => {
   );
 };
 
-export default BookDashboardPage;
+export default BookSinglePage;
