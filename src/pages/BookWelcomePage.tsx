@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { getStoredDefaultBookId } from "../helpers/storageHelper";
 import { AppPaths, Texts } from "../constants";
 import CurrentBookPanel from "../components/CurrentBookPanel";
@@ -29,6 +29,19 @@ const BookWelcomPage = () => {
   } else {
     return (
       <div>
+        <ul className="Breadcrumbs">
+          <li>
+            <Link to="">Dashboard</Link>
+          </li>
+          <li>
+            <Link to="">Alice personal book</Link>
+          </li>
+          <li>
+            <span>Add transaction</span>
+          </li>
+        </ul>
+        <div className="HSpace2"></div>
+
         <div className="Heading3">{Texts.MY_BOOKS}</div>
         {getOwnedBooksQuery.data ? (
           <BookList books={getOwnedBooksQuery.data} />

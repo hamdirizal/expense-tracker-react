@@ -674,3 +674,25 @@ svg {
   margin-bottom: 20px;
   font-size: $fontsize-minus-2;
 }
+
+// Component
+.Breadcrumbs {
+  list-style: none;
+}
+.Breadcrumbs li {
+  display: inline-block;
+  margin-right: 0.6rem;
+  font-size: $fontsize-minus-1;
+}
+.Breadcrumbs li:not(:first-child)::before {
+  content: '/';
+  margin-right: 0.6rem;
+  font-size: $fontsize-minus-1;
+}
+.Breadcrumbs li a{
+  color: $color-link;
+  font-size: $fontsize-minus-1;
+}
+.Breadcrumbs li span{
+  font-size: $fontsize-minus-1;
+}

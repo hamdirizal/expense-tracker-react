@@ -35,6 +35,11 @@ const BookDashboardPage = () => {
   const renderFinalMarkup = () => {
     return (
       <>
+        <ul className="Breadcrumbs">
+          <li><Link to="">Dashboard</Link></li>
+          <li><Link to="">Alice personal book</Link></li>
+          <li><Link to="">Add transaction</Link></li>
+        </ul>
         <LinkWithEmoji
           to={AppPaths.BOOK_WELCOME}
           label={Texts.BACK_TO_BOOK_SELECTION}
