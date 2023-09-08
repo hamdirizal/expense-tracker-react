@@ -88,9 +88,14 @@ const BookDashboardPage = () => {
             <tr>
               <td>•</td>
               <td>
-                <div><Link to="sf">Bayar transport ke surabaya</Link></div>
+                <div>
+                  <Link to="sf">Bayar transport ke surabaya</Link>
+                </div>
                 <div>2023-08-21</div>
-                <div>Perjalanan panjang bersama teman teman. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                <div>
+                  Perjalanan panjang bersama teman teman. Lorem ipsum dolor sit
+                  amet, consectetur adipisicing elit.
+                </div>
               </td>
               <td>
                 <span className="AmountNegative">200.000</span>
@@ -104,6 +109,16 @@ const BookDashboardPage = () => {
               </td>
               <td>
                 <span className="AmountNegative">30.000</span>
+              </td>
+            </tr>
+            <tr>
+              <td>•</td>
+              <td>
+                <div>Bayaran</div>
+                <div>2023-08-21</div>
+              </td>
+              <td>
+                <span className="AmountPositive">5.000.000</span>
               </td>
             </tr>
             <tr>

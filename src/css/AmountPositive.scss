@@ -1,0 +1,12 @@
+.AmountPositive {
+  display: inline-block;
+  background: #c8f9c8;
+  white-space: nowrap;
+  // padding: 0 0.3rem;
+  line-height: 1;
+}
+.AmountPositive::before {
+  content: '+';
+  font-size: 1.2em;
+  color: #01a701;
+}

@@ -89,6 +89,8 @@ $screen-xl: 1024px;
 @import "./UserBtn.scss";
 @import "./RegularList.scss";
 @import "./TxTable.scss";
+@import "./AmountPositive.scss";
+@import "./AmountNegative.scss";
 
 .PageTitle {
   @include page-title;
