@@ -11,31 +11,32 @@ interface TransactionListProps {
 }
 const TransactionList = ({ transactions, isLoading }: TransactionListProps) => {
   return (
-    <div className="TransactionList">
-      <table className="TransactionList__table">
-        <tbody>
-          {transactions.map((tx: Transaction) => (
-            <tr key={tx.id}>
-              <td>
-                <div className="TransactionList__itemTitle">
-                  <Link to="/">{tx.title}</Link>
-                </div>
-                <div className="TransactionList__itemDate">{tx.tx_date}</div>
-                {tx.description ? (
-                  <div className="TransactionList__itemDesc">
-                    {tx.description}
-                  </div>
-                ) : null}
-              </td>
-              <td>
-                <PlusMinusSign isPlus={tx.is_outgoing} />
-                {formatAsCurrency(tx.amount)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <table className="TxTable">
+      <tbody>
+        {transactions.map((tx: Transaction) => (
+          <tr>
+            <td>
+              <div>
+                <Link to="/">{tx.title}</Link>
+              </div>
+              <div>{tx.tx_date}</div>
+              {tx.description ? <div>{tx.description}</div> : null}
+            </td>
+            <td>
+              {tx.is_outgoing ? (
+                <span className="AmountNegative">
+                  {formatAsCurrency(tx.amount)}
+                </span>
+              ) : (
+                <span className="AmountPositive">
+                  {formatAsCurrency(tx.amount)}
+                </span>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 

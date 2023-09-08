@@ -76,52 +76,6 @@ const BookDashboardPage = () => {
 
         <div className="HSpace2"></div>
         <div className="Heading3">🕐 {Texts.RECENTLY_ADDED}</div>
-        <table className="TxTable">
-          <tbody>
-            <tr>
-              <td>
-                <div>
-                  <Link to="sf">Bayar transport ke surabayax</Link>
-                </div>
-                <div>2023-08-21</div>
-                <div>
-                  Perjalanan panjang bersama teman teman. Lorem ipsum dolor sit
-                  amet, consectetur adipisicing elit.
-                </div>
-              </td>
-              <td>
-                <span className="AmountNegative">200.000</span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div>Makan siang</div>
-                <div>2023-08-21</div>
-              </td>
-              <td>
-                <span className="AmountNegative">30.000</span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div>Bayaran</div>
-                <div>2023-08-21</div>
-              </td>
-              <td>
-                <span className="AmountPositive">5.000.000</span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div>Bayar Listrik</div>
-                <div>2023-08-21</div>
-              </td>
-              <td>
-                <span className="AmountNegative">500.000</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>        
 
         {getRecentTransactionsQuery.data ? (
           <TransactionList
