@@ -45,28 +45,43 @@ const BookDashboardPage = () => {
           </li>
         </ul>
 
-        <div className="Heading3">🔆 {Texts.ACTIONS}</div>
+        <div className="Heading3">💡 {Texts.ACTIONS}</div>
         <div className="RegularList">
           <ul className="RegularList__ul">
-            <li className="RegularList__li">Add transaction</li>
-            <li className="RegularList__li">Listing</li>
-            <li className="RegularList__li">Search</li>
-            <li className="RegularList__li">Manage</li>
+            {book_id ? (
+              <li className="RegularList__li">
+                <Link
+                  to={AppPaths.ADD_TRANSACTION.replace(/:book_id/g, book_id)}
+                >
+                  {Texts.ADD_TRANSACTION}
+                </Link>
+              </li>
+            ) : null}
+            <li className="RegularList__li">
+              <Link to={""}>{Texts.LISTING}</Link>
+            </li>
+
+            <li className="RegularList__li">
+              <Link to={""}>{Texts.SEARCH}</Link>
+            </li>
+
+            <li className="RegularList__li">
+              <Link to={""}>{Texts.MANAGE}</Link>
+            </li>
           </ul>
         </div>
         <div className="HSpace2"></div>
         <div className="Heading3">📋 {Texts.SUMMARY}</div>
         <TransactionSummary summary={getTransactionSummaryQuery.data || null} />
-        
+
         <div className="HSpace2"></div>
         <div className="Heading3">🕐 {Texts.RECENTLY_ADDED}</div>
         <table className="TxTable">
           <tbody>
             <tr>
-              
               <td>
                 <div>
-                  <Link to="sf">Bayar transport ke surabaya</Link>
+                  <Link to="sf">Bayar transport ke surabayax</Link>
                 </div>
                 <div>2023-08-21</div>
                 <div>
@@ -79,7 +94,6 @@ const BookDashboardPage = () => {
               </td>
             </tr>
             <tr>
-              
               <td>
                 <div>Makan siang</div>
                 <div>2023-08-21</div>
@@ -89,7 +103,6 @@ const BookDashboardPage = () => {
               </td>
             </tr>
             <tr>
-              
               <td>
                 <div>Bayaran</div>
                 <div>2023-08-21</div>
@@ -99,7 +112,6 @@ const BookDashboardPage = () => {
               </td>
             </tr>
             <tr>
-              
               <td>
                 <div>Bayar Listrik</div>
                 <div>2023-08-21</div>
@@ -109,66 +121,7 @@ const BookDashboardPage = () => {
               </td>
             </tr>
           </tbody>
-        </table>
-        <div className="HSpace2"></div>
-        <div className="RegularList">
-          <ul className="RegularList__ul">
-            <li className="RegularList__li">
-              <div>
-                2023-08-21 <span className="CharSpace1"></span>
-                <span>Bayar transport</span>
-                <span className="AmountNegative">200.000</span>
-              </div>
-              <div> </div>
-              <div>Perjalanan ke surabaya</div>
-            </li>
-            <li className="RegularList__li">
-              <div>
-                2023-08-21 <span className="CharSpace1"></span>
-                <span>Bayar transport</span>
-                <span className="AmountPositive">200.000</span>
-              </div>
-              <div> </div>
-              <div>Perjalanan ke surabaya</div>
-            </li>
-          </ul>
-        </div>
-
-        <table className="BookActions">
-          <tbody>
-            <tr>
-              <td>
-                {book_id ? (
-                  <LinkWithEmoji
-                    to={AppPaths.ADD_TRANSACTION.replace(/:book_id/g, book_id)}
-                    label={Texts.ADD_TRANSACTION}
-                    emoji="➕"
-                  />
-                ) : null}
-              </td>
-              <td>
-                <LinkWithEmoji to={""} label={Texts.LISTING} emoji="📝" />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <LinkWithEmoji to={""} label={Texts.SEARCH} emoji="🔍" />
-              </td>
-              <td>
-                <LinkWithEmoji to={""} label={Texts.MANAGE} emoji="⚙️" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div className="HSpace2"></div>
-
-        <h3 className="Heading3">🗒️ {Texts.SUMMARY}</h3>
-
-        
-        <div className="HSpace2"></div>
-
-        <h3 className="Heading3">🗒️ {Texts.RECENTLY_ADDED}</h3>
+        </table>        
 
         {getRecentTransactionsQuery.data ? (
           <TransactionList
