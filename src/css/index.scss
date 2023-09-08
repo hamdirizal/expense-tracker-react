@@ -650,3 +650,13 @@ $breadcrumbs-indent: 0.8rem;
 }
 
 // Component
+.VarDump {
+  border: 2px solid #2ed380;
+  font-size: 0.8rem;
+  word-break: break-all;
+  background: #005f08;
+  color: white;
+  padding: 0.2rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
