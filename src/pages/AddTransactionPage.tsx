@@ -40,9 +40,7 @@ const AddTransactionPage = () => {
             ⚓ <Link to={AppPaths.DASHBOARD}>{Texts.DASHBOARD}</Link>
           </li>
           <li>
-            <Link
-              to={AppPaths.BOOK_SINGLE.replace(/:book_id/, book_id || "")}
-            >
+            <Link to={AppPaths.BOOK_SINGLE.replace(/:book_id/, book_id || "")}>
               {getSingleBookQuery.data?.title || ""}
             </Link>
           </li>
@@ -58,16 +56,13 @@ const AddTransactionPage = () => {
         />
         <div className="HSpace2"></div>
 
-        {getRecentTransactionsQuery.data ? (
-          <>
-            <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>
-
-            <TransactionList
-              isLoading={getRecentTransactionsQuery.isLoading}
-              transactions={getRecentTransactionsQuery.data}
-            />
-          </>
-        ) : null}
+        <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>
+        {getRecentTransactionsQuery.data?.length ? (
+          <TransactionList
+            isLoading={getRecentTransactionsQuery.isLoading}
+            transactions={getRecentTransactionsQuery.data}
+          />
+        ) : <div>{Texts.NO_TRANSACTIONS}</div>}
       </>
     );
   };

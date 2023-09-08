@@ -77,12 +77,12 @@ const BookSinglePage = () => {
         <div className="HSpace2"></div>
         <div className="Heading3">🕐 {Texts.RECENTLY_ADDED}</div>
 
-        {getRecentTransactionsQuery.data ? (
+        {getRecentTransactionsQuery.data?.length ? (
           <TransactionList
             isLoading={getRecentTransactionsQuery.isLoading}
             transactions={getRecentTransactionsQuery.data}
           />
-        ) : null}
+        ) : <div>{Texts.NO_TRANSACTIONS}</div>}
       </>
     );
   };

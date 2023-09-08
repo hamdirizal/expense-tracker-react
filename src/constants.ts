@@ -48,6 +48,7 @@ export const Texts = {
   ACTIONS: "Actions",
   SUMMARY: "Summary",
   RECENTLY_ADDED: "Recently added",
+  NO_TRANSACTIONS: "No transactions",
   HI_NAME: "Hi, {{name}}",
   TODAY: "Today",
   THIS_MONTH: "This month",
