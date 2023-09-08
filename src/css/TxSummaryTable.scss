@@ -1,18 +1,16 @@
 
 .TxSummaryTable td {
   vertical-align: top;
-  padding-bottom: 0.5rem;
 }
-.TxSummaryTable td:first-child::before {
-  content: "•";
+.TxSummaryTable tr:nth-child(odd) td {
+  padding-bottom: 0.2rem;
+}
+.TxSummaryTable tr:nth-child(even) td {
+  padding-bottom: 0.6rem;
 }
 .TxSummaryTable td:nth-child(1),
 .TxSummaryTable td:nth-child(2),
 .TxSummaryTable td:nth-child(3) {
   padding-right: 0.5rem;
-}
-
-.TxSummaryTable td:nth-child(3), 
-.TxSummaryTable td:nth-child(4) {
-  text-align: right;
+  white-space: nowrap;
 }

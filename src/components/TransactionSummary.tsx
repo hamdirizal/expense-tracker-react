@@ -1,9 +1,6 @@
 import { Texts } from "../constants";
 import { formatAsCurrency } from "../helpers/globalHelper";
-import SvgMinusIcon from "../svg-components/SvgMinusIcon";
-import SvgPlusIcon from "../svg-components/SvgPlusIcon";
 import { TxSummary } from "../types";
-import PlusMinusSign from "./PlusMinusSign";
 
 interface TransactionSummaryProps {
   summary: TxSummary | null;
@@ -15,8 +12,9 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
     <table className="TxSummaryTable">
       <tbody>
         <tr>
-          <td></td>
-          <td>{Texts.TODAY}</td>
+          <td colSpan={2}>{Texts.TODAY}</td>
+        </tr>
+        <tr>
           <td>
             <span className="AmountNegative">
               {formatAsCurrency(summary.today_outgoing)}
@@ -29,8 +27,9 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
           </td>
         </tr>
         <tr>
-          <td></td>
-          <td>{Texts.THIS_MONTH}</td>
+          <td colSpan={2}>{Texts.THIS_MONTH}</td>
+        </tr>
+        <tr>
           <td>
             <span className="AmountNegative">
               {formatAsCurrency(summary.this_month_outgoing)}
@@ -43,8 +42,9 @@ const TransactionSummary = ({ summary }: TransactionSummaryProps) => {
           </td>
         </tr>
         <tr>
-          <td></td>
-          <td>{Texts.THIS_YEAR}</td>
+          <td colSpan={2}>{Texts.THIS_YEAR}</td>
+        </tr>
+        <tr>
           <td>
             <span className="AmountNegative">
               {formatAsCurrency(summary.this_year_outgoing)}
