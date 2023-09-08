@@ -8,7 +8,7 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
     queryKey: ["getRecentTransactions", book_id],
     queryFn: async () => {
       const response = await fetch(
-        "http://localhost:8001/api/get-recently-added-transactions.php?book_id=" + book_id,
+        `${import.meta.env.VITE_API_URL}/get-recently-added-transactions.php?book_id=${book_id}`,
         {
           method: "GET",
           headers: {

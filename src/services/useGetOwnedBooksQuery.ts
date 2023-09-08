@@ -8,7 +8,7 @@ const useGetOwnedBooksQuery = () => {
     queryKey: ["getOwnedBooks"],
     queryFn: async () => {
       const response = await fetch(
-        "http://localhost:8001/api/get-owned-books.php",
+        `${import.meta.env.VITE_API_URL}/get-owned-books.php`,
         {
           method: "GET",
           headers: {

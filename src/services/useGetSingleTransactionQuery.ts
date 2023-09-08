@@ -9,7 +9,9 @@ const useGetSingleTransactionQuery = (transaction_id: number) => {
     queryKey: ["getSingleTransaction", transaction_id],
     queryFn: async () => {
       const response = await fetch(
-        "http://localhost:8001/api/get-transaction.php?id=" + transaction_id,
+        `${
+          import.meta.env.VITE_API_URL
+        }/get-transaction.php?id=${transaction_id}`,
         {
           method: "GET",
           headers: {

@@ -8,7 +8,7 @@ const useGetTransactionSummaryQuery = (book_id: number) => {
     queryKey: ["getTransactionSummaryQuery", book_id],
     queryFn: async () => {
       const response = await fetch(
-        "http://localhost:8001/api/get-transaction-summary.php?book_id=" + book_id,
+        `${import.meta.env.VITE_API_URL}/get-transaction-summary.php?book_id=${book_id}`,
         {
           method: "GET",
           headers: {

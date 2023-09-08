@@ -6,16 +6,19 @@ const useLoginUserMutation = () => {
   const queryClient = useQueryClient();
   return useMutation<ApiLoginResponse, Error, ApiLoginPayload>(["loginUser"], {
     mutationFn: async (args) => {
-      const response = await fetch("http://localhost:8001/api/login.php", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: args.email,
-          password: args.password,
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/login.php`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: args.email,
+            password: args.password,
+          }),
+        }
+      );
       if (!response.ok) {
         throw new Error((await response.json()).msg);
       }

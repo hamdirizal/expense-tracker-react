@@ -14,7 +14,7 @@ const useCreateTransactionMutation = () => {
   >(["createTransaction"], {
     mutationFn: async (args) => {
       const response = await fetch(
-        "http://localhost:8001/api/create-transaction.php",
+        `${import.meta.env.VITE_API_URL}/create-transaction.php`,
         {
           method: "POST",
           headers: {

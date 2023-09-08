@@ -9,7 +9,7 @@ const useCreateBookMutation = () => {
     {
       mutationFn: async (args) => {
         const response = await fetch(
-          "http://localhost:8001/api/create-book.php",
+          `${import.meta.env.VITE_API_URL}/create-book.php`,
           {
             method: "POST",
             headers: {

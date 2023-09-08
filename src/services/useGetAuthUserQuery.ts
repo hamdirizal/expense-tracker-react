@@ -8,7 +8,7 @@ const useGetAuthUserQuery = () => {
     queryKey: ["getAuthUser"],
     queryFn: async () => {
       const response = await fetch(
-        "http://localhost:8001/api/get-my-info.php",
+        `${import.meta.env.VITE_API_URL}/get-my-info.php`,
         {
           method: "GET",
           headers: {

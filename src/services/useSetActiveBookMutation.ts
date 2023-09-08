@@ -13,7 +13,7 @@ const useSetActiveBookMutation = () => {
     retry: 0,
     mutationFn: async (args) => {
       const response = await fetch(
-        "http://localhost:8001/api/set-active-book.php",
+        `${import.meta.env.VITE_API_URL}/set-active-book.php`,
         {
           method: "POST",
           headers: {

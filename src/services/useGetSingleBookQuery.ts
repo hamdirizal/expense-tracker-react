@@ -9,7 +9,7 @@ const useGetSingleBookQuery = (book_id: number) => {
     enabled: !!book_id,
     queryFn: async () => {
       const response = await fetch(
-        "http://localhost:8001/api/get-book.php?book_id=" + book_id,
+        `${import.meta.env.VITE_API_URL}/get-book.php?book_id=${book_id}`,
         {
           method: "GET",
           headers: {

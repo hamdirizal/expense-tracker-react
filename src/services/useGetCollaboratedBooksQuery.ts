@@ -8,7 +8,7 @@ const useGetCollaboratedBooksQuery = () => {
     queryKey: ["getCollaboratedBooks"],
     queryFn: async () => {
       const response = await fetch(
-        "http://localhost:8001/api/get-collaborated-books.php",
+        `${import.meta.env.VITE_API_URL}/get-collaborated-books.php`,
         {
           method: "GET",
           headers: {
