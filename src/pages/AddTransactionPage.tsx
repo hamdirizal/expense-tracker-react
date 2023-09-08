@@ -37,11 +37,11 @@ const AddTransactionPage = () => {
       <>
         <ul className="Breadcrumbs">
           <li>
-            ⚓ <Link to={AppPaths.BOOK_WELCOME}>{Texts.DASHBOARD}</Link>
+            ⚓ <Link to={AppPaths.DASHBOARD}>{Texts.DASHBOARD}</Link>
           </li>
           <li>
             <Link
-              to={AppPaths.BOOK_DASHBOARD.replace(/:book_id/, book_id || "")}
+              to={AppPaths.BOOK_SINGLE.replace(/:book_id/, book_id || "")}
             >
               {getSingleBookQuery.data?.title || ""}
             </Link>
@@ -52,7 +52,7 @@ const AddTransactionPage = () => {
         </ul>
         <AddTransactionForm
           cancelFn={() =>
-            navigate(AppPaths.BOOK_DASHBOARD.replace(/:book_id/, book_id || ""))
+            navigate(AppPaths.BOOK_SINGLE.replace(/:book_id/, book_id || ""))
           }
           bookId={parseInt(book_id || "0")}
         />

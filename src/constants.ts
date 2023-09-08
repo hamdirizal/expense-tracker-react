@@ -23,14 +23,13 @@ Url scheme:
 
 export const AppPaths = {
   LOGIN: "/login",
-  BOOK_WELCOME: "/book",
-  BOOK_DASHBOARD: "/book/:book_id",
+  BOOK_SINGLE: "/book/:book_id",
   BOOK_MANAGE: "/book/:book_id/manage",
   ADD_TRANSACTION: "/book/:book_id/add-transaction",
   VIEW_TRANSACTION: "/book/:book_id/transaction/:transaction_id",
   PROFILE: "/account",
-  // OLD PATHS
   DASHBOARD: "/dashboard",
+  // OLD PATHS
   EDIT_TRANSACTION: "/dashboard/edit-transaction/:transaction_id",
   MANAGE_BOOK: "/dashboard/manage-book/:book_id",
 };

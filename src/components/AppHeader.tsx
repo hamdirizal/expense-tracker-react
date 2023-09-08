@@ -12,7 +12,7 @@ const AppHeader = () => {
   return (
     <header className="AppHeader" data-testid="AppHeader">
       <div className="AppHeader__centering">
-        <Link to={AppPaths.BOOK_WELCOME} className="AppHeader__logo"><img src={logo} alt="Monee" /></Link>
+        <Link to={AppPaths.DASHBOARD} className="AppHeader__logo"><img src={logo} alt="Monee" /></Link>
         <div>
           <UserButton user={getAuthUserQuery?.data || null} />
         </div>

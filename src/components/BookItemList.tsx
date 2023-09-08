@@ -19,7 +19,7 @@ const BookItemList = ({ books, showOwner = false }: BookItemListProps) => {
                 type="button"
                 onClick={() => {
                   navigate(
-                    AppPaths.BOOK_DASHBOARD.replace(
+                    AppPaths.BOOK_SINGLE.replace(
                       ":book_id",
                       book.id.toString()
                     )

@@ -21,7 +21,7 @@ const LoginPage = () => {
   if (getAuthUserQuery.isLoading) {
     return null;
   } else if (getAuthUserQuery.isSuccess && getAuthUserQuery?.data?.id) {
-    return <Navigate to={AppPaths.BOOK_WELCOME} />;
+    return <Navigate to={AppPaths.DASHBOARD} />;
   } else {
     return renderFinalMarkup();
   }

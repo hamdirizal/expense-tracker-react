@@ -25,7 +25,7 @@ const BookWelcomPage = () => {
 
   if (defaultBookId) {
     navigate(
-      AppPaths.BOOK_DASHBOARD.replace(/:book_id/g, defaultBookId.toString())
+      AppPaths.BOOK_SINGLE.replace(/:book_id/g, defaultBookId.toString())
     );
   } else {
     return (

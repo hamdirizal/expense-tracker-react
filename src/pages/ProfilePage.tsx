@@ -19,7 +19,7 @@ const ProfilePage = () => {
       <div>
         <ul className="Breadcrumbs">
           <li>
-            ⚓ <Link to={AppPaths.BOOK_WELCOME}>{Texts.DASHBOARD}</Link>
+            ⚓ <Link to={AppPaths.DASHBOARD}>{Texts.DASHBOARD}</Link>
           </li>
           <li>
             <span>{Texts.MY_ACCOUNT}</span>

@@ -45,7 +45,7 @@ const ModalSelectBook = ({ isOpen, closeFn }: ModalSelectBookProps) => {
   };
 
   const onBookActivated = (book_id: number) => {
-    navigate(AppPaths.BOOK_DASHBOARD.replace(":book_id", book_id.toString()));
+    navigate(AppPaths.BOOK_SINGLE.replace(":book_id", book_id.toString()));
     closeFn();
   };
 

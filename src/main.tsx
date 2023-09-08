@@ -24,29 +24,27 @@ import ProfilePage from "./pages/ProfilePage.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Navigate to={AppPaths.BOOK_WELCOME} />,
-  },  
-  {
-    path: AppPaths.PROFILE,
-    element: <MemberAreaSkeleton />,
-    children: [
-      {
-        path: AppPaths.PROFILE,
-        element: <ProfilePage />,
-      }
-    ]
+    path: AppPaths.LOGIN,
+    element: <LoginPage />,
   },
   {
-    path: AppPaths.BOOK_WELCOME,
+    path: "/",
     element: <MemberAreaSkeleton />,
     children: [
       {
-        path: AppPaths.BOOK_WELCOME,
+        path: "",
         element: <BookWelcomPage />,
       },
       {
-        path: AppPaths.BOOK_DASHBOARD,
+        path: AppPaths.DASHBOARD,
+        element: <BookWelcomPage />,
+      },
+      {
+        path: AppPaths.PROFILE,
+        element: <ProfilePage />,
+      },
+      {
+        path: AppPaths.BOOK_SINGLE,
         element: <BookDashboardPage />,
       },
       {
@@ -62,22 +60,6 @@ const router = createBrowserRouter([
         element: <ViewTransactionPage />,
       },
     ],
-  },
-
-  //
-  {
-    path: AppPaths.DASHBOARD,
-    element: <DashboardSkeleton />,
-    children: [
-      {
-        path: AppPaths.DASHBOARD,
-        element: <DashboardHomePage />,
-      },
-    ],
-  },
-  {
-    path: AppPaths.LOGIN,
-    element: <LoginPage />,
   },
 ]);
 
