@@ -45,7 +45,7 @@ const BookDashboardPage = () => {
           </li>
         </ul>
 
-        <div className="Heading3">{Texts.ACTIONS}</div>
+        <div className="Heading3">🔆 {Texts.ACTIONS}</div>
         <div className="RegularList">
           <ul className="RegularList__ul">
             <li className="RegularList__li">Add transaction</li>
@@ -55,15 +55,15 @@ const BookDashboardPage = () => {
           </ul>
         </div>
         <div className="HSpace2"></div>
-        <div className="Heading3">{Texts.SUMMARY}</div>
+        <div className="Heading3">📋 {Texts.SUMMARY}</div>
         <TransactionSummary summary={getTransactionSummaryQuery.data || null} />
         
         <div className="HSpace2"></div>
-        <div className="Heading3">{Texts.RECENTLY_ADDED}</div>
+        <div className="Heading3">🕐 {Texts.RECENTLY_ADDED}</div>
         <table className="TxTable">
           <tbody>
             <tr>
-              <td></td>
+              
               <td>
                 <div>
                   <Link to="sf">Bayar transport ke surabaya</Link>
@@ -79,7 +79,7 @@ const BookDashboardPage = () => {
               </td>
             </tr>
             <tr>
-              <td></td>
+              
               <td>
                 <div>Makan siang</div>
                 <div>2023-08-21</div>
@@ -89,7 +89,7 @@ const BookDashboardPage = () => {
               </td>
             </tr>
             <tr>
-              <td></td>
+              
               <td>
                 <div>Bayaran</div>
                 <div>2023-08-21</div>
@@ -99,7 +99,7 @@ const BookDashboardPage = () => {
               </td>
             </tr>
             <tr>
-              <td></td>
+              
               <td>
                 <div>Bayar Listrik</div>
                 <div>2023-08-21</div>
@@ -163,12 +163,12 @@ const BookDashboardPage = () => {
 
         <div className="HSpace2"></div>
 
-        <h3 className="Heading3">{Texts.SUMMARY}</h3>
+        <h3 className="Heading3">🗒️ {Texts.SUMMARY}</h3>
 
         
         <div className="HSpace2"></div>
 
-        <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>
+        <h3 className="Heading3">🗒️ {Texts.RECENTLY_ADDED}</h3>
 
         {getRecentTransactionsQuery.data ? (
           <TransactionList

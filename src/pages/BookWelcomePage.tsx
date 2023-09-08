@@ -38,7 +38,7 @@ const BookWelcomPage = () => {
 
         <CreateBookForm />
 
-        <div className="Heading3">{Texts.MY_BOOKS}</div>
+        <div className="Heading3">📚 {Texts.MY_BOOKS}</div>
         {getOwnedBooksQuery.data ? (
           <BookItemList books={getOwnedBooksQuery.data} />
         ) : (
@@ -46,14 +46,14 @@ const BookWelcomPage = () => {
         )}
 
         <div className="HSpace2"></div>
-        <div className="Heading3">{Texts.COLLABORATED_BOOKS}</div>
+        <div className="Heading3">🤝 {Texts.COLLABORATED_BOOKS}</div>
         {getCollaboratedBooksQuery.data ? (
           <BookList books={getCollaboratedBooksQuery.data} />
         ) : (
           <div>You don't have any book</div>
         )}
         <div className="HSpace2"></div>
-        <div className="Heading3">{Texts.INVITATIONS}</div>
+        <div className="Heading3">✉️ {Texts.INVITATIONS}</div>
       </div>
     );
   }

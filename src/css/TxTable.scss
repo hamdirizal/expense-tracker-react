@@ -1,17 +1,11 @@
 .TxTable {}
 .TxTable td {
   vertical-align: top;
-  padding-bottom: 0.5rem;
-}
-.TxTable td:nth-child(1)::before {
-  content: "•"
+  padding-bottom: 0.7rem;
 }
 .TxTable td:nth-child(1) {
   padding-right: 0.5rem;
 }
-.TxTable td:nth-child(2) {
-  padding-right: 0.5rem;
-}
-.TxTable td:nth-child(3) {
+.TxTable td:last-child {
   text-align: right;
 }
