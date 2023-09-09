@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 
 import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
-import { Transaction } from "../types";
+import { ApiGetRecentTransactionsResponse } from "../types";
 
 const useGetRecentTransactionsQuery = (book_id: number) => {
-  return useQuery<number, Error, Transaction[]>({
+  return useQuery<number, Error, ApiGetRecentTransactionsResponse>({
     retry: 0,
     queryKey: ["getRecentTransactions", book_id],
     queryFn: async () => {

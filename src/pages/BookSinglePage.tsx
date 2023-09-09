@@ -74,8 +74,8 @@ const BookSinglePage = () => {
         <div className="HSpace2"></div>
         <div className="Heading3">🕐 {Texts.RECENTLY_ADDED}</div>
 
-        {getRecentTransactionsQuery.data?.length ? (
-          <TransactionList transactions={getRecentTransactionsQuery.data} />
+        {getRecentTransactionsQuery.data?.results?.length ? (
+          <TransactionList transactions={getRecentTransactionsQuery.data.results} />
         ) : (
           <div>{Texts.NO_TRANSACTIONS}</div>
         )}

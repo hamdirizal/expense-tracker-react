@@ -73,13 +73,20 @@ export interface ApiLoginResponse {
   access_token: string;
 }
 
-export interface ApiGetOwnedBooksResponse {
-  results: Book[];
+interface PaginatedResponse {
   next_page: number | null;
   prev_page: number | null;
 }
 
+export interface ApiGetOwnedBooksResponse extends PaginatedResponse {
+  results: Book[];
+}
+
 export type ApiGetCollaboratedBooksResponse = ApiGetOwnedBooksResponse;
+
+export interface ApiGetRecentTransactionsResponse extends PaginatedResponse {
+  results: Transaction[];
+}
 
 export interface ApiGenericSuccessResponse {
   msg: string;
