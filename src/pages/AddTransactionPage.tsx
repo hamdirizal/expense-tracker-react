@@ -46,9 +46,9 @@ const AddTransactionPage = () => {
         </div>
         <div className="HSpace3"></div>
         <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>
-        {getRecentTransactionsQuery.data?.length ? (
+        {getRecentTransactionsQuery.data?.results?.length ? (
           <TransactionList
-            transactions={getRecentTransactionsQuery.data}
+            transactions={getRecentTransactionsQuery.data.results}
           />
         ) : (
           <div>{Texts.NO_TRANSACTIONS}</div>

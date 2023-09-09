@@ -13,7 +13,7 @@ const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
   const createTransactionMutation = useCreateTransactionMutation();
   const { register, handleSubmit, setValue } = useForm({
     defaultValues: {
-      is_outgoing: "yes",
+      is_outgoing: true,
       date: new Date().toISOString().split("T")[0],
       title: "",
       description: "",
@@ -25,7 +25,7 @@ const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
     createTransactionMutation.mutate({
       book_id: bookId,
       tx_date: data.date,
-      is_outgoing: data.is_outgoing === "yes",
+      is_outgoing: data.is_outgoing === true,
       title: data.title,
       description: data.description,
       amount: data.amount,
@@ -40,6 +40,7 @@ const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
       setValue("title", "");
       setValue("description", "");
       setValue("amount", "");
+      setValue("is_outgoing", true);
     }
   };
 
@@ -54,9 +55,12 @@ const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
         >
           <div className="FormRow">
             <label className="FieldLabel">Type</label>
-            <select className="InputSelect InputSelect--short">
-              <option value="">{Texts.INCOMING}</option>
-              <option value="">{Texts.OUTGOING}</option>
+            <select
+              className="InputSelect InputSelect--short"
+              {...register("is_outgoing", { required: true })}
+            >
+              <option value={"false"}>{Texts.INCOMING}</option>
+              <option value={"true"}>{Texts.OUTGOING}</option>
             </select>
           </div>
           <div className="FormRow">

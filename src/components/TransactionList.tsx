@@ -11,7 +11,7 @@ const TransactionList = ({ transactions }: TransactionListProps) => {
     <table className="TxTable">
       <tbody>
         {transactions.map((tx: Transaction) => (
-          <tr>
+          <tr key={tx.id}>
             <td>
               <div>
                 <Link to="/">{tx.title}</Link>
