@@ -34,13 +34,13 @@ const ProfilePage = () => {
         </div>
 
         <div className="HSpace2"></div>
-        <div className="Heading3">Edit Basic Info</div>
+        <div className="Heading3">✏️ Edit Basic Info</div>
         <div>Edit profile form</div>
-        <div className="HSpace1"></div>
-        <div className="Heading3">Change Password</div>
+        <div className="HSpace2"></div>
+        <div className="Heading3">🔐 Change Password</div>
         <div>Change password form</div>
-        <div className="HSpace1"></div>
-        <div className="Heading3">Delete Account</div>
+        <div className="HSpace2"></div>
+        <div className="Heading3">⛔ Delete Account</div>
         <div>Delete profile form</div>
       </div>
     );
