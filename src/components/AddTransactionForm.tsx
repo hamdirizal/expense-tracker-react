@@ -54,7 +54,7 @@ const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
           className="relative"
         >
           <div className="FormRow">
-            <label className="FieldLabel">Type</label>
+            <label className="FieldLabel">{Texts.INPUTLABEL_TYPE}</label>
             <select
               className="InputSelect InputSelect--short"
               {...register("is_outgoing", { required: true })}
@@ -64,7 +64,7 @@ const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
             </select>
           </div>
           <div className="FormRow">
-            <label className="FieldLabel">Date</label>
+            <label className="FieldLabel">{Texts.INPUTLABEL_DATE}</label>
             <input
               className="InputText InputText--short"
               required
@@ -74,7 +74,7 @@ const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
           </div>
 
           <div className="FormRow">
-            <label className="FieldLabel">Title</label>
+            <label className="FieldLabel">{Texts.INPUTLABEL_TITLE}</label>
             <input
               className="InputText"
               required
@@ -83,7 +83,7 @@ const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
             />
           </div>
           <div className="FormRow">
-            <label className="FieldLabel">Amount</label>
+            <label className="FieldLabel">{Texts.INPUTLABEL_AMOUNT}</label>
             <input
               className="InputText"
               required
@@ -93,7 +93,7 @@ const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
           </div>
 
           <div className="FormRow">
-            <label className="FieldLabel">Description</label>
+            <label className="FieldLabel">{Texts.INPUTLABEL_DESCRIPTION}</label>
             <textarea
               {...register("description")}
               className="InputText"
@@ -101,7 +101,7 @@ const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
           </div>
           <div className="FormRow">
             <button type="submit" className="ButtonRegular">
-              {Texts.SUBMIT}
+              {Texts.ADD_TRANSACTION}
             </button>
           </div>
         </form>
