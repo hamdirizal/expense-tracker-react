@@ -1,9 +1,9 @@
-import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
-import { Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { AppPaths, AppTitle } from "../constants";
+import { Navigate } from "react-router-dom";
+
 import LoginBox from "../components/LoginBox";
-import Heading1 from "../components/Heading1";
+import { AppPaths, AppTitle } from "../constants";
+import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 
 const LoginPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();

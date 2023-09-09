@@ -1,5 +1,4 @@
 import SvgSwitchIcon from "../svg-components/SvgSwitchIcon";
-import SvgTriangleDownIcon from "../svg-components/SvgTriangleDownIcon";
 
 interface CurrentBookLineProps {
   title: string;

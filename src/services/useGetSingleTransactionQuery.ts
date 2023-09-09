@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { Transaction } from "../types";
+
 import { getStoredAccessToken } from "../helpers/storageHelper";
+import { Transaction } from "../types";
 
 const useGetSingleTransactionQuery = (transaction_id: number) => {
   return useQuery<number, Error, Transaction>({

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { Transaction, TxSummary } from "../types";
+
 import { getStoredAccessToken } from "../helpers/storageHelper";
+import { TxSummary } from "../types";
 
 const useGetTransactionSummaryQuery = (book_id: number) => {
   return useQuery<number, Error, TxSummary>({

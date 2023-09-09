@@ -1,5 +1,4 @@
 import { Book } from "../types";
-import Button from "./Button";
 
 interface BookCardProps {
   book: Book;

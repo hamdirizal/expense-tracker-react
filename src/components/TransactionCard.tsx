@@ -1,9 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Transaction } from "../types";
+
 import { AppPaths } from "../constants";
 import { formatAsCurrency } from "../helpers/globalHelper";
 import SvgCalendarIcon from "../svg-components/SvgCalendarIcon";
 import SvgPlusIcon from "../svg-components/SvgPlusIcon";
+import { Transaction } from "../types";
 
 interface TransactionCardProps {
   transaction: Transaction;

@@ -1,23 +1,11 @@
-import { useState } from "react";
-import { Helmet } from "react-helmet";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import AddTransactionForm from "../components/AddTransactionForm";
-import CurrentBookLine from "../components/CurrentBookLine";
-import CurrentBookPanel from "../components/CurrentBookPanel";
 import ErrorDiv from "../components/ErrorDiv";
-import Heading1 from "../components/Heading1";
-import LinkWithEmoji from "../components/LinkWithEmoji";
-import SectionTitle from "../components/SectionTitle";
-import TransactionCard from "../components/TransactionCard";
 import TransactionList from "../components/TransactionList";
-import { AppPaths, AppTitle, Texts } from "../constants";
-import { getBookEmoji } from "../helpers/globalHelper";
-import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
-import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
+import { AppPaths, Texts } from "../constants";
 import useGetRecentTransactionsQuery from "../services/useGetRecentTransactionsQuery";
 import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
-import { Transaction } from "../types";
 
 const AddTransactionPage = () => {
   const navigate = useNavigate();

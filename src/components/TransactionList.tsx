@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import { Transaction } from "../types";
-import LoadingSpinner from "./LoadingSpinner";
-import TransactionCard from "./TransactionCard";
+
 import { formatAsCurrency } from "../helpers/globalHelper";
-import PlusMinusSign from "./PlusMinusSign";
+import { Transaction } from "../types";
 
 interface TransactionListProps {
   transactions: Transaction[];

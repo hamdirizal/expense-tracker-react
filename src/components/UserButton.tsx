@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
+
+import { AppPaths } from "../constants";
 import SvgUserIcon from "../svg-components/SvgUserIcon";
 import { User } from "../types";
-import { Link } from "react-router-dom";
-import { AppPaths } from "../constants";
 
 interface UserButtonProps {
   user: User | null;

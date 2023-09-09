@@ -1,10 +1,10 @@
 import { Helmet } from "react-helmet";
 import { Navigate, Outlet } from "react-router-dom";
-import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
+
 import AppHeader from "../components/AppHeader";
-import { AppPaths, AppTitle, Texts } from "../constants";
-import VarDump from "../components/VarDump";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { AppPaths, AppTitle, Texts } from "../constants";
+import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 
 const MemberAreaSkeleton = () => {
   const getAuthUserQuery = useGetAuthUserQuery();

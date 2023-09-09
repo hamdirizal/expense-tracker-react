@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { ApiLoginPayload, ApiLoginResponse } from "../types";
+
 import { setStoredAccessToken } from "../helpers/storageHelper";
+import { ApiLoginPayload, ApiLoginResponse } from "../types";
 
 const useLoginUserMutation = () => {
   const queryClient = useQueryClient();

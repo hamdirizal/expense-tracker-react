@@ -1,22 +1,13 @@
 import { useEffect,useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import CurrentBookLine from "../components/CurrentBookLine";
 import ErrorDiv from "../components/ErrorDiv";
-import Heading3 from "../components/Heading3";
-import LinkWithEmoji from "../components/LinkWithEmoji";
-import PlusMinusSign from "../components/PlusMinusSign";
-import TransactionCard from "../components/TransactionCard";
 import TransactionList from "../components/TransactionList";
 import TransactionSummary from "../components/TransactionSummary";
 import { AppPaths, Texts } from "../constants";
-import { getBookEmoji } from "../helpers/globalHelper";
 import useGetRecentTransactionsQuery from "../services/useGetRecentTransactionsQuery";
 import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 import useGetTransactionSummaryQuery from "../services/useGetTransactionSummaryQuery";
-import SgvArrowLeftIcon from "../svg-components/SgvArrowLeftIcon";
-import SvgAddIcon from "../svg-components/SvgAddIcon";
-import { Transaction } from "../types";
 
 const BookSinglePage = () => {
   const { book_id } = useParams();
