@@ -35,8 +35,6 @@ const AddTransactionPage = () => {
           </li>
         </ul>
         <div className="WhitePanel">
-          <div>{Texts.NOT_ALLOWED_TO_EDIT_TRANSACTION}</div>
-          <div className="HSpace1"></div>
           <AddTransactionForm
             cancelFn={() =>
               navigate(AppPaths.BOOK_SINGLE.replace(/:book_id/, book_id || ""))
