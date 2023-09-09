@@ -30,6 +30,7 @@ $rounded-panel: 10px;
 $rounded-input: 3px;
 
 $page-side-padding: 20px;
+$page-side-padding-narrow: 10px;
 $page-max-width: 520px;
 
 $screen-sm: 480px;
@@ -220,6 +221,11 @@ $screen-xl: 1024px;
   max-width: $page-max-width;
   margin: 0 auto;
 }
+@media screen and (max-width: 360px) {
+  .AppHeader__centering {
+    padding: 0.5rem $page-side-padding-narrow;
+  }
+}
 .AppHeader__logo {
   width: 101px;
   display: block;
@@ -232,6 +238,11 @@ $screen-xl: 1024px;
   padding: 0 $page-side-padding;
   max-width: $page-max-width;
   margin: 1.5rem auto 0;
+}
+@media screen and (max-width: 360px) {
+  .ContentArea {
+    padding: 0 $page-side-padding-narrow;
+  }
 }
 
 .ModalSelectBook__title {
