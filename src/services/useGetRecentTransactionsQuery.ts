@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { Transaction } from "../types";
 
@@ -9,7 +10,7 @@ const useGetRecentTransactionsQuery = (book_id: number) => {
     queryKey: ["getRecentTransactions", book_id],
     queryFn: async () => {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/get-recently-added-transactions.php?book_id=${book_id}`,
+        `${ApiBaseUrl}/get-recently-added-transactions.php?book_id=${book_id}`,
         {
           method: "GET",
           headers: {

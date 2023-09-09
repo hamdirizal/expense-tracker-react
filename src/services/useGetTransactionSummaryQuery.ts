@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { TxSummary } from "../types";
 
@@ -9,7 +10,7 @@ const useGetTransactionSummaryQuery = (book_id: number) => {
     queryKey: ["getTransactionSummaryQuery", book_id],
     queryFn: async () => {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/get-transaction-summary.php?book_id=${book_id}`,
+        `${ApiBaseUrl}/get-transaction-summary.php?book_id=${book_id}`,
         {
           method: "GET",
           headers: {

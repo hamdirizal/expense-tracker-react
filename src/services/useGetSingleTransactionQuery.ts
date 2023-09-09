@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { Transaction } from "../types";
 
@@ -11,7 +12,7 @@ const useGetSingleTransactionQuery = (transaction_id: number) => {
     queryFn: async () => {
       const response = await fetch(
         `${
-          import.meta.env.VITE_API_URL
+          ApiBaseUrl
         }/get-transaction.php?id=${transaction_id}`,
         {
           method: "GET",

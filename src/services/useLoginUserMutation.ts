@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
+import { ApiBaseUrl } from "../constants";
 import { setStoredAccessToken } from "../helpers/storageHelper";
 import { ApiLoginPayload, ApiLoginResponse } from "../types";
 
@@ -8,7 +9,7 @@ const useLoginUserMutation = () => {
   return useMutation<ApiLoginResponse, Error, ApiLoginPayload>(["loginUser"], {
     mutationFn: async (args) => {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/login.php`,
+        `${ApiBaseUrl}/login.php`,
         {
           method: "POST",
           headers: {

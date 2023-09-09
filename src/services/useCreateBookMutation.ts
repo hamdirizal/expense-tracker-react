@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
+import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { ApiCreateBookPayload, ApiGenericSuccessResponse } from "../types";
 
@@ -10,7 +11,7 @@ const useCreateBookMutation = () => {
     {
       mutationFn: async (args) => {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/create-book.php`,
+          `${ApiBaseUrl}/create-book.php`,
           {
             method: "POST",
             headers: {

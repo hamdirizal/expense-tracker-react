@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { Book } from "../types";
 
@@ -9,7 +10,7 @@ const useGetOwnedBooksQuery = () => {
     queryKey: ["getOwnedBooks"],
     queryFn: async () => {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/get-owned-books.php`,
+        `${ApiBaseUrl}/get-owned-books.php`,
         {
           method: "GET",
           headers: {

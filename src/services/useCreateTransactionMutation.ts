@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
+import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import {
   ApiCreateTransactionPayload,
@@ -15,7 +16,7 @@ const useCreateTransactionMutation = () => {
   >(["createTransaction"], {
     mutationFn: async (args) => {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/create-transaction.php`,
+        `${ApiBaseUrl}/create-transaction.php`,
         {
           method: "POST",
           headers: {

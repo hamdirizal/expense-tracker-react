@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { Book } from "../types";
 
@@ -10,7 +11,7 @@ const useGetSingleBookQuery = (book_id: number) => {
     enabled: !!book_id,
     queryFn: async () => {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/get-book.php?book_id=${book_id}`,
+        `${ApiBaseUrl}/get-book.php?book_id=${book_id}`,
         {
           method: "GET",
           headers: {

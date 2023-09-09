@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { Book } from "../types";
 
@@ -9,7 +10,7 @@ const useGetCollaboratedBooksQuery = () => {
     queryKey: ["getCollaboratedBooks"],
     queryFn: async () => {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/get-collaborated-books.php`,
+        `${ApiBaseUrl}/get-collaborated-books.php`,
         {
           method: "GET",
           headers: {

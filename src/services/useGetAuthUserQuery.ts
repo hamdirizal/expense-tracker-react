@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
+import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { User } from "../types";
 
@@ -9,7 +10,7 @@ const useGetAuthUserQuery = () => {
     queryKey: ["getAuthUser"],
     queryFn: async () => {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/get-my-info.php`,
+        `${ApiBaseUrl}/get-my-info.php`,
         {
           method: "GET",
           headers: {
