@@ -97,6 +97,7 @@ $screen-xl: 1024px;
 @import "./InputText.scss";
 @import "./InputSelect.scss";
 @import "./WhitePanel.scss";
+@import "./NotFoundError.scss";
 
 .PageTitle {
   @include page-title;

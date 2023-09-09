@@ -58,4 +58,6 @@ export const Texts = {
   NO_COLLABORATED_BOOKS: "No collaborated books",
   NO_INVITATIONS: "No invitations",
   NOT_ALLOWED_TO_EDIT_TRANSACTION: "You are not allowed to edit this transaction",
+  OOPS: "Oops!",
+  PAGE_NOT_FOUND_MESSAGE: "The page you are looking for does not exist or temporarily unavailable.",
 };
