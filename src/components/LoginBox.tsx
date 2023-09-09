@@ -8,12 +8,7 @@ import LoadingSpinner from "./LoadingSpinner";
 const LoginBox = () => {
   const loginUserMutation = useLoginUserMutation();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onFormSubmitted = (data: any) => {
     loginUserMutation.mutate({
@@ -55,7 +50,7 @@ const LoginBox = () => {
           <div className="FormRow">
             {loginUserMutation.isLoading ? (
               <div className="LoginBox__spinner">
-                <LoadingSpinner isOverlayed={false} />
+                <LoadingSpinner />
               </div>
             ) : (
               <button className="ButtonRegular" type="submit">

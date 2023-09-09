@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import useCreateTransactionMutation from "../services/useCreateTransactionMutation";
-import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import { Transaction } from "../types";
 
 interface EditTransactionFormProps {
@@ -14,14 +13,8 @@ const EditTransactionForm = ({
   transaction,
   cancelFn,
 }: EditTransactionFormProps) => {
-  const getAuthUserQuery = useGetAuthUserQuery();
   const createTransactionMutation = useCreateTransactionMutation();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
 
   const onFormSubmitted = (data: any) => {
     createTransactionMutation.mutate({

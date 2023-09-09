@@ -1,31 +1,16 @@
 import { useForm } from "react-hook-form";
 
 import { Texts } from "../constants";
-import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 
 const SearchTransactionsForm = () => {
-  const getAuthUserQuery = useGetAuthUserQuery();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm();
-
-  const onFormSubmitted = (data: any) => {
-    if (getAuthUserQuery?.data?.id) {
-      // createBookMutation.mutate({
-      //   book_title: data.title,
-      // });
-    }
-  };
+  const { register, handleSubmit } = useForm();
 
   const renderFormMarkup = () => {
     return (
       <form
         action=""
-        onSubmit={handleSubmit((data) => onFormSubmitted(data))}
+        onSubmit={handleSubmit(() => {})}
         className="SearchTransactionsForm__form"
       >
         <input

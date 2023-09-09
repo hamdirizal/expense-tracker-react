@@ -3,22 +3,15 @@ import { useForm } from "react-hook-form";
 
 import { Texts } from "../constants";
 import useCreateTransactionMutation from "../services/useCreateTransactionMutation";
-import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 
 interface AddTransactionFormProps {
   bookId: number;
   cancelFn: () => void;
 }
 
-const AddTransactionForm = ({ bookId, cancelFn }: AddTransactionFormProps) => {
-  const getAuthUserQuery = useGetAuthUserQuery();
+const AddTransactionForm = ({ bookId }: AddTransactionFormProps) => {
   const createTransactionMutation = useCreateTransactionMutation();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm({
+  const { register, handleSubmit, setValue } = useForm({
     defaultValues: {
       is_outgoing: "yes",
       date: new Date().toISOString().split("T")[0],

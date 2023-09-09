@@ -48,7 +48,6 @@ const AddTransactionPage = () => {
         <h3 className="Heading3">{Texts.RECENTLY_ADDED}</h3>
         {getRecentTransactionsQuery.data?.length ? (
           <TransactionList
-            isLoading={getRecentTransactionsQuery.isLoading}
             transactions={getRecentTransactionsQuery.data}
           />
         ) : (

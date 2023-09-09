@@ -1,10 +1,6 @@
 import "./LoadingSpinner.css";
 
-interface LoadingSpinnerProps {
-  isOverlayed?: boolean;
-}
-
-const LoadingSpinner = ({ isOverlayed = false }: LoadingSpinnerProps) => {
+const LoadingSpinner = () => {
   return (
     <div className="lds-ring-wrapper">
       <div className="lds-ring">

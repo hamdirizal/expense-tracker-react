@@ -75,10 +75,7 @@ const BookSinglePage = () => {
         <div className="Heading3">🕐 {Texts.RECENTLY_ADDED}</div>
 
         {getRecentTransactionsQuery.data?.length ? (
-          <TransactionList
-            isLoading={getRecentTransactionsQuery.isLoading}
-            transactions={getRecentTransactionsQuery.data}
-          />
+          <TransactionList transactions={getRecentTransactionsQuery.data} />
         ) : (
           <div>{Texts.NO_TRANSACTIONS}</div>
         )}

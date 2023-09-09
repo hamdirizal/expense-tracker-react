@@ -55,7 +55,7 @@ const CreateBookForm = () => {
     <div className="CreateBookForm">
       <div className="Heading3">📗 {Texts.CREATE_NEW_BOOK}</div>
       {createBookMutation.isLoading ? (
-        <LoadingSpinner isOverlayed={true} />
+        <LoadingSpinner />
       ) : (
         renderFormMarkup()
       )}
