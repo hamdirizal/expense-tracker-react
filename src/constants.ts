@@ -6,10 +6,11 @@ export const AppPaths = {
   BOOK_MANAGE: "/book/:book_id/manage",
   SEARCH_TRANSACTIONS: "/book/:book_id/search-transactions",
   ADD_TRANSACTION: "/book/:book_id/add-transaction",
-  VIEW_TRANSACTION: "/book/:book_id/transaction/:transaction_id",
+  SINGLE_TRANSACTION: "/book/:book_id/transaction/:transaction_id",
   PROFILE: "/account",
   DASHBOARD: "/dashboard",
   // OLD PATHS
+  VIEW_TRANSACTION: "/book/:book_id/transaction/:transaction_id",
   EDIT_TRANSACTION: "/dashboard/edit-transaction/:transaction_id",
   MANAGE_BOOK: "/dashboard/manage-book/:book_id",
 };

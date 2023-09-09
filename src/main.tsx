@@ -14,7 +14,7 @@ import LoginPage from "./pages/LoginPage.tsx";
 import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
 import SearchTransactionsPage from "./pages/SearchTransactionsPage.tsx";
-import ViewTransactionPage from "./pages/ViewTransactionPage.tsx";
+import SingleTransactionPage from "./pages/SingleTransactionPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -50,8 +50,8 @@ const router = createBrowserRouter([
         element: <AddTransactionPage />,
       },
       {
-        path: AppPaths.VIEW_TRANSACTION,
-        element: <ViewTransactionPage />,
+        path: AppPaths.SINGLE_TRANSACTION,
+        element: <SingleTransactionPage />,
       },
       {
         path: AppPaths.SEARCH_TRANSACTIONS,
