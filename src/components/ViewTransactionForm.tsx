@@ -43,12 +43,7 @@ const ViewTransactionForm = ({ transaction }: ViewTransactionFormProps) => {
           </div>
           <div className="FormRow">
             <label className="FieldLabel">{Texts.INPUTLABEL_CREATEDBY}</label>
-            <input
-              value={transaction.creator_id}
-              className="InputText"
-              disabled
-              type="text"
-            />
+            <div className="FakeDisabledInput">{transaction.creator_nickname || transaction.creator_email}</div>
           </div>
         </div>
       </>
