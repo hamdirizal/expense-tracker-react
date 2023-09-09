@@ -1,18 +1,20 @@
-import ReactDOM from "react-dom/client";
 import "./css/index.scss";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LoginPage from "./pages/LoginPage.tsx";
+
 import { AppPaths } from "./constants.ts";
 import AddTransactionPage from "./pages/AddTransactionPage.tsx";
-import DashboardPage from "./pages/DashboardPage.tsx";
-import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
-import BookSinglePage from "./pages/BookSinglePage.tsx";
 import BookManagePage from "./pages/BookManagePage.tsx";
-import ViewTransactionPage from "./pages/ViewTransactionPage.tsx";
+import BookSinglePage from "./pages/BookSinglePage.tsx";
+import DashboardPage from "./pages/DashboardPage.tsx";
+import LoginPage from "./pages/LoginPage.tsx";
+import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
 import SearchTransactionsPage from "./pages/SearchTransactionsPage.tsx";
+import ViewTransactionPage from "./pages/ViewTransactionPage.tsx";
 
 const router = createBrowserRouter([
   {

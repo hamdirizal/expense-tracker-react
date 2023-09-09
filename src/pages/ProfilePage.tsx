@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { logout } from "../helpers/storageHelper";
+
 import { AppPaths, Texts } from "../constants";
+import { logout } from "../helpers/storageHelper";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 
 const ProfilePage = () => {
