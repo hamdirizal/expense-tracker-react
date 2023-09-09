@@ -29,7 +29,7 @@ const BookItemList = ({ books, showOwner = false }: BookItemListProps) => {
               </button>
               {showOwner ? (
                 <span className="BookItemList__itemOwner">
-                  ({book.owner_id.substring(0, 6)})
+                  ({book.owner_nickname || book.owner_email})
                 </span>
               ) : null}
             </li>

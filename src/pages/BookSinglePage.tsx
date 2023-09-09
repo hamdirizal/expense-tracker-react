@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router-dom";
 
-import ErrorDiv from "../components/ErrorDiv";
 import NotFoundError from "../components/NotFoundError";
 import TransactionList from "../components/TransactionList";
 import TransactionSummary from "../components/TransactionSummary";
@@ -8,7 +7,6 @@ import { AppPaths, Texts } from "../constants";
 import useGetRecentTransactionsQuery from "../services/useGetRecentTransactionsQuery";
 import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 import useGetTransactionSummaryQuery from "../services/useGetTransactionSummaryQuery";
-import ErrorPage from "./ErrorPage";
 
 const BookSinglePage = () => {
   const { book_id } = useParams();

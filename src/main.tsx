@@ -4,18 +4,17 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import NotFoundError from "./components/NotFoundError.tsx";
 import { AppPaths } from "./constants.ts";
 import AddTransactionPage from "./pages/AddTransactionPage.tsx";
 import BookManagePage from "./pages/BookManagePage.tsx";
 import BookSinglePage from "./pages/BookSinglePage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
-import ErrorPage from "./pages/ErrorPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
 import SearchTransactionsPage from "./pages/SearchTransactionsPage.tsx";
 import ViewTransactionPage from "./pages/ViewTransactionPage.tsx";
-import NotFoundError from "./components/NotFoundError.tsx";
 
 const router = createBrowserRouter([
   {

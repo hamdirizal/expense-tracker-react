@@ -1,8 +1,10 @@
 export interface Book {
-  created_at: string;
   id: number;
-  owner_id: string;
   title: string;
+  created_at: string;
+  owner_id: string;
+  owner_email: string;
+  owner_nickname?: string;
 }
 
 export interface Transaction {
@@ -69,6 +71,12 @@ export interface LoginResponse {
 
 export interface ApiLoginResponse {
   access_token: string;
+}
+
+export interface ApiGetOwnedBooksResponse {
+  results: Book[];
+  next_page: number | null;
+  prev_page: number | null;
 }
 
 export interface ApiGenericSuccessResponse {

@@ -2,7 +2,6 @@ import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import BookItemList from "../components/BookItemList";
-import BookList from "../components/BookList";
 import CreateBookForm from "../components/CreateBookForm";
 import { AppPaths, Texts } from "../constants";
 import { getStoredDefaultBookId } from "../helpers/storageHelper";
@@ -36,8 +35,8 @@ const DashboardPage = () => {
         <CreateBookForm />
 
         <div className="Heading3">📚 {Texts.MY_BOOKS}</div>
-        {getOwnedBooksQuery.data?.length ? (
-          <BookItemList books={getOwnedBooksQuery.data} />
+        {getOwnedBooksQuery.data?.results?.length ? (
+          <BookItemList books={getOwnedBooksQuery.data.results} />
         ) : (
           <div>{Texts.NO_OWNED_BOOKS}</div>
         )}
@@ -45,7 +44,7 @@ const DashboardPage = () => {
         <div className="HSpace2"></div>
         <div className="Heading3">🤝 {Texts.COLLABORATED_BOOKS}</div>
         {getCollaboratedBooksQuery.data?.length ? (
-          <BookList books={getCollaboratedBooksQuery.data} />
+          <BookItemList books={getCollaboratedBooksQuery.data} showOwner={true} />
         ) : (
           <div>{Texts.NO_COLLABORATED_BOOKS}</div>
         )}
