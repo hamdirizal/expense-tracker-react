@@ -79,7 +79,7 @@ export interface ApiGetOwnedBooksResponse {
   prev_page: number | null;
 }
 
-export interface ApiGetCollaboratedBooksResponse extends ApiGetOwnedBooksResponse {}
+export type ApiGetCollaboratedBooksResponse = ApiGetOwnedBooksResponse;
 
 export interface ApiGenericSuccessResponse {
   msg: string;

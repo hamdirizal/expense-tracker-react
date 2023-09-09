@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import { ApiBaseUrl } from "../constants";
 import { getStoredAccessToken } from "../helpers/storageHelper";
-import { ApiGetCollaboratedBooksResponse, Book } from "../types";
+import { ApiGetCollaboratedBooksResponse } from "../types";
 
 const useGetCollaboratedBooksQuery = () => {
   return useQuery<unknown, Error, ApiGetCollaboratedBooksResponse>({
