@@ -43,8 +43,8 @@ const DashboardPage = () => {
 
         <div className="HSpace2"></div>
         <div className="Heading3">🤝 {Texts.COLLABORATED_BOOKS}</div>
-        {getCollaboratedBooksQuery.data?.length ? (
-          <BookItemList books={getCollaboratedBooksQuery.data} showOwner={true} />
+        {getCollaboratedBooksQuery.data?.results?.length ? (
+          <BookItemList books={getCollaboratedBooksQuery.data.results} showOwner={true} />
         ) : (
           <div>{Texts.NO_COLLABORATED_BOOKS}</div>
         )}
