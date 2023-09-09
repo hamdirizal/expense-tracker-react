@@ -1,0 +1,11 @@
+.FakeDisabledInput {
+  font-size: 1rem;
+  cursor: not-allowed;
+  border: 1px solid #d1d1d1;
+  background: #f5f5f5;
+  padding: 0.3rem 0.2rem;
+  border-radius: 3px;
+}
+.FakeDisabledInput--short {
+  max-width: 10rem;
+}

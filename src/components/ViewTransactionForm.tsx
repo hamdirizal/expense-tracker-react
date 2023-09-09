@@ -12,12 +12,7 @@ const ViewTransactionForm = ({ transaction }: ViewTransactionFormProps) => {
         <div className="AddTransactionForm">
           <div className="FormRow">
             <label className="FieldLabel">{Texts.INPUTLABEL_TYPE}</label>
-            <input
-              value={transaction.is_outgoing ? "Outgoing" : "Incoming"}
-              className="InputText InputText--short"
-              disabled
-              type="text"
-            />
+            <div className="FakeDisabledInput FakeDisabledInput--short">{transaction.is_outgoing ? "Outgoing" : "Incoming"}</div>
           </div>
           <div className="FormRow">
             <label className="FieldLabel">{Texts.INPUTLABEL_DATE}</label>
@@ -31,12 +26,7 @@ const ViewTransactionForm = ({ transaction }: ViewTransactionFormProps) => {
 
           <div className="FormRow">
             <label className="FieldLabel">{Texts.INPUTLABEL_TITLE}</label>
-            <input
-              value={transaction.title}
-              className="InputText"
-              type="text"
-              disabled
-            />
+            <div className="FakeDisabledInput">{transaction.title || ""}</div>
           </div>
           <div className="FormRow">
             <label className="FieldLabel">{Texts.INPUTLABEL_AMOUNT}</label>
@@ -49,11 +39,7 @@ const ViewTransactionForm = ({ transaction }: ViewTransactionFormProps) => {
           </div>
           <div className="FormRow">
             <label className="FieldLabel">{Texts.INPUTLABEL_DESCRIPTION}</label>
-            <textarea
-              disabled
-              className="InputText"
-              value={transaction.description || ""}
-            ></textarea>
+            <div className="FakeDisabledInput">{transaction.description || ""}</div>
           </div>
           <div className="FormRow">
             <label className="FieldLabel">{Texts.INPUTLABEL_CREATEDBY}</label>

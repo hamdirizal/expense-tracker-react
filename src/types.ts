@@ -14,6 +14,8 @@ export interface Transaction {
   book_id: number;
   created_at: string;
   creator_id: string;
+  creator_email: string;
+  creator_nickname?: string;
   tx_date: string;
   description: string | null;
   is_outgoing: boolean;
