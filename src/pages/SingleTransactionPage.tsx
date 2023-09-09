@@ -1,12 +1,18 @@
 import { Link, useParams } from "react-router-dom";
 
+import ViewTransactionForm from "../components/ViewTransactionForm";
 import { AppPaths, Texts } from "../constants";
 import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
+import useGetSingleTransactionQuery from "../services/useGetSingleTransactionQuery";
 
 const SingleTransactionPage = () => {
-  const { book_id } = useParams();
+  const { book_id, transaction_id } = useParams();
 
   const getSingleBookQuery = useGetSingleBookQuery(parseInt(book_id || "0"));
+
+  const getSingleTransactionQuery = useGetSingleTransactionQuery(
+    parseInt(transaction_id || "0")
+  );
 
   return (
     <div>
@@ -23,6 +29,12 @@ const SingleTransactionPage = () => {
           <span>{Texts.VIEW_TRANSACTION}</span>
         </li>
       </ul>
+
+      <div className="WhitePanel">
+        {getSingleTransactionQuery?.data ? (
+          <ViewTransactionForm transaction={getSingleTransactionQuery.data} />
+        ) : null}
+      </div>
     </div>
   );
 };

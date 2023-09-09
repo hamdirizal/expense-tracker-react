@@ -1,41 +1,36 @@
+import { Texts } from "../constants";
 import { Transaction } from "../types";
 
 interface ViewTransactionFormProps {
   transaction: Transaction;
-  cancelFn: () => void;
 }
 
-const ViewTransactionForm = ({
-  transaction,
-  cancelFn,
-}: ViewTransactionFormProps) => {
-
+const ViewTransactionForm = ({ transaction }: ViewTransactionFormProps) => {
   const renderFinalMarkup = () => {
     return (
       <>
         <div className="AddTransactionForm">
-          <div className="FormRowTwoColumnWrapper">
-            <div className="FormRow">
-              <label className="FieldLabel">Date</label>
-              <input
-                value={transaction.tx_date}
-                className="InputText"
-                disabled
-                type="text"
-              />
-            </div>
-            <div className="FormRow">
-              <label className="FieldLabel">Type</label>
-              <input
-                value={transaction.is_outgoing ? "Outgoing" : "Incoming"}
-                className="InputText"
-                disabled
-                type="text"
-              />
-            </div>
+          <div className="FormRow">
+            <label className="FieldLabel">{Texts.INPUTLABEL_TYPE}</label>
+            <input
+              value={transaction.is_outgoing ? "Outgoing" : "Incoming"}
+              className="InputText InputText--short"
+              disabled
+              type="text"
+            />
           </div>
           <div className="FormRow">
-            <label className="FieldLabel">Title</label>
+            <label className="FieldLabel">{Texts.INPUTLABEL_DATE}</label>
+            <input
+              value={transaction.tx_date}
+              className="InputText InputText--short"
+              disabled
+              type="text"
+            />
+          </div>
+
+          <div className="FormRow">
+            <label className="FieldLabel">{Texts.INPUTLABEL_TITLE}</label>
             <input
               value={transaction.title}
               className="InputText"
@@ -44,7 +39,7 @@ const ViewTransactionForm = ({
             />
           </div>
           <div className="FormRow">
-            <label className="FieldLabel">Amount</label>
+            <label className="FieldLabel">{Texts.INPUTLABEL_AMOUNT}</label>
             <input
               value={transaction.amount}
               className="InputText"
@@ -53,7 +48,7 @@ const ViewTransactionForm = ({
             />
           </div>
           <div className="FormRow">
-            <label className="FieldLabel">Description</label>
+            <label className="FieldLabel">{Texts.INPUTLABEL_DESCRIPTION}</label>
             <textarea
               disabled
               className="InputText"
@@ -61,22 +56,13 @@ const ViewTransactionForm = ({
             ></textarea>
           </div>
           <div className="FormRow">
-            <label className="FieldLabel">Added by</label>
+            <label className="FieldLabel">{Texts.INPUTLABEL_CREATEDBY}</label>
             <input
               value={transaction.creator_id}
               className="InputText"
               disabled
               type="text"
             />
-          </div>
-          <div className="FormRow AddTransactionForm__actionGroup">
-            <button
-              type="button"
-              onClick={cancelFn}
-              className="ButtonSecondary"
-            >
-              Cancel
-            </button>
           </div>
         </div>
       </>

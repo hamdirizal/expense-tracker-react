@@ -35,7 +35,6 @@ const ViewTransactionPage = () => {
         {getSingleTransactionQuery.data &&
         !getSingleTransactionQuery.data.is_editable ? (
           <ViewTransactionForm
-            cancelFn={() => navigate(-1)}
             transaction={getSingleTransactionQuery.data}
           />
         ) : null}
