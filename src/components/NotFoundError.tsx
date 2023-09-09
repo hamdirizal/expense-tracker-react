@@ -7,7 +7,7 @@ const NotFoundError = () => {
     <div className="NotFoundError">
       <ul className="Breadcrumbs">
         <li>
-          ⚓ <Link to={AppPaths.DASHBOARD}>{Texts.DASHBOARD}</Link>
+          <Link to={AppPaths.DASHBOARD}>{Texts.DASHBOARD}</Link>
         </li>
       </ul>
       <div className="NotFoundError__emoji">😐</div>

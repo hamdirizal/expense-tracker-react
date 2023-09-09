@@ -23,7 +23,7 @@ const AddTransactionPage = () => {
       <>
         <ul className="Breadcrumbs">
           <li>
-            ⚓ <Link to={AppPaths.DASHBOARD}>{Texts.DASHBOARD}</Link>
+            <Link to={AppPaths.DASHBOARD}>{Texts.DASHBOARD}</Link>
           </li>
           <li>
             <Link to={AppPaths.BOOK_SINGLE.replace(/:book_id/, book_id || "")}>

@@ -28,7 +28,7 @@ const DashboardPage = () => {
       <div>
         <ul className="Breadcrumbs">
           <li>
-            ⚓ <span>{Texts.DASHBOARD}</span>
+            <span>{Texts.DASHBOARD}</span>
           </li>
         </ul>
 

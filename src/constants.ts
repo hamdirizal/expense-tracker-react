@@ -24,6 +24,8 @@ export const Texts = {
   BACK_TO_THE_BOOK_PAGE: "Back to the book dashboard",
   ADD_TRANSACTION: "Add transaction",
   SEARCH_TRANSACTIONS: "Search transactions",
+  TRANSACTION: "Transaction",
+  VIEW_TRANSACTION: "View transaction",
   LISTING: "Listing",
   SEARCH: "Search",
   MANAGE: "Manage",

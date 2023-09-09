@@ -26,7 +26,7 @@ const BookSinglePage = () => {
       <>
         <ul className="Breadcrumbs">
           <li>
-            ⚓ <Link to={AppPaths.DASHBOARD}>{Texts.DASHBOARD}</Link>
+            <Link to={AppPaths.DASHBOARD}>{Texts.DASHBOARD}</Link>
           </li>
           <li>
             <span>{getSingleBookQuery.data?.title || ""}</span>

@@ -98,6 +98,7 @@ $screen-xl: 1024px;
 @import "./InputSelect.scss";
 @import "./WhitePanel.scss";
 @import "./NotFoundError.scss";
+@import "./Breadcrumbs.scss";
 
 .PageTitle {
   @include page-title;
@@ -566,50 +567,6 @@ $screen-xl: 1024px;
   margin-top: 150px;
   margin-bottom: 20px;
   font-size: $fontsize-minus-2;
-}
-
-// Component
-$breadcrumbs-indent: 0.8rem;
-.Breadcrumbs {
-  list-style: none;
-  margin-bottom: 2rem;
-}
-.Breadcrumbs li {
-  display: block;
-  font-size: $fontsize-base;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-}
-.Breadcrumbs li:nth-child(2) {
-  margin-left: 1 * $breadcrumbs-indent;
-}
-.Breadcrumbs li:nth-child(3) {
-  margin-left: 2 * $breadcrumbs-indent;
-}
-.Breadcrumbs li:nth-child(4) {
-  margin-left: 3 * $breadcrumbs-indent;
-}
-.Breadcrumbs li:nth-child(5) {
-  margin-left: 4 * $breadcrumbs-indent;
-}
-.Breadcrumbs li:not(:first-child)::before {
-  content: '';
-  margin-right: 0.4rem;
-  border-left: 1px solid #888;
-  border-bottom: 1px solid #888;
-  display: inline-block;
-  width: 0.8rem;
-  height: 0.8rem;
-  transform: translateY(-2px);
-}
-.Breadcrumbs li a{
-  color: $color-link;
-  font-size: $fontsize-base;
-  font-weight: 500;
-}
-.Breadcrumbs li span{
-  font-size: $fontsize-base;
-  font-weight: 600;;
 }
 
 // Component
