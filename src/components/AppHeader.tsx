@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import logo from "../assets/monee-logo.png";
 import { AppPaths } from "../constants";
@@ -6,7 +6,6 @@ import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import UserButton from "./UserButton";
 
 const AppHeader = () => {
-  const navigate = useNavigate();
   const getAuthUserQuery = useGetAuthUserQuery();
   return (
     <header className="AppHeader" data-testid="AppHeader">

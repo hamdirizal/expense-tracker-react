@@ -20,19 +20,18 @@ const BookItemList = ({ books, showOwner = false }: BookItemListProps) => {
                 type="button"
                 onClick={() => {
                   navigate(
-                    AppPaths.BOOK_SINGLE.replace(
-                      ":book_id",
-                      book.id.toString()
-                    )
+                    AppPaths.BOOK_SINGLE.replace(":book_id", book.id.toString())
                   );
                 }}
                 className="BookItemList__itemTitle"
               >
                 {book.title}
               </button>
-              <span className="BookItemList__itemOwner">
-                ({book.owner_id.substring(0, 6)})
-              </span>
+              {showOwner ? (
+                <span className="BookItemList__itemOwner">
+                  ({book.owner_id.substring(0, 6)})
+                </span>
+              ) : null}
             </li>
           );
         })}

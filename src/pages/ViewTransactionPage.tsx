@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import EditTransactionForm from "../components/EditTransactionForm";
 import ErrorDiv from "../components/ErrorDiv";
@@ -10,8 +10,7 @@ import useGetSingleTransactionQuery from "../services/useGetSingleTransactionQue
 
 const ViewTransactionPage = () => {
   const navigate = useNavigate();
-  const getAuthUserQuery = useGetAuthUserQuery();
-  const activeBookId = getAuthUserQuery.data?.active_book_id || 0;
+  useGetAuthUserQuery();
 
   const { transaction_id } = useParams();
   const tx_id = transaction_id ? parseInt(transaction_id) : 0;

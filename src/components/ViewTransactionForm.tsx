@@ -1,5 +1,3 @@
-
-import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import { Transaction } from "../types";
 
 interface ViewTransactionFormProps {
@@ -11,7 +9,6 @@ const ViewTransactionForm = ({
   transaction,
   cancelFn,
 }: ViewTransactionFormProps) => {
-  const getAuthUserQuery = useGetAuthUserQuery();
 
   const renderFinalMarkup = () => {
     return (

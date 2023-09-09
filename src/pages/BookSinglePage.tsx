@@ -1,4 +1,3 @@
-import { useEffect,useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import ErrorDiv from "../components/ErrorDiv";
@@ -11,8 +10,6 @@ import useGetTransactionSummaryQuery from "../services/useGetTransactionSummaryQ
 
 const BookSinglePage = () => {
   const { book_id } = useParams();
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getSingleBookQuery = useGetSingleBookQuery(parseInt(book_id || "0"));
 

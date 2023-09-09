@@ -5,9 +5,8 @@ import { Transaction } from "../types";
 
 interface TransactionListProps {
   transactions: Transaction[];
-  isLoading: boolean;
 }
-const TransactionList = ({ transactions, isLoading }: TransactionListProps) => {
+const TransactionList = ({ transactions }: TransactionListProps) => {
   return (
     <table className="TxTable">
       <tbody>

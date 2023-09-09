@@ -16,8 +16,6 @@ const DashboardPage = () => {
   const navigate = useNavigate();
   const [defaultBookId, setDefaultBookId] = useState<number>(0);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   useEffect(() => {
     setDefaultBookId(storedDefaultBookId);
   }, []);
