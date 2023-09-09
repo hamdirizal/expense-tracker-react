@@ -87,7 +87,14 @@ const BookSinglePage = () => {
     <div data-testid="BookSinglePage">
       {getSingleBookQuery.data ? renderFinalMarkup() : null}
       {getSingleBookQuery.isError && (
-        <ErrorDiv error={getSingleBookQuery.error.message} />
+        <>
+          <ul className="Breadcrumbs">
+            <li>
+              ⚓ <Link to={AppPaths.DASHBOARD}>{Texts.DASHBOARD}</Link>
+            </li>
+          </ul>
+          <ErrorDiv error={getSingleBookQuery.error.message} />
+        </>
       )}
     </div>
   );
