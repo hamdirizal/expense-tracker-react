@@ -24,8 +24,6 @@ const AddTransactionPage = () => {
 
   const { book_id } = useParams();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const getSingleBookQuery = useGetSingleBookQuery(parseInt(book_id || "0"));
 
   const getRecentTransactionsQuery = useGetRecentTransactionsQuery(

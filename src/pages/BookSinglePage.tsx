@@ -62,12 +62,21 @@ const BookSinglePage = () => {
             </li>
 
             <li className="RegularList__li">
-              <Link to={""}>{Texts.SEARCH}</Link>
-            </li>
-
-            <li className="RegularList__li">
               <Link to={""}>{Texts.MANAGE}</Link>
             </li>
+
+            {book_id ? (
+              <li className="RegularList__li">
+                <Link
+                  to={AppPaths.SEARCH_TRANSACTIONS.replace(
+                    /:book_id/g,
+                    book_id
+                  )}
+                >
+                  {Texts.SEARCH}
+                </Link>
+              </li>
+            ) : null}
           </ul>
         </div>
         <div className="HSpace2"></div>
@@ -82,7 +91,9 @@ const BookSinglePage = () => {
             isLoading={getRecentTransactionsQuery.isLoading}
             transactions={getRecentTransactionsQuery.data}
           />
-        ) : <div>{Texts.NO_TRANSACTIONS}</div>}
+        ) : (
+          <div>{Texts.NO_TRANSACTIONS}</div>
+        )}
       </>
     );
   };
@@ -92,7 +103,7 @@ const BookSinglePage = () => {
       {getSingleBookQuery.data ? renderFinalMarkup() : null}
       {getSingleBookQuery.isError && (
         <ErrorDiv error={getSingleBookQuery.error.message} />
-      )}      
+      )}
     </div>
   );
 };

@@ -4,10 +4,7 @@ import { SupabaseClient, createClient } from "@supabase/supabase-js";
 import { createContext } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./pages/LoginPage.tsx";
 import { AppPaths } from "./constants.ts";
 import AddTransactionPage from "./pages/AddTransactionPage.tsx";
@@ -17,6 +14,7 @@ import BookSinglePage from "./pages/BookSinglePage.tsx";
 import BookManagePage from "./pages/BookManagePage.tsx";
 import ViewTransactionPage from "./pages/ViewTransactionPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
+import SearchTransactionsPage from "./pages/SearchTransactionsPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: AppPaths.VIEW_TRANSACTION,
         element: <ViewTransactionPage />,
+      },
+      {
+        path: AppPaths.SEARCH_TRANSACTIONS,
+        element: <SearchTransactionsPage />,
       },
     ],
   },
