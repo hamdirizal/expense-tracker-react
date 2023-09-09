@@ -1,7 +1,5 @@
 import ReactDOM from "react-dom/client";
 import "./css/index.scss";
-import { SupabaseClient, createClient } from "@supabase/supabase-js";
-import { createContext } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -71,18 +69,9 @@ const queryClient = new QueryClient({
   },
 });
 
-export const supabaseClient: SupabaseClient = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
-
-export const SupabaseContext = createContext(supabaseClient);
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <SupabaseContext.Provider value={supabaseClient}>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      {/* <ReactQueryDevtools initialIsOpen={true} /> */}
-    </QueryClientProvider>
-  </SupabaseContext.Provider>
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+    {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+  </QueryClientProvider>
 );
