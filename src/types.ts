@@ -15,11 +15,10 @@ export interface Transaction {
   created_at: string;
   creator_id: string;
   creator_email: string;
-  creator_nickname?: string;
   tx_date: string;
   description: string | null;
   is_outgoing: boolean;
-  is_editable?: boolean;
+  creator_nickname?: string;
 }
 
 export interface CreateTransactionMutationPayload {

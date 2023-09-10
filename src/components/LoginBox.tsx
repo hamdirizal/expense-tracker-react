@@ -4,6 +4,7 @@ import logo from "../assets/monee-logo.png";
 import useLoginUserMutation from "../services/useLoginUserMutation";
 import ErrorDiv from "./ErrorDiv";
 import LoadingSpinner from "./LoadingSpinner";
+import { Link } from "react-router-dom";
 
 const LoginBox = () => {
   const loginUserMutation = useLoginUserMutation();
@@ -59,6 +60,10 @@ const LoginBox = () => {
             )}
           </div>
         </form>
+        <div className="HSpace2"></div>
+        <div><Link to="">Forgot password?</Link></div>
+        <div className="HSpace1"></div>
+        <div><Link to="">Create account</Link></div>
       </div>
     </div>
   );
