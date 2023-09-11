@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import EditTransactionForm from "../components/EditTransactionForm";
 import ErrorDiv from "../components/ErrorDiv";
 import ViewTransactionForm from "../components/ViewTransactionForm";
-import { AppTitle } from "../constants";
+import { Texts } from "../constants/texts";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import useGetSingleTransactionQuery from "../services/useGetSingleTransactionQuery";
 
@@ -22,7 +22,9 @@ const ViewTransactionPage = () => {
         <h1 className="PageTitle">View transaction</h1>
 
         {getSingleTransactionQuery.data?.is_editable ? null : (
-          <div className="ViewTransactionPage__message">You are not allowed to edit this item</div>
+          <div className="ViewTransactionPage__message">
+            You are not allowed to edit this item
+          </div>
         )}
 
         {getSingleTransactionQuery.data?.is_editable ? (
@@ -34,9 +36,7 @@ const ViewTransactionPage = () => {
 
         {getSingleTransactionQuery.data &&
         !getSingleTransactionQuery.data.is_editable ? (
-          <ViewTransactionForm
-            transaction={getSingleTransactionQuery.data}
-          />
+          <ViewTransactionForm transaction={getSingleTransactionQuery.data} />
         ) : null}
       </div>
     );
@@ -45,7 +45,9 @@ const ViewTransactionPage = () => {
   return (
     <>
       <Helmet>
-        <title>View Transaction | {AppTitle}</title>
+        <title>
+          {Texts.VIEW_TRANSACTION} | {Texts.APP_TITLE}
+        </title>
       </Helmet>
 
       {getSingleTransactionQuery.isSuccess ? renderContent() : null}

@@ -3,7 +3,6 @@ import { Navigate, Outlet } from "react-router-dom";
 
 import AppHeader from "../components/AppHeader";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { AppTitle } from "../constants";
 import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
@@ -25,7 +24,7 @@ const MemberAreaSkeleton = () => {
     <div className="MemberAreaSkeleton">
       <div>
         <Helmet>
-          <title>Dashboard | {AppTitle}</title>
+          <title>{Texts.DASHBOARD} | {Texts.APP_TITLE}</title>
         </Helmet>
         <AppHeader />
         <div className="ContentArea">
