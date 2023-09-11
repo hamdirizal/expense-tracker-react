@@ -43,6 +43,11 @@ $screen-xl: 1024px;
   background: linear-gradient(0deg, rgba(210,210,210,1) 0%, rgba(240,240,240,1) 100%);
 }
 
+@mixin gradient-btn-important {
+  background: rgb(0,99,172);
+  background: linear-gradient(0deg, rgba(0,99,172,1) 1%, rgba(9,124,195,1) 100%);
+}
+
 @mixin gradient-primary {
   background: rgb(0,99,172);
   background: linear-gradient(0deg, rgba(0,99,172,1) 1%, rgba(9,124,195,1) 100%);
@@ -87,6 +92,7 @@ $screen-xl: 1024px;
 
 @import "./normalization.scss";
 @import "./ButtonRegular.scss";
+@import "./ButtonImportant.scss";
 @import "./UserBtn.scss";
 @import "./RegularList.scss";
 @import "./FieldLabel.scss";

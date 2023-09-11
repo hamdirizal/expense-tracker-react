@@ -67,8 +67,8 @@ const LoginPage = () => {
                     <LoadingSpinner />
                   </div>
                 ) : (
-                  <button className="ButtonRegular" type="submit">
-                    Login
+                  <button className="ButtonImportant" type="submit">
+                    {Texts.LOGIN}
                   </button>
                 )}
               </div>

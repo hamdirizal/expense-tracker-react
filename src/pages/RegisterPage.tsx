@@ -87,7 +87,7 @@ const RegisterPage = () => {
                     <LoadingSpinner />
                   </div>
                 ) : (
-                  <button className="ButtonRegular" type="submit">
+                  <button className="ButtonImportant" type="submit">
                     {Texts.REGISTER}
                   </button>
                 )}

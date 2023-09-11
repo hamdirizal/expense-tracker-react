@@ -1,0 +1,9 @@
+.ButtonImportant {
+  @include gradient-btn-important;
+  border: 1px solid $color-primary-shade;
+  border-radius: $rounded-input;
+  padding: 0.3rem 0.5rem;
+  font-weight: 400;
+  font-family: $font-1;
+  color: white;
+}
