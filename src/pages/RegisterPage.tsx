@@ -25,6 +25,80 @@ const RegisterPage = () => {
     });
   };
 
+  const renderSuccessMessage = () => {
+    return <div>
+      <h2 className="Heading3">Registration success!</h2>
+      <p>You have successfully registered.</p>
+      <p>Please check your email for a confirmation link.</p>
+    </div>
+  }
+
+  const renderRegisterForm = () => {
+    return (
+      <div className="relative">
+        <h2 className="Heading3">{Texts.REGISTER}</h2>
+        
+        <form
+          onSubmit={handleSubmit((data) => onFormSubmitted(data))}
+          className="p-6"
+        >
+          <div className="FormRow">
+            <input
+              className="InputText"
+              type="text"
+              placeholder="Email"
+              {...register("email", { required: false })}
+            />
+          </div>
+          <div className="FormRow">
+            <input
+              className="InputText"
+              type="text"
+              maxLength={20}
+              placeholder="Nickname (can be changed later)"
+              {...register("nickname", { required: false })}
+            />
+          </div>
+          <div className="FormRow">
+            <input
+              className="InputText"
+              type="text"
+              placeholder="Password"
+              {...register("password", { required: false })}
+            />
+          </div>
+          <div className="FormRow">
+            <input
+              className="InputText"
+              type="text"
+              placeholder="Confirm password"
+              {...register("confirm_password", { required: false })}
+            />
+          </div>
+
+          {registerMutation.isError ? (
+            <ErrorDiv error={registerMutation.error.message} />
+          ) : null}
+          <div className="FormRow">
+            {registerMutation.isLoading ? (
+              <div className="AuthBox__spinner">
+                <LoadingSpinner />
+              </div>
+            ) : (
+              <button className="ButtonImportant" type="submit">
+                {Texts.REGISTER}
+              </button>
+            )}
+          </div>
+        </form>
+        <div className="HSpace2"></div>
+        <div>
+          <Link to={AppPaths.LOGIN}>{Texts.ALREADY_HAVE_AN_ACCOUNT}</Link>
+        </div>
+      </div>
+    );
+  };
+
   const renderFinalMarkup = () => {
     return (
       <>
@@ -36,68 +110,8 @@ const RegisterPage = () => {
         <div className="AuthBox">
           <h1 className="AuthBox__logo">
             <img src={logo} alt="Monee" />
-          </h1>
-
-          <h2 className="Heading3">{Texts.REGISTER}</h2>
-          <div className="relative">
-            <form
-              onSubmit={handleSubmit((data) => onFormSubmitted(data))}
-              className="p-6"
-            >
-              <div className="FormRow">
-                <input
-                  className="InputText"
-                  type="text"
-                  placeholder="Email"
-                  {...register("email", { required: false })}
-                />
-              </div>
-              <div className="FormRow">
-                <input
-                  className="InputText"
-                  type="text"
-                  maxLength={20}
-                  placeholder="Nickname (can be changed later)"
-                  {...register("nickname", { required: false })}
-                />
-              </div>
-              <div className="FormRow">
-                <input
-                  className="InputText"
-                  type="text"
-                  placeholder="Password"
-                  {...register("password", { required: false })}
-                />
-              </div>
-              <div className="FormRow">
-                <input
-                  className="InputText"
-                  type="text"
-                  placeholder="Confirm password"
-                  {...register("confirm_password", { required: false })}
-                />
-              </div>
-
-              {registerMutation.isError ? (
-                <ErrorDiv error={registerMutation.error.message} />
-              ) : null}
-              <div className="FormRow">
-                {registerMutation.isLoading ? (
-                  <div className="AuthBox__spinner">
-                    <LoadingSpinner />
-                  </div>
-                ) : (
-                  <button className="ButtonImportant" type="submit">
-                    {Texts.REGISTER}
-                  </button>
-                )}
-              </div>
-            </form>
-            <div className="HSpace2"></div>
-            <div>
-              <Link to={AppPaths.LOGIN}>{Texts.ALREADY_HAVE_AN_ACCOUNT}</Link>
-            </div>
-          </div>
+          </h1>          
+          {registerMutation.isSuccess ? renderSuccessMessage() : renderRegisterForm()}
         </div>
       </>
     );
