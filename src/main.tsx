@@ -17,6 +17,7 @@ import ProfilePage from "./pages/ProfilePage.tsx";
 import RegisterPage from "./pages/RegisterPage.tsx";
 import SearchTransactionsPage from "./pages/SearchTransactionsPage.tsx";
 import SingleTransactionPage from "./pages/SingleTransactionPage.tsx";
+import VerifyAccountPage from "./pages/VerifyAccountPage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: AppPaths.REGISTER,
         element: <RegisterPage />,
+      },
+      {
+        path: AppPaths.VERIFY_ACCOUNT,
+        element: <VerifyAccountPage />,
       },
     ],
   },
