@@ -2,6 +2,7 @@ export const ApiBaseUrl = import.meta.env.VITE_API_URL;
 
 export const AppPaths = {
   LOGIN: "/login",
+  REGISTER: "/register",
   BOOK_SINGLE: "/book/:book_id",
   BOOK_MANAGE: "/book/:book_id/manage",
   SEARCH_TRANSACTIONS: "/book/:book_id/search-transactions",
@@ -43,6 +44,7 @@ export const Texts = {
   EDIT_BASIC_INFO: "Edit basic info",
   CHANGE_PASSWORD: "Change password",
   DELETE_ACCOUNT: "Delete account",
+  REGISTER: "Register",
   LOGIN: "Login",
   EMAIL: "Email",
   PASSWORD: "Password",
@@ -69,4 +71,9 @@ export const Texts = {
   INPUTLABEL_AMOUNT: "Amount",
   INPUTLABEL_DESCRIPTION: "Description",
   INPUTLABEL_CREATEDBY: "Created by",
+  FORGOT_PASSWORD: "Forgot password?",
+  CREATE_ACCOUNT: "Create account",
+  ALREADY_HAVE_AN_ACCOUNT: "Already have an account? Login here",
+  PAGETITLE_LOGIN: "Login",
+  PAGETITLE_REGISTER: "Register",
 };

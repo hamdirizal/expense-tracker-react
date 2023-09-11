@@ -14,17 +14,22 @@ import DashboardPage from "./pages/DashboardPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
+import RegisterPage from "./pages/RegisterPage.tsx";
 import SearchTransactionsPage from "./pages/SearchTransactionsPage.tsx";
 import SingleTransactionPage from "./pages/SingleTransactionPage.tsx";
 
 const router = createBrowserRouter([
   {
-    path: AppPaths.LOGIN,
+    path: "",
     element: <AuthFlowSkeleton />,
     children: [
       {
-        path: "",
+        path: AppPaths.LOGIN,
         element: <LoginPage />,
+      },
+      {
+        path: AppPaths.REGISTER,
+        element: <RegisterPage />,
       },
     ],
   },

@@ -9,7 +9,7 @@ import { AppPaths, AppTitle, Texts } from "../constants";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import useLoginUserMutation from "../services/useLoginUserMutation";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
   const loginUserMutation = useLoginUserMutation();
 
@@ -27,7 +27,7 @@ const LoginPage = () => {
       <>
         <Helmet>
           <title>
-            {Texts.PAGETITLE_LOGIN} | {Texts.APP_TITLE}
+            {Texts.PAGETITLE_REGISTER} | {Texts.APP_TITLE}
           </title>
         </Helmet>
         <div className="AuthBox">
@@ -35,7 +35,7 @@ const LoginPage = () => {
             <img src={logo} alt="Monee" />
           </h1>
 
-          <h2 className="Heading3">Login</h2>
+          <h2 className="Heading3">{Texts.REGISTER}</h2>
           <div className="relative">
             <form
               onSubmit={handleSubmit((data) => onFormSubmitted(data))}
@@ -74,11 +74,7 @@ const LoginPage = () => {
             </form>
             <div className="HSpace2"></div>
             <div>
-              <Link to="">{Texts.FORGOT_PASSWORD}</Link>
-            </div>
-            <div className="HSpace1"></div>
-            <div>
-              <Link to={AppPaths.REGISTER}>{Texts.CREATE_ACCOUNT}</Link>
+              <Link to={AppPaths.LOGIN}>{Texts.ALREADY_HAVE_AN_ACCOUNT}</Link>
             </div>
           </div>
         </div>
@@ -95,4 +91,4 @@ const LoginPage = () => {
   }
 };
 
-export default LoginPage;
+export default RegisterPage;
