@@ -1,7 +1,6 @@
 export interface Book {
   id: number;
   title: string;
-  created_at: string;
   owner_id: string;
   owner_email: string;
   owner_nickname?: string;
@@ -12,12 +11,13 @@ export interface Transaction {
   title: string;
   amount: number;
   book_id: number;
-  created_at: string;
-  creator_id: string;
-  creator_email: string;
   tx_date: string;
   description: string | null;
   is_outgoing: boolean;
+}
+export interface TransactionWithCreator extends Transaction {
+  creator_id: string;
+  creator_email: string;
   creator_nickname?: string;
 }
 
@@ -53,12 +53,10 @@ export interface TxSummary {
 }
 
 export interface User {
-  active_book: Book | null;
-  active_book_id: number | null;
-  created_at: string;
   email: string;
   id: string;
   nickname: string | null;
+  is_verified: boolean;
 }
 
 export interface SvgIconProps {

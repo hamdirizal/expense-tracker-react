@@ -238,9 +238,9 @@ $screen-xl: 1024px;
   height: auto;
 }
 .ContentArea {
-  padding: 0 $page-side-padding;
+  padding: 0 $page-side-padding 0;
   max-width: $page-max-width;
-  margin: 1.5rem auto 0;
+  margin: 0 auto 0;
 }
 @media screen and (max-width: 360px) {
   .ContentArea {

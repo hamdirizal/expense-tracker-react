@@ -9,7 +9,7 @@ const LoginPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
   const renderFinalMarkup = () => {
     return (
-      <div data-testid="LoginPage" className="LoginPage">
+      <div>
         <Helmet>
           <title>Login | {AppTitle}</title>
         </Helmet>

@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 import logo from "../assets/monee-logo.png";
 import useLoginUserMutation from "../services/useLoginUserMutation";
 import ErrorDiv from "./ErrorDiv";
 import LoadingSpinner from "./LoadingSpinner";
-import { Link } from "react-router-dom";
 
 const LoginBox = () => {
   const loginUserMutation = useLoginUserMutation();

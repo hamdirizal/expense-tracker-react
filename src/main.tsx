@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFoundError from "./components/NotFoundError.tsx";
 import { AppPaths } from "./constants.ts";
 import AddTransactionPage from "./pages/AddTransactionPage.tsx";
+import AuthFlowSkeleton from "./pages/AuthFlowSkeleton.tsx";
 import BookManagePage from "./pages/BookManagePage.tsx";
 import BookSinglePage from "./pages/BookSinglePage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
@@ -19,7 +20,13 @@ import SingleTransactionPage from "./pages/SingleTransactionPage.tsx";
 const router = createBrowserRouter([
   {
     path: AppPaths.LOGIN,
-    element: <LoginPage />,
+    element: <AuthFlowSkeleton />,
+    children: [
+      {
+        path: "",
+        element: <LoginPage />,
+      },
+    ],
   },
   {
     path: "/",
