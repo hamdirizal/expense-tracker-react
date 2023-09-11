@@ -96,6 +96,13 @@ export interface ApiLoginPayload {
   password: string;
 }
 
+export interface ApiRegisterPayload {
+  email: string;
+  password: string;
+  confirm_password: string;
+  nickname: string;
+}
+
 export interface ApiSetActiveBookPayload {
   book_id: number;
 }

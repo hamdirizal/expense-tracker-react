@@ -8,18 +8,20 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
-import useLoginUserMutation from "../services/useLoginUserMutation";
+import useRegisterMutation from "../services/useRegisterMutation";
 
 const RegisterPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
-  const loginUserMutation = useLoginUserMutation();
+  const registerMutation = useRegisterMutation();
 
   const { register, handleSubmit } = useForm();
 
   const onFormSubmitted = (data: any) => {
-    loginUserMutation.mutate({
+    registerMutation.mutate({
       email: data.email,
       password: data.password,
+      confirm_password: data.confirm_password,
+      nickname: data.nickname,
     });
   };
 
@@ -54,21 +56,39 @@ const RegisterPage = () => {
                 <input
                   className="InputText"
                   type="text"
+                  maxLength={20}
+                  placeholder="Nickname (can be changed later)"
+                  {...register("nickname", { required: false })}
+                />
+              </div>
+              <div className="FormRow">
+                <input
+                  className="InputText"
+                  type="text"
                   placeholder="Password"
                   {...register("password", { required: false })}
                 />
               </div>
-              {loginUserMutation.isError ? (
-                <ErrorDiv error={loginUserMutation.error.message} />
+              <div className="FormRow">
+                <input
+                  className="InputText"
+                  type="text"
+                  placeholder="Confirm password"
+                  {...register("confirm_password", { required: false })}
+                />
+              </div>
+
+              {registerMutation.isError ? (
+                <ErrorDiv error={registerMutation.error.message} />
               ) : null}
               <div className="FormRow">
-                {loginUserMutation.isLoading ? (
+                {registerMutation.isLoading ? (
                   <div className="AuthBox__spinner">
                     <LoadingSpinner />
                   </div>
                 ) : (
                   <button className="ButtonRegular" type="submit">
-                    Login
+                    {Texts.REGISTER}
                   </button>
                 )}
               </div>
