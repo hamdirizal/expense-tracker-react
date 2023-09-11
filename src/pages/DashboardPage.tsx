@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import BookItemList from "../components/BookItemList";
 import CreateBookForm from "../components/CreateBookForm";
-import { AppPaths, Texts } from "../constants";
+import { Texts } from "../constants";
+import { AppPaths } from "../constants/app-paths";
 import { getStoredDefaultBookId } from "../helpers/storageHelper";
 import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";

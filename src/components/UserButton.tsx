@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { AppPaths } from "../constants";
+import { AppPaths } from "../constants/app-paths";
 import SvgUserIcon from "../svg-components/SvgUserIcon";
 import { User } from "../types";
 

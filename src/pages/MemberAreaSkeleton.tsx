@@ -3,7 +3,8 @@ import { Navigate, Outlet } from "react-router-dom";
 
 import AppHeader from "../components/AppHeader";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { AppPaths, AppTitle, Texts } from "../constants";
+import { AppTitle, Texts } from "../constants";
+import { AppPaths } from "../constants/app-paths";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 
 const MemberAreaSkeleton = () => {

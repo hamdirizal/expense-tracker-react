@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import logo from "../assets/monee-logo.png";
-import { AppPaths } from "../constants";
+import { AppPaths } from "../constants/app-paths";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import UserButton from "./UserButton";
 

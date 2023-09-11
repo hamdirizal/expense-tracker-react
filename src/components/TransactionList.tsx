@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 
-import { AppPaths } from "../constants";
+import { AppPaths } from "../constants/app-paths";
 import { formatAsCurrency } from "../helpers/globalHelper";
 import { Transaction } from "../types";
 

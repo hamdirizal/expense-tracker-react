@@ -5,7 +5,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import NotFoundError from "./components/NotFoundError.tsx";
-import { AppPaths } from "./constants.ts";
+import { AppPaths } from "./constants/app-paths";
 import AddTransactionPage from "./pages/AddTransactionPage.tsx";
 import AuthFlowSkeleton from "./pages/AuthFlowSkeleton.tsx";
 import BookManagePage from "./pages/BookManagePage.tsx";

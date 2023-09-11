@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-import { AppPaths } from "../constants";
+import { AppPaths } from "../constants/app-paths";
 import { Book } from "../types";
 
 interface BookItemListProps {

@@ -5,7 +5,8 @@ import { Link, Navigate } from "react-router-dom";
 import logo from "../assets/monee-logo.png";
 import ErrorDiv from "../components/ErrorDiv";
 import LoadingSpinner from "../components/LoadingSpinner";
-import { AppPaths, AppTitle, Texts } from "../constants";
+import { AppTitle, Texts } from "../constants";
+import { AppPaths } from "../constants/app-paths";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import useLoginUserMutation from "../services/useLoginUserMutation";
 
