@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 
 import ViewTransactionForm from "../components/ViewTransactionForm";
 import { AppPaths, Texts } from "../constants";
+import useCanUserUpdateTransaction from "../services/useCanUserUpdateTransaction";
 import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 import useGetSingleTransactionQuery from "../services/useGetSingleTransactionQuery";
 
@@ -11,6 +12,10 @@ const SingleTransactionPage = () => {
   const getSingleBookQuery = useGetSingleBookQuery(parseInt(book_id || "0"));
 
   const getSingleTransactionQuery = useGetSingleTransactionQuery(
+    parseInt(transaction_id || "0")
+  );
+
+  const canUserUpdateTransaction = useCanUserUpdateTransaction(
     parseInt(transaction_id || "0")
   );
 

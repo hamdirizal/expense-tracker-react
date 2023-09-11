@@ -1,20 +1,86 @@
 import { Helmet } from "react-helmet";
-import { Navigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, Navigate } from "react-router-dom";
 
-import LoginBox from "../components/LoginBox";
+import logo from "../assets/monee-logo.png";
+import ErrorDiv from "../components/ErrorDiv";
+import LoadingSpinner from "../components/LoadingSpinner";
 import { AppPaths, AppTitle } from "../constants";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
+import useLoginUserMutation from "../services/useLoginUserMutation";
 
 const LoginPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
+  const loginUserMutation = useLoginUserMutation();
+
+  const { register, handleSubmit } = useForm();
+
+  const onFormSubmitted = (data: any) => {
+    loginUserMutation.mutate({
+      email: data.email,
+      password: data.password,
+    });
+  };
+
   const renderFinalMarkup = () => {
     return (
-      <div>
+      <>
         <Helmet>
           <title>Login | {AppTitle}</title>
         </Helmet>
-        <LoginBox />
-      </div>
+        <div className="AuthBox">
+          <h1 className="AuthBox__logo">
+            <img src={logo} alt="Monee" />
+          </h1>
+
+          <h2 className="Heading3">Login</h2>
+          <div className="relative">
+            <form
+              onSubmit={handleSubmit((data) => onFormSubmitted(data))}
+              className="p-6"
+            >
+              <div className="FormRow">
+                <input
+                  className="InputText"
+                  type="text"
+                  placeholder="Email"
+                  {...register("email", { required: false })}
+                />
+              </div>
+              <div className="FormRow">
+                <input
+                  className="InputText"
+                  type="text"
+                  placeholder="Password"
+                  {...register("password", { required: false })}
+                />
+              </div>
+              {loginUserMutation.isError ? (
+                <ErrorDiv error={loginUserMutation.error.message} />
+              ) : null}
+              <div className="FormRow">
+                {loginUserMutation.isLoading ? (
+                  <div className="AuthBox__spinner">
+                    <LoadingSpinner />
+                  </div>
+                ) : (
+                  <button className="ButtonRegular" type="submit">
+                    Login
+                  </button>
+                )}
+              </div>
+            </form>
+            <div className="HSpace2"></div>
+            <div>
+              <Link to="">Forgot password?</Link>
+            </div>
+            <div className="HSpace1"></div>
+            <div>
+              <Link to="">Create account</Link>
+            </div>
+          </div>
+        </div>
+      </>
     );
   };
 

@@ -124,22 +124,24 @@ $screen-xl: 1024px;
   padding-top: 60px;
 }
 
-.LoginBox {
+.AuthBox {
   width: 90vw;
   max-width: 380px;
-  padding: 1rem;
+  padding-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
-.LoginBox__logo {
-  width: 140px;
-  margin-bottom: 0.4rem;
+.AuthBox__logo {
+  width: 110px;
+  margin-bottom: 1.5rem;
 }
-.LoginBox__logo img {
+.AuthBox__logo img {
   max-width: 100%;
 }
-.LoginBox__subtitle {
+.AuthBox__subtitle {
   margin-bottom: 0.8rem;
 }
-.LoginBox__spinner {
+.AuthBox__spinner {
   justify-content: center;
   display: flex;
 }
