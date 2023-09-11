@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { ApiBaseUrl } from "../constants";
+import { ApiBaseUrl } from "../constants/general";
 import { setStoredAccessToken } from "../helpers/storageHelper";
 import { ApiLoginPayload, ApiLoginResponse } from "../types";
 
