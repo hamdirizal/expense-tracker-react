@@ -28,8 +28,10 @@ const RegisterPage = () => {
   const renderSuccessMessage = () => {
     return <div>
       <h2 className="Heading3">Registration success!</h2>
-      <p>You have successfully registered.</p>
       <p>Please check your email for a confirmation link.</p>
+      <p>
+        <Link to={AppPaths.LOGIN}>Back to the login page</Link>
+      </p>
     </div>
   }
 
@@ -37,7 +39,7 @@ const RegisterPage = () => {
     return (
       <div className="relative">
         <h2 className="Heading3">{Texts.REGISTER}</h2>
-        
+
         <form
           onSubmit={handleSubmit((data) => onFormSubmitted(data))}
           className="p-6"
