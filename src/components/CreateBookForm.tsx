@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-import { Texts } from "../constants";
+import { Texts } from "../constants/texts";
 import useCreateBookMutation from "../services/useCreateBookMutation";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import LoadingSpinner from "./LoadingSpinner";

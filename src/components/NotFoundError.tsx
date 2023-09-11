@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-import { Texts } from "../constants";
 import { AppPaths } from "../constants/app-paths";
+import { Texts } from "../constants/texts";
 
 const NotFoundError = () => {
   return (

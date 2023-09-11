@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-import { Texts } from "../constants";
+import { Texts } from "../constants/texts";
 
 const SearchTransactionsForm = () => {
 

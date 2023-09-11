@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 
 import SearchTransactionsForm from "../components/SearchTransactionsForm";
-import { Texts } from "../constants";
 import { AppPaths } from "../constants/app-paths";
+import { Texts } from "../constants/texts";
 import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 
 const SearchTransactionsPage = () => {

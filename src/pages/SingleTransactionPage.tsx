@@ -1,8 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 
 import ViewTransactionForm from "../components/ViewTransactionForm";
-import { Texts } from "../constants";
 import { AppPaths } from "../constants/app-paths";
+import { Texts } from "../constants/texts";
 import useCanUserUpdateTransaction from "../services/useCanUserUpdateTransaction";
 import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 import useGetSingleTransactionQuery from "../services/useGetSingleTransactionQuery";

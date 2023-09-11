@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { Outlet } from "react-router-dom";
 
-import { Texts } from "../constants";
+import { Texts } from "../constants/texts";
 
 const AuthFlowSkeleton = () => {
   return (

@@ -3,8 +3,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import AddTransactionForm from "../components/AddTransactionForm";
 import ErrorDiv from "../components/ErrorDiv";
 import TransactionList from "../components/TransactionList";
-import { Texts } from "../constants";
 import { AppPaths } from "../constants/app-paths";
+import { Texts } from "../constants/texts";
 import useGetRecentTransactionsQuery from "../services/useGetRecentTransactionsQuery";
 import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 

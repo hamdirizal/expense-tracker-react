@@ -1,4 +1,4 @@
-import { Texts } from "../constants";
+import { Texts } from "../constants/texts";
 import { formatAsCurrency } from "../helpers/globalHelper";
 import { TxSummary } from "../types";
 

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-import { Texts } from "../constants";
+import { Texts } from "../constants/texts";
 import useCreateTransactionMutation from "../services/useCreateTransactionMutation";
 
 interface AddTransactionFormProps {

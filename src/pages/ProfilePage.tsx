@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-import { Texts } from "../constants";
 import { AppPaths } from "../constants/app-paths";
+import { Texts } from "../constants/texts";
 import { logout } from "../helpers/storageHelper";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 
