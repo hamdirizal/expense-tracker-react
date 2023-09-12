@@ -29,9 +29,6 @@ const RegisterPage = () => {
     return <div>
       <h2 className="Heading3">Registration success!</h2>
       <p>Please check your email for a confirmation link.</p>
-      <p>
-        <Link to={AppPaths.LOGIN}>Back to the login page</Link>
-      </p>
     </div>
   }
 

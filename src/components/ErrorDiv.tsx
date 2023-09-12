@@ -1,5 +1,5 @@
 interface ErrorDivProps {
-  error: string;
+  error: string | JSX.Element;
 }
 
 const ErrorDiv = ({ error }: ErrorDivProps) => {

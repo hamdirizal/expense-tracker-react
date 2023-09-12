@@ -17,7 +17,7 @@ const VerifyAccountPage = () => {
   const { token } = useParams();
 
   useEffect(() => {
-    verifyAccountMutation.mutate({token: token || ""});
+    verifyAccountMutation.mutate({ token: token || "" });
   }, []);
 
   const renderFinalMarkup = () => {
@@ -31,18 +31,33 @@ const VerifyAccountPage = () => {
             <img src={logo} alt="Monee" />
           </h1>
 
-          <h2 className="Heading3">Verifiying your account. Please wait.</h2>
-          <LoadingSpinner />
-          <p>Verification failed.</p>
-          <div>
-            <button type="button" className="ButtonRegular">
-              Resend verification email
-            </button>
-          </div>
-          <p>
-            Verification success. <br />
-            <Link to={AppPaths.LOGIN}>Login here</Link> to use the app.
-          </p>
+          {verifyAccountMutation.isLoading && (
+            <>
+              <h2 className="Heading3">
+                Verifiying your account. Please wait.
+              </h2>
+              <LoadingSpinner />
+            </>
+          )}
+
+          {verifyAccountMutation.isError && (
+            <div>
+              <p>Verification failed.</p>
+              <ErrorDiv error={verifyAccountMutation.error.message} />
+              <p>
+                <Link to={AppPaths.LOGIN}>Back to the login page.</Link>
+              </p>
+            </div>
+          )}
+
+          {verifyAccountMutation.isSuccess && (
+            <p>
+              Verification success. <br />
+              <p>
+                <Link to={AppPaths.LOGIN}>Back to the login page.</Link>
+              </p>
+            </p>
+          )}
         </div>
       </>
     );
