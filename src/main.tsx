@@ -21,22 +21,16 @@ import VerifyAccountPage from "./pages/VerifyAccountPage.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "",
-    element: <AuthFlowSkeleton />,
-    children: [
-      {
-        path: AppPaths.LOGIN,
-        element: <LoginPage />,
-      },
-      {
-        path: AppPaths.REGISTER,
-        element: <RegisterPage />,
-      },
-      {
-        path: AppPaths.VERIFY_ACCOUNT,
-        element: <VerifyAccountPage />,
-      },
-    ],
+    path: AppPaths.LOGIN,
+    element: <AuthFlowSkeleton content={<LoginPage />} />,
+  },
+  {
+    path: AppPaths.REGISTER,
+    element: <AuthFlowSkeleton content={<RegisterPage />} />,
+  },
+  {
+    path: AppPaths.VERIFY_ACCOUNT,
+    element: <AuthFlowSkeleton content={<VerifyAccountPage />} />,
   },
   {
     path: "/",

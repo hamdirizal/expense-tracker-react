@@ -3,15 +3,16 @@ import { Outlet } from "react-router-dom";
 
 import { Texts } from "../constants/texts";
 
-const AuthFlowSkeleton = () => {
+
+const AuthFlowSkeleton = ({content}:{content: JSX.Element}) => {
   return (
-    <div className="MemberAreaSkeleton">
+    <div className="AuthFlowSkeleton">
       <div>
         <Helmet>
           <title>Auth | {Texts.APP_TITLE}</title>
         </Helmet>
         <div className="ContentArea">
-          <Outlet />
+          {content}
         </div>
       </div>
     </div>
