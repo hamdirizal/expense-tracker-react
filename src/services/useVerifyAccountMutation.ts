@@ -10,12 +10,15 @@ const useVerifyAccountMutation = () => {
     ["verifyAccount"],
     {
       mutationFn: async (args) => {
-        const response = await fetch(`${ApiBaseUrl}/verify-account.php?token=${args.token}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
+        const response = await fetch(
+          `${ApiBaseUrl}/verify-account.php?token=${args.token}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
-        });
+        );
         if (!response.ok) {
           throw new Error((await response.json()).msg);
         }
@@ -25,9 +28,7 @@ const useVerifyAccountMutation = () => {
         }
         return successData;
       },
-      onSuccess: () => {
-        queryClient.invalidateQueries(["getAuthUser"]);
-      },
+      onSuccess: () => {},
     }
   );
 };

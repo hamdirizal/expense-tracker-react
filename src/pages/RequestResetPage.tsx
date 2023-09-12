@@ -9,17 +9,17 @@ import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import useLoginUserMutation from "../services/useLoginUserMutation";
+import useRequestResetMutation from "../services/useRequestResetMutation";
 
-const LoginPage = () => {
+const RequestResetPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
-  const loginUserMutation = useLoginUserMutation();
+  const requestResetMutation = useRequestResetMutation();
 
   const { register, handleSubmit } = useForm();
 
   const onFormSubmitted = (data: any) => {
-    loginUserMutation.mutate({
+    requestResetMutation.mutate({
       email: data.email,
-      password: data.password,
     });
   };
 
@@ -28,7 +28,7 @@ const LoginPage = () => {
       <>
         <Helmet>
           <title>
-            {Texts.PAGETITLE_LOGIN} | {Texts.APP_TITLE}
+            Request password reset | {Texts.APP_TITLE}
           </title>
         </Helmet>
         <div className="AuthBox">
@@ -36,7 +36,7 @@ const LoginPage = () => {
             <img src={logo} alt="Monee" />
           </h1>
 
-          <h2 className="Heading3">Login</h2>
+          <h2 className="Heading3">Reset password</h2>
           <div className="relative">
             <form
               onSubmit={handleSubmit((data) => onFormSubmitted(data))}
@@ -50,36 +50,24 @@ const LoginPage = () => {
                   {...register("email", { required: false })}
                 />
               </div>
-              <div className="FormRow">
-                <input
-                  className="InputText"
-                  type="text"
-                  placeholder="Password"
-                  {...register("password", { required: false })}
-                />
-              </div>
-              {loginUserMutation.isError ? (
-                <ErrorDiv error={loginUserMutation.error.message} />
+              {requestResetMutation.isError ? (
+                <ErrorDiv error={requestResetMutation.error.message} />
               ) : null}
               <div className="FormRow">
-                {loginUserMutation.isLoading ? (
+                {requestResetMutation.isLoading ? (
                   <div className="AuthBox__spinner">
                     <LoadingSpinner />
                   </div>
                 ) : (
                   <button className="ButtonImportant" type="submit">
-                    {Texts.LOGIN}
+                    Get reset link
                   </button>
                 )}
               </div>
             </form>
             <div className="HSpace2"></div>
             <div>
-              <Link to={AppPaths.REQUEST_PASSWORD_RESET}>{Texts.FORGOT_PASSWORD}</Link>
-            </div>
-            <div className="HSpace1"></div>
-            <div>
-              <Link to={AppPaths.REGISTER}>{Texts.CREATE_ACCOUNT}</Link>
+              <Link to={AppPaths.LOGIN}>Back to the login page</Link>
             </div>
           </div>
         </div>
@@ -96,4 +84,4 @@ const LoginPage = () => {
   }
 };
 
-export default LoginPage;
+export default RequestResetPage;

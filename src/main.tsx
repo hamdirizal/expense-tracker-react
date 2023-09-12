@@ -15,6 +15,7 @@ import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
 import RegisterPage from "./pages/RegisterPage.tsx";
+import RequestResetPage from "./pages/RequestResetPage.tsx";
 import SearchTransactionsPage from "./pages/SearchTransactionsPage.tsx";
 import SingleTransactionPage from "./pages/SingleTransactionPage.tsx";
 import VerifyAccountPage from "./pages/VerifyAccountPage.tsx";
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: AppPaths.VERIFY_ACCOUNT,
     element: <AuthFlowSkeleton content={<VerifyAccountPage />} />,
+  },
+  {
+    path: AppPaths.REQUEST_PASSWORD_RESET,
+    element: <AuthFlowSkeleton content={<RequestResetPage />} />,
   },
   {
     path: "/",

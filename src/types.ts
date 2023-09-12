@@ -96,6 +96,10 @@ export interface ApiLoginPayload {
   password: string;
 }
 
+export interface ApiRequestPasswordResetPayload {
+  email: string;
+}
+
 export interface ApiRegisterPayload {
   email: string;
   password: string;
