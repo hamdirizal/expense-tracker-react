@@ -2,25 +2,19 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { ApiBaseUrl } from "../constants/general";
 import { setStoredAccessToken } from "../helpers/storageHelper";
-import { ApiGenericSuccessResponse, ApiLoginResponse, ApiRegisterPayload } from "../types";
+import { ApiGenericSuccessResponse, ApiVerifyAccount } from "../types";
 
 const useVerifyAccountMutation = () => {
   const queryClient = useQueryClient();
-  return useMutation<ApiGenericSuccessResponse, Error, ApiRegisterPayload>(
+  return useMutation<ApiGenericSuccessResponse, Error, ApiVerifyAccount>(
     ["verifyAccount"],
     {
       mutationFn: async (args) => {
-        const response = await fetch(`${ApiBaseUrl}/verify-account.php`, {
-          method: "POST",
+        const response = await fetch(`${ApiBaseUrl}/verify-account.php?token=${args.token}`, {
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: args.email,
-            password: args.password,
-            confirm_password: args.confirm_password,
-            nickname: args.nickname,
-          }),
+          }
         });
         if (!response.ok) {
           throw new Error((await response.json()).msg);

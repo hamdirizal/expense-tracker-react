@@ -103,6 +103,10 @@ export interface ApiRegisterPayload {
   nickname: string;
 }
 
+export interface ApiVerifyAccount {
+  token: string;
+}
+
 export interface ApiSetActiveBookPayload {
   book_id: number;
 }

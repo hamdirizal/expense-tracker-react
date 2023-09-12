@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 
 import logo from "../assets/monee-logo.png";
 import ErrorDiv from "../components/ErrorDiv";
@@ -8,20 +9,16 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
-import useLoginUserMutation from "../services/useLoginUserMutation";
+import useVerifyAccountMutation from "../services/useVerifyAccountMutation";
 
 const VerifyAccountPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
-  const loginUserMutation = useLoginUserMutation();
+  const verifyAccountMutation = useVerifyAccountMutation();
+  const { token } = useParams();
 
-  const { register, handleSubmit } = useForm();
-
-  const onFormSubmitted = (data: any) => {
-    loginUserMutation.mutate({
-      email: data.email,
-      password: data.password,
-    });
-  };
+  useEffect(() => {
+    verifyAccountMutation.mutate({token: token || ""});
+  }, []);
 
   const renderFinalMarkup = () => {
     return (
@@ -36,13 +33,16 @@ const VerifyAccountPage = () => {
 
           <h2 className="Heading3">Verifiying your account. Please wait.</h2>
           <LoadingSpinner />
-          <p>
-            Verification failed.
-          </p>
+          <p>Verification failed.</p>
           <div>
-            <button type="button" className="ButtonRegular">Resend verification email</button>
+            <button type="button" className="ButtonRegular">
+              Resend verification email
+            </button>
           </div>
-          <p>Verification success. <br /><Link to={AppPaths.LOGIN}>Login here</Link> to use the app.</p>
+          <p>
+            Verification success. <br />
+            <Link to={AppPaths.LOGIN}>Login here</Link> to use the app.
+          </p>
         </div>
       </>
     );
