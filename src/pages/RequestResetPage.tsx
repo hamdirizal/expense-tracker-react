@@ -23,53 +23,63 @@ const RequestResetPage = () => {
     });
   };
 
+  const renderForm = () => {
+    return (
+      <>
+        <h2 className="Heading3">Reset password</h2>
+        <div className="relative">
+          <form
+            onSubmit={handleSubmit((data) => onFormSubmitted(data))}
+            className="p-6"
+          >
+            <div className="FormRow">
+              <input
+                className="InputText"
+                type="text"
+                placeholder="Email"
+                {...register("email", { required: false })}
+              />
+            </div>
+            {requestResetMutation.isError ? (
+              <ErrorDiv error={requestResetMutation.error.message} />
+            ) : null}
+            <div className="FormRow">
+              {requestResetMutation.isLoading ? (
+                <div className="AuthBox__spinner">
+                  <LoadingSpinner />
+                </div>
+              ) : (
+                <button className="ButtonImportant" type="submit">
+                  Get reset link
+                </button>
+              )}
+            </div>
+          </form>
+          <div className="HSpace2"></div>
+          <div>
+            <Link to={AppPaths.LOGIN}>Back to the login page</Link>
+          </div>
+        </div>
+      </>
+    );
+  };
+
   const renderFinalMarkup = () => {
     return (
       <>
         <Helmet>
-          <title>
-            Request password reset | {Texts.APP_TITLE}
-          </title>
+          <title>Request password reset | {Texts.APP_TITLE}</title>
         </Helmet>
         <div className="AuthBox">
           <h1 className="AuthBox__logo">
             <img src={logo} alt="Monee" />
           </h1>
 
-          <h2 className="Heading3">Reset password</h2>
-          <div className="relative">
-            <form
-              onSubmit={handleSubmit((data) => onFormSubmitted(data))}
-              className="p-6"
-            >
-              <div className="FormRow">
-                <input
-                  className="InputText"
-                  type="text"
-                  placeholder="Email"
-                  {...register("email", { required: false })}
-                />
-              </div>
-              {requestResetMutation.isError ? (
-                <ErrorDiv error={requestResetMutation.error.message} />
-              ) : null}
-              <div className="FormRow">
-                {requestResetMutation.isLoading ? (
-                  <div className="AuthBox__spinner">
-                    <LoadingSpinner />
-                  </div>
-                ) : (
-                  <button className="ButtonImportant" type="submit">
-                    Get reset link
-                  </button>
-                )}
-              </div>
-            </form>
-            <div className="HSpace2"></div>
-            <div>
-              <Link to={AppPaths.LOGIN}>Back to the login page</Link>
-            </div>
-          </div>
+          {requestResetMutation.isSuccess ? <div>
+            <h2 className="Heading3">Success</h2>
+            <p>A reset link has been sent to your email. </p>
+            <p><Link to={AppPaths.LOGIN}>Back to the login page</Link></p>
+          </div> : renderForm()}
         </div>
       </>
     );
