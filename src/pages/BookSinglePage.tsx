@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 
-import NotFoundError from "../components/NotFoundError";
+import JustError from "../components/JustError";
 import TransactionList from "../components/TransactionList";
 import TransactionSummary from "../components/TransactionSummary";
 import { AppPaths } from "../constants/app-paths";
@@ -87,7 +87,7 @@ const BookSinglePage = () => {
   return (
     <div data-testid="BookSinglePage">
       {getSingleBookQuery.data ? renderFinalMarkup() : null}
-      {getSingleBookQuery.isError && <NotFoundError />}
+      {getSingleBookQuery.isError && <JustError />}
     </div>
   );
 };

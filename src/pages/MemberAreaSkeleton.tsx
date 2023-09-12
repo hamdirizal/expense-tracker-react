@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import AppHeader from "../components/AppHeader";
 import LoadingSpinner from "../components/LoadingSpinner";
@@ -7,7 +7,7 @@ import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 
-const MemberAreaSkeleton = () => {
+const MemberAreaSkeleton = ({ content }: { content: JSX.Element }) => {
   const getAuthUserQuery = useGetAuthUserQuery();
 
   const renderContentMarkup = () => {
@@ -16,7 +16,7 @@ const MemberAreaSkeleton = () => {
     } else if (getAuthUserQuery.isError) {
       return <Navigate to={AppPaths.LOGIN} />;
     } else {
-      return <Outlet />;
+      return content;
     }
   };
 
@@ -24,7 +24,9 @@ const MemberAreaSkeleton = () => {
     <div className="MemberAreaSkeleton">
       <div>
         <Helmet>
-          <title>{Texts.DASHBOARD} | {Texts.APP_TITLE}</title>
+          <title>
+            {Texts.DASHBOARD} | {Texts.APP_TITLE}
+          </title>
         </Helmet>
         <AppHeader />
         <div className="ContentArea">
