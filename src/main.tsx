@@ -9,6 +9,7 @@ import AddTransactionPage from "./pages/AddTransactionPage.tsx";
 import AuthFlowSkeleton from "./pages/AuthFlowSkeleton.tsx";
 import BookManagePage from "./pages/BookManagePage.tsx";
 import BookSinglePage from "./pages/BookSinglePage.tsx";
+import ChangePasswordPage from "./pages/ChangePasswordPage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: AppPaths.REQUEST_PASSWORD_RESET,
     element: <AuthFlowSkeleton content={<RequestResetPage />} />,
+  },
+  {
+    path: AppPaths.CHANGE_PASSWORD,
+    element: <AuthFlowSkeleton content={<ChangePasswordPage />} />,
   },
   {
     path: "/",

@@ -100,6 +100,12 @@ export interface ApiRequestPasswordResetPayload {
   email: string;
 }
 
+export interface ApiChangePasswordByTokenPayload {
+  password: string;
+  confirm_password: string;
+  token: string;
+}
+
 export interface ApiRegisterPayload {
   email: string;
   password: string;

@@ -3,6 +3,7 @@ export const AppPaths = {
   REGISTER: "/register",
   VERIFY_ACCOUNT: "/verify-account/:token",
   REQUEST_PASSWORD_RESET: "/request-password-reset",
+  CHANGE_PASSWORD: "/change-password/:token",
   BOOK_SINGLE: "/book/:book_id",
   BOOK_MANAGE: "/book/:book_id/manage",
   SEARCH_TRANSACTIONS: "/book/:book_id/search-transactions",
