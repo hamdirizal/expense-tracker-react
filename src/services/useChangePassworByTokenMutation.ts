@@ -23,8 +23,8 @@ const useChangePasswordByTokenMutation = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: args.password,
-          password: args.confirm_password,
+          password: args.password,
+          confirm_password: args.confirm_password,
           token: args.token,
         }),
       });
