@@ -31,9 +31,7 @@ const useRegisterMutation = () => {
         }
         return successData;
       },
-      onSuccess: () => {
-        queryClient.invalidateQueries(["getAuthUser"]);
-      },
+      onSuccess: () => {},
     }
   );
 };
