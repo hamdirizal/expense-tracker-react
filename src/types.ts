@@ -6,6 +6,13 @@ export interface Book {
   owner_nickname?: string;
 }
 
+export interface Invitation {
+  book_id: number;
+  book_title: string;
+  owner_email: string;
+  owner_nickname?: string;
+}
+
 export interface Transaction {
   id: number;
   title: string;
@@ -85,6 +92,10 @@ export type ApiGetCollaboratedBooksResponse = ApiGetOwnedBooksResponse;
 
 export interface ApiGetRecentTransactionsResponse extends PaginatedResponse {
   results: Transaction[];
+}
+
+export interface ApiGetInvitationsResponse extends PaginatedResponse {
+  results: Invitation[];
 }
 
 export interface ApiGenericSuccessResponse {

@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import BookItemList from "../components/BookItemList";
@@ -7,12 +7,14 @@ import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
 import { getStoredDefaultBookId } from "../helpers/storageHelper";
 import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
+import useGetInvitationsQuery from "../services/useGetInvitationsQuery";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 
 const DashboardPage = () => {
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
   const getCollaboratedBooksQuery = useGetCollaboratedBooksQuery();
   const storedDefaultBookId = getStoredDefaultBookId();
+  const getInvitationsQuery = useGetInvitationsQuery();
   const navigate = useNavigate();
   const [defaultBookId, setDefaultBookId] = useState<number>(0);
 
@@ -45,7 +47,10 @@ const DashboardPage = () => {
         <div className="HSpace2"></div>
         <div className="Heading3">🤝 {Texts.COLLABORATED_BOOKS}</div>
         {getCollaboratedBooksQuery.data?.results?.length ? (
-          <BookItemList books={getCollaboratedBooksQuery.data.results} showOwner={true} />
+          <BookItemList
+            books={getCollaboratedBooksQuery.data.results}
+            showOwner={true}
+          />
         ) : (
           <div>{Texts.NO_COLLABORATED_BOOKS}</div>
         )}
