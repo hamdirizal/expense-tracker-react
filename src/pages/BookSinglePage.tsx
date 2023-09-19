@@ -5,12 +5,15 @@ import TransactionList from "../components/TransactionList";
 import TransactionSummary from "../components/TransactionSummary";
 import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
+import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
 import useGetRecentTransactionsQuery from "../services/useGetRecentTransactionsQuery";
 import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 import useGetTransactionSummaryQuery from "../services/useGetTransactionSummaryQuery";
 
 const BookSinglePage = () => {
   const { book_id } = useParams();
+
+  const getAuthUserQuery = useGetAuthUserQuery();
 
   const getSingleBookQuery = useGetSingleBookQuery(parseInt(book_id || "0"));
 

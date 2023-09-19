@@ -29,7 +29,7 @@ const useInviteSomeoneMutation = () => {
         return await response.json();
       },
       onSuccess: () => {
-        queryClient.invalidateQueries(["getSentInvitations"]);
+        queryClient.invalidateQueries(["getOutgoingInvitations"]);
       },
     }
   );
