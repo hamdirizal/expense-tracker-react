@@ -29,6 +29,7 @@ export const Texts = {
   EMAIL: "Email",
   PASSWORD: "Password",
   MY_BOOKS: "My books",
+  COLLABORATORS: "Collaborators",
   COLLABORATED_BOOKS: "Collaborated books",
   INVITATIONS: "Invitations",
   SUBMIT: "Submit",

@@ -94,6 +94,10 @@ export interface ApiGetRecentTransactionsResponse extends PaginatedResponse {
   results: Transaction[];
 }
 
+export interface ApiGetCollaboratorsResponse extends PaginatedResponse {
+  results: User[];
+}
+
 export interface ApiGetInvitationsResponse extends PaginatedResponse {
   results: Invitation[];
 }

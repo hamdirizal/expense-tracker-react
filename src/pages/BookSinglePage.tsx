@@ -36,8 +36,8 @@ const BookSinglePage = () => {
 
         <div className="Heading3">💡 {Texts.ACTIONS}</div>
         <div className="RegularList">
-          <ul className="RegularList__ul">
-            {book_id ? (
+          {book_id ? (
+            <ul className="RegularList__ul">
               <li className="RegularList__li">
                 <Link
                   to={AppPaths.ADD_TRANSACTION.replace(/:book_id/g, book_id)}
@@ -45,16 +45,20 @@ const BookSinglePage = () => {
                   {Texts.ADD_TRANSACTION}
                 </Link>
               </li>
-            ) : null}
-            <li className="RegularList__li">
-              <Link to={""}>{Texts.LISTING}</Link>
-            </li>
+              <li className="RegularList__li">
+                <Link to={""}>{Texts.LISTING}</Link>
+              </li>
 
-            <li className="RegularList__li">
-              <Link to={""}>{Texts.MANAGE}</Link>
-            </li>
+              <li className="RegularList__li">
+                <Link to={""}>{Texts.MANAGE}</Link>
+              </li>
 
-            {book_id ? (
+              <li className="RegularList__li">
+                <Link to={AppPaths.COLLABORATORS.replace(/:book_id/g, book_id)}>
+                  {Texts.COLLABORATORS}
+                </Link>
+              </li>
+
               <li className="RegularList__li">
                 <Link
                   to={AppPaths.SEARCH_TRANSACTIONS.replace(
@@ -62,11 +66,11 @@ const BookSinglePage = () => {
                     book_id
                   )}
                 >
-                  {Texts.SEARCH}
+                  {Texts.SEARCH_TRANSACTIONS}
                 </Link>
               </li>
-            ) : null}
-          </ul>
+            </ul>
+          ) : null}
         </div>
         <div className="HSpace2"></div>
         <div className="Heading3">📋 {Texts.SUMMARY}</div>
@@ -76,7 +80,9 @@ const BookSinglePage = () => {
         <div className="Heading3">🕐 {Texts.RECENTLY_ADDED}</div>
 
         {getRecentTransactionsQuery.data?.results?.length ? (
-          <TransactionList transactions={getRecentTransactionsQuery.data.results} />
+          <TransactionList
+            transactions={getRecentTransactionsQuery.data.results}
+          />
         ) : (
           <div>{Texts.NO_TRANSACTIONS}</div>
         )}

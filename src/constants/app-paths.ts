@@ -6,6 +6,7 @@ export const AppPaths = {
   CHANGE_PASSWORD: "/change-password/:token",
   BOOK_SINGLE: "/book/:book_id",
   BOOK_MANAGE: "/book/:book_id/manage",
+  COLLABORATORS: "/book/:book_id/collaborators",
   SEARCH_TRANSACTIONS: "/book/:book_id/search-transactions",
   ADD_TRANSACTION: "/book/:book_id/add-transaction",
   SINGLE_TRANSACTION: "/book/:book_id/transaction/:transaction_id",

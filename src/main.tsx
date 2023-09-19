@@ -10,6 +10,7 @@ import AuthFlowSkeleton from "./pages/AuthFlowSkeleton.tsx";
 import BookManagePage from "./pages/BookManagePage.tsx";
 import BookSinglePage from "./pages/BookSinglePage.tsx";
 import ChangePasswordPage from "./pages/ChangePasswordPage.tsx";
+import CollaboratorsPage from "./pages/CollaboratorsPage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import MemberAreaSkeleton from "./pages/MemberAreaSkeleton.tsx";
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
   {
     path: AppPaths.SEARCH_TRANSACTIONS,
     element: <MemberAreaSkeleton content={<SearchTransactionsPage />} />,
+  },
+  {
+    path: AppPaths.COLLABORATORS,
+    element: <MemberAreaSkeleton content={<CollaboratorsPage />} />,
   },
   {
     path: "*",
