@@ -7,7 +7,7 @@ export interface Book {
 }
 
 export interface Invitation {
-  book_id: number;
+  book_uid: number;
   book_title: string;
   owner_email: string;
   owner_nickname?: string;
