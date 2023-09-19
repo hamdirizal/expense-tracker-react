@@ -4,13 +4,13 @@ import { ApiBaseUrl } from "../constants/general";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { ApiGetInvitationsResponse } from "../types";
 
-const useGetInvitationsQuery = () => {
+const useGetOutgoingInvitationsQuery = (book_id: number) => {
   return useQuery<string, Error, ApiGetInvitationsResponse>({
     retry: 0,
-    queryKey: ["getInvitations"],
+    queryKey: ["getOutgoingInvitations", book_id],
     queryFn: async () => {
       const response = await fetch(
-        `${ApiBaseUrl}/get-invitations.php`,
+        `${ApiBaseUrl}/get-outgoing-invitations.php?book_id=${book_id}`,
         {
           method: "GET",
           headers: {
@@ -29,4 +29,4 @@ const useGetInvitationsQuery = () => {
   });
 };
 
-export default useGetInvitationsQuery;
+export default useGetOutgoingInvitationsQuery;

@@ -32,6 +32,7 @@ export const Texts = {
   COLLABORATORS: "Collaborators",
   COLLABORATED_BOOKS: "Collaborated books",
   INVITATIONS: "Invitations",
+  INCOMING_INVITATIONS: "Incoming invitations",
   SUBMIT: "Submit",
   CANCEL: "Cancel",
   INCOMING: "Incoming",

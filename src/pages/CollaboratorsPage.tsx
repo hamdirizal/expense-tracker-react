@@ -1,9 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 
 import SearchTransactionsForm from "../components/SearchTransactionsForm";
+import SendInvitationForm from "../components/SendInvitationForm";
 import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
 import useGetCollaboratorsQuery from "../services/useGetCollaboratorsQuery";
+import useGetOutgoingInvitationsQuery from "../services/useGetOutgoingInvitationsQuery";
 import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 
 const CollaboratorsPage = () => {
@@ -11,6 +13,9 @@ const CollaboratorsPage = () => {
 
   const getSingleBookQuery = useGetSingleBookQuery(parseInt(book_id || "0"));
   const getCollaboratorsQuery = useGetCollaboratorsQuery(
+    parseInt(book_id || "0")
+  );
+  const getOutgoingInvitationsQuery = useGetOutgoingInvitationsQuery(
     parseInt(book_id || "0")
   );
 
@@ -38,7 +43,7 @@ const CollaboratorsPage = () => {
               return (
                 <li key={user.id} className="RegularList__li">
                   {user.email}{" "}
-                  {user.nickname ? <span>({user.nickname})</span> : null}{" "}
+                  {user.nickname ? <span>({user.nickname})</span> : ""}{" "}
                   <button type="button" className="ButtonLink">
                     remove
                   </button>
@@ -53,18 +58,18 @@ const CollaboratorsPage = () => {
 
       <div className="HSpace2"></div>
       <div className="Heading3">⏳ Pending Invitation</div>
-      <div data-testid="BookItemList" className="RegularList">
-        <ul className="RegularList__ul">
-          <li className="RegularList__li">john@email.com cancel</li>
-          <li className="RegularList__li">susann@email.com cancel</li>
-        </ul>
-      </div>
+      {getOutgoingInvitationsQuery?.data?.results?.length ? (
+        <div className="RegularList">
+          <ul className="RegularList__ul">
+            {getOutgoingInvitationsQuery.data.results.map((inv) => {
+              return <li key={inv.target_email} className="RegularList__li">{inv.target_email}</li>;
+            })}
+          </ul>
+        </div>
+      ) : <div>No outgoing invitation for this book.</div>}
       <div className="HSpace2"></div>
-      <div className="Heading3">✉️ Invite another person</div>
-      <div>
-        <input type="text" />
-        <button>Invite</button>
-      </div>
+      <div className="Heading3">✉️ Invite more people</div>
+      <SendInvitationForm />
     </>
   );
 };

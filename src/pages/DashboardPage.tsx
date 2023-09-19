@@ -8,14 +8,14 @@ import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
 import { getStoredDefaultBookId } from "../helpers/storageHelper";
 import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
-import useGetInvitationsQuery from "../services/useGetInvitationsQuery";
+import useGetIncomingInvitationsQuery from "../services/useGetIncomingInvitationsQuery";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
 
 const DashboardPage = () => {
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
   const getCollaboratedBooksQuery = useGetCollaboratedBooksQuery();
   const storedDefaultBookId = getStoredDefaultBookId();
-  const getInvitationsQuery = useGetInvitationsQuery();
+  const getIncomingInvitationsQuery = useGetIncomingInvitationsQuery();
   const navigate = useNavigate();
   const [defaultBookId, setDefaultBookId] = useState<number>(0);
 
@@ -56,9 +56,9 @@ const DashboardPage = () => {
           <div>{Texts.NO_COLLABORATED_BOOKS}</div>
         )}
         <div className="HSpace2"></div>
-        <div className="Heading3">✉️ {Texts.INVITATIONS}</div>
-        {getInvitationsQuery.data?.results?.length ? (
-          <InvitationList invitations={getInvitationsQuery.data.results} />
+        <div className="Heading3">✉️ {Texts.INCOMING_INVITATIONS}</div>
+        {getIncomingInvitationsQuery.data?.results?.length ? (
+          <InvitationList invitations={getIncomingInvitationsQuery.data.results} />
         ) : (
           <div>{Texts.NO_INVITATIONS}</div>
         )}

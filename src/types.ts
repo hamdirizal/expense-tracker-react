@@ -11,6 +11,7 @@ export interface Invitation {
   book_title: string;
   owner_email: string;
   owner_nickname?: string;
+  target_email: string;
 }
 
 export interface Transaction {
@@ -109,6 +110,11 @@ export interface ApiGenericSuccessResponse {
 export interface ApiLoginPayload {
   email: string;
   password: string;
+}
+
+export interface ApiInviteSomeonePayload {
+  book_id: number;
+  email: string;
 }
 
 export interface ApiRequestPasswordResetPayload {
