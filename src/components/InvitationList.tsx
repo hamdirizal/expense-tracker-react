@@ -13,7 +13,7 @@ const InvitationList = ({ invitations }: InvitationListProps) => {
       <ul className="RegularList__ul">
         {invitations.map((inv: Invitation) => {
           return (
-            <li key={inv.book_id} className="RegularList__li">
+            <li key={inv.book_uid} className="RegularList__li">
               <div>
                 {inv.book_title} ({inv.owner_nickname || inv.owner_email})
               </div>
@@ -21,7 +21,7 @@ const InvitationList = ({ invitations }: InvitationListProps) => {
                 <button className="ButtonLink">accept</button>
                 <span className="CharSpace1"></span>
                 <button type="button" onClick={()=>{
-                  rejectInvitationMutation.mutate(inv.book_id);
+                  rejectInvitationMutation.mutate(inv.book_uid);
                 }} className="ButtonLinkDanger">reject</button>
               </div>
             </li>

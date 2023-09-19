@@ -12,7 +12,7 @@ import useGetSingleBookQuery from "../services/useGetSingleBookQuery";
 const CollaboratorsPage = () => {
   const { book_id } = useParams();
   const getAuthUserQuery = useGetAuthUserQuery();
-  const getSingleBookQuery = useGetSingleBookQuery(parseInt(book_id || "0"));
+  const getSingleBookQuery = useGetSingleBookQuery(book_id || "");
   const getCollaboratorsQuery = useGetCollaboratorsQuery(
     parseInt(book_id || "0")
   );

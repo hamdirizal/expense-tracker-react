@@ -4,8 +4,8 @@ import { ApiBaseUrl } from "../constants/general";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { TxSummary } from "../types";
 
-const useGetTransactionSummaryQuery = (book_id: number) => {
-  return useQuery<number, Error, TxSummary>({
+const useGetTransactionSummaryQuery = (book_id: string) => {
+  return useQuery<string, Error, TxSummary>({
     retry: 0,
     queryKey: ["getTransactionSummaryQuery", book_id],
     queryFn: async () => {

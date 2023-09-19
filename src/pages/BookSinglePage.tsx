@@ -15,14 +15,14 @@ const BookSinglePage = () => {
 
   const getAuthUserQuery = useGetAuthUserQuery();
 
-  const getSingleBookQuery = useGetSingleBookQuery(parseInt(book_id || "0"));
+  const getSingleBookQuery = useGetSingleBookQuery(book_id || "");
 
   const getRecentTransactionsQuery = useGetRecentTransactionsQuery(
-    parseInt(book_id || "0")
+    book_id || ""
   );
 
   const getTransactionSummaryQuery = useGetTransactionSummaryQuery(
-    parseInt(book_id || "0")
+    book_id || ""
   );
 
   const renderFinalMarkup = () => {

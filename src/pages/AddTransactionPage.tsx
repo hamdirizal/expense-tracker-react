@@ -13,10 +13,10 @@ const AddTransactionPage = () => {
 
   const { book_id } = useParams();
 
-  const getSingleBookQuery = useGetSingleBookQuery(parseInt(book_id || "0"));
+  const getSingleBookQuery = useGetSingleBookQuery(book_id || "");
 
   const getRecentTransactionsQuery = useGetRecentTransactionsQuery(
-    parseInt(book_id || "0")
+    book_id || ""
   );
 
   const renderPageContent = () => {

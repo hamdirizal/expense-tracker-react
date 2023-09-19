@@ -10,7 +10,7 @@ import useGetSingleTransactionQuery from "../services/useGetSingleTransactionQue
 const SingleTransactionPage = () => {
   const { book_id, transaction_id } = useParams();
 
-  const getSingleBookQuery = useGetSingleBookQuery(parseInt(book_id || "0"));
+  const getSingleBookQuery = useGetSingleBookQuery(book_id || "");
 
   const getSingleTransactionQuery = useGetSingleTransactionQuery(
     parseInt(transaction_id || "0")

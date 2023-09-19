@@ -4,8 +4,8 @@ import { ApiBaseUrl } from "../constants/general";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { Book } from "../types";
 
-const useGetSingleBookQuery = (book_id: number) => {
-  return useQuery<number, Error, Book>({
+const useGetSingleBookQuery = (book_id: string) => {
+  return useQuery<string, Error, Book>({
     retry: 0,
     queryKey: ["getSingleBook", book_id],
     enabled: !!book_id,

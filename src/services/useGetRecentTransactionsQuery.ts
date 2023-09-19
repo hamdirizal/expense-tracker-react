@@ -4,8 +4,8 @@ import { ApiBaseUrl } from "../constants/general";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { ApiGetRecentTransactionsResponse } from "../types";
 
-const useGetRecentTransactionsQuery = (book_id: number) => {
-  return useQuery<number, Error, ApiGetRecentTransactionsResponse>({
+const useGetRecentTransactionsQuery = (book_id: string) => {
+  return useQuery<string, Error, ApiGetRecentTransactionsResponse>({
     retry: 0,
     queryKey: ["getRecentTransactions", book_id],
     queryFn: async () => {
