@@ -9,6 +9,7 @@ import { getStoredDefaultBookId } from "../helpers/storageHelper";
 import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
 import useGetInvitationsQuery from "../services/useGetInvitationsQuery";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
+import InvitationList from "../components/InvitationList";
 
 const DashboardPage = () => {
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
@@ -56,7 +57,11 @@ const DashboardPage = () => {
         )}
         <div className="HSpace2"></div>
         <div className="Heading3">✉️ {Texts.INVITATIONS}</div>
-        <div>{Texts.NO_INVITATIONS}</div>
+        {getInvitationsQuery.data?.results?.length ? (
+          <InvitationList invitations={getInvitationsQuery.data.results} />
+        ) : (
+          <div>{Texts.NO_INVITATIONS}</div>
+        )}
       </div>
     );
   }

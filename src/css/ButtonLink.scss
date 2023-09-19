@@ -1,0 +1,8 @@
+.ButtonLink {
+  font-size: 1em;
+  color: $color-link;
+  text-decoration: underline;
+}
+.ButtonLink:active {
+  transform: scale(0.9);
+}

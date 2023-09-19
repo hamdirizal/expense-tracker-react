@@ -107,6 +107,8 @@ $screen-xl: 1024px;
 @import "./JustError.scss";
 @import "./NotFoundPage.scss";
 @import "./Breadcrumbs.scss";
+@import "./ButtonLink.scss";
+@import "./ButtonLinkDanger.scss";
 
 .PageTitle {
   @include page-title;
@@ -182,11 +184,6 @@ $screen-xl: 1024px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   line-height: 1;
-}
-.ButtonLink {
-  font-size: 1em;
-  color: $color-link;
-  text-decoration: underline;
 }
 
 .Heading2 {

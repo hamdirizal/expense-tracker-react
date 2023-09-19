@@ -1,0 +1,8 @@
+.ButtonLinkDanger {
+  font-size: 1em;
+  color: $color-text-error;
+  text-decoration: underline;
+}
+.ButtonLinkDanger:active {
+  transform: scale(0.9);
+}
