@@ -1,6 +1,4 @@
-import { useNavigate } from "react-router";
-
-import { AppPaths } from "../constants/app-paths";
+import useRejectInvitationMutation from "../services/useRejectInvitationMutation";
 import { Invitation } from "../types";
 
 interface InvitationListProps {
@@ -8,7 +6,8 @@ interface InvitationListProps {
 }
 
 const InvitationList = ({ invitations }: InvitationListProps) => {
-  const navigate = useNavigate();
+  const rejectInvitationMutation = useRejectInvitationMutation();
+
   return (
     <div data-testid="InvitationList" className="RegularList">
       <ul className="RegularList__ul">
@@ -21,7 +20,9 @@ const InvitationList = ({ invitations }: InvitationListProps) => {
               <div>
                 <button className="ButtonLink">accept</button>
                 <span className="CharSpace1"></span>
-                <button className="ButtonLinkDanger">reject</button>
+                <button type="button" onClick={()=>{
+                  rejectInvitationMutation.mutate(inv.book_id);
+                }} className="ButtonLinkDanger">reject</button>
               </div>
             </li>
           );

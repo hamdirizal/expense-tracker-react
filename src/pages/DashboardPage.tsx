@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import BookItemList from "../components/BookItemList";
 import CreateBookForm from "../components/CreateBookForm";
+import InvitationList from "../components/InvitationList";
 import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
 import { getStoredDefaultBookId } from "../helpers/storageHelper";
 import useGetCollaboratedBooksQuery from "../services/useGetCollaboratedBooksQuery";
 import useGetInvitationsQuery from "../services/useGetInvitationsQuery";
 import useGetOwnedBooksQuery from "../services/useGetOwnedBooksQuery";
-import InvitationList from "../components/InvitationList";
 
 const DashboardPage = () => {
   const getOwnedBooksQuery = useGetOwnedBooksQuery();
