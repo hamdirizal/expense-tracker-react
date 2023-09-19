@@ -26,7 +26,7 @@ const useRejectInvitationMutation = () => {
       return await response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["getInvitations"]);
+      queryClient.invalidateQueries(["getIncomingInvitations"]);
     },
   });
 };
