@@ -61,8 +61,8 @@ export interface TxSummary {
 }
 
 export interface User {
+  uid: string;
   email: string;
-  id: string;
   nickname: string | null;
   is_verified: boolean;
 }
