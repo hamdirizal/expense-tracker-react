@@ -9,13 +9,11 @@ import { AppPaths } from "../constants/app-paths";
 import { Texts } from "../constants/texts";
 import useChangePasswordByTokenMutation from "../services/useChangePassworByTokenMutation";
 import useGetAuthUserQuery from "../services/useGetAuthUserQuery";
-import useRequestResetMutation from "../services/useRequestResetMutation";
 
 const ChangePasswordPage = () => {
   const { token } = useParams();
   const getAuthUserQuery = useGetAuthUserQuery();
   const changePasswordByTokenMutation = useChangePasswordByTokenMutation();
-  const requestResetMutation = useRequestResetMutation();
 
   const { register, handleSubmit } = useForm();
 
@@ -52,11 +50,11 @@ const ChangePasswordPage = () => {
                 {...register("confirm_password", { required: false })}
               />
             </div>
-            {requestResetMutation.isError ? (
-              <ErrorDiv error={requestResetMutation.error.message} />
+            {changePasswordByTokenMutation.isError ? (
+              <ErrorDiv error={changePasswordByTokenMutation.error.message} />
             ) : null}
             <div className="FormRow">
-              {requestResetMutation.isLoading ? (
+              {changePasswordByTokenMutation.isLoading ? (
                 <div className="AuthBox__spinner">
                   <LoadingSpinner />
                 </div>
@@ -87,7 +85,7 @@ const ChangePasswordPage = () => {
             <img src={logo} alt="Monee" />
           </h1>
 
-          {requestResetMutation.isSuccess ? (
+          {changePasswordByTokenMutation.isSuccess ? (
             <div>
               <h2 className="Heading3">Success</h2>
               <p>Password has been changed. </p>
