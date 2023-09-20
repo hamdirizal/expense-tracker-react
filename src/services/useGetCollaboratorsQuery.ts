@@ -4,8 +4,8 @@ import { ApiBaseUrl } from "../constants/general";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { ApiGetCollaboratorsResponse } from "../types";
 
-const useGetCollaboratorsQuery = (book_id: number) => {
-  return useQuery<number, Error, ApiGetCollaboratorsResponse>({
+const useGetCollaboratorsQuery = (book_id: string) => {
+  return useQuery<string, Error, ApiGetCollaboratorsResponse>({
     retry: 0,
     queryKey: ["getCollaborators", book_id],
     queryFn: async () => {

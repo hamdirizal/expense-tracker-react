@@ -14,7 +14,7 @@ const CollaboratorsPage = () => {
   const getAuthUserQuery = useGetAuthUserQuery();
   const getSingleBookQuery = useGetSingleBookQuery(book_id || "");
   const getCollaboratorsQuery = useGetCollaboratorsQuery(
-    parseInt(book_id || "0")
+    book_id || ""
   );
   const getOutgoingInvitationsQuery = useGetOutgoingInvitationsQuery(
     parseInt(book_id || "0")

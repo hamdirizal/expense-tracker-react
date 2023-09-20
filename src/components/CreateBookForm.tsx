@@ -17,7 +17,7 @@ const CreateBookForm = () => {
   } = useForm();
 
   const onFormSubmitted = (data: any) => {
-    if (getAuthUserQuery?.data?.id) {
+    if (getAuthUserQuery?.data?.uid) {
       createBookMutation.mutate({
         book_title: data.title,
       });
