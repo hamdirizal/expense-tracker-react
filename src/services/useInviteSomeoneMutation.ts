@@ -17,7 +17,7 @@ const useInviteSomeoneMutation = () => {
             Authorization: "Bearer " + getStoredAccessToken(),
           },
           body: JSON.stringify({
-            book_id: args.book_id,
+            book_id: args.book_uid,
             email: args.email,
           }),
         });

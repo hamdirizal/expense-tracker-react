@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 import { AppPaths } from "../constants/app-paths";
 import { Book } from "../types";
-import { Link } from "react-router-dom";
 
 interface BookItemListProps {
   books: Book[];
@@ -16,12 +16,12 @@ const BookItemList = ({ books, showOwner = false }: BookItemListProps) => {
       <ul className="RegularList__ul">
         {books.map((book: Book) => {
           return (
-            <li key={book.id} className="RegularList__li">
+            <li key={book.uid} className="RegularList__li">
               <Link
                 className="BookItemList__itemTitle"
                 to={AppPaths.BOOK_SINGLE.replace(
                   ":book_id",
-                  book.id.toString()
+                  book.uid.toString()
                 )}
               >
                 {book.title}

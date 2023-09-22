@@ -20,10 +20,10 @@ const SendInvitationForm = () => {
   } = useForm();
 
   const onFormSubmitted = (data: any) => {
-    if (getAuthUserQuery?.data?.id) {
+    if (getAuthUserQuery?.data?.uid) {
       inviteSomeoneMutation.mutate({
         email: data.email,
-        book_id: parseInt(book_id || "0"),
+        book_uid: parseInt(book_id || "0"),
       });
     }
   };

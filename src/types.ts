@@ -1,7 +1,7 @@
 export interface Book {
-  id: number;
+  uid: number;
   title: string;
-  owner_id: string;
+  owner_uid: string;
   owner_email: string;
   owner_nickname?: string;
 }
@@ -15,24 +15,24 @@ export interface Invitation {
 }
 
 export interface Transaction {
-  id: number;
+  uid: number;
   title: string;
   amount: number;
-  book_id: number;
+  book_uid: number;
   tx_date: string;
   description: string | null;
   is_outgoing: boolean;
 }
 export interface TransactionWithCreator extends Transaction {
-  creator_id: string;
+  creator_uid: string;
   creator_email: string;
   creator_nickname?: string;
 }
 
 export interface CreateTransactionMutationPayload {
   amount: number;
-  book_id: number;
-  creator_id: string;
+  book_uid: number;
+  creator_uid: string;
   date: string;
   description?: string;
   is_outgoing: boolean;
@@ -40,13 +40,13 @@ export interface CreateTransactionMutationPayload {
 }
 
 export interface UpsertUserConfigMutationPayload {
-  user_id: string;
-  active_book_id?: number;
+  user_uid: string;
+  active_book_uid?: number;
 }
 
 export interface UserConfig {
-  user_id: string;
-  active_book_id: number;
+  user_uid: string;
+  active_book_uid: number;
   active_book?: Book | null;
   nickname: string | null;
 }
@@ -113,7 +113,7 @@ export interface ApiLoginPayload {
 }
 
 export interface ApiInviteSomeonePayload {
-  book_id: number;
+  book_uid: number;
   email: string;
 }
 
@@ -139,7 +139,7 @@ export interface ApiVerifyAccount {
 }
 
 export interface ApiSetActiveBookPayload {
-  book_id: number;
+  book_uid: number;
 }
 
 export interface ApiCreateBookPayload {
@@ -151,7 +151,7 @@ export interface ApiCreateBookResponse {
 }
 
 export interface ApiCreateTransactionPayload {
-  book_id: number;
+  book_uid: number;
   tx_date: string;
   title: string;
   amount: number;

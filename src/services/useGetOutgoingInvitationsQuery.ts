@@ -4,7 +4,7 @@ import { ApiBaseUrl } from "../constants/general";
 import { getStoredAccessToken } from "../helpers/storageHelper";
 import { ApiGetInvitationsResponse } from "../types";
 
-const useGetOutgoingInvitationsQuery = (book_id: number) => {
+const useGetOutgoingInvitationsQuery = (book_id: string) => {
   return useQuery<string, Error, ApiGetInvitationsResponse>({
     retry: 0,
     queryKey: ["getOutgoingInvitations", book_id],

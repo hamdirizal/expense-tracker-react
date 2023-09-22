@@ -16,9 +16,7 @@ const CollaboratorsPage = () => {
   const getCollaboratorsQuery = useGetCollaboratorsQuery(
     book_id || ""
   );
-  const getOutgoingInvitationsQuery = useGetOutgoingInvitationsQuery(
-    parseInt(book_id || "0")
-  );
+  const getOutgoingInvitationsQuery = useGetOutgoingInvitationsQuery(book_id || "");
 
   const renderInvitationSection = () => {
     return (
@@ -76,11 +74,11 @@ const CollaboratorsPage = () => {
           <ul className="RegularList__ul">
             {getCollaboratorsQuery.data.results.map((user) => {
               return (
-                <li key={user.id} className="RegularList__li">
+                <li key={user.uid} className="RegularList__li">
                   {user.email}{" "}
                   {user.nickname ? <span>({user.nickname})</span> : ""}{" "}
-                  {getAuthUserQuery.data?.id ===
-                  getSingleBookQuery.data?.owner_id ? (
+                  {getAuthUserQuery.data?.uid ===
+                  getSingleBookQuery.data?.owner_uid ? (
                     <button type="button" className="ButtonLink">
                       remove
                     </button>
@@ -94,10 +92,10 @@ const CollaboratorsPage = () => {
         <div>No collaborators for this book</div>
       )}
 
-      {getAuthUserQuery.data?.id === getSingleBookQuery.data?.owner_id
+      {getAuthUserQuery.data?.uid === getSingleBookQuery.data?.owner_uid
         ? renderInvitationSection()
         : null}
-      {getAuthUserQuery.data?.id === getSingleBookQuery.data?.owner_id
+      {getAuthUserQuery.data?.uid === getSingleBookQuery.data?.owner_uid
         ? renderInvitationForm()
         : null}
     </>

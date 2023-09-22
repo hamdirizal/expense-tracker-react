@@ -103,7 +103,7 @@ const ChangePasswordPage = () => {
 
   if (getAuthUserQuery.isLoading) {
     return null;
-  } else if (getAuthUserQuery.isSuccess && getAuthUserQuery?.data?.id) {
+  } else if (getAuthUserQuery.isSuccess && getAuthUserQuery?.data?.uid) {
     return <Navigate to={AppPaths.DASHBOARD} />;
   } else {
     return renderFinalMarkup();
